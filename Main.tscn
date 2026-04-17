@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://f1d4rnhhaao5"]
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://player.gd" id="1_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://d1jjvnpbolyor" path="res://CUBE 1.blend" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://cube_1.tscn" id="2_3dxm6"]
 [ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://cjqbwo2ith1xf" path="res://florest.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://dhfmrrbuc8hd8" path="res://fundo.gd" id="4_lgr22"]
@@ -16,7 +16,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func get_gravity() ->  Vector3:
-	return Vector3(0, 11, 0)
+	return Vector3(0, 41, 0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.965
 
 [node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
 
-[node name="CUBE 1" parent="Cubes" unique_id=1050982043 instance=ExtResource("2_uu6xs")]
+[node name="CUBE 1" parent="Cubes" unique_id=1050982043 instance=ExtResource("2_3dxm6")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)

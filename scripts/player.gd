@@ -1,13 +1,11 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 6.5
+const SPEED = 10.0
+const JUMP_VELOCITY = 15.0
 
-# Mecanica de escalar na parede
-
-
-# Fazer com que ao escalar eu desça lentamente a parede e tenha um unico pulo bonus até encostar no chão novamente
+# Mecanica de escalar na parede ainda tá meio bugada a questão do double jump e funciona em qualquer parede
+# Fazer com que tenha um unico pulo bonus até encostar no chão novamente
 var climbing = false
 func climb_surface():
 	
@@ -20,33 +18,21 @@ func climb_surface():
 	
 var max_jumps = 2
 var can_jump = max_jumps
-
+var gravity_y = 20 # Só no eixo y por enquanto
 func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor() and not climbing:
-		velocity += get_gravity() * delta
+		velocity.y -= gravity_y * delta
 	else:
 		can_jump = max_jumps
 	
-	# Handle jump.
+	# Pulo já com escalada.
 	if Input.is_action_just_pressed("ui_accept") and can_jump:
 		velocity.y = JUMP_VELOCITY
 		can_jump -= 1
-	
 	climb_surface()
 		
-		
-		
-		
-	# Se cair pra fora do mapa, reseta posição do player
-
-
-
-
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
