@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bvg7rngb56580"]
+
+[ext_resource type="PackedScene" uid="uid://d1jjvnpbolyor" path="res://CUBE 1.blend" id="1_ekwvt"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6fh3t"]
+
+[node name="CUBE 1" unique_id=1050982043 instance=ExtResource("1_ekwvt")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cube/StaticBody3D" parent_id_path=PackedInt32Array(198076249) index="1" unique_id=1581312018]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1.1, -18, -1, 36)
+shape = SubResource("WorldBoundaryShape3D_6fh3t")
+debug_color = Color(1, 0.48753816, 0.68646544, 0.41960785)
