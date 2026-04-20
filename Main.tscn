@@ -1,26 +1,18 @@
 [gd_scene format=3 uid="uid://f1d4rnhhaao5"]
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://Scene/cube_1.tscn" id="2_3dxm6"]
+[ext_resource type="Script" uid="uid://c7ycygh8ukt05" path="res://scripts/playerCamera.gd" id="2_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="3_lgr22"]
 [ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://dd5w4ylyp4nfp" path="res://scripts/florest.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bxlufdktjvmt3" path="res://scripts/fundo.gd" id="4_lgr22"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://textures/leonan sky.png" id="5_lgr22"]
-[ext_resource type="Script" uid="uid://m7n5ssva5bfg" path="res://scripts/camera_3d.gd" id="7_h3nmf"]
 
-[sub_resource type="GDScript" id="GDScript_cm0pq"]
+[sub_resource type="GDScript" id="GDScript_lgr22"]
 script/source = "extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-func get_gravity() ->  Vector3:
-	return Vector3(0, 41, 0)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+class_name GlobalEnums
+enum Face{ ONE, TWO, THREE, FOUR, FIVE, SIX}
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aan6j"]
@@ -40,10 +32,10 @@ albedo_texture = ExtResource("5_lgr22")
 material = SubResource("StandardMaterial3D_trn2v")
 
 [node name="Main" type="Node" unique_id=40376032]
-script = SubResource("GDScript_cm0pq")
+script = SubResource("GDScript_lgr22")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1698396226]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42, 20, 42)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 20, 42)
 script = ExtResource("1_lgr22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=589394120]
@@ -55,12 +47,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_h3nmf")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=1329891086]
-transform = Transform3D(0.5, 0, 0, 0, 0.48296294, 0.12940954, 0, -0.12940954, 0.4829629, 3, 6, 12)
-script = ExtResource("7_h3nmf")
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 3, 16)
+script = ExtResource("2_lgr22")
 
 [node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
 
-[node name="CUBE 1" parent="Cubes" unique_id=1050982043 instance=ExtResource("2_3dxm6")]
+[node name="CUBE 1" parent="Cubes" unique_id=108612563 instance=ExtResource("3_lgr22")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)
@@ -70,6 +62,7 @@ shadow_enabled = true
 
 [node name="background" type="Node3D" parent="." unique_id=1603369910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
+visible = false
 
 [node name="fundo" type="MeshInstance3D" parent="background" unique_id=188394711]
 transform = Transform3D(20000, 0, 0, 0, 20000, 0, 0, 0, 20000, -175, 6125, -3311)
