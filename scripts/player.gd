@@ -1,5 +1,7 @@
 extends CharacterBody3D
 @onready var camera = $Camera3D
+@onready var areaDetection = $areaDetection
+
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
@@ -10,6 +12,12 @@ enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
 var can_jump := 2 
 
+## CUBO
+	# Face e sua correspondente coordenada
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
+#var faces := {ONE : {},}
+
+
 ## CAMERA
 var	CAM_BASIS
 var FOWARD : Vector3
@@ -18,12 +26,26 @@ var UP : Vector3
 
 var gravity : Vector3 =	Vector3(0, -1 , 0)
 
+# Função responsavel por verificar colisão com portal e  chamar a _change_face
+func _handle_portal():
+	for area in areaDetection.get_overlapping_areas():
+		if area.name == "portal 1":
+			print("encostei no portal 1")
+		elif area.name == "portal 2":
+			print("encostei no portal 2")
+		elif area.name == "portal 3":
+			print("encostei no portal 3")
+	
+func _ready() -> void:
+	pass 
+
 func _physics_process(delta: float) -> void:
 	# movimento baseado na camera
 	CAM_BASIS = camera.global_transform.basis
 	FOWARD = (CAM_BASIS.z * Vector3(1, 0, 1)).normalized()
 	RIGHT = (CAM_BASIS.x * Vector3(1, 0, 1)).normalized()
 	
+	_handle_portal()
 	_update_state()
 	_change_gravity_based_on_camera()
 	_handle_gravity(delta)
@@ -52,7 +74,8 @@ func _wants_to_climb():
 func _handle_gravity(delta):
 	match state:
 		State.GROUNDED:
-			print("Estou no chão")
+			pass
+			#print("Estou no chão")
 		State.CLIMBING:
 			velocity += gravity * WALL_SLIDE_VELOCITY * delta
 			#print("Estou escalando")

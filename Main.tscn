@@ -2,161 +2,34 @@
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
+[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
-
-[sub_resource type="GDScript" id="GDScript_r0du0"]
-script/source = "extends Camera3D
-
-@export var distancia := 25.0
-@export var lerp_speed := 3.0
-
-# Listas circulares em relaçao a um eixo dominate (quem controla cima ou baixo)
-var listY := [
-	{\"num\": 6, \"cam\": Vector3(0, 0, -1), \"nUp\": Vector3(0,0,1)}, #6
-	{\"num\": 3, \"cam\": Vector3(-1, 0, 0), \"nUp\": Vector3(1,0,0)},  #3
-	{\"num\": 1, \"cam\": Vector3(0, 0, 1), \"nUp\": Vector3(0,0,-1)}, #1
-	{\"num\": 2, \"cam\": Vector3(1, 0, 0), \"nUp\": Vector3(-1,0,0)} #2
-]
-var listZ := [
-	{\"num\": 4, \"cam\": Vector3(0, 1, 0), \"nUp\": Vector3(0,-1,0)},  #4
-	{\"num\": 3, \"cam\": Vector3(-1, 0, 0), \"nUp\": Vector3(1,0,0)},  #3
-	{\"num\": 5, \"cam\": Vector3(0, -1, 0), \"nUp\": Vector3(0,1,0)},  #5
-	{\"num\": 2, \"cam\": Vector3(1, 0, 0), \"nUp\": Vector3(-1,0,0)}  #2
-]
-var listX := [
-	{\"num\": 1, \"cam\": Vector3(0, 0, 1), \"nUp\": Vector3(0,0,-1)},  #1
-	{\"num\": 5, \"cam\": Vector3(0, -1, 0), \"nUp\": Vector3(0,1,0)},  #5
-	{\"num\": 6, \"cam\": Vector3(0, 0, -1), \"nUp\": Vector3(0,0,1)},  #6
-	{\"num\": 4, \"cam\": Vector3(0, 1, 0), \"nUp\": Vector3(0,-1,0)}   #4
-]
-
-# inicializaçao padrao das variaveis
-var face_atual = Vector3(0, 0, 1) 
-var currentUp = Vector3(0,1,0) # mostra o lado de cima da camera
-var currentList = listY
-var currentIndex = 2
-var state
-
-func _ready() -> void:
-	position = face_atual * distancia
-
-# funcao pra pegar o eixo, lista referente ao eixo e o seu sinal
-func get_axis_and_sign(up: Vector3):
-	var abs_up = up.abs()
-	
-	#verifica quem eh o eixo dominante
-	if abs_up.x > abs_up.y and abs_up.x > abs_up.z:
-		return {\"axis\": \"x\", \"axisList\": listX, \"sign\": sign(up.x)}
-	elif abs_up.y > abs_up.z:
-		return {\"axis\": \"y\", \"axisList\": listY, \"sign\": sign(up.y)}
-	else:
-		return {\"axis\": \"z\", \"axisList\": listZ, \"sign\": sign(up.z)}	
-
-# funcao para atualizar o index ao trocar de listas
-func updateIndex(axis, sign):
-	#debug
-	print(\"sign: \", sign)
-	print(\"axis: \", axis)
-	
-	# define o numero da face que deve procurar (fixos para cada lista/eixo)
-	var targetNum
-	if axis == \"x\":
-		if sign >= 0:
-			targetNum = 2
-		else:
-			targetNum = 3
-	if axis == \"y\":
-		if sign >= 0:
-			targetNum = 4
-		else:
-			targetNum = 5
-	if axis == \"z\":
-		if sign >=0:
-			targetNum = 1
-		else:
-			targetNum = 6
-	
-	print(\"targetNum: \",targetNum) # debug
-	
-	# atuliza o index depois de achar na lista
-	for i in range(currentList.size()):
-		print(i)
-		if currentList[i][\"num\"] == targetNum:
-			currentIndex = i
-			break
-
-# funcao de debug
-func debug():
-	print(\"Index: \", currentIndex)
-	print(\"Lista: \", get_axis_and_sign(currentUp)[\"axis\"])
-	print(\"Up: \", currentUp)
-	print(\"Face: \", currentList[currentIndex][\"num\"])
-	print()
-
-func _process(delta: float) -> void:
-	# Se for direita ou esquerda so anda na lista atual
-	# Se for cima ou baixo tem que troca de lista
-	
-	if Input.is_action_just_pressed(\"ui_right\"):
-		var upSign = get_axis_and_sign(currentUp)[\"sign\"]
-		
-		if upSign >= 0:
-			currentIndex = (currentIndex + 1) % currentList.size()
-		else:
-			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
-			
-	if Input.is_action_just_pressed(\"ui_left\"):
-		var upSign = get_axis_and_sign(currentUp)[\"sign\"]
-		
-		if upSign >= 0:
-			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
-		else:
-			currentIndex = (currentIndex + 1) % currentList.size()
-	
-	if Input.is_action_just_pressed(\"ui_up\"):
-		var info = get_axis_and_sign(currentUp)       # pega as info do eixo antes de atualizar o up
-		currentUp = currentList[currentIndex][\"nUp\"]  # atualiza o up
-		currentList = get_axis_and_sign(currentUp)[\"axisList\"]  # entra na lista do novo eixo
-		updateIndex(info[\"axis\"], info[\"sign\"])       # atualiza o index
-		debug()
-		
-	if Input.is_action_just_pressed(\"ui_down\"):
-		var info = get_axis_and_sign(currentUp)
-		currentUp = currentList[currentIndex][\"nUp\"] * Vector3(-1,-1,-1) #negativo pq pra baixo eh invertido
-		currentList = get_axis_and_sign(currentUp)[\"axisList\"]
-		updateIndex(info[\"axis\"], -1*info[\"sign\"])    #negativo pq pra baixo eh invertido
-		debug()
-		
-	# pega o novo estado na lista e sua face
-	state = currentList[currentIndex]
-	face_atual = state[\"cam\"]
-	
-	# atualiza a posicao da camera
-	position = position.lerp(face_atual * distancia, lerp_speed * delta)  
-	
-	# sempre olha para o jogador e mantem o up na orientacao certa
-	look_at(get_parent().global_position, currentUp)
-"
+[ext_resource type="Script" uid="uid://fapgpmyvi6sx" path="res://portal_1.gd" id="5_fos0i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
+size = Vector3(2.1982117, 2.7008972, 0.08294678)
+
 [node name="Node3D" type="Node3D" unique_id=1052521187]
 
-[node name="Cubo teste" parent="." unique_id=1367271068 instance=ExtResource("4_trn2v")]
+[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
+
+[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
+transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 8.361, 4, -156.489)
+
+[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 0.09023881)
 
-[node name="CUBE 1" parent="." unique_id=2112854242 instance=ExtResource("2_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.361337, -11.673374, -156.48932)
-
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.275646, 38.341984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1707864, 19.073452, -116.476295)
 script = ExtResource("1_lgr22")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
 transform = Transform3D(1, 0, 0, 0, 0.9840872, 0.17768592, 0, -0.17768592, 0.9840872, 0, 3.108467, 18.216797)
-script = SubResource("GDScript_r0du0")
+script = ExtResource("4_fos0i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=266873750]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -166,5 +39,41 @@ shape = SubResource("CapsuleShape3D_ekxg2")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_hdyhr")
 
+[node name="areaDetection" type="Area3D" parent="player" unique_id=1833533313]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/areaDetection" unique_id=1101130773]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ekxg2")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=622832747]
-transform = Transform3D(1, 0, 0, 0, -0.14328541, 0.9896814, 0, -0.9896814, -0.14328542, 0, 261.67792, 40.778427)
+transform = Transform3D(1, 0, 0, 0, -0.14328541, 0.9896814, 0, -0.9896814, -0.14328541, 0, 261.67792, 26.694199)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D" unique_id=1273369021]
+transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
+[node name="Portals" type="Node3D" parent="." unique_id=607137968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2583866, -111.0875)
+
+[node name="portal 1" type="Area3D" parent="Portals" unique_id=905151790]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 44.87105, 16.813486, -9.22113)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1" unique_id=984676017]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="portal 2" type="Area3D" parent="Portals/portal 1" unique_id=887367738]
+transform = Transform3D(0.9999996, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999996, -3.4985428, 1.5957775, -84.44927)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2" unique_id=895381337]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="portal 3" type="Area3D" parent="Portals/portal 1/portal 2" unique_id=171229106]
+transform = Transform3D(0.9999996, 0, 1.6940659e-21, 0, -4.371139e-08, -0.9999996, 0, 1, -4.371137e-08, 2.7789688, 29.631544, 52.744827)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2/portal 3" unique_id=1036916322]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
