@@ -1,4 +1,5 @@
 extends CharacterBody3D
+@onready var camera = $Camera3D
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
@@ -36,14 +37,14 @@ func _wants_to_climb():
 	
 func _handle_gravity(delta):
 	match state:
-		State.GROUNDED:
-			print("Estou no chão")
+		#State.GROUNDED:
+			#print("Estou no chão")
 		State.CLIMBING:
 			velocity.y -= WALL_SLIDE_VELOCITY * delta
-			print("Estou escalando")
+			#print("Estou escalando")
 		State.AIRBORNE:
 			velocity.y -= GRAVITY * delta
-			print("Estou em queda")	
+			#print("Estou em queda")	
 		
 	
 var _was_climbing = false
@@ -55,9 +56,15 @@ func _player_input():
 			can_jump -= 1
 			if state == State.CLIMBING:
 				state = State.AIRBORNE	
-	
+				
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	# movimento baseado na camera
+	var	cam_basis = camera.global_transform.basis
+	var foward = (cam_basis.z * Vector3(1, 0, 1)).normalized()
+	var right = (cam_basis.x * Vector3(1, 0, 1)).normalized()
+	
+	var direction = (right * input_dir.x + foward * input_dir.y).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
