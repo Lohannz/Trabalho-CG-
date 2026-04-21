@@ -9,9 +9,19 @@ var WALL_SLIDE_VELOCITY = 0.3
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
 var can_jump := 2 
-
+var	CAM_BASIS
+var FOWARD : Vector3
+var RIGHT : Vector3
+var UP : Vector3
+var gravity : Vector3 =	Vector3(0, -1 , 0)
 func _physics_process(delta: float) -> void:
+	# movimento baseado na camera
+	CAM_BASIS = camera.global_transform.basis
+	FOWARD = (CAM_BASIS.z * Vector3(1, 0, 1)).normalized()
+	RIGHT = (CAM_BASIS.x * Vector3(1, 0, 1)).normalized()
+	
 	_update_state()
+	_change_gravity_based_on_camera()
 	_handle_gravity(delta)
 	_player_input()
 	move_and_slide()
@@ -37,13 +47,13 @@ func _wants_to_climb():
 	
 func _handle_gravity(delta):
 	match state:
-		#State.GROUNDED:
-			#print("Estou no chão")
+		State.GROUNDED:
+			print("Estou no chão")
 		State.CLIMBING:
-			velocity.y -= WALL_SLIDE_VELOCITY * delta
+			velocity += gravity * WALL_SLIDE_VELOCITY * delta
 			#print("Estou escalando")
 		State.AIRBORNE:
-			velocity.y -= GRAVITY * delta
+			velocity += gravity * GRAVITY * delta
 			#print("Estou em queda")	
 		
 	
@@ -52,19 +62,14 @@ func _player_input():
 	
 	if Input.is_action_just_pressed("ui_accept") and can_jump > 0:
 		if not  (state == State.CLIMBING and not _was_climbing):
-			velocity.y = JUMP_VELOCITY
+			velocity -= gravity * JUMP_VELOCITY
 			can_jump -= 1
 			if state == State.CLIMBING:
 				state = State.AIRBORNE	
 				
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	
-	# movimento baseado na camera
-	var	cam_basis = camera.global_transform.basis
-	var foward = (cam_basis.z * Vector3(1, 0, 1)).normalized()
-	var right = (cam_basis.x * Vector3(1, 0, 1)).normalized()
-	
-	var direction = (right * input_dir.x + foward * input_dir.y).normalized()
+	var direction = (RIGHT * input_dir.x + FOWARD * input_dir.y).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -72,3 +77,9 @@ func _player_input():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
+func _change_gravity_based_on_camera():
+	UP = FOWARD.cross(RIGHT).normalized()
+	up_direction = UP
+	gravity = -UP
+	
+	

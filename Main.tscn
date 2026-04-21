@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://f1d4rnhhaao5"]
 
-[ext_resource type="Script" uid="uid://drh0lu28v15v6" path="res://scripts/player.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://Scene/cube_1.tscn" id="2_3dxm6"]
-[ext_resource type="Script" uid="uid://bn5ip8whbitkx" path="res://playerCamera.gd" id="2_lgr22"]
+[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://playerCamera.gd" id="2_lgr22"]
 [ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://dd5w4ylyp4nfp" path="res://scripts/florest.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bxlufdktjvmt3" path="res://scripts/fundo.gd" id="4_lgr22"]
+[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://textures/leonan sky.png" id="5_lgr22"]
 
 [sub_resource type="GDScript" id="GDScript_cm0pq"]
@@ -66,7 +67,7 @@ sky = SubResource("Sky_trn2v")
 script = SubResource("GDScript_cm0pq")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1698396226]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.972729, 101.26567, 305.51843)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.972729, 267.2657, 810.51843)
 script = ExtResource("1_lgr22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=589394120]
@@ -86,6 +87,9 @@ script = ExtResource("2_lgr22")
 [node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
 
 [node name="CUBE 1" parent="Cubes" unique_id=1050982043 instance=ExtResource("2_3dxm6")]
+
+[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -13, 134, 814)
 
 [node name="background" type="Node3D" parent="." unique_id=1603369910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
