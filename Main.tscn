@@ -1,185 +1,170 @@
-[gd_scene format=3 uid="uid://f1d4rnhhaao5"]
+[gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://c7ycygh8ukt05" path="res://scripts/playerCamera.gd" id="2_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="3_lgr22"]
-=======
-[ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://Scene/cube_1.tscn" id="2_3dxm6"]
-[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://playerCamera.gd" id="2_lgr22"]
->>>>>>> leo
-[ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dd5w4ylyp4nfp" path="res://scripts/florest.gd" id="4_fos0i"]
-[ext_resource type="Script" uid="uid://bxlufdktjvmt3" path="res://scripts/fundo.gd" id="4_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
-[ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://textures/leonan sky.png" id="5_lgr22"]
 
-[sub_resource type="GDScript" id="GDScript_lgr22"]
-script/source = "extends Node
+[sub_resource type="GDScript" id="GDScript_r0du0"]
+script/source = "extends Camera3D
 
-class_name GlobalEnums
-enum Face{ ONE, TWO, THREE, FOUR, FIVE, SIX}
+@export var distancia := 25.0
+@export var lerp_speed := 3.0
+
+# Listas circulares em relaçao a um eixo dominate (quem controla cima ou baixo)
+var listY := [
+	{\"num\": 6, \"cam\": Vector3(0, 0, -1), \"nUp\": Vector3(0,0,1)}, #6
+	{\"num\": 3, \"cam\": Vector3(-1, 0, 0), \"nUp\": Vector3(1,0,0)},  #3
+	{\"num\": 1, \"cam\": Vector3(0, 0, 1), \"nUp\": Vector3(0,0,-1)}, #1
+	{\"num\": 2, \"cam\": Vector3(1, 0, 0), \"nUp\": Vector3(-1,0,0)} #2
+]
+var listZ := [
+	{\"num\": 4, \"cam\": Vector3(0, 1, 0), \"nUp\": Vector3(0,-1,0)},  #4
+	{\"num\": 3, \"cam\": Vector3(-1, 0, 0), \"nUp\": Vector3(1,0,0)},  #3
+	{\"num\": 5, \"cam\": Vector3(0, -1, 0), \"nUp\": Vector3(0,1,0)},  #5
+	{\"num\": 2, \"cam\": Vector3(1, 0, 0), \"nUp\": Vector3(-1,0,0)}  #2
+]
+var listX := [
+	{\"num\": 1, \"cam\": Vector3(0, 0, 1), \"nUp\": Vector3(0,0,-1)},  #1
+	{\"num\": 5, \"cam\": Vector3(0, -1, 0), \"nUp\": Vector3(0,1,0)},  #5
+	{\"num\": 6, \"cam\": Vector3(0, 0, -1), \"nUp\": Vector3(0,0,1)},  #6
+	{\"num\": 4, \"cam\": Vector3(0, 1, 0), \"nUp\": Vector3(0,-1,0)}   #4
+]
+
+# inicializaçao padrao das variaveis
+var face_atual = Vector3(0, 0, 1) 
+var currentUp = Vector3(0,1,0) # mostra o lado de cima da camera
+var currentList = listY
+var currentIndex = 2
+var state
+
+func _ready() -> void:
+	position = face_atual * distancia
+
+# funcao pra pegar o eixo, lista referente ao eixo e o seu sinal
+func get_axis_and_sign(up: Vector3):
+	var abs_up = up.abs()
+	
+	#verifica quem eh o eixo dominante
+	if abs_up.x > abs_up.y and abs_up.x > abs_up.z:
+		return {\"axis\": \"x\", \"axisList\": listX, \"sign\": sign(up.x)}
+	elif abs_up.y > abs_up.z:
+		return {\"axis\": \"y\", \"axisList\": listY, \"sign\": sign(up.y)}
+	else:
+		return {\"axis\": \"z\", \"axisList\": listZ, \"sign\": sign(up.z)}	
+
+# funcao para atualizar o index ao trocar de listas
+func updateIndex(axis, sign):
+	#debug
+	print(\"sign: \", sign)
+	print(\"axis: \", axis)
+	
+	# define o numero da face que deve procurar (fixos para cada lista/eixo)
+	var targetNum
+	if axis == \"x\":
+		if sign >= 0:
+			targetNum = 2
+		else:
+			targetNum = 3
+	if axis == \"y\":
+		if sign >= 0:
+			targetNum = 4
+		else:
+			targetNum = 5
+	if axis == \"z\":
+		if sign >=0:
+			targetNum = 1
+		else:
+			targetNum = 6
+	
+	print(\"targetNum: \",targetNum) # debug
+	
+	# atuliza o index depois de achar na lista
+	for i in range(currentList.size()):
+		print(i)
+		if currentList[i][\"num\"] == targetNum:
+			currentIndex = i
+			break
+
+# funcao de debug
+func debug():
+	print(\"Index: \", currentIndex)
+	print(\"Lista: \", get_axis_and_sign(currentUp)[\"axis\"])
+	print(\"Up: \", currentUp)
+	print(\"Face: \", currentList[currentIndex][\"num\"])
+	print()
+
+func _process(delta: float) -> void:
+	# Se for direita ou esquerda so anda na lista atual
+	# Se for cima ou baixo tem que troca de lista
+	
+	if Input.is_action_just_pressed(\"ui_right\"):
+		var upSign = get_axis_and_sign(currentUp)[\"sign\"]
+		
+		if upSign >= 0:
+			currentIndex = (currentIndex + 1) % currentList.size()
+		else:
+			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
+			
+	if Input.is_action_just_pressed(\"ui_left\"):
+		var upSign = get_axis_and_sign(currentUp)[\"sign\"]
+		
+		if upSign >= 0:
+			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
+		else:
+			currentIndex = (currentIndex + 1) % currentList.size()
+	
+	if Input.is_action_just_pressed(\"ui_up\"):
+		var info = get_axis_and_sign(currentUp)       # pega as info do eixo antes de atualizar o up
+		currentUp = currentList[currentIndex][\"nUp\"]  # atualiza o up
+		currentList = get_axis_and_sign(currentUp)[\"axisList\"]  # entra na lista do novo eixo
+		updateIndex(info[\"axis\"], info[\"sign\"])       # atualiza o index
+		debug()
+		
+	if Input.is_action_just_pressed(\"ui_down\"):
+		var info = get_axis_and_sign(currentUp)
+		currentUp = currentList[currentIndex][\"nUp\"] * Vector3(-1,-1,-1) #negativo pq pra baixo eh invertido
+		currentList = get_axis_and_sign(currentUp)[\"axisList\"]
+		updateIndex(info[\"axis\"], -1*info[\"sign\"])    #negativo pq pra baixo eh invertido
+		debug()
+		
+	# pega o novo estado na lista e sua face
+	state = currentList[currentIndex]
+	face_atual = state[\"cam\"]
+	
+	# atualiza a posicao da camera
+	position = position.lerp(face_atual * distancia, lerp_speed * delta)  
+	
+	# sempre olha para o jogador e mantem o up na orientacao certa
+	look_at(get_parent().global_position, currentUp)
 "
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_aan6j"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h3nmf"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxm6"]
-albedo_texture = ExtResource("4_3dxm6")
+[node name="Node3D" type="Node3D" unique_id=1052521187]
 
-[sub_resource type="QuadMesh" id="QuadMesh_lgr22"]
-material = SubResource("StandardMaterial3D_3dxm6")
+[node name="Cubo teste" parent="." unique_id=1367271068 instance=ExtResource("4_trn2v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 0.09023881)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
-albedo_texture = ExtResource("5_lgr22")
+[node name="CUBE 1" parent="." unique_id=2112854242 instance=ExtResource("2_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.361337, -11.673374, -156.48932)
 
-[sub_resource type="QuadMesh" id="QuadMesh_03owx"]
-material = SubResource("StandardMaterial3D_trn2v")
-
-[sub_resource type="BoxMesh" id="BoxMesh_lgr22"]
-size = Vector3(100, 2, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_trn2v"]
-size = Vector3(100, 2, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
-size = Vector3(15, 15, 15)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wkp8b"]
-size = Vector3(15, 15, 15)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgr22"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lgr22"]
-
-[sub_resource type="Sky" id="Sky_trn2v"]
-sky_material = SubResource("ProceduralSkyMaterial_lgr22")
-
-[sub_resource type="Environment" id="Environment_03owx"]
-background_mode = 2
-sky = SubResource("Sky_trn2v")
-
-[node name="Main" type="Node" unique_id=40376032]
-script = SubResource("GDScript_lgr22")
-
-[node name="player" type="CharacterBody3D" parent="." unique_id=1698396226]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 20, 42)
-=======
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.972729, 267.2657, 810.51843)
->>>>>>> leo
+[node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.275646, 38.341984)
 script = ExtResource("1_lgr22")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=589394120]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_aan6j")
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
+transform = Transform3D(1, 0, 0, 0, 0.9840872, 0.17768592, 0, -0.17768592, 0.9840872, 0, 3.108467, 18.216797)
+script = SubResource("GDScript_r0du0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=1777262650]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_h3nmf")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=266873750]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ekxg2")
 
-[node name="Camera3D" type="Camera3D" parent="player" unique_id=1329891086]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 3, 16)
-script = ExtResource("2_lgr22")
-=======
-transform = Transform3D(0.5, 0, 0, 0, 0.48296294, 0.12940954, 0, -0.12940954, 0.4829629, 1, 2.5, 9)
-script = ExtResource("2_lgr22")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1534095943]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hdyhr")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player" unique_id=1535535007]
->>>>>>> leo
-
-[node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
-
-[node name="CUBE 1" parent="Cubes" unique_id=108612563 instance=ExtResource("3_lgr22")]
-
-[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -13, 134, 814)
-
-[node name="background" type="Node3D" parent="." unique_id=1603369910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
-visible = false
-
-[node name="fundo" type="MeshInstance3D" parent="background" unique_id=188394711]
-transform = Transform3D(20000, 0, 0, 0, 20000, 0, 0, 0, 20000, -175, 6125, -3311)
-visible = false
-mesh = SubResource("QuadMesh_lgr22")
-script = ExtResource("4_lgr22")
-
-[node name="florest" type="Node3D" parent="background" unique_id=488669521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54, 0)
-visible = false
-script = ExtResource("4_fos0i")
-
-[node name="tree" type="MeshInstance3D" parent="background/florest" unique_id=570500260]
-transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, -91, 5, -369)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="tree2" type="MeshInstance3D" parent="background/florest" unique_id=154855869]
-transform = Transform3D(29, 0, 0, 0, 29, 0, 0, 0, 29, -42, -2, -500)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="tree3" type="MeshInstance3D" parent="background/florest" unique_id=1878950490]
-transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 0, 1, -390)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="tree4" type="MeshInstance3D" parent="background/florest" unique_id=679962913]
-transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, 37, 5, -281)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="tree5" type="MeshInstance3D" parent="background/florest" unique_id=946030015]
-transform = Transform3D(29, 0, 0, 0, 29, 0, 0, 0, 29, 86, -2, -500)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="tree6" type="MeshInstance3D" parent="background/florest" unique_id=381541855]
-transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 128, 1, -390)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
-
-[node name="Campo_Testes" type="Node3D" parent="." unique_id=1196650979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 311)
-
-[node name="Plataforma" type="StaticBody3D" parent="Campo_Testes" unique_id=2003230821]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Plataforma" unique_id=746595775]
-mesh = SubResource("BoxMesh_lgr22")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Plataforma" unique_id=908264574]
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="Cubo" type="StaticBody3D" parent="Campo_Testes" unique_id=1928979385]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Cubo" unique_id=1318130865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.6, 0)
-mesh = SubResource("BoxMesh_03owx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Cubo" unique_id=1920752832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7, 0)
-shape = SubResource("BoxShape3D_wkp8b")
-
-[node name="Cubo2" type="StaticBody3D" parent="Campo_Testes" unique_id=1245173292]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70, -3)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Cubo2" unique_id=868069264]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.6, 0)
-mesh = SubResource("BoxMesh_03owx")
-surface_material_override/0 = SubResource("StandardMaterial3D_lgr22")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Cubo2" unique_id=1456071625]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.7, 0)
-shape = SubResource("BoxShape3D_wkp8b")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1731219975]
-environment = SubResource("Environment_03owx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)
-light_color = Color(1, 1, 0.5529412, 1)
-light_specular = 3.833
-shadow_enabled = true
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=622832747]
+transform = Transform3D(1, 0, 0, 0, -0.14328541, 0.9896814, 0, -0.9896814, -0.14328542, 0, 261.67792, 40.778427)
