@@ -1,5 +1,3 @@
 
-- Mudança de eixo não ta funcionando direito :( Tá gerendo bugs
-- Aprender como especificar um mesh para fazer parede escalaveis
+- Pulo tá estranho quando aperta espaço 2x rapidamente
 - Dash e wall jump
-- Escalando infinito segurando espaço
