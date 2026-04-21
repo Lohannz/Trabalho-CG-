@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://f1d4rnhhaao5"]
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://c7ycygh8ukt05" path="res://scripts/playerCamera.gd" id="2_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="3_lgr22"]
+=======
+[ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://Scene/cube_1.tscn" id="2_3dxm6"]
+[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://playerCamera.gd" id="2_lgr22"]
+>>>>>>> leo
 [ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://dd5w4ylyp4nfp" path="res://scripts/florest.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bxlufdktjvmt3" path="res://scripts/fundo.gd" id="4_lgr22"]
+[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://textures/leonan sky.png" id="5_lgr22"]
 
 [sub_resource type="GDScript" id="GDScript_lgr22"]
@@ -31,11 +37,38 @@ albedo_texture = ExtResource("5_lgr22")
 [sub_resource type="QuadMesh" id="QuadMesh_03owx"]
 material = SubResource("StandardMaterial3D_trn2v")
 
+[sub_resource type="BoxMesh" id="BoxMesh_lgr22"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trn2v"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
+size = Vector3(15, 15, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wkp8b"]
+size = Vector3(15, 15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgr22"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lgr22"]
+
+[sub_resource type="Sky" id="Sky_trn2v"]
+sky_material = SubResource("ProceduralSkyMaterial_lgr22")
+
+[sub_resource type="Environment" id="Environment_03owx"]
+background_mode = 2
+sky = SubResource("Sky_trn2v")
+
 [node name="Main" type="Node" unique_id=40376032]
 script = SubResource("GDScript_lgr22")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1698396226]
+<<<<<<< HEAD
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 20, 42)
+=======
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.972729, 267.2657, 810.51843)
+>>>>>>> leo
 script = ExtResource("1_lgr22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=589394120]
@@ -47,18 +80,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_h3nmf")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=1329891086]
+<<<<<<< HEAD
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 3, 16)
 script = ExtResource("2_lgr22")
+=======
+transform = Transform3D(0.5, 0, 0, 0, 0.48296294, 0.12940954, 0, -0.12940954, 0.4829629, 1, 2.5, 9)
+script = ExtResource("2_lgr22")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player" unique_id=1535535007]
+>>>>>>> leo
 
 [node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
 
 [node name="CUBE 1" parent="Cubes" unique_id=108612563 instance=ExtResource("3_lgr22")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)
-light_color = Color(1, 1, 0.5529412, 1)
-light_specular = 3.833
-shadow_enabled = true
+[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -13, 134, 814)
 
 [node name="background" type="Node3D" parent="." unique_id=1603369910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
@@ -66,11 +103,13 @@ visible = false
 
 [node name="fundo" type="MeshInstance3D" parent="background" unique_id=188394711]
 transform = Transform3D(20000, 0, 0, 0, 20000, 0, 0, 0, 20000, -175, 6125, -3311)
+visible = false
 mesh = SubResource("QuadMesh_lgr22")
 script = ExtResource("4_lgr22")
 
 [node name="florest" type="Node3D" parent="background" unique_id=488669521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54, 0)
+visible = false
 script = ExtResource("4_fos0i")
 
 [node name="tree" type="MeshInstance3D" parent="background/florest" unique_id=570500260]
@@ -102,3 +141,45 @@ skeleton = NodePath("../..")
 transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 128, 1, -390)
 mesh = SubResource("QuadMesh_03owx")
 skeleton = NodePath("../..")
+
+[node name="Campo_Testes" type="Node3D" parent="." unique_id=1196650979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 311)
+
+[node name="Plataforma" type="StaticBody3D" parent="Campo_Testes" unique_id=2003230821]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Plataforma" unique_id=746595775]
+mesh = SubResource("BoxMesh_lgr22")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Plataforma" unique_id=908264574]
+shape = SubResource("BoxShape3D_trn2v")
+
+[node name="Cubo" type="StaticBody3D" parent="Campo_Testes" unique_id=1928979385]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Cubo" unique_id=1318130865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.6, 0)
+mesh = SubResource("BoxMesh_03owx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Cubo" unique_id=1920752832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7, 0)
+shape = SubResource("BoxShape3D_wkp8b")
+
+[node name="Cubo2" type="StaticBody3D" parent="Campo_Testes" unique_id=1245173292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Campo_Testes/Cubo2" unique_id=868069264]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.6, 0)
+mesh = SubResource("BoxMesh_03owx")
+surface_material_override/0 = SubResource("StandardMaterial3D_lgr22")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Campo_Testes/Cubo2" unique_id=1456071625]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.7, 0)
+shape = SubResource("BoxShape3D_wkp8b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1731219975]
+environment = SubResource("Environment_03owx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)
+light_color = Color(1, 1, 0.5529412, 1)
+light_specular = 3.833
+shadow_enabled = true
