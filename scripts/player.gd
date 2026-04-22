@@ -5,11 +5,8 @@ extends CharacterBody3D
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
-var GRAVITY = 20
+var GRAVITY_VELOCITY = 20
 var WALL_SLIDE_VELOCITY = 0.3
-
-
-
 
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
@@ -29,11 +26,16 @@ enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
 
 ## CAMERA
 var	CAM_BASIS
-var FOWARD : Vector3
+var FORWARD : Vector3
 var RIGHT : Vector3
-var UP : Vector3
+var UP : Vector3 = Vector3(0, 1, 0)
+var gravity : Vector3 = Vector3(0, -1 , 0)
 
-var gravity : Vector3 =	Vector3(0, -1 , 0)
+# Funcao para projecao no plano
+func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
+	return v - normal * v.dot(normal)
+
+
 
 # Função responsavel por verificar colisão com portal e  chamar a _change_face
 func _handle_portal():
@@ -45,22 +47,26 @@ func _handle_portal():
 		elif area.name == "portal 3":
 			print("encostei no portal 3")
 	
-func _ready() -> void:
-	pass 
 
 func _physics_process(delta: float) -> void:
 	# movimento baseado na camera
 	CAM_BASIS = camera.global_transform.basis
-	FOWARD = (CAM_BASIS.z * Vector3(1, 0, 1)).normalized()
-	RIGHT = (CAM_BASIS.x * Vector3(1, 0, 1)).normalized()
+	
+	# Remove movimentos na direçao do eixo UP e deixa os vetores alinhados com o "chao"
+	FORWARD = project_on_plane(CAM_BASIS.z, UP).normalized() #pode ser que de merda se ficar igual ao up
+	RIGHT = project_on_plane(CAM_BASIS.x, UP).normalized()   #tem que ver se vai ficar perpendicular
 	
 	_handle_portal()
 	_update_state()
-	_change_gravity_based_on_camera()
+	#_change_gravity(Vector3)
 	_handle_gravity(delta)
 	_player_input()
 	move_and_slide()
 	
+func _ready() -> void:
+	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
+	pass 
+
 func _update_state():
 	
 	if is_on_floor():
@@ -89,7 +95,7 @@ func _handle_gravity(delta):
 			velocity += gravity * WALL_SLIDE_VELOCITY * delta
 			#print("Estou escalando")
 		State.AIRBORNE:
-			velocity += gravity * GRAVITY * delta
+			velocity += gravity * GRAVITY_VELOCITY * delta
 			#print("Estou em queda")	
 		
 	
@@ -105,15 +111,20 @@ func _player_input():
 				
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	
-	var direction = (RIGHT * input_dir.x + FOWARD * input_dir.y).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	# Pega a direcao projetada em relacao ao UP
+	var direction = (RIGHT * input_dir.x + FORWARD * input_dir.y)
+	direction = project_on_plane(direction, UP).normalized()
 	
-	var delta = get_physics_process_delta_time()
+	var horizontal = project_on_plane(velocity, UP)
+	var vertical = UP * velocity.dot(UP)
+	
+	# Para o movimento caso o input pare
+	if direction.length() > 0:
+		horizontal = direction * SPEED
+	else:
+		horizontal = horizontal.move_toward(Vector3.ZERO, SPEED)
+
+	velocity = horizontal + vertical
 	
 	# Checa se da pra dar dash no shift ( fora do cooldown e nao estar dashando)
 	if Input.is_physical_key_pressed(KEY_SHIFT) and not is_dashing and can_dash:
@@ -134,8 +145,11 @@ func _player_input():
 		velocity.x = locked_dash_direction.x * 40.0 
 		velocity.z = locked_dash_direction.z * 40.0
 	
-func _change_gravity_based_on_camera():
-	UP = FOWARD.cross(RIGHT).normalized()
+# Ativa quando o Up mudar no playerCamera
+func _change_gravity(newUp: Vector3):
+	#UP = FOWARD.cross(RIGHT).normalized()
+	print("Recebi o signal - newUp: ", newUp)
+	UP = newUp
 	up_direction = UP
 	gravity = -UP
 	
