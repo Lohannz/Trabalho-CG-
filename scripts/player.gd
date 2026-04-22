@@ -7,8 +7,7 @@ const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
 var GRAVITY = 20
 var WALL_SLIDE_VELOCITY = 0.3
-
-
+var _was_climbing = false
 
 
 enum State {GROUNDED, AIRBORNE, CLIMBING }
@@ -22,9 +21,9 @@ var locked_dash_direction := Vector3.ZERO
 
 
 ## CUBO
-	# Face e sua correspondente coordenada
+# Face e sua correspondente coordenada
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
-#var faces := {ONE : {},}
+@export var current_face = FACE.ONE
 
 
 ## CAMERA
@@ -58,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	_update_state()
 	_change_gravity_based_on_camera()
 	_handle_gravity(delta)
-	_player_input()
+	_player_input(delta)
 	move_and_slide()
 	
 func _update_state():
@@ -74,7 +73,6 @@ func _update_state():
 	else:
 		if state != State.AIRBORNE:
 			state = State.AIRBORNE
-			
 
 # Responsável pela verificação de escadalada (Ex. Layer escaláveis)
 func _wants_to_climb():
@@ -86,6 +84,8 @@ func _handle_gravity(delta):
 			pass
 			#print("Estou no chão")
 		State.CLIMBING:
+			var g_dir = gravity.normalized()
+			velocity -= g_dir * velocity.dot(g_dir) # EU NÃO SEI POR QUE FUNCIONA OU NÃO FUNCIONA, SLA
 			velocity += gravity * WALL_SLIDE_VELOCITY * delta
 			#print("Estou escalando")
 		State.AIRBORNE:
@@ -93,18 +93,20 @@ func _handle_gravity(delta):
 			#print("Estou em queda")	
 		
 	
-var _was_climbing = false
-func _player_input():
-	
+func _player_input(delta):
+	_was_climbing = (state == State.CLIMBING)
+	## PULO
 	if Input.is_action_just_pressed("ui_accept") and can_jump > 0:
 		if not  (state == State.CLIMBING and not _was_climbing):
+			var g_dir = gravity.normalized()
+			velocity -= g_dir * velocity.dot(g_dir) # zera a velocidade antes de pular dnv
 			velocity -= gravity * JUMP_VELOCITY
 			can_jump -= 1
 			if state == State.CLIMBING:
 				state = State.AIRBORNE	
-				
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	
+	## MOVIMENTAÇÃO HORIZONTAL E VERTICAL
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (RIGHT * input_dir.x + FOWARD * input_dir.y).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -113,8 +115,7 @@ func _player_input():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	var delta = get_physics_process_delta_time()
-	
+	## DASH
 	# Checa se da pra dar dash no shift ( fora do cooldown e nao estar dashando)
 	if Input.is_physical_key_pressed(KEY_SHIFT) and not is_dashing and can_dash:
 		if input_dir.x != 0: # Faz nao dar dash Parado
