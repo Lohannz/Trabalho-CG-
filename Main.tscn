@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://coco6t66dmubu" path="res://main.gd" id="1_fos0i"]
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
+=======
+[ext_resource type="Script" uid="uid://drh0lu28v15v6" path="res://scripts/player.gd" id="1_lgr22"]
+>>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
@@ -31,10 +35,17 @@ script = ExtResource("1_fos0i")
 transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
 
 [node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
+<<<<<<< HEAD
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.040665, 1.1007156, 48.25316)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7032231, 0, 0.09023881)
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1707864, 18.073452, -117.476295)
+>>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 script = ExtResource("1_lgr22")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
