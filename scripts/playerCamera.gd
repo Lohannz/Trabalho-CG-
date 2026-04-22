@@ -2,6 +2,7 @@ extends Camera3D
 
 @export var distancia := 25.0
 @export var lerp_speed := 3.0
+signal up_changed(newUp)
 
 # Listas circulares em relaçao a um eixo dominate (quem controla cima ou baixo)
 var listY := [
@@ -69,8 +70,6 @@ func updateIndex(axis, sign):
 		else:
 			targetNum = 6
 	
-	print("targetNum: ",targetNum) # debug
-	
 	# atuliza o index depois de achar na lista
 	for i in range(currentList.size()):
 		print(i)
@@ -110,7 +109,9 @@ func _process(delta: float) -> void:
 		var info = get_axis_and_sign(currentUp)       # pega as info do eixo antes de atualizar o up
 		currentUp = currentList[currentIndex]["nUp"]  # atualiza o up
 		currentList = get_axis_and_sign(currentUp)["axisList"]  # entra na lista do novo eixo
-		updateIndex(info["axis"], info["sign"])       # atualiza o index
+		updateIndex(info["axis"], info["sign"])                 # atualiza o index
+		emit_signal("up_changed", currentUp)
+		
 		debug()
 		
 	if Input.is_action_just_pressed("ui_down"):
@@ -118,6 +119,7 @@ func _process(delta: float) -> void:
 		currentUp = currentList[currentIndex]["nUp"] * Vector3(-1,-1,-1) #negativo pq pra baixo eh invertido
 		currentList = get_axis_and_sign(currentUp)["axisList"]
 		updateIndex(info["axis"], -1*info["sign"])    #negativo pq pra baixo eh invertido
+		emit_signal("up_changed", currentUp)
 		debug()
 		
 	# pega o novo estado na lista e sua face

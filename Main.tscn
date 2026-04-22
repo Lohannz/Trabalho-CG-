@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://coco6t66dmubu" path="res://main.gd" id="1_fos0i"]
+[ext_resource type="Script" uid="uid://coco6t66dmubu" path="res://scripts/main.gd" id="1_fos0i"]
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
@@ -22,7 +22,7 @@ background_mode = 1
 background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
 ambient_light_color = Color(1, 1, 1, 1)
 
-[node name="Node3D" type="Node3D" unique_id=1052521187]
+[node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_fos0i")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
