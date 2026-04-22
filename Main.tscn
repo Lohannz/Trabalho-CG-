@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://coco6t66dmubu" path="res://main.gd" id="1_fos0i"]
+[ext_resource type="Script" uid="uid://coco6t66dmubu" path="res://scripts/main.gd" id="1_fos0i"]
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
-=======
-[ext_resource type="Script" uid="uid://drh0lu28v15v6" path="res://scripts/player.gd" id="1_lgr22"]
->>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
@@ -26,26 +22,11 @@ background_mode = 1
 background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
 ambient_light_color = Color(1, 1, 1, 1)
 
-[node name="Node3D" type="Node3D" unique_id=1052521187]
+[node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_fos0i")
-
-[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
-
-[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
-transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
-
-[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
-<<<<<<< HEAD
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.040665, 1.1007156, 48.25316)
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7032231, 0, 0.09023881)
-
-[node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1707864, 18.073452, -117.476295)
->>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 script = ExtResource("1_lgr22")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
@@ -65,6 +46,14 @@ mesh = SubResource("CapsuleMesh_hdyhr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player/areaDetection" unique_id=1101130773]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ekxg2")
+
+[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
+
+[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
+transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
+
+[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
@@ -93,15 +82,6 @@ script = SubResource("GDScript_cm0pq")
 transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
 shape = SubResource("BoxShape3D_3dxm6")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
-environment = SubResource("Environment_cm0pq")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
-transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, -46.791885)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
-transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
-
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1096843379]
 
 [node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=145460742]
@@ -121,3 +101,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.506561, 181.21002)
 
 [node name="SIX" type="Node3D" parent="Spawnpoints" unique_id=1412533504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.705299, 139.90701)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
+environment = SubResource("Environment_cm0pq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
+transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, -46.791885)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
+transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)

@@ -5,13 +5,10 @@ extends CharacterBody3D
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
-var GRAVITY_VELOCITY = 20
+var GRAVITY = 20
 var WALL_SLIDE_VELOCITY = 0.3
-<<<<<<< HEAD
 var _was_climbing = false
 
-=======
->>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
@@ -40,8 +37,6 @@ var gravity : Vector3 = Vector3(0, -1 , 0)
 func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
 	return v - normal * v.dot(normal)
 
-
-
 # Função responsavel por verificar colisão com portal e  chamar a _change_face
 func _handle_portal():
 	for area in areaDetection.get_overlapping_areas():
@@ -52,6 +47,8 @@ func _handle_portal():
 		elif area.name == "portal 3":
 			print("encostei no portal 3")
 	
+func _ready() -> void:
+	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
 
 func _physics_process(delta: float) -> void:
 	# movimento baseado na camera
@@ -63,14 +60,9 @@ func _physics_process(delta: float) -> void:
 	
 	_handle_portal()
 	_update_state()
-	#_change_gravity(Vector3)
 	_handle_gravity(delta)
 	_player_input(delta)
 	move_and_slide()
-	
-func _ready() -> void:
-	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
-	pass 
 
 func _update_state():
 	
@@ -101,7 +93,7 @@ func _handle_gravity(delta):
 			velocity += gravity * WALL_SLIDE_VELOCITY * delta
 			#print("Estou escalando")
 		State.AIRBORNE:
-			velocity += gravity * GRAVITY_VELOCITY * delta
+			velocity += gravity * GRAVITY * delta
 			#print("Estou em queda")	
 		
 	
@@ -116,20 +108,8 @@ func _player_input(delta):
 			can_jump -= 1
 			if state == State.CLIMBING:
 				state = State.AIRBORNE	
-	
-<<<<<<< HEAD
-	## MOVIMENTAÇÃO HORIZONTAL E VERTICAL
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (RIGHT * input_dir.x + FOWARD * input_dir.y).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	## DASH
-=======
 	# Pega a direcao projetada em relacao ao UP
 	var direction = (RIGHT * input_dir.x + FORWARD * input_dir.y)
 	direction = project_on_plane(direction, UP).normalized()
@@ -145,7 +125,6 @@ func _player_input(delta):
 
 	velocity = horizontal + vertical
 	
->>>>>>> 582b4dcb3732517b47bcbc74ba490ee4627de907
 	# Checa se da pra dar dash no shift ( fora do cooldown e nao estar dashando)
 	if Input.is_physical_key_pressed(KEY_SHIFT) and not is_dashing and can_dash:
 		if input_dir.x != 0: # Faz nao dar dash Parado
@@ -172,5 +151,4 @@ func _change_gravity(newUp: Vector3):
 	UP = newUp
 	up_direction = UP
 	gravity = -UP
-	
 	
