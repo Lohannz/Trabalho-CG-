@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://bmyeqv6rtucny" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
-[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://bwi6yt8rnbjsa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
-[ext_resource type="Script" uid="uid://fapgpmyvi6sx" path="res://portal_1.gd" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://b2l640ig7fe31" path="res://portal_1.gd" id="5_fos0i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 

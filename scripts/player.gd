@@ -8,9 +8,18 @@ const JUMP_VELOCITY = 15.0
 var GRAVITY = 20
 var WALL_SLIDE_VELOCITY = 0.3
 
+
+
+
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
 var can_jump := 2 
+
+## DASH, tlg ne, podem mexer se quiserem, eu decho
+var is_dashing := false
+var can_dash := true 
+var locked_dash_direction := Vector3.ZERO
+
 
 ## CUBO
 	# Face e sua correspondente coordenada
@@ -103,7 +112,28 @@ func _player_input():
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		
+	
+	var delta = get_physics_process_delta_time()
+	
+	# Checa se da pra dar dash no shift ( fora do cooldown e nao estar dashando)
+	if Input.is_physical_key_pressed(KEY_SHIFT) and not is_dashing and can_dash:
+		if input_dir.x != 0: # Faz nao dar dash Parado
+			is_dashing = true
+			can_dash = false # Trava o dash com coodlown
+			locked_dash_direction = (RIGHT * input_dir.x).normalized()
+			
+			# Duração do dash - Da pra mudar dentro desse timer ae
+			get_tree().create_timer(0.15).timeout.connect(func(): is_dashing = false)
+			
+			# Cooldown do dash - Da pra mudar dentro desse timer ae
+			get_tree().create_timer(0.3).timeout.connect(func(): can_dash = true)
+			
+	# 2. Executa o dash rapidao
+	if is_dashing:
+		# Faz o dash e trava a direção papai
+		velocity.x = locked_dash_direction.x * 40.0 
+		velocity.z = locked_dash_direction.z * 40.0
+	
 func _change_gravity_based_on_camera():
 	UP = FOWARD.cross(RIGHT).normalized()
 	up_direction = UP
