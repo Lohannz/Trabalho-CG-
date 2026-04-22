@@ -1,114 +1,79 @@
-[gd_scene format=3 uid="uid://f1d4rnhhaao5"]
+[gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://bvg7rngb56580" path="res://Scene/cube_1.tscn" id="2_3dxm6"]
-[ext_resource type="Script" uid="uid://c7ycygh8ukt05" path="res://playerCamera.gd" id="2_lgr22"]
-[ext_resource type="Texture2D" uid="uid://cib2edrh2clcs" path="res://textures/Captura de Tela (2).png" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dd5w4ylyp4nfp" path="res://scripts/florest.gd" id="4_fos0i"]
-[ext_resource type="Script" uid="uid://bxlufdktjvmt3" path="res://scripts/fundo.gd" id="4_lgr22"]
-[ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://textures/leonan sky.png" id="5_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
+[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
+[ext_resource type="Script" uid="uid://fapgpmyvi6sx" path="res://portal_1.gd" id="5_fos0i"]
 
-[sub_resource type="GDScript" id="GDScript_cm0pq"]
-script/source = "extends Node
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
+size = Vector3(2.1982117, 2.7008972, 0.08294678)
 
-func get_gravity() ->  Vector3:
-	return Vector3(0, 41, 0)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[node name="Node3D" type="Node3D" unique_id=1052521187]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_aan6j"]
+[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h3nmf"]
+[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
+transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 8.361, 4, -156.489)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxm6"]
-albedo_texture = ExtResource("4_3dxm6")
+[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 0.09023881)
 
-[sub_resource type="QuadMesh" id="QuadMesh_lgr22"]
-material = SubResource("StandardMaterial3D_3dxm6")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
-albedo_texture = ExtResource("5_lgr22")
-
-[sub_resource type="QuadMesh" id="QuadMesh_03owx"]
-material = SubResource("StandardMaterial3D_trn2v")
-
-[node name="Main" type="Node" unique_id=40376032]
-script = SubResource("GDScript_cm0pq")
-
-[node name="player" type="CharacterBody3D" parent="." unique_id=1698396226]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42, 20, 42)
+[node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1707864, 19.073452, -116.476295)
 script = ExtResource("1_lgr22")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=589394120]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_aan6j")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=1777262650]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_h3nmf")
-
-[node name="Camera3D" type="Camera3D" parent="player" unique_id=1329891086]
-transform = Transform3D(0.5, 0, 0, 0, 0.48296294, 0.12940954, 0, -0.12940954, 0.4829629, 1, 2.5, 9)
-script = ExtResource("2_lgr22")
-
-[node name="Cubes" type="Node3D" parent="." unique_id=2142116070]
-
-[node name="CUBE 1" parent="Cubes" unique_id=1050982043 instance=ExtResource("2_3dxm6")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531390440]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 12, 133)
-light_color = Color(1, 1, 0.5529412, 1)
-light_specular = 3.833
-shadow_enabled = true
-
-[node name="background" type="Node3D" parent="." unique_id=1603369910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
-visible = false
-
-[node name="fundo" type="MeshInstance3D" parent="background" unique_id=188394711]
-transform = Transform3D(20000, 0, 0, 0, 20000, 0, 0, 0, 20000, -175, 6125, -3311)
-visible = false
-mesh = SubResource("QuadMesh_lgr22")
-script = ExtResource("4_lgr22")
-
-[node name="florest" type="Node3D" parent="background" unique_id=488669521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54, 0)
-visible = false
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
+transform = Transform3D(1, 0, 0, 0, 0.9840872, 0.17768592, 0, -0.17768592, 0.9840872, 0, 3.108467, 18.216797)
 script = ExtResource("4_fos0i")
 
-[node name="tree" type="MeshInstance3D" parent="background/florest" unique_id=570500260]
-transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, -91, 5, -369)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=266873750]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ekxg2")
 
-[node name="tree2" type="MeshInstance3D" parent="background/florest" unique_id=154855869]
-transform = Transform3D(29, 0, 0, 0, 29, 0, 0, 0, 29, -42, -2, -500)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1534095943]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hdyhr")
 
-[node name="tree3" type="MeshInstance3D" parent="background/florest" unique_id=1878950490]
-transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 0, 1, -390)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="areaDetection" type="Area3D" parent="player" unique_id=1833533313]
 
-[node name="tree4" type="MeshInstance3D" parent="background/florest" unique_id=679962913]
-transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, 37, 5, -281)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/areaDetection" unique_id=1101130773]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ekxg2")
 
-[node name="tree5" type="MeshInstance3D" parent="background/florest" unique_id=946030015]
-transform = Transform3D(29, 0, 0, 0, 29, 0, 0, 0, 29, 86, -2, -500)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=622832747]
+transform = Transform3D(1, 0, 0, 0, -0.14328541, 0.9896814, 0, -0.9896814, -0.14328541, 0, 261.67792, 26.694199)
 
-[node name="tree6" type="MeshInstance3D" parent="background/florest" unique_id=381541855]
-transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 128, 1, -390)
-mesh = SubResource("QuadMesh_03owx")
-skeleton = NodePath("../..")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D" unique_id=1273369021]
+transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
+[node name="Portals" type="Node3D" parent="." unique_id=607137968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2583866, -111.0875)
+
+[node name="portal 1" type="Area3D" parent="Portals" unique_id=905151790]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 44.87105, 16.813486, -9.22113)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1" unique_id=984676017]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="portal 2" type="Area3D" parent="Portals/portal 1" unique_id=887367738]
+transform = Transform3D(0.9999996, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999996, -3.4985428, 1.5957775, -84.44927)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2" unique_id=895381337]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="portal 3" type="Area3D" parent="Portals/portal 1/portal 2" unique_id=171229106]
+transform = Transform3D(0.9999996, 0, 1.6940659e-21, 0, -4.371139e-08, -0.9999996, 0, 1, -4.371137e-08, 2.7789688, 29.631544, 52.744827)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2/portal 3" unique_id=1036916322]
+transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+shape = SubResource("BoxShape3D_3dxm6")
