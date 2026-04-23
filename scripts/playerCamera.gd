@@ -70,7 +70,7 @@ func updateIndex(axis, sign):
 		else:
 			targetNum = 6
 	
-	# atuliza o index depois de achar na lista
+	# atualiza o index depois de achar na lista
 	for i in range(currentList.size()):
 		print(i)
 		if currentList[i]["num"] == targetNum:

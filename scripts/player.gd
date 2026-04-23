@@ -1,15 +1,13 @@
 extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var areaDetection = $areaDetection
-
+@onready var PORTAL_UI = $UI/ui_entered_portal
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
 var GRAVITY = 20
 var WALL_SLIDE_VELOCITY = 0.3
 var _was_climbing = false
-
-
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
 var can_jump := 2 
@@ -19,12 +17,9 @@ var is_dashing := false
 var can_dash := true 
 var locked_dash_direction := Vector3.ZERO
 
-
 ## CUBO
-# Face e sua correspondente coordenada
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
-@export var current_face = FACE.ONE
-
+var current_face = FACE.ONE
 
 ## CAMERA
 var	CAM_BASIS
@@ -37,19 +32,20 @@ var gravity : Vector3 = Vector3(0, -1 , 0)
 func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
 	return v - normal * v.dot(normal)
 
-# Função responsavel por verificar colisão com portal e  chamar a _change_face
-func _handle_portal():
-	for area in areaDetection.get_overlapping_areas():
-		if area.name == "portal 1":
-			print("encostei no portal 1")
-		elif area.name == "portal 2":
-			print("encostei no portal 2")
-		elif area.name == "portal 3":
-			print("encostei no portal 3")
-	
 func _ready() -> void:
+	PORTAL_UI.visible = false
 	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
+	for portal in get_tree().get_nodes_in_group("Portals"):
+		portal.player_entered.connect(_on_portal_entered)
+		portal.player_nearby.connect(_on_portal_nearby)
 
+func _on_portal_nearby(is_near : bool) -> void:
+	PORTAL_UI.visible = is_near
+func _on_portal_entered(destination : Vector3, face : int) -> void:
+	global_position = destination
+	current_face = face
+	PORTAL_UI.visible = false
+	
 func _physics_process(delta: float) -> void:
 	# movimento baseado na camera
 	CAM_BASIS = camera.global_transform.basis
@@ -58,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	FORWARD = project_on_plane(CAM_BASIS.z, UP).normalized() #pode ser que de merda se ficar igual ao up
 	RIGHT = project_on_plane(CAM_BASIS.x, UP).normalized()   #tem que ver se vai ficar perpendicular
 	
-	_handle_portal()
+	#_handle_portal()
 	_update_state()
 	_handle_gravity(delta)
 	_player_input(delta)
@@ -78,8 +74,7 @@ func _update_state():
 		if state != State.AIRBORNE:
 			state = State.AIRBORNE
 
-# Responsável pela verificação de escadalada (Ex. Layer escaláveis)
-func _wants_to_climb():
+func _wants_to_climb(): # Responsável pela verificação de escadalada (Ex. Layer escaláveis)
 	return is_on_wall() and Input.is_action_pressed("ui_accept")
 	
 func _handle_gravity(delta):
@@ -95,7 +90,6 @@ func _handle_gravity(delta):
 		State.AIRBORNE:
 			velocity += gravity * GRAVITY * delta
 			#print("Estou em queda")	
-		
 	
 func _player_input(delta):
 	_was_climbing = (state == State.CLIMBING)
@@ -146,9 +140,13 @@ func _player_input(delta):
 	
 # Ativa quando o Up mudar no playerCamera
 func _change_gravity(newUp: Vector3):
-	#UP = FOWARD.cross(RIGHT).normalized()
 	print("Recebi o signal - newUp: ", newUp)
 	UP = newUp
 	up_direction = UP
 	gravity = -UP
-	
+
+# função que vai ser usada quando player passar por um portal
+# A função deve teleportar o player para uma face especifica, e mudar a orientação do player(camera, gravidade etc) de acordo com a escolha
+# Provelmente vai ser quebrada em outras funções
+func _change_face_and_orietation():
+	pass

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dxk6oq2q54nop"]
+
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="1_ct8it"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ct8it"]
+size = Vector3(2.243042, 2.086914, 2.3740234)
+
+[node name="CUBE 1" unique_id=2112854242 instance=ExtResource("1_ct8it")]
+
+[node name="Cube" parent="." index="1" unique_id=254558750]
+transform = Transform3D(0.8728985, 0, 0, 0, 1, 0, 0, 0, 1, -5.8417363, 9.065066, 0.010032654)
+
+[node name="portalB" parent="." index="3" unique_id=1533248955]
+transform = Transform3D(4.068267e-07, 0.603035, -0.032092724, -5.3879237, 4.552944e-08, -5.5156386e-09, -4.307079e-09, 0.005002804, 3.8684375, -81.017044, 45.08542, 42.811745)
+
+[node name="CollisionShape3D" parent="portalB/StaticBody3D" parent_id_path=PackedInt32Array(528322445) index="0" unique_id=1383384745]
+transform = Transform3D(0.9999762, 4.0349462e-13, -3.0142555e-14, 7.251838e-13, 1, 0, 5.6177285e-14, 0, 1, 4.6218777, 55.23005, -0.7840662)
+shape = SubResource("BoxShape3D_ct8it")

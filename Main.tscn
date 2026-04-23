@@ -5,17 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
+[ext_resource type="Script" uid="uid://dx8r0axblm6rw" path="res://scripts/portals.gd" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://dxk6oq2q54nop" path="res://Cubo colisao ajustada.tscn" id="6_lgr22"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
 
-[sub_resource type="GDScript" id="GDScript_cm0pq"]
-script/source = "extends Area3D
-"
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
-size = Vector3(2.1982117, 2.7008972, 0.08294678)
+size = Vector3(2.1982117, 2.9666595, 0.26913452)
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
@@ -47,39 +45,56 @@ mesh = SubResource("CapsuleMesh_hdyhr")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ekxg2")
 
+[node name="UI" type="Node3D" parent="player" unique_id=907827738]
+
+[node name="ui_entered_portal" type="Label3D" parent="player/UI" unique_id=1177623098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.540317, 18.446838)
+pixel_size = 0.02
+modulate = Color(0.5711475, 0.08250991, 0.8905668, 1)
+text = "Vai entrar no portal ou não? Se sim aperta 'U' kkkk"
+
 [node name="Cubes" type="Node3D" parent="." unique_id=339504199]
 
 [node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
 transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
+visible = false
 
 [node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
+[node name="CUBE 2" parent="Cubes" unique_id=1543555121 instance=ExtResource("6_lgr22")]
+
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
 
-[node name="portal 1" type="Area3D" parent="Portals" unique_id=905151790]
+[node name="portal 1" type="Area3D" parent="Portals" unique_id=905151790 node_paths=PackedStringArray("destination") groups=["Portals"]]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 44.87105, 16.813486, -9.22113)
-script = SubResource("GDScript_cm0pq")
+script = ExtResource("6_3dxm6")
+destination = NodePath("../portal 2")
+numFace = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1" unique_id=984676017]
-transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+transform = Transform3D(3.9999206, 0, -1.2647661e-12, 0, 4, 0, 1.2647661e-12, 0, 3.9999206, -0.71495056, 2.2092896, 0.005302429)
 shape = SubResource("BoxShape3D_3dxm6")
 
-[node name="portal 2" type="Area3D" parent="Portals/portal 1" unique_id=887367738]
-transform = Transform3D(0.9999996, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999996, -3.4985428, 1.5957775, -84.44927)
-script = SubResource("GDScript_cm0pq")
+[node name="portal 2" type="Area3D" parent="Portals" unique_id=887367738 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-4.3711363e-08, 0, 0.9999995, 0, 1, 0, -0.9999995, 0, -4.3711363e-08, -39.578213, 18.409264, -5.722584)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../portal 3")
+numFace = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2" unique_id=895381337]
-transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 2" unique_id=895381337]
+transform = Transform3D(3.9999397, 0, -1.7763568e-12, 0, 4, 0, 1.7763568e-12, 0, 3.9999397, -0.71495056, 2.7408142, 0.3776703)
 shape = SubResource("BoxShape3D_3dxm6")
 
-[node name="portal 3" type="Area3D" parent="Portals/portal 1/portal 2" unique_id=171229106]
-transform = Transform3D(0.9999996, 0, 1.6940659e-21, 0, -4.371139e-08, -0.9999996, 0, 1, -4.371137e-08, 2.7789688, 29.631544, 52.744827)
-script = SubResource("GDScript_cm0pq")
+[node name="portal 3" type="Area3D" parent="Portals" unique_id=171229106 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-4.3711346e-08, 0.9999995, -4.371135e-08, 0, -4.371139e-08, -0.9999996, -0.9999991, -4.3711363e-08, 1.9106819e-15, 13.166588, 48.04081, -8.501553)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../portal 1")
+numFace = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 1/portal 2/portal 3" unique_id=1036916322]
-transform = Transform3D(3.9999397, 0, -9.521273e-13, 0, 4, 0, 9.521273e-13, 0, 3.9999397, -0.71495056, 2.2092896, 0.005302429)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 3" unique_id=1036916322]
+transform = Transform3D(3.9999394, -1.4210855e-14, -9.521272e-13, 0, 4, -4.1952856e-20, 9.521272e-13, -1.4210855e-14, 3.9999394, -0.71495056, 2.2092896, -0.49248505)
 shape = SubResource("BoxShape3D_3dxm6")
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1096843379]
@@ -106,7 +121,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.705299, 139.90701)
 environment = SubResource("Environment_cm0pq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
-transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, -46.791885)
+transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, 108.833755)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
+[connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
+[connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
+[connection signal="body_entered" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_entered"]
+[connection signal="body_exited" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_exited"]
+[connection signal="body_entered" from="Portals/portal 3" to="Portals/portal 3" method="_on_body_entered"]
+[connection signal="body_exited" from="Portals/portal 3" to="Portals/portal 3" method="_on_body_exited"]
