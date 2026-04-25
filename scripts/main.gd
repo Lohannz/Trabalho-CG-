@@ -22,3 +22,5 @@ func _get_spawnpoint_position(name) -> Vector3:
 			return child.global_position
 	return Vector3.ZERO
 	
+func _process(delta: float) -> void:
+	pass

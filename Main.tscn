@@ -1,13 +1,38 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_fos0i"]
 [ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
-[ext_resource type="Script" uid="uid://dmkqckgdu7f8l" path="res://raycasts.gd" id="4_03owx"]
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="2_cm0pq"]
+[ext_resource type="Script" uid="uid://dmkqckgdu7f8l" path="res://scripts/raycasts.gd" id="4_03owx"]
 [ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
-[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
+[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/import/Cubo teste.glb" id="4_trn2v"]
 [ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
-[ext_resource type="PackedScene" uid="uid://dxk6oq2q54nop" path="res://Cubo colisao ajustada.tscn" id="6_lgr22"]
+
+[sub_resource type="GDScript" id="GDScript_3dxm6"]
+script/source = "extends Node3D
+@export var Face := 1
+@onready var player := $player
+@onready var spawnpoints := $Spawnpoints.get_children()
+
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
+
+# Ao iniciar cena, faz com que o player spawne no spawnpoint da current_face que ele está 
+# Player tem propriedade current_face que diz qual lado do cubo ele está
+func _ready() -> void:
+	# os spawnpoints tem os nomes da face(ex. ONE, TWO...)
+	var player_current_face = FACE.keys()[player.current_face] 
+	var current_spawn_position = _get_spawnpoint_position(player_current_face)
+	
+	player.position = current_spawn_position
+
+func _get_spawnpoint_position(name) -> Vector3:
+	for child in spawnpoints:
+		print(child.name)
+		print(name)
+		if child.name == str(name):
+			return child.global_position
+	return Vector3.ZERO
+	
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
@@ -22,7 +47,7 @@ background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
 ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
-script = ExtResource("1_fos0i")
+script = SubResource("GDScript_3dxm6")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.040665, 1.1007156, 48.25316)
@@ -81,12 +106,9 @@ collide_with_bodies = false
 
 [node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
 transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
-visible = false
 
 [node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
-
-[node name="CUBE 2" parent="Cubes" unique_id=1543555121 instance=ExtResource("6_lgr22")]
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)

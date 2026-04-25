@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://df2qn0nentdxw"]
+
+[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="1_47dnw"]
+
+[node name="CUBE 1" unique_id=2112854242 instance=ExtResource("1_47dnw")]

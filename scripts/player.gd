@@ -33,11 +33,11 @@ var input: PlayerInput
 ## Toda essa seção de portal não mudei nada.
 ## Acho que não deveria ter nada de portal dentro do player
 # Variáveis: Orientação da Cubo
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Se remover portal/repensar, nem precisa disso aqui.
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
 var current_face = FACE.ONE
 
 
-var SIDE_OF_PORTAL : String # Variavel que guarda, se houver, o lado do portal.
+var SIDE_OF_PORTAL : String # Variavel que guarda, se houver, o lado do portal
 
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near

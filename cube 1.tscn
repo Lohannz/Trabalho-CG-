@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cmufgjdq3uinq"]
-
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="1_bbnyv"]
-
-[node name="CUBE 1" unique_id=2112854242 instance=ExtResource("1_bbnyv")]
-
-[node name="CollisionShape3D" parent="portalB/StaticBody3D" parent_id_path=PackedInt32Array(528322445) index="0" unique_id=1383384745]
-transform = Transform3D(0.99999964, 5.217452e-15, -4.9960036e-16, 2.0810437e-13, 1, 0, -3.330669e-16, 0, 1, 0, 0.3633728, -0.00047016144)
