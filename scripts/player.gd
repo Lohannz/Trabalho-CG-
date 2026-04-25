@@ -2,6 +2,10 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = $UI/ui_entered_portal
+@onready var raycasts = $raios
+
+# variaveis responsaveis por dizer se está encostando em um portal e em qual direção
+var which_portal : String
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 15.0
@@ -10,7 +14,7 @@ var WALL_SLIDE_VELOCITY = 0.3
 var _was_climbing = false
 enum State {GROUNDED, AIRBORNE, CLIMBING }
 var state := State.GROUNDED
-var can_jump := 2 
+var can_jump := 1
 
 ## DASH, tlg ne, podem mexer se quiserem, eu decho
 var is_dashing := false
@@ -41,10 +45,18 @@ func _ready() -> void:
 
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near
+	which_portal = raycasts.which_portal
+	
 func _on_portal_entered(destination : Vector3, face : int) -> void:
+	
+	## MUDANDO DE FACE
 	global_position = destination
 	current_face = face
 	PORTAL_UI.visible = false
+	
+	## MUDAR ORIENTAÇÂO
+	var tp_direction = which_portal
+	camera._mudar_orientacao(tp_direction)
 	
 func _physics_process(delta: float) -> void:
 	# movimento baseado na camera

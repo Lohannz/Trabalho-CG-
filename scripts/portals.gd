@@ -2,7 +2,7 @@ extends Node3D
 
 @export var destination : Area3D
 @export var numFace :int
-
+@export var indice :int
 signal player_entered(destination_pos : Vector3, face : int)
 signal player_nearby(is_near : bool)
 
@@ -21,6 +21,8 @@ func _on_body_exited(body : Node3D):
 func _process(delta: float) -> void:
 	if player_inside and Input.is_action_just_pressed("ui_U"):
 		player_entered.emit(destination.global_position, numFace)
-		
+	
+	
 func _ready() -> void:
+	
 	add_to_group("Portals")

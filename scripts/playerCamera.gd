@@ -90,37 +90,16 @@ func _process(delta: float) -> void:
 	# Se for cima ou baixo tem que troca de lista
 	
 	if Input.is_action_just_pressed("ui_right"):
-		var upSign = get_axis_and_sign(currentUp)["sign"]
-		
-		if upSign >= 0:
-			currentIndex = (currentIndex + 1) % currentList.size()
-		else:
-			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
+		MACRO_R()
 			
 	if Input.is_action_just_pressed("ui_left"):
-		var upSign = get_axis_and_sign(currentUp)["sign"]
-		
-		if upSign >= 0:
-			currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
-		else:
-			currentIndex = (currentIndex + 1) % currentList.size()
+		MACRO_L()
 	
 	if Input.is_action_just_pressed("ui_up"):
-		var info = get_axis_and_sign(currentUp)       # pega as info do eixo antes de atualizar o up
-		currentUp = currentList[currentIndex]["nUp"]  # atualiza o up
-		currentList = get_axis_and_sign(currentUp)["axisList"]  # entra na lista do novo eixo
-		updateIndex(info["axis"], info["sign"])                 # atualiza o index
-		emit_signal("up_changed", currentUp)
-		
-		debug()
+		MACRO_U()
 		
 	if Input.is_action_just_pressed("ui_down"):
-		var info = get_axis_and_sign(currentUp)
-		currentUp = currentList[currentIndex]["nUp"] * Vector3(-1,-1,-1) #negativo pq pra baixo eh invertido
-		currentList = get_axis_and_sign(currentUp)["axisList"]
-		updateIndex(info["axis"], -1*info["sign"])    #negativo pq pra baixo eh invertido
-		emit_signal("up_changed", currentUp)
-		debug()
+		MACRO_D()
 		
 	# pega o novo estado na lista e sua face
 	state = currentList[currentIndex]
@@ -131,3 +110,47 @@ func _process(delta: float) -> void:
 	
 	# sempre olha para o jogador e mantem o up na orientacao certa
 	look_at(get_parent().global_position, currentUp)
+
+func _mudar_orientacao(portal_side : String):
+	if portal_side == "left":
+		MACRO_R() # é invertido
+	elif portal_side == "right":
+		MACRO_L()
+	elif portal_side == "up":
+		MACRO_D()
+	elif portal_side == "down":
+		MACRO_U()
+	else:
+		print("Não existe esta orientação")
+func MACRO_R():
+	var upSign = get_axis_and_sign(currentUp)["sign"]
+		
+	if upSign >= 0:
+		currentIndex = (currentIndex + 1) % currentList.size()
+	else:
+		currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
+
+func MACRO_L():
+	var upSign = get_axis_and_sign(currentUp)["sign"]
+		
+	if upSign >= 0:
+		currentIndex = (currentIndex - 1 + currentList.size()) % currentList.size()
+	else:
+		currentIndex = (currentIndex + 1) % currentList.size()
+	
+func MACRO_U():
+	var info = get_axis_and_sign(currentUp)       # pega as info do eixo antes de atualizar o up
+	currentUp = currentList[currentIndex]["nUp"]  # atualiza o up
+	currentList = get_axis_and_sign(currentUp)["axisList"]  # entra na lista do novo eixo
+	updateIndex(info["axis"], info["sign"])                 # atualiza o index
+	emit_signal("up_changed", currentUp)
+	debug()
+	
+func MACRO_D():
+	var info = get_axis_and_sign(currentUp)
+	currentUp = currentList[currentIndex]["nUp"] * Vector3(-1,-1,-1) #negativo pq pra baixo eh invertido
+	currentList = get_axis_and_sign(currentUp)["axisList"]
+	updateIndex(info["axis"], -1*info["sign"])    #negativo pq pra baixo eh invertido
+	emit_signal("up_changed", currentUp)
+	debug()
+		
