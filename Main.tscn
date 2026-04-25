@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://c63q0ba1beth6" path="res://scripts/main.gd" id="1_fos0i"]
-[ext_resource type="Script" uid="uid://hp4k337nofr4" path="res://scripts/player.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_fos0i"]
+[ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/CUBE 1.blend" id="2_cm0pq"]
-[ext_resource type="Script" uid="uid://16r0t0o4pkfa" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://dmkqckgdu7f8l" path="res://raycasts.gd" id="4_03owx"]
+[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/Cubo teste.glb" id="4_trn2v"]
-[ext_resource type="Script" uid="uid://dmkqckgdu7f8l" path="res://scripts/raycasts.gd" id="4_wkp8b"]
-[ext_resource type="Script" uid="uid://dx8r0axblm6rw" path="res://scripts/portals.gd" id="6_3dxm6"]
+[ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://dxk6oq2q54nop" path="res://Cubo colisao ajustada.tscn" id="6_lgr22"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
@@ -16,15 +16,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
 size = Vector3(2.1982117, 2.9666595, 0.26913452)
 
+[sub_resource type="Environment" id="Environment_cm0pq"]
+background_mode = 1
+background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_fos0i")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.19588, 88.34801, -40.23488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.040665, 1.1007156, 48.25316)
 script = ExtResource("1_lgr22")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
-transform = Transform3D(1, 0, 0, 0, 0.9840872, 0.17768592, 0, -0.17768592, 0.9840872, 0, 3.108467, 18.216797)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 3.108467, 18.216797)
 script = ExtResource("4_fos0i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=266873750]
@@ -49,32 +54,25 @@ pixel_size = 0.02
 modulate = Color(0.5711475, 0.08250991, 0.8905668, 1)
 text = "Vai entrar no portal ou não? Se sim aperta 'U' kkkk"
 
-[node name="SpotLight3D" type="SpotLight3D" parent="player" unique_id=277457291]
-transform = Transform3D(1, 0, 0, 0, 0.9670282, 0.25466952, 0, -0.25466952, 0.9670282, 0, 21.95173, 60.73252)
-light_energy = 16.0
-spot_range = 150.74086
-spot_attenuation = 0.28
-spot_angle = 15.193801
+[node name="Raycasts" type="Node3D" parent="player" unique_id=1223925659]
+script = ExtResource("4_03owx")
 
-[node name="raios" type="Node3D" parent="player" unique_id=1394776693]
-script = ExtResource("4_wkp8b")
-
-[node name="direita" type="RayCast3D" parent="player/raios" unique_id=9033688]
-target_position = Vector3(5, 0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="esquerda" type="RayCast3D" parent="player/raios" unique_id=1691236388]
+[node name="left" type="RayCast3D" parent="player/Raycasts" unique_id=996177197]
 target_position = Vector3(-5, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="cima" type="RayCast3D" parent="player/raios" unique_id=921536181]
+[node name="right" type="RayCast3D" parent="player/Raycasts" unique_id=563436461]
+target_position = Vector3(5, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="up" type="RayCast3D" parent="player/Raycasts" unique_id=1449255050]
 target_position = Vector3(0, 5, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="baixo" type="RayCast3D" parent="player/raios" unique_id=1126361732]
+[node name="down" type="RayCast3D" parent="player/Raycasts" unique_id=1516545238]
 target_position = Vector3(0, -5, 0)
 collide_with_areas = true
 collide_with_bodies = false
@@ -89,7 +87,6 @@ visible = false
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="CUBE 2" parent="Cubes" unique_id=1543555121 instance=ExtResource("6_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.048591614)
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
@@ -117,27 +114,17 @@ shape = SubResource("BoxShape3D_3dxm6")
 [node name="portal 3" type="Area3D" parent="Portals" unique_id=171229106 node_paths=PackedStringArray("destination") groups=["Portals"]]
 transform = Transform3D(-4.3711346e-08, 0.9999995, -4.371135e-08, 0, -4.371139e-08, -0.9999996, -0.9999991, -4.3711363e-08, 1.9106819e-15, 13.166588, 48.04081, -8.501553)
 script = ExtResource("6_3dxm6")
-destination = NodePath("../portal 4")
+destination = NodePath("../portal 1")
 numFace = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 3" unique_id=1036916322]
 transform = Transform3D(3.9999394, -1.4210855e-14, -9.521272e-13, 0, 4, -4.1952856e-20, 9.521272e-13, -1.4210855e-14, 3.9999394, -0.71495056, 2.2092896, -0.49248505)
 shape = SubResource("BoxShape3D_3dxm6")
 
-[node name="portal 4" type="Area3D" parent="Portals" unique_id=979013286 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(-4.3711346e-08, 0.9999995, 0, -0.999999, -4.3711367e-08, 0, 0, 0, 0.99999946, 13.166588, 53.739487, 1.2404022)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../portal 1")
-numFace = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/portal 4" unique_id=1585699888]
-transform = Transform3D(3.9999394, -1.4210855e-14, -9.521272e-13, 0, 4, -4.1952856e-20, 9.521272e-13, -1.4210855e-14, 3.9999394, -0.71495056, 2.2092896, -0.49248505)
-shape = SubResource("BoxShape3D_3dxm6")
-
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1096843379]
 
 [node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=145460742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.87658, 19.013964, 43.09942)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.250072, 18.4372, 43.52722)
 
 [node name="TWO" type="Node3D" parent="Spawnpoints" unique_id=1478143757]
 transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 31.221668, 13.815621, 181.54892)
@@ -154,11 +141,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.506561, 181.21002)
 [node name="SIX" type="Node3D" parent="Spawnpoints" unique_id=1412533504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.705299, 139.90701)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
+environment = SubResource("Environment_cm0pq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
+transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, 108.833755)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
+transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
 [connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 3" to="Portals/portal 3" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 3" to="Portals/portal 3" method="_on_body_exited"]
-[connection signal="body_entered" from="Portals/portal 4" to="Portals/portal 4" method="_on_body_entered"]
-[connection signal="body_exited" from="Portals/portal 4" to="Portals/portal 4" method="_on_body_exited"]

@@ -2,163 +2,199 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = $UI/ui_entered_portal
-@onready var raycasts = $raios
+@onready var raycasts = $Raycasts
 
-# variaveis responsaveis por dizer se está encostando em um portal e em qual direção
-var which_portal : String
+# Constantes: Movimentação do Player
+const GRAVITY = 30.0
+const SPEED = 15.0
+const JUMP_VELOCITY = 20.0
+const DASH_SPEED = 25.0
 
-const SPEED = 10.0
-const JUMP_VELOCITY = 15.0
-var GRAVITY = 20
-var WALL_SLIDE_VELOCITY = 0.3
-var _was_climbing = false
-enum State {GROUNDED, AIRBORNE, CLIMBING }
-var state := State.GROUNDED
-var can_jump := 1
+const SPEED_ACCELERATION = 32.0
+const DASH_ACCELERATION = 45.0
+const FRICTION = 18.0
+const AIR_RESISTANCE = 22.5
 
-## DASH, tlg ne, podem mexer se quiserem, eu decho
-var is_dashing := false
-var can_dash := true 
-var locked_dash_direction := Vector3.ZERO
+const WALL_CLIMB_SPEED = 2.0 # Não ta implementado.
+const WALL_CLIMB_FRICTION = 0.65
+const WALL_JUMP_PUSHWAY = 12.0
 
-## CUBO
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
+# Constantes: Estados/Ações do Player
+enum ACTION {MOVE,JUMP,CLIMB,DASH}
+enum MOVEMENT_STATE {GROUNDED, AIRBORNE, CLIMBING, DASHING}
+var state := MOVEMENT_STATE.GROUNDED
+
+# Variáveis: Orientação da Câmera
+var _orientation : Basis
+
+# Variáveis: Input do Player
+var input: PlayerInput
+
+## Toda essa seção de portal não mudei nada.
+## Acho que não deveria ter nada de portal dentro do player
+# Variáveis: Orientação da Cubo
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Se remover portal/repensar, nem precisa disso aqui.
 var current_face = FACE.ONE
 
-## CAMERA
-var	CAM_BASIS
-var FORWARD : Vector3
-var RIGHT : Vector3
-var UP : Vector3 = Vector3(0, 1, 0)
-var gravity : Vector3 = Vector3(0, -1 , 0)
 
-# Funcao para projecao no plano
-func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
-	return v - normal * v.dot(normal)
-
-func _ready() -> void:
-	PORTAL_UI.visible = false
-	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
-	for portal in get_tree().get_nodes_in_group("Portals"):
-		portal.player_entered.connect(_on_portal_entered)
-		portal.player_nearby.connect(_on_portal_nearby)
+var SIDE_OF_PORTAL : String # Variavel que guarda, se houver, o lado do portal.
 
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near
-	which_portal = raycasts.which_portal
+	SIDE_OF_PORTAL = raycasts.get_side()
 	
 func _on_portal_entered(destination : Vector3, face : int) -> void:
-	
 	## MUDANDO DE FACE
 	global_position = destination
 	current_face = face
 	PORTAL_UI.visible = false
 	
 	## MUDAR ORIENTAÇÂO
-	var tp_direction = which_portal
-	camera._mudar_orientacao(tp_direction)
+	camera._change_orientation(SIDE_OF_PORTAL)
+
+# Função Auxiliar: Projeção Vetorial no Plano
+func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
+	return v - normal * v.dot(normal)
 	
+# Função Auxiliar: Computar Direção do Movimento
+func _get_move_direction() -> Vector3:
+	var right = _orientation.x
+	var forward = _orientation.z
+	var direction = (right * input.move.x + forward * input.move.y)
+	direction = project_on_plane(direction, _orientation.y)
+	return direction.normalized() if direction.length() > 0.001 else Vector3.ZERO
+	
+func _ready():
+	input = PlayerInput.new()
+	_orientation = camera.global_transform.basis
+	
+	PORTAL_UI.visible = false
+	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
+	for portal in get_tree().get_nodes_in_group("Portals"):
+		portal.player_entered.connect(_on_portal_entered)
+		portal.player_nearby.connect(_on_portal_nearby)
+
 func _physics_process(delta: float) -> void:
-	# movimento baseado na camera
-	CAM_BASIS = camera.global_transform.basis
+	_orientation = camera.global_transform.basis
 	
-	# Remove movimentos na direçao do eixo UP e deixa os vetores alinhados com o "chao"
-	FORWARD = project_on_plane(CAM_BASIS.z, UP).normalized() #pode ser que de merda se ficar igual ao up
-	RIGHT = project_on_plane(CAM_BASIS.x, UP).normalized()   #tem que ver se vai ficar perpendicular
+	var up = _orientation.y
+	var right = _orientation.x
+	var forward = _orientation.z
+	
+	# Verificar se importa forward e right ficarem perpendiculares
+	forward = project_on_plane(forward, up).normalized()
+	right = project_on_plane(right, up).normalized()
 	
 	#_handle_portal()
+	input.update(delta)
+	
 	_update_state()
+	_handle_actions(delta)
 	_handle_gravity(delta)
-	_player_input(delta)
+	_handle_movement(delta)
+	
 	move_and_slide()
-
-func _update_state():
 	
-	if is_on_floor():
-		if state != State.GROUNDED:
-			state = State.GROUNDED;
-			can_jump = 2
-	elif _wants_to_climb():
-		if state != State.CLIMBING:
-			state = State.CLIMBING
-			can_jump = 1
-	else:
-		if state != State.AIRBORNE:
-			state = State.AIRBORNE
-
-func _wants_to_climb(): # Responsável pela verificação de escadalada (Ex. Layer escaláveis)
-	return is_on_wall() and Input.is_action_pressed("ui_accept")
+# Tentativa de Calcular Momento.
+# Limit deveria ser a Velocidade Máxima Geral (TERMINAL)
+# Limit no momento é a Velocidade Máxima (SPEED ou DASH_SPEED)
+func _physics_momentum(delta, limit: float, acceleration: float):
+	var up = _orientation.y
+	var direction = _get_move_direction()
 	
-func _handle_gravity(delta):
-	match state:
-		State.GROUNDED:
-			pass
-			#print("Estou no chão")
-		State.CLIMBING:
-			var g_dir = gravity.normalized()
-			velocity -= g_dir * velocity.dot(g_dir) # EU NÃO SEI POR QUE FUNCIONA OU NÃO FUNCIONA, SLA
-			velocity += gravity * WALL_SLIDE_VELOCITY * delta
-			#print("Estou escalando")
-		State.AIRBORNE:
-			velocity += gravity * GRAVITY * delta
-			#print("Estou em queda")	
+	var vertical = up * velocity.dot(up)
+	var horizontal = velocity - vertical
 	
-func _player_input(delta):
-	_was_climbing = (state == State.CLIMBING)
-	## PULO
-	if Input.is_action_just_pressed("ui_accept") and can_jump > 0:
-		if not  (state == State.CLIMBING and not _was_climbing):
-			var g_dir = gravity.normalized()
-			velocity -= g_dir * velocity.dot(g_dir) # zera a velocidade antes de pular dnv
-			velocity -= gravity * JUMP_VELOCITY
-			can_jump -= 1
-			if state == State.CLIMBING:
-				state = State.AIRBORNE	
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	
-	# Pega a direcao projetada em relacao ao UP
-	var direction = (RIGHT * input_dir.x + FORWARD * input_dir.y)
-	direction = project_on_plane(direction, UP).normalized()
-	
-	var horizontal = project_on_plane(velocity, UP)
-	var vertical = UP * velocity.dot(UP)
-	
-	# Para o movimento caso o input pare
 	if direction.length() > 0:
-		horizontal = direction * SPEED
+		horizontal = horizontal.move_toward(direction * limit, acceleration * delta)
 	else:
-		horizontal = horizontal.move_toward(Vector3.ZERO, SPEED)
-
+		var friction = FRICTION if is_on_floor() else AIR_RESISTANCE
+		horizontal = horizontal.move_toward(Vector3.ZERO, friction * delta)
+		
 	velocity = horizontal + vertical
+
+# Função de Controle: Ações do Player
+func _handle_actions(delta):
+	if input.dash.is_buffered() and _can_execute(ACTION.DASH):
+		_execute_dash(delta)
+		input.dash.consume()
+		
+	if input.jump.is_buffered() and _can_execute(ACTION.JUMP):
+		_execute_jump()
+		input.jump.consume()
+		
+	if input.climb.is_buffered() and _can_execute(ACTION.CLIMB):
+		#_move_climb()
+		input.climb.consume()
+		
+# Função de Controle: Condições para Ações do Player
+# Acho que precisa melhorar as condições sem criar variáveis : bool desnecessárias
+func _can_execute(action):
+	var condition : bool
+	match action:
+		ACTION.DASH:
+			condition = state == MOVEMENT_STATE.AIRBORNE
+		ACTION.JUMP:
+			condition = state in [MOVEMENT_STATE.GROUNDED,MOVEMENT_STATE.CLIMBING]
+		ACTION.CLIMB:
+			condition = state == MOVEMENT_STATE.CLIMBING
+	return condition
 	
-	# Checa se da pra dar dash no shift ( fora do cooldown e nao estar dashando)
-	if Input.is_physical_key_pressed(KEY_SHIFT) and not is_dashing and can_dash:
-		if input_dir.x != 0: # Faz nao dar dash Parado
-			is_dashing = true
-			can_dash = false # Trava o dash com coodlown
-			locked_dash_direction = (RIGHT * input_dir.x).normalized()
-			
-			# Duração do dash - Da pra mudar dentro desse timer ae
-			get_tree().create_timer(0.15).timeout.connect(func(): is_dashing = false)
-			
-			# Cooldown do dash - Da pra mudar dentro desse timer ae
-			get_tree().create_timer(0.3).timeout.connect(func(): can_dash = true)
-			
-	# 2. Executa o dash rapidao
-	if is_dashing:
-		# Faz o dash e trava a direção papai
-		velocity.x = locked_dash_direction.x * 40.0 
-		velocity.z = locked_dash_direction.z * 40.0
+func _update_state():
+	if is_on_floor():
+		state = MOVEMENT_STATE.GROUNDED
+	elif is_on_wall():
+		state = MOVEMENT_STATE.CLIMBING
+	else:
+		state = MOVEMENT_STATE.AIRBORNE
+	# Não tem DASHING, não pensei em uma condição para troca de estado, sem ser ativar o DASH (Dãããr)
+
+func _handle_gravity(delta):
+	if state != MOVEMENT_STATE.GROUNDED:
+		var grav_dir = -_orientation.y.normalized()
+		match state:
+			MOVEMENT_STATE.CLIMBING:
+				# Reduz o peso da gravidade - Wall Slide
+				velocity += grav_dir * (GRAVITY * WALL_CLIMB_FRICTION) * delta
+			MOVEMENT_STATE.AIRBORNE:
+				# Talvez dê para integrar o momento aqui?
+				# Dar mais peso à gravidade com outra equação?
+				velocity += grav_dir * GRAVITY * delta
+				
+func _handle_movement(delta):
+	match state:
+		MOVEMENT_STATE.GROUNDED, MOVEMENT_STATE.AIRBORNE:
+			_physics_momentum(delta, SPEED, SPEED_ACCELERATION)
+		MOVEMENT_STATE.DASHING:
+			_physics_momentum(delta, DASH_SPEED, DASH_ACCELERATION)
+
+# Não implementado, pode deixar o atual.
+func _move_climb():
+	pass
+
+func _execute_dash(delta):
+	state = MOVEMENT_STATE.DASHING
+	var direction = _get_move_direction()
+	if direction.length() > 0.01:
+		velocity += direction.normalized() * DASH_SPEED
+	
+		get_tree().create_timer(0.05).timeout.connect(
+			func(): if state == MOVEMENT_STATE.DASHING: state = MOVEMENT_STATE.AIRBORNE)
+	
+func _end_dash():
+	if state == MOVEMENT_STATE.DASHING:
+		_update_state()	
+
+func _execute_jump():
+	var up = _orientation.y
+	if state == MOVEMENT_STATE.CLIMBING:
+		var normal = get_wall_normal()
+		velocity += normal * WALL_JUMP_PUSHWAY
+	velocity += up * JUMP_VELOCITY
 	
 # Ativa quando o Up mudar no playerCamera
 func _change_gravity(newUp: Vector3):
 	print("Recebi o signal - newUp: ", newUp)
-	UP = newUp
-	up_direction = UP
-	gravity = -UP
-
-# função que vai ser usada quando player passar por um portal
-# A função deve teleportar o player para uma face especifica, e mudar a orientação do player(camera, gravidade etc) de acordo com a escolha
-# Provelmente vai ser quebrada em outras funções
-func _change_face_and_orietation():
-	pass
+	var up = newUp
+	up_direction = up
+	#gravity = -UP
