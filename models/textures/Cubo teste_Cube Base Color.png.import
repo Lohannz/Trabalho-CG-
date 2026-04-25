@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u6l2yudmadui"
-path.s3tc="res://.godot/imported/Cubo teste_Cube Base Color.png-4a7ddc75a6c652abe215e170a4d38fde.s3tc.ctex"
+path.s3tc="res://.godot/imported/Cubo teste_Cube Base Color.png-a7b4c0b29566fa686825ea19cc83798a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/Cubo teste_Cube Base Color.png"
-dest_files=["res://.godot/imported/Cubo teste_Cube Base Color.png-4a7ddc75a6c652abe215e170a4d38fde.s3tc.ctex"]
+source_file="res://models/textures/Cubo teste_Cube Base Color.png"
+dest_files=["res://.godot/imported/Cubo teste_Cube Base Color.png-a7b4c0b29566fa686825ea19cc83798a.s3tc.ctex"]
 
 [params]
 

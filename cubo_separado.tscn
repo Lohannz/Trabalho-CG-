@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://wxaxe8w0fbp4"]
+
+[ext_resource type="PackedScene" uid="uid://crk6yeu4u3mek" path="res://models/CUBO SEPARADO.glb" id="1_leqc2"]
+
+[node name="CUBO SEPARADO" unique_id=212398823 instance=ExtResource("1_leqc2")]
+
+[node name="@StaticBody3D@30987" parent="." index="1" unique_id=1766569436]
+transform = Transform3D(45.918, 0, 1.7485096e-05, 0, -44.901, 0, -1.7881128e-05, 0, 44.901, 6.1826544, 25.288986, -357.96198)
+
+[node name="CollisionShape3D" parent="@StaticBody3D@30987" index="0" unique_id=1910186654]
+transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 1.001, 0, 0, 0)
+
+[node name="plataform" parent="." index="4" unique_id=822615887]
+visible = false
+
+[node name="wall" parent="." index="5" unique_id=1069671293]
+visible = false
+
+[node name="StaticBody3D" parent="wall" index="0" unique_id=1768146294]
+visible = false
+
+[node name="CollisionShape3D" parent="wall/StaticBody3D" index="0" unique_id=369264147]
+visible = false
