@@ -34,8 +34,10 @@ var input: PlayerInput
 ## Acho que não deveria ter nada de portal dentro do player
 # Variáveis: Orientação da Cubo
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
-var current_face = FACE.ONE
+var current_face = FACE.SIX
 
+var IN_WIND : bool = false
+var WIND_FORCE : Vector3 = Vector3.ZERO
 
 var SIDE_OF_PORTAL : String # Variavel que guarda, se houver, o lado do portal
 
@@ -99,6 +101,7 @@ func _physics_process(delta: float) -> void:
 # Limit deveria ser a Velocidade Máxima Geral (TERMINAL)
 # Limit no momento é a Velocidade Máxima (SPEED ou DASH_SPEED)
 func _physics_momentum(delta, limit: float, acceleration: float):
+	
 	var up = _orientation.y
 	var direction = _get_move_direction()
 	
@@ -110,6 +113,9 @@ func _physics_momentum(delta, limit: float, acceleration: float):
 	else:
 		var friction = FRICTION if is_on_floor() else AIR_RESISTANCE
 		horizontal = horizontal.move_toward(Vector3.ZERO, friction * delta)
+		
+	if IN_WIND:
+		vertical += WIND_FORCE * delta # tanto faz vertical ou horizontal
 		
 	velocity = horizontal + vertical
 
