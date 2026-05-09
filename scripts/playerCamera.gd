@@ -35,7 +35,7 @@ func _change_orientation(new_orientation : String):
 		
 	
 	
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	
 	# Atualiza a orientação trocando, igual antes, mas simples.
 	if Input.is_action_just_pressed("ui_right"):
@@ -51,7 +51,7 @@ func _process(_delta: float) -> void:
 		_change_orientation("down")
 		
 	# atualiza a posicao da camera
-	position = position.lerp(_orientation.z * offset, lerp_speed * _delta)
+	position = position.lerp(_orientation.z * offset, lerp_speed * delta)
 
 	# sempre olha para o jogador e mantem o up na orientacao certa
 	look_at(get_parent().global_position, _orientation.y)

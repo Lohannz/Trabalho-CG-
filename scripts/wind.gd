@@ -1,6 +1,5 @@
 extends Area3D
 @export var WIND_DIRECTION : Vector3
-# Nao sei se vai ser fixo para todos ou flexivel ainda :/
 @export var WIND_POWER_V: float
 @export var WIND_POWER_H: float
 

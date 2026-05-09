@@ -1,41 +1,29 @@
 class_name PlayerInput
-const MOVE_BUFFER_MAX := 0.1
+extends Node
+const DEADZONE := 0.001
 
 var move := Vector2.ZERO
-var move_buffer := Vector2.ZERO
-var move_buffer_time := 0.0
-
-var jump : PlayerAction
-var dash : PlayerAction
+var jump  : PlayerAction
+var dash  : PlayerAction
 var climb : PlayerAction
+var _actions : Array[PlayerAction] = []
 
 func _init():
-	jump = PlayerAction.new(0.15,0.1)
-	dash = PlayerAction.new(0.1,1.0)
-	climb = PlayerAction.new(0.2,0.2)
+	jump  = _create_action(0.2, 0.1)
+	dash  = _create_action(0.2, 2.0)
+	climb = _create_action(0.4, 0.0)
+
+func _create_action(buff_lifetime, cool_duration) -> PlayerAction:
+	var action = PlayerAction.new(buff_lifetime, cool_duration)
+	_actions.append(action)
+	return action
 	
-func update(delta):
-	var raw_move = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+func has_movement():
+	return move.length_squared() > DEADZONE
 	
-	# --- buffer de movimento ---
-	if raw_move.length() > 0:
-		move_buffer = raw_move
-		move_buffer_time = MOVE_BUFFER_MAX
-	else:
-		move_buffer_time = max(move_buffer_time - delta, 0.0)
-	
-	move = move_buffer if move_buffer_time > 0.05 else Vector2.ZERO
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		jump.press()
-		
-	if Input.is_physical_key_pressed(KEY_SHIFT):
-		dash.press()
-	
-	# Não ta implementado.
-	if Input.is_physical_key_pressed(KEY_E):
-		climb.press()
-	
-	jump.update(delta)
-	dash.update(delta)
-	climb.update(delta)
+func update(delta: float):
+	move = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	jump.update(delta, Input.is_action_pressed("action_jump"))
+	dash.update(delta, Input.is_action_just_pressed("action_dash"))
+	climb.update(delta, Input.is_action_pressed("action_climb"))
+	# Alterar tecla do climb ou mudar para just_pressed (Não da para andar diagonal direita/cima com o 'KEY E').

@@ -1,25 +1,34 @@
 class_name PlayerAction
+var buffer   : Buffer
+var cooldown : Cooldown
 
-var buffer := 0.0
-var cooldown := 0.0
+var pressed  := false
+var released := false
+var is_down := false
 
-var buffer_max := 0.0
-var cooldown_max := 0.0
+func _init(buff_lifetime: float = 0.0, cool_duration: float = 0.0):
+	buffer = Buffer.new(buff_lifetime)
+	cooldown = Cooldown.new(cool_duration)
 
-func press():
-	buffer = buffer_max
+func update(delta: float, just_pressed: bool):
+	pressed = false
+	released = false
+	
+	if just_pressed and not is_down:
+		pressed = true
+		buffer.start()
+		
+	elif not just_pressed and is_down:
+		released = true
+	
+	is_down = just_pressed
 
-func update(delta):
-	buffer = max(buffer - delta, 0.0)
-	cooldown = max(cooldown - delta, 0.0)
+	buffer.update(delta)
+	cooldown.update(delta)
 
-func is_buffered() -> bool:
-	return buffer > 0.0 and cooldown <= 0.0
+func is_triggered() -> bool:
+	return buffer.is_buffered() and cooldown.is_ready()
 
 func consume():
-	buffer = 0.0
-	cooldown = cooldown_max
-
-func _init(buffer_time,cooldown_time):
-	buffer_max = buffer_time
-	cooldown_max = cooldown_time
+	buffer.consume()
+	cooldown.start()
