@@ -5,13 +5,15 @@ extends CharacterBody3D
 @onready var raycasts = $Raycasts
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
-const SPEED = 25.0
-const ACCELERATION = 30.0
+const SPEED = 20.0
+const ACCELERATION = 60.0
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 70.0
-
+const AIR_BREAK = 55.0
 const AIR_SPEED = 30.0
+const AIR_ACCELERATION = 80.0
+const TURN_VELOCITY = 150.0
 const CLIMB_SPEED = 10.0
 const SLIDE_SPEED = 4.0
 
@@ -45,7 +47,7 @@ const JUMP_HEIGHT = 6.0
 const JUMP_DURATION = 0.3
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
-const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.7
+const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.3
 const WALL_JUMP_PUSHWAY = 32.0
 
 # Parâmetros de Atrito
@@ -56,6 +58,7 @@ const AIR_RESISTANCE = 65.0
 # Parâmetros de Interação com Vento
 var IN_WIND : bool = false
 var WIND_FORCE : Vector3 = Vector3.ZERO
+var IS_FALLING : bool = false
 
 # Parâmetros de Interação com Portais
 var SIDE_OF_PORTAL : String
@@ -157,34 +160,44 @@ func _physics_process(delta : float) -> void:
 
 ## FÍSICA DO PLAYER
 # Lógica da Física: MOMENTO
-func _physics_momentum(delta: float, limit: float, accel: float, friction: float):
+func _physics_momentum(delta, limit: float, acceleration: float):
 	var velocity_v = up * velocity.dot(up)
 	var velocity_h = velocity - velocity_v
+	if state == STATE.AIRBORNE:
+		IS_FALLING = not is_on_floor() and velocity.dot(_orientation.y) < 0
+	else:
+		IS_FALLING = false
 	
-	var speed = move_direction * limit
-	var adaptative_accel = accel if move_direction != Vector3.ZERO else friction
-
-	if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
-		adaptative_accel *= 2.0
-
-	# Movimento base
-	velocity_h = velocity_h.move_toward(speed, adaptative_accel * delta)
-
-	# Forças externas
-	# TODO: enum EFFECT: {FLYING...} para VENTO ao invés de um BOOL?
-	# TODO: Talvez separar um _func só para efeitos de debilitação/ajuda no movimento.
+	# Debug
+	print("Is Falling : ", IS_FALLING)
+	print("State: ", state)
+	print("Acceleration: ", acceleration)
+	print("velocityH: ", velocity_h)
+	print("velocityV: ", velocity_v)
+	
+	if move_direction.length() > 0:
+		# Verifica se ele mudou de direçao, se sim -> troca mais rapido (mais preciso)
+		var changingDir = velocity_h.length() > 0 and move_direction.normalized().dot(velocity_h.normalized()) < 0
+		if changingDir:
+			velocity_h = velocity_h.move_toward(Vector3.ZERO, TURN_VELOCITY * delta)
+		else:
+			velocity_h = velocity_h.move_toward(move_direction * limit, acceleration * delta)
+	else:
+		var friction = FRICTION if is_on_floor() else AIR_RESISTANCE
+		velocity_h = velocity_h.move_toward(Vector3.ZERO, friction * delta)
+			
+	# Calcula a influencia vetical ou horizontal do vento
 	if IN_WIND:
-		var wind_v = up * WIND_FORCE.dot(up)
-		var wind_h = WIND_FORCE - wind_v
-
-		velocity_h += wind_h * delta
-		velocity_v += wind_v * delta
-
+		var wind_vertical = up * WIND_FORCE.dot(up)
+		var wind_horizontal = WIND_FORCE - wind_vertical
+		
+		velocity_h += wind_horizontal * delta
+		velocity_v += wind_vertical * delta
+		
+		#limita a velocidade pra nao explodir dps que sair do vento
 		velocity_h = velocity_h.limit_length(limit + 40.0)
-		velocity_v = velocity_v.limit_length(limit + 10.0)
-
-	# Clamp final
-	velocity_h = velocity_h.limit_length(TERMINAL_SPEED)
+		velocity_v = velocity_v.limit_length(limit + 20.0)
+		
 	velocity = velocity_h + velocity_v
 
 
@@ -233,9 +246,6 @@ func _physics_dashing(delta: float):
 	# termina o estado de dash
 	if dash_timer <= 0.0:
 		state = STATE.AIRBORNE
-
-
-
 
 # Lógica da Física: CLIMB
 func _physics_climbing():
@@ -333,7 +343,7 @@ func _execute_jump():
 		velocity = up * JUMP_VERTICAL_BOOST + normal * WALL_JUMP_PUSHWAY
 	else:
 		velocity -= up * velocity.dot(up)
-		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST
+		velocity += up * JUMP_VERTICAL_BOOST
 	
 ## MOVIMENTAÇÃO DO PLAYER
 # Controle do Sistema: GRAVIDADE
@@ -375,13 +385,13 @@ func _handle_gravity(delta : float):
 func _handle_movement(delta : float):
 	match state:
 		STATE.GROUNDED:
-			_physics_momentum(delta, SPEED, ACCELERATION, FRICTION)
+			_physics_momentum(delta, SPEED, ACCELERATION)
 		STATE.AIRBORNE:
-			_physics_momentum(delta, AIR_SPEED, ACCELERATION, AIR_RESISTANCE * 0.6)
+			_physics_momentum(delta, AIR_SPEED, AIR_ACCELERATION)
 		STATE.DASHING:
 			_physics_dashing(delta)
 		STATE.SLIDING:
-			_physics_momentum(delta, SLIDE_SPEED, ACCELERATION, SLIDE_FRICTION)
+			_physics_momentum(delta, SLIDE_SPEED, ACCELERATION)
 		STATE.CLIMBING:
 			_physics_climbing()
 		STATE.STEADY:
@@ -389,6 +399,6 @@ func _handle_movement(delta : float):
 
 
 func _change_gravity(newUp : Vector3):
-	print("Recebi o signal - newUp: ", newUp)
+	#print("Recebi o signal - newUp: ", newUp)
 	up_direction = newUp
 	#gravity = -UP

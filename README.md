@@ -1,21 +1,13 @@
 Patch Notes:
 
-Alterei algumas coisas no movimento do jogo baseado no que pesquisei em jogos de plataforma de verdade:
-- Movimentacao ta mais fluida e precisa
-- O pulo nao fica com sensação de "flutuando" mais
-- Coyote Jump
-- Valores de aceleração e desaceleração novos adicionados e já existentes alterados
-- Feeling geral ta mais gostosinho de controlar (testem ai)
+Juntei a refatoração 2.0 do renan com o movimento da minha branch, não ta perfeito, tem que mexer em alguns valores de variaveis ou ate msm reformular algumas logicas, mas to sem tempo então vai ficar assim por enquanto
 
+Coisas para fazer:
 
-Melhorei um pouco como o vento ta funcionando
-Criei uma zona de testes para testar as mecanicas atuais do jogo
-
-
-Coisas para ver ai:
-
-- Portal n tá alterando em algumas direções por algum motivo (da pra ver isso nos portais da zona de testem).
-- dash e climb ainda n estao implementados
-- talvez tenha que organizar melhor, ainda n consegui pegar o estilo que o renan formulou de organização
-- Todo o resto do jogo
-
+- Polir o Dash: ta muito forte e não vai pra todas as direções (trabalha Fernando)
+- Adicionar o modelo do personagem (não precisa colocar as animações ainda)
+- Fazer o personagem ficar de pé quando muda a orientação
+- Fazer o mapa protótipo (oh lee)
+- Mecânica de luz e sombra
+- Background (parallax se der)
+- O resto do jogo todo
