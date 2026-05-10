@@ -21,6 +21,7 @@ const DASH_DECAY = 90.0
 const DASH_FALLSPEED = 125.0
 const DASH_CORRECTION = 180.0
 var dash_timer : float = DASH_DURATION
+var has_dash : bool = true
 
 enum DashPhase {START, CONTROL, END}
 var dash_phase := DashPhase.START
@@ -210,16 +211,20 @@ func _physics_dashing(delta: float):
 	match dash_phase:
 		# fase de impulso inicial
 		DashPhase.START:
-			velocity += dir * DASH_IMPULSE	
+			velocity_v = Vector3.ZERO # Zera a velocidade vertical
+			velocity_h += dir * DASH_IMPULSE #impulso apenas na horizontal
+			velocity = velocity_h + velocity_v
 			dash_phase = DashPhase.CONTROL
 			
 		# fase de controle da direção
 		DashPhase.CONTROL:
 			var target = dir * DASH_SPEED
 			velocity_h = velocity_h.move_toward(target, DASH_CORRECTION * delta)
+			
 			if input.jump.is_down:
 				velocity_v = velocity_v.move_toward(up * DASH_SPEED, DASH_CORRECTION * delta)
-			velocity = velocity_h + velocity_v
+			else:
+				velocity_v = Vector3.ZERO #Dash continua zerado
 			
 			if dash_timer <= 0.25: 
 				dash_phase = DashPhase.END
@@ -267,6 +272,7 @@ func _update_state(delta : float):
 	
 	if is_on_floor() and state != STATE.DASHING and not input.climb.is_down:
 		state = STATE.GROUNDED
+		has_dash = true
 		if stamina < 100.0: fatigue = REST_FATIGUE
 	
 	elif is_on_wall():
@@ -298,10 +304,21 @@ func _update_state(delta : float):
 ## AÇÕES DO PLAYER
 # Controlade do Sistema: AÇÕES
 func _handle_actions():
+	# PULO (Espaço - gerenciado pelo seu sistema)
 	if input.jump.is_triggered() and _can_jump():
 		_execute_jump()
 		input.jump.consume()
 		state = STATE.AIRBORNE
+
+	# DASH
+	if Input.is_action_just_pressed("action_dash") or input.dash.is_triggered():
+		if _can_dash():
+			_execute_dash()
+			# Tenta consumir o input do seu script para ele não atrapalhar
+			if input.dash.has_method("consume"):
+				input.dash.consume()
+			state = STATE.DASHING
+
 
 	if input.dash.is_triggered() and _can_dash():
 		_execute_dash()
@@ -313,12 +330,20 @@ func _can_jump():
 	return state not in [STATE.AIRBORNE, STATE.DASHING]
 
 func _can_dash():
-	return state not in [STATE.DASHING, STATE.CLIMBING]
+	return has_dash and state != STATE.CLIMBING
 	
+func restore_dash() -> void:
+	has_dash = true
+	if state == STATE.DASHING:
+		state = STATE.AIRBORNE
 # Executor da Ação: DASH
 func _execute_dash():
 	dash_phase = DashPhase.START
 	dash_timer = DASH_DURATION
+	has_dash = false # Gasta o dash ao usar
+	# ADICIONADO: Zera totalmente a velocidade acumulada antes de dar o novo impulso
+	# Assim o novo dash não soma velocidade com o antigo pra n sair um super pulo
+	velocity = Vector3.ZERO
 	
 # Executor da Ação: PULO
 func _execute_jump():
