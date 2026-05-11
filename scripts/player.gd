@@ -22,6 +22,8 @@ const DASH_FALLSPEED = 125.0
 const DASH_CORRECTION = 180.0
 var dash_timer : float = DASH_DURATION
 var has_dash : bool = true
+const DASH_GROUND_COOLDOWN = 2.0
+var dash_ground_timer := 0.0
 
 enum DashPhase {START, CONTROL, END}
 var dash_phase := DashPhase.START
@@ -94,7 +96,7 @@ func _on_portal_nearby(is_near : bool) -> void:
 func _on_portal_entered(destination : Vector3, face : int) -> void:
 	# Mudando a FACE do cubo para o PLAYER
 	global_position = destination
-	current_face = face # Essa variável da apontando como não usada?
+	current_face = face # Essa variável da apontando como não usada? Fernando aq, e ela n ta sendo usada
 	PORTAL_UI.visible = false
 	
 	# Mudando a orientação com base na nova FACE
@@ -152,6 +154,10 @@ func _physics_process(delta : float) -> void:
 	_handle_gravity(delta)
 	_handle_actions()
 	_handle_movement(delta)
+	
+	#NAO SPAMMAR DASH NO CHAO
+	if dash_ground_timer > 0.0:
+		dash_ground_timer -= delta
 	
 	move_and_slide()
 
@@ -330,6 +336,9 @@ func _can_jump():
 	return state not in [STATE.AIRBORNE, STATE.DASHING]
 
 func _can_dash():
+	#NAO SPAMMAR DASH NO CHAO
+	if is_on_floor() and dash_ground_timer > 0.0:
+		return false
 	return has_dash and state != STATE.CLIMBING
 	
 func restore_dash() -> void:
@@ -341,6 +350,9 @@ func _execute_dash():
 	dash_phase = DashPhase.START
 	dash_timer = DASH_DURATION
 	has_dash = false # Gasta o dash ao usar
+	#NAO SPAMMAR DASH NO CHAO
+	if is_on_floor():
+		dash_ground_timer = DASH_GROUND_COOLDOWN
 	# ADICIONADO: Zera totalmente a velocidade acumulada antes de dar o novo impulso
 	# Assim o novo dash não soma velocidade com o antigo pra n sair um super pulo
 	velocity = Vector3.ZERO

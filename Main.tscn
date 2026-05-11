@@ -1,24 +1,14 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-<<<<<<< Updated upstream
-[ext_resource type="Script" uid="uid://cmnfffpocefrp" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="2_cm0pq"]
-[ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="4_03owx"]
-[ext_resource type="Script" uid="uid://boc8dxc7e680l" path="res://scripts/playerCamera.gd" id="4_fos0i"]
-[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/import/Cubo teste.glb" id="4_trn2v"]
-[ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
-[ext_resource type="Script" uid="uid://c2pxeaovitbpo" path="res://scripts/wind.gd" id="7_lgr22"]
-=======
-[ext_resource type="Script" uid="uid://bge0ey2oxhw36" path="res://scripts/player.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://dc5wsweornp2o" path="res://scripts/player.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="4_03owx"]
 [ext_resource type="Script" uid="uid://bmwqrxltuf4d3" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/import/Cubo teste.glb" id="4_trn2v"]
 [ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://h4aewea6feku" path="res://scripts/wind.gd" id="7_lgr22"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://s7vvljimhsc7" path="res://textures/cagueiduro.jpg" id="8_trn2v"]
-[ext_resource type="Script" uid="uid://bqy1pn68mwqo1" path="res://scripts/dash_crystal.gd" id="9_03owx"]
+[ext_resource type="Script" uid="uid://hfh1tfe4hd4i" path="res://scripts/dash_crystal.gd" id="9_03owx"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -109,6 +99,7 @@ size = Vector3(10, 1, 10)
 radius = 1.5
 
 [sub_resource type="PrismMesh" id="PrismMesh_20pc6"]
+size = Vector3(2, 2, 2)
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = SubResource("GDScript_3dxm6")
@@ -555,18 +546,17 @@ mesh = SubResource("BoxMesh_trn2v")
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3.5, 0)
 shape = SubResource("BoxShape3D_03owx")
 
-[node name="dashCrystal" type="Area3D" parent="." unique_id=1848379581]
+[node name="dash_crystal" type="Area3D" parent="." unique_id=1114153921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.31813, 9.717367, 207.7271)
 script = ExtResource("9_03owx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dashCrystal" unique_id=1476643035]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.15529, 11.890366, 199.05855)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dash_crystal" unique_id=1759840339]
 shape = SubResource("SphereShape3D_wkp8b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="dashCrystal" unique_id=1169696933]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 182.15529, 11.890366, 199.05855)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dash_crystal" unique_id=639006472]
 mesh = SubResource("PrismMesh_20pc6")
 
-[node name="RespawnTimer" type="Timer" parent="dashCrystal" unique_id=976309795]
+[node name="RespawnTimer" type="Timer" parent="dash_crystal" unique_id=1265184400]
 wait_time = 3.0
 one_shot = true
 

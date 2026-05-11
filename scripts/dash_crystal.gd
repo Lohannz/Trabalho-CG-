@@ -10,14 +10,9 @@ func _ready() -> void:
 	respawn_timer.timeout.connect(_on_respawn_timeout)
 
 func _on_body_entered(body: Node3D) -> void:
-	print("Passou por dentro! Nome do objeto: ", body.name)
-	
 	if body.has_method("restore_dash"):
-		print("SUCESSO: Achou a função e vai recarregar!")
 		body.restore_dash()
 		_coletar_cristal()
-	else:
-		print("ERRO: O objeto encostou, mas o Godot diz que a função 'restore_dash' NÃO EXISTE nele.")
 
 func _coletar_cristal() -> void:
 	# Esconde o visual do cristal
