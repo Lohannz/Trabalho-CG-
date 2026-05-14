@@ -5,15 +5,13 @@ extends CharacterBody3D
 @onready var raycasts = $Raycasts
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
-const SPEED = 20.0
-const ACCELERATION = 60.0
+const SPEED = 25.0
+const ACCELERATION = 30.0
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 70.0
-const AIR_BREAK = 55.0
+
 const AIR_SPEED = 30.0
-const AIR_ACCELERATION = 80.0
-const TURN_VELOCITY = 150.0
 const CLIMB_SPEED = 10.0
 const SLIDE_SPEED = 4.0
 
@@ -23,6 +21,9 @@ const DASH_DECAY = 90.0
 const DASH_FALLSPEED = 125.0
 const DASH_CORRECTION = 180.0
 var dash_timer : float = DASH_DURATION
+var has_dash : bool = true
+const DASH_GROUND_COOLDOWN = 2.0
+var dash_ground_timer := 0.0
 
 enum DashPhase {START, CONTROL, END}
 var dash_phase := DashPhase.START
@@ -43,22 +44,24 @@ const WALL_JUMP_MULT = 0.2
 # Parâmetros de Impulso
 const DASH_IMPULSE = 50.0
 
-const JUMP_HEIGHT = 6.0
+const JUMP_HEIGHT = 8.0
 const JUMP_DURATION = 0.3
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
-const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.3
+const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 32.0
 
 # Parâmetros de Atrito
-const FRICTION = 120.0
+const FRICTION = 300.0
 const SLIDE_FRICTION = 400.0
 const AIR_RESISTANCE = 65.0
 
 # Parâmetros de Interação com Vento
 var IN_WIND : bool = false
 var WIND_FORCE : Vector3 = Vector3.ZERO
-var IS_FALLING : bool = false
+
+#Congela o player
+var FREEZE : bool = false
 
 # Parâmetros de Interação com Portais
 var SIDE_OF_PORTAL : String
@@ -84,7 +87,7 @@ var move_direction : Vector3 = Vector3.ZERO
 
 # Variáveis: Orientação da Cubo
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
-var current_face = FACE.SIX
+@export var current_face = FACE.SIX
 #TODO: A câmera poderia ter o enum FACE
 
 
@@ -92,15 +95,21 @@ var current_face = FACE.SIX
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near
 	SIDE_OF_PORTAL = raycasts.get_side()
+	print(SIDE_OF_PORTAL)
 	
 func _on_portal_entered(destination : Vector3, face : int) -> void:
 	# Mudando a FACE do cubo para o PLAYER
 	global_position = destination
-	current_face = face # Essa variável da apontando como não usada?
+	current_face = face # Essa variável da apontando como não usada? Fernando aq, e ela n ta sendo usada
 	PORTAL_UI.visible = false
 	
 	# Mudando a orientação com base na nova FACE
+	velocity = Vector3.ZERO
 	camera._change_orientation(SIDE_OF_PORTAL)
+	FREEZE = true
+	await get_tree().create_timer(0.5).timeout
+	FREEZE = false
+	
 
 
 
@@ -155,49 +164,46 @@ func _physics_process(delta : float) -> void:
 	_handle_actions()
 	_handle_movement(delta)
 	
+	if FREEZE:
+		velocity = Vector3.ZERO
+	
+	#NAO SPAMMAR DASH NO CHAO
+	if dash_ground_timer > 0.0:
+		dash_ground_timer -= delta
+	
 	move_and_slide()
 
 
 ## FÍSICA DO PLAYER
 # Lógica da Física: MOMENTO
-func _physics_momentum(delta, limit: float, acceleration: float):
+func _physics_momentum(delta: float, limit: float, accel: float, friction: float):
 	var velocity_v = up * velocity.dot(up)
 	var velocity_h = velocity - velocity_v
-	if state == STATE.AIRBORNE:
-		IS_FALLING = not is_on_floor() and velocity.dot(_orientation.y) < 0
-	else:
-		IS_FALLING = false
 	
-	# Debug
-	print("Is Falling : ", IS_FALLING)
-	print("State: ", state)
-	print("Acceleration: ", acceleration)
-	print("velocityH: ", velocity_h)
-	print("velocityV: ", velocity_v)
-	
-	if move_direction.length() > 0:
-		# Verifica se ele mudou de direçao, se sim -> troca mais rapido (mais preciso)
-		var changingDir = velocity_h.length() > 0 and move_direction.normalized().dot(velocity_h.normalized()) < 0
-		if changingDir:
-			velocity_h = velocity_h.move_toward(Vector3.ZERO, TURN_VELOCITY * delta)
-		else:
-			velocity_h = velocity_h.move_toward(move_direction * limit, acceleration * delta)
-	else:
-		var friction = FRICTION if is_on_floor() else AIR_RESISTANCE
-		velocity_h = velocity_h.move_toward(Vector3.ZERO, friction * delta)
-			
-	# Calcula a influencia vetical ou horizontal do vento
+	var speed = move_direction * limit
+	var adaptative_accel = accel if move_direction != Vector3.ZERO else friction
+
+	if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
+		adaptative_accel *= 2.0
+
+	# Movimento base
+	velocity_h = velocity_h.move_toward(speed, adaptative_accel * delta)
+
+	# Forças externas
+	# TODO: enum EFFECT: {FLYING...} para VENTO ao invés de um BOOL?
+	# TODO: Talvez separar um _func só para efeitos de debilitação/ajuda no movimento.
 	if IN_WIND:
-		var wind_vertical = up * WIND_FORCE.dot(up)
-		var wind_horizontal = WIND_FORCE - wind_vertical
-		
-		velocity_h += wind_horizontal * delta
-		velocity_v += wind_vertical * delta
-		
-		#limita a velocidade pra nao explodir dps que sair do vento
+		var wind_v = up * WIND_FORCE.dot(up)
+		var wind_h = WIND_FORCE - wind_v
+
+		velocity_h += wind_h * delta
+		velocity_v += wind_v * delta
+
 		velocity_h = velocity_h.limit_length(limit + 40.0)
-		velocity_v = velocity_v.limit_length(limit + 20.0)
-		
+		velocity_v = velocity_v.limit_length(limit + 10.0)
+
+	# Clamp final
+	velocity_h = velocity_h.limit_length(TERMINAL_SPEED)
 	velocity = velocity_h + velocity_v
 
 
@@ -223,16 +229,20 @@ func _physics_dashing(delta: float):
 	match dash_phase:
 		# fase de impulso inicial
 		DashPhase.START:
-			velocity += dir * DASH_IMPULSE	
+			velocity_v = Vector3.ZERO # Zera a velocidade vertical
+			velocity_h += dir * DASH_IMPULSE #impulso apenas na horizontal
+			velocity = velocity_h + velocity_v
 			dash_phase = DashPhase.CONTROL
 			
 		# fase de controle da direção
 		DashPhase.CONTROL:
 			var target = dir * DASH_SPEED
 			velocity_h = velocity_h.move_toward(target, DASH_CORRECTION * delta)
+			
 			if input.jump.is_down:
 				velocity_v = velocity_v.move_toward(up * DASH_SPEED, DASH_CORRECTION * delta)
-			velocity = velocity_h + velocity_v
+			else:
+				velocity_v = Vector3.ZERO #Dash continua zerado
 			
 			if dash_timer <= 0.25: 
 				dash_phase = DashPhase.END
@@ -246,6 +256,9 @@ func _physics_dashing(delta: float):
 	# termina o estado de dash
 	if dash_timer <= 0.0:
 		state = STATE.AIRBORNE
+
+
+
 
 # Lógica da Física: CLIMB
 func _physics_climbing():
@@ -277,6 +290,7 @@ func _update_state(delta : float):
 	
 	if is_on_floor() and state != STATE.DASHING and not input.climb.is_down:
 		state = STATE.GROUNDED
+		has_dash = true
 		if stamina < 100.0: fatigue = REST_FATIGUE
 	
 	elif is_on_wall():
@@ -308,10 +322,21 @@ func _update_state(delta : float):
 ## AÇÕES DO PLAYER
 # Controlade do Sistema: AÇÕES
 func _handle_actions():
+	# PULO (Espaço - gerenciado pelo seu sistema)
 	if input.jump.is_triggered() and _can_jump():
 		_execute_jump()
 		input.jump.consume()
 		state = STATE.AIRBORNE
+
+	# DASH
+	if Input.is_action_just_pressed("action_dash") or input.dash.is_triggered():
+		if _can_dash():
+			_execute_dash()
+			# Tenta consumir o input do seu script para ele não atrapalhar
+			if input.dash.has_method("consume"):
+				input.dash.consume()
+			state = STATE.DASHING
+
 
 	if input.dash.is_triggered() and _can_dash():
 		_execute_dash()
@@ -323,12 +348,26 @@ func _can_jump():
 	return state not in [STATE.AIRBORNE, STATE.DASHING]
 
 func _can_dash():
-	return state not in [STATE.DASHING, STATE.CLIMBING]
+	#NAO SPAMMAR DASH NO CHAO
+	if is_on_floor() and dash_ground_timer > 0.0:
+		return false
+	return has_dash and state != STATE.CLIMBING
 	
+func restore_dash() -> void:
+	has_dash = true
+	if state == STATE.DASHING:
+		state = STATE.AIRBORNE
 # Executor da Ação: DASH
 func _execute_dash():
 	dash_phase = DashPhase.START
 	dash_timer = DASH_DURATION
+	has_dash = false # Gasta o dash ao usar
+	#NAO SPAMMAR DASH NO CHAO
+	if is_on_floor():
+		dash_ground_timer = DASH_GROUND_COOLDOWN
+	# ADICIONADO: Zera totalmente a velocidade acumulada antes de dar o novo impulso
+	# Assim o novo dash não soma velocidade com o antigo pra n sair um super pulo
+	velocity = Vector3.ZERO
 	
 # Executor da Ação: PULO
 func _execute_jump():
@@ -343,7 +382,7 @@ func _execute_jump():
 		velocity = up * JUMP_VERTICAL_BOOST + normal * WALL_JUMP_PUSHWAY
 	else:
 		velocity -= up * velocity.dot(up)
-		velocity += up * JUMP_VERTICAL_BOOST
+		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST
 	
 ## MOVIMENTAÇÃO DO PLAYER
 # Controle do Sistema: GRAVIDADE
@@ -385,13 +424,13 @@ func _handle_gravity(delta : float):
 func _handle_movement(delta : float):
 	match state:
 		STATE.GROUNDED:
-			_physics_momentum(delta, SPEED, ACCELERATION)
+			_physics_momentum(delta, SPEED, ACCELERATION, FRICTION)
 		STATE.AIRBORNE:
-			_physics_momentum(delta, AIR_SPEED, AIR_ACCELERATION)
+			_physics_momentum(delta, AIR_SPEED, ACCELERATION, AIR_RESISTANCE * 0.6)
 		STATE.DASHING:
 			_physics_dashing(delta)
 		STATE.SLIDING:
-			_physics_momentum(delta, SLIDE_SPEED, ACCELERATION)
+			_physics_momentum(delta, SLIDE_SPEED, ACCELERATION, SLIDE_FRICTION)
 		STATE.CLIMBING:
 			_physics_climbing()
 		STATE.STEADY:
@@ -399,6 +438,6 @@ func _handle_movement(delta : float):
 
 
 func _change_gravity(newUp : Vector3):
-	#print("Recebi o signal - newUp: ", newUp)
+	print("Recebi o signal - newUp: ", newUp)
 	up_direction = newUp
 	#gravity = -UP

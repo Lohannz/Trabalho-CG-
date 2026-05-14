@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="2_cm0pq"]
-[ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="4_03owx"]
-[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
-[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/import/Cubo teste.glb" id="4_trn2v"]
+[ext_resource type="PackedScene" uid="uid://duwkvg0r1ul2o" path="res://scenes/zona_testes.tscn" id="1_20pc6"]
 [ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
-[ext_resource type="Script" uid="uid://d0d5e5exesi0r" path="res://scripts/wind.gd" id="7_lgr22"]
-[ext_resource type="Texture2D" uid="uid://s7vvljimhsc7" path="res://textures/cagueiduro.jpg" id="8_trn2v"]
+[ext_resource type="PackedScene" uid="uid://xaglbkocqp46" path="res://models/import/arvore de gelo.glb" id="7_5vvyt"]
+[ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://bs266gj3ylk0r" path="res://scenes/player.tscn" id="8_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="9_c2ibq"]
+[ext_resource type="PackedScene" uid="uid://b2dwmjlmmt7aq" path="res://scenes/FasePrototipo/salaB_FasePrototipo.tscn" id="9_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://cqdcm837m706n" path="res://scenes/FasePrototipo/salaC_FasePrototipo.tscn" id="10_20pc6"]
+[ext_resource type="PackedScene" uid="uid://b5s20xe44pnk8" path="res://scenes/objetos/cristal_do_meio.tscn" id="10_j4qnp"]
+[ext_resource type="PackedScene" uid="uid://bhtpvr0mxp4lm" path="res://scenes/FasePrototipo/salaA_FasePrototipo.tscn" id="10_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -36,24 +39,8 @@ func _get_spawnpoint_position(name) -> Vector3:
 	
 "
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
-size = Vector3(2.1982117, 2.9666595, 0.26913452)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
-albedo_color = Color(1, 0.45021433, 0.17228884, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
-material = SubResource("StandardMaterial3D_trn2v")
-size = Vector3(6, 8, 0.5)
-
-[sub_resource type="Environment" id="Environment_cm0pq"]
-background_mode = 1
-background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
-ambient_light_color = Color(1, 1, 1, 1)
+size = Vector3(2.8, 4.1, 0.26913452)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_trn2v"]
 height = 50.0
@@ -67,96 +54,186 @@ top_radius = 10.0
 bottom_radius = 10.0
 height = 50.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_lgr22"]
-size = Vector3(100, 2, 100)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
+albedo_color = Color(1, 0.45021433, 0.17228884, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_trn2v"]
-size = Vector3(100, 2, 100)
+[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
+material = SubResource("StandardMaterial3D_trn2v")
+size = Vector3(6, 8, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03owx"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkp8b"]
-albedo_texture = ExtResource("8_trn2v")
-uv1_scale = Vector3(0.2, 0.04, 0.2)
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_wkp8b"]
-material = SubResource("StandardMaterial3D_wkp8b")
-size = Vector3(10, 10, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_20pc6"]
-size = Vector3(10, 10, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_trn2v"]
-size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_03owx"]
-size = Vector3(10, 1, 10)
+[sub_resource type="Environment" id="Environment_cm0pq"]
+background_mode = 1
+background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = SubResource("GDScript_3dxm6")
 
-[node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
+[node name="BLOCOS" type="Node" parent="." unique_id=1912548303]
+
+[node name="Zona_Testes" parent="BLOCOS" unique_id=852784985 instance=ExtResource("1_20pc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.51665, 0, 172.1634)
+
+[node name="Bloco_Jogavel" type="Node3D" parent="BLOCOS" unique_id=813076414]
+
+[node name="SalaA" parent="BLOCOS/Bloco_Jogavel" unique_id=1708794515 instance=ExtResource("10_wkp8b")]
+
+[node name="PortalAzulA" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaA" unique_id=943555267 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -692.02893, 30.813488, -4.421131)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaB/PortalAzulB")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" unique_id=217051392]
+transform = Transform3D(-1.7484165e-07, 0, 3.9999108, 0, 4, 0, -3.9999108, 0, -1.7484165e-07, -1.8149414, 3.809288, 0.7053585)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalRoxoA" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaA" unique_id=2135695204 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -638.3289, 79.5135, -4.221125)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaC/PortalRoxoC")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" unique_id=1294658271]
+transform = Transform3D(1.4210855e-14, 1.7484555e-07, 3.9999087, 3.9999099, -1.7484561e-07, 5.684342e-14, 1.7484159e-07, 3.9999988, -1.7484155e-07, 2.2788467, 0.4092803, 0.5053711)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="SalaB" parent="BLOCOS/Bloco_Jogavel" unique_id=610309956 instance=ExtResource("9_wkp8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.09999, 0, -71.9)
+
+[node name="PortalAzulB" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=126536491 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -481.02893, 31.813488, 59.57887)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaA/PortalAzulA")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" unique_id=859891722]
+transform = Transform3D(3.9999113, 0, 0, 0, 4, 0, 0, 0, 3.9999113, 0.28503418, 3.809288, 0.7053585)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeB" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=558990241 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -480.92896, 76.91349, -46.621124)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaC/PortalVerdeC")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" unique_id=1013254506]
+transform = Transform3D(-1.7484159e-07, 0, 3.9999099, 5.684342e-14, 4, 5.684342e-14, -3.9999099, 0, -1.7484159e-07, 0.7850342, 1.3092804, 0.5053711)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=192862575]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 35.399998, -61)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 1, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/wind 1" unique_id=326912896]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaB/wind 1" unique_id=441273886]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="SalaC" parent="BLOCOS/Bloco_Jogavel" unique_id=2073761037 instance=ExtResource("10_20pc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 38.5, -59)
+
+[node name="PortalRoxoC" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=421216360 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -405.12897, 57.313484, 34.07887)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaA/PortalRoxoA")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" unique_id=1390033840]
+transform = Transform3D(-1.748416e-07, -3.9999955, 0, 3.999911, -1.748454e-07, 0, 0, 0, 3.9999137, -1.7149658, -1.8907089, 5.9053364)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeC" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=897912829 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -508.22894, 54.01348, -45.621124)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaB/PortalVerdeB")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" unique_id=837432794]
+transform = Transform3D(7.642469e-15, 1.7484385e-07, 3.999882, 3.9999106, -1.7484555e-07, 0, 1.7483994e-07, 3.9999714, -1.7483994e-07, -0.014892578, 0.50572205, 1.5386963)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=1499615931]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 54.899994, -2.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 1" unique_id=209443536]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 1" unique_id=1685026923]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 2" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=491648110]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -406, 54.899994, -26.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 2" unique_id=464441768]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 2" unique_id=1543816493]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 3" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=978807471]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -428, 54.899994, -37.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 3" unique_id=1935051625]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 3" unique_id=537172358]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 4" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=1792061933]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -389, 54.899994, -70.3)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(-1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 4" unique_id=2081318782]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 4" unique_id=1232699594]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="arvore de gelo" parent="BLOCOS" unique_id=1305478869 instance=ExtResource("7_5vvyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.40965, 3.6609993, 225.87805)
+
+[node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.457355, 12.7935705, 167.06464)
-script = ExtResource("1_lgr22")
-
-[node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 3.108467, 18.216797)
-script = ExtResource("4_fos0i")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=266873750]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ekxg2")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1534095943]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_hdyhr")
-
-[node name="areaDetection" type="Area3D" parent="player" unique_id=1833533313]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player/areaDetection" unique_id=1101130773]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ekxg2")
-
-[node name="UI" type="Node3D" parent="player" unique_id=907827738]
-
-[node name="ui_entered_portal" type="Label3D" parent="player/UI" unique_id=1177623098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.540317, 18.446838)
-pixel_size = 0.02
-modulate = Color(0.5711475, 0.08250991, 0.8905668, 1)
-text = "Vai entrar no portal ou não? Se sim aperta 'U' kkkk"
-
-[node name="Raycasts" type="Node3D" parent="player" unique_id=1223925659]
-script = ExtResource("4_03owx")
-
-[node name="left" type="RayCast3D" parent="player/Raycasts" unique_id=996177197]
-target_position = Vector3(-5, 0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="right" type="RayCast3D" parent="player/Raycasts" unique_id=563436461]
-target_position = Vector3(5, 0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="up" type="RayCast3D" parent="player/Raycasts" unique_id=1449255050]
-target_position = Vector3(0, 5, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="down" type="RayCast3D" parent="player/Raycasts" unique_id=1516545238]
-target_position = Vector3(0, -5, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
-
-[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
-transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
-
-[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
@@ -222,7 +299,7 @@ mesh = SubResource("BoxMesh_03owx")
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1096843379]
 
 [node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=145460742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.250072, 18.4372, 43.52722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -676.25006, 2.3372004, -3.0727797)
 
 [node name="TWO" type="Node3D" parent="Spawnpoints" unique_id=1478143757]
 transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 31.221668, 13.815621, 181.54892)
@@ -234,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.802692, 11.239094, 178.46
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.43666, 181.08235)
 
 [node name="FIVE" type="Node3D" parent="Spawnpoints" unique_id=1869851628]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.506561, 181.21002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 3.4934387, 864.21)
 
 [node name="SIX" type="Node3D" parent="Spawnpoints" unique_id=1412533504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.61252, 9.705299, 187.51863)
@@ -255,7 +332,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.99384, 27.952326, 239.383
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 56, -47)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(0, 1, 0)
-WIND_POWER_V = 300.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 1" unique_id=1801656644]
@@ -272,7 +349,7 @@ mesh = SubResource("CylinderMesh_trn2v")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -61.909866, 82.133354, -77.62688)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(0, 0, -1)
-WIND_POWER_H = 400.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 2" unique_id=1636124836]
@@ -289,7 +366,7 @@ mesh = SubResource("CylinderMesh_trn2v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.909866, 26.133348, -64.62688)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(-1, 0, 0)
-WIND_POWER_H = 220.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 3" unique_id=2136239959]
@@ -302,243 +379,37 @@ material_override = SubResource("StandardMaterial3D_lgr22")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_trn2v")
 
-[node name="Zona_Testes" type="Node3D" parent="." unique_id=228670345]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.51665, 0, 172.1634)
+[node name="cristal do meio" parent="." unique_id=1930203238 instance=ExtResource("10_j4qnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.65468, -9.566168, 205.65771)
 
-[node name="Cubao" type="Node3D" parent="Zona_Testes" unique_id=2047916653]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+[node name="espinho de gelo" parent="." unique_id=2121288956 instance=ExtResource("11_fpfj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.51137, -4.5262823, 205.65771)
 
-[node name="plate" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=337166238]
-metadata/_edit_group_ = true
+[node name="dash_crystal2" parent="." unique_id=1371341528 instance=ExtResource("9_c2ibq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.17192, 3.632296, 207.47726)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate" unique_id=1459785695]
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate" unique_id=530090773]
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="plate2" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=1019497826]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101.8, 0)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate2" unique_id=454495227]
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate2" unique_id=950754583]
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="plate3" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=270802675]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.000015, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate3" unique_id=2057406680]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -1.7484555e-07, 1.7484555e-07, -7.642742e-15, 1, -48, 51, 0)
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate3" unique_id=1143378409]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -1.7484555e-07, 1.7484555e-07, -7.642742e-15, 1, -48, 51, 0)
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="plate4" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=1500752739]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999847, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate4" unique_id=666344822]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -1.7484555e-07, 1.7484555e-07, -7.642742e-15, 1, -48, 51, 0)
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate4" unique_id=246226044]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, -1.7484555e-07, 1.7484555e-07, -7.642742e-15, 1, -48, 51, 0)
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="plate5" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=1333493379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.000015, 0, 51)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate5" unique_id=1173225609]
-transform = Transform3D(1.7484555e-07, 4.371138e-08, 1, 1, -4.371139e-08, -1.7484555e-07, 4.371138e-08, 1, -4.371139e-08, -48, 51, 0)
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate5" unique_id=2107620903]
-transform = Transform3D(1.7484555e-07, 4.371138e-08, 1, 1, -4.371139e-08, -1.7484555e-07, 4.371138e-08, 1, -4.371139e-08, -48, 51, 0)
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="plate6" type="StaticBody3D" parent="Zona_Testes/Cubao" unique_id=1958349904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.000015, 0, -51)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/Cubao/plate6" unique_id=1724886152]
-transform = Transform3D(1.7484555e-07, 4.371138e-08, 1, 1, -4.371139e-08, -1.7484555e-07, 4.371138e-08, 1, -4.371139e-08, -48, 51, 0)
-transparency = 0.5
-mesh = SubResource("BoxMesh_lgr22")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/Cubao/plate6" unique_id=484664779]
-transform = Transform3D(1.7484555e-07, 4.371138e-08, 1, 1, -4.371139e-08, -1.7484555e-07, 4.371138e-08, 1, -4.371139e-08, -48, 51, 0)
-shape = SubResource("BoxShape3D_trn2v")
-
-[node name="caixa" type="StaticBody3D" parent="Zona_Testes" unique_id=112936552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.527908, 85.401115, -61.983368)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/caixa" unique_id=1358934514]
-transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, -2, 0)
-material_override = SubResource("StandardMaterial3D_03owx")
-mesh = SubResource("BoxMesh_wkp8b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/caixa" unique_id=1418154050]
-transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, -2, 0)
-shape = SubResource("BoxShape3D_20pc6")
-
-[node name="caixa3" type="StaticBody3D" parent="Zona_Testes" unique_id=5688456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.527908, 94.401115, -61.983368)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/caixa3" unique_id=1786369100]
-transform = Transform3D(3, 0, 0, 0, -4.371139e-09, -2, 0, 0.1, -8.742278e-08, 0, -1, -10)
-mesh = SubResource("BoxMesh_wkp8b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/caixa3" unique_id=602387108]
-transform = Transform3D(3, 0, 0, 0, -4.371139e-09, -2, 0, 0.1, -8.742278e-08, 0, -1, -10)
-shape = SubResource("BoxShape3D_20pc6")
-
-[node name="caixa2" type="StaticBody3D" parent="Zona_Testes" unique_id=1737313863]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.527908, 90.401115, -0.9833679)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/caixa2" unique_id=1088944093]
-transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 2, 3, 0, 0)
-material_override = SubResource("StandardMaterial3D_03owx")
-mesh = SubResource("BoxMesh_wkp8b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/caixa2" unique_id=1941517332]
-transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 2, 3, 0, 0)
-shape = SubResource("BoxShape3D_20pc6")
-
-[node name="plataforma" type="StaticBody3D" parent="Zona_Testes" unique_id=792598083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 4, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma" unique_id=1197760338]
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma" unique_id=1476828761]
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma2" type="StaticBody3D" parent="Zona_Testes" unique_id=648311835]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 10, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma2" unique_id=458894771]
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma2" unique_id=1394163481]
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma3" type="StaticBody3D" parent="Zona_Testes" unique_id=1119767596]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 15, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma3" unique_id=2124712469]
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma3" unique_id=120871611]
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma5" type="StaticBody3D" parent="Zona_Testes" unique_id=739375657]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 36, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma5" unique_id=1807220533]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma5" unique_id=22573295]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma7" type="StaticBody3D" parent="Zona_Testes" unique_id=858825855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 36, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma7" unique_id=108183004]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma7" unique_id=990514973]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma4" type="StaticBody3D" parent="Zona_Testes" unique_id=427217793]
-transform = Transform3D(-8.742278e-08, -1, 0, 2, -4.371139e-08, 0, 0, 0, 1, 26, 24, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma4" unique_id=2137788629]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma4" unique_id=906878553]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma8" type="StaticBody3D" parent="Zona_Testes" unique_id=737970569]
-transform = Transform3D(-8.742278e-08, -1, 0, 2, -4.371139e-08, 0, 0, 0, 1, -46, 24, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma8" unique_id=1496195110]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 8.249999, 0.5, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma8" unique_id=375531855]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 8.249999, 0.5, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma9" type="StaticBody3D" parent="Zona_Testes" unique_id=1170422694]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 70, 34)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma9" unique_id=92636866]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma9" unique_id=1214393136]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma10" type="StaticBody3D" parent="Zona_Testes" unique_id=1841801004]
-transform = Transform3D(3.821371e-15, 4.371139e-08, 1, 2, -4.371139e-08, 0, 8.742278e-08, 1, -4.371139e-08, -12, 58, 48)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma10" unique_id=76122306]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 8.249999, 0.5, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma10" unique_id=1713358437]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 8.249999, 0.5, 0)
-shape = SubResource("BoxShape3D_03owx")
-
-[node name="plataforma6" type="StaticBody3D" parent="Zona_Testes" unique_id=1377918558]
-transform = Transform3D(-8.742278e-08, -1, 0, 2, -4.371139e-08, 0, 0, 0, 1, 12, 26, 14)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Zona_Testes/plataforma6" unique_id=1450917080]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3.5, 0)
-mesh = SubResource("BoxMesh_trn2v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Zona_Testes/plataforma6" unique_id=1831325373]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3.5, 0)
-shape = SubResource("BoxShape3D_03owx")
-
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/wind 1" to="BLOCOS/Bloco_Jogavel/SalaB/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/wind 1" to="BLOCOS/Bloco_Jogavel/SalaB/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 1" to="BLOCOS/Bloco_Jogavel/SalaC/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 1" to="BLOCOS/Bloco_Jogavel/SalaC/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 2" to="BLOCOS/Bloco_Jogavel/SalaC/wind 2" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 2" to="BLOCOS/Bloco_Jogavel/SalaC/wind 2" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 3" to="BLOCOS/Bloco_Jogavel/SalaC/wind 3" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 3" to="BLOCOS/Bloco_Jogavel/SalaC/wind 3" method="_on_body_exited"]
+[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC/wind 4" method="_on_body_entered"]
+[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC/wind 4" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_entered"]

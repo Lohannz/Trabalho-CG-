@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dr4pg306keuxu"]
+
+[ext_resource type="PackedScene" uid="uid://c0buqvawbd412" path="res://models/import/modelos-leo/teste.glb" id="1_6s1gx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbsah"]
+size = Vector3(6, 12.400001, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8fkc"]
+size = Vector3(1, 1, 3.1000001)
+
+[node name="teste" unique_id=1533540138 instance=ExtResource("1_6s1gx")]
+
+[node name="CollisionShape3D" parent="plataforma_007/StaticBody3D" parent_id_path=PackedInt32Array(2070494286) index="0" unique_id=266094161]
+transform = Transform3D(0.10000002, 0, 0, 0, 0.1, 0, 0, 0, 0.10000002, 0, 0, 50.769226)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="plataforma_007/StaticBody3D" parent_id_path=PackedInt32Array(2070494286) index="1" unique_id=1810595412]
+transform = Transform3D(0.60000014, 0, 0, 0, 4.3, 0, 0, 0, 17.120003, 10.1923065, -24.589996, -9.23077)
+shape = SubResource("BoxShape3D_nbsah")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="plataforma_007/StaticBody3D" parent_id_path=PackedInt32Array(2070494286) index="2" unique_id=2004477291]
+transform = Transform3D(21.43201, 0, 0, 0, 1, 0, 0, 0, 6.3, 0.16448975, 1.699997, -9.765003)
+shape = SubResource("BoxShape3D_r8fkc")

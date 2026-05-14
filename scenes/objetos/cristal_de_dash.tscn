@@ -1,0 +1,62 @@
+[gd_scene format=4 uid="uid://durxqdqtosm88"]
+
+[ext_resource type="Script" uid="uid://bdqmleiiw6ngl" path="res://scripts/dash_crystal.gd" id="1_r4dwi"]
+[ext_resource type="Texture2D" uid="uid://hhpwu0is8wjn" path="res://models/import/textures/cristal do meio_1468.jpg" id="2_01ofj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wkp8b"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46g78"]
+resource_name = "Material.001"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.77272725)
+albedo_texture = ExtResource("2_01ofj")
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ra76l"]
+_surfaces = [{
+"aabb": AABB(-0.46980667, -0.07242176, -0.5533419, 0.93961334, 1.0942886, 1.106684),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgADAAQAAgAEAAAABQADAAEABAADAAUAAQAGAAUABgABAAAABgAAAAUAAAAEAAcABwAEAAUABQAAAAcA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AIn//6JmAAAAALRPt0wAAECBhpIAAAAA/nYAAFyZAAA/+NFCpUwAAL5+eG3//wAAvwctvVmzAAD//0qwR7MAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mk6cu"]
+resource_name = "cristal_dash_Cube"
+_surfaces = [{
+"aabb": AABB(-0.46980667, -0.07242176, -0.5533419, 0.93961334, 1.0942886, 1.106684),
+"attribute_data": PackedByteArray("/3///6qqVNWpqv///39U1VTV//+pqv//qapU1VTVVNVU1f7///9U1f////9U1VTVqqpU1f9/VNWqqqmq/3+pqv7/VNVU1aqq/v+qqlTVVNWpqqmqVNVU1amqVNVU1amq"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABgAHAAQACAAJAAoACwAJAAgADAANAA4ADQAPAA4AEAARABIAEwARABAAFAAVABYAFwAVABQA"),
+"material": SubResource("StandardMaterial3D_46g78"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(1.9999999, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AIn//6Jmlf8AALRPt0yV/0CBhpIAAJX/vwctvVmzlf8AALRPt0y21r8HLb1Zs7bWvn54bf//ttb+dgAAXJm21kCBhpIAACPh/nYAAFyZI+E/+NFCpUwj4QAAtE+3TCPh//9KsEezrdI/+NFCpUyt0r5+eG3//63S/nYAAFyZrdIAif//omb//T/40UKlTP/9//9KsEez//1AgYaSAAD//b5+eG3//4HgAIn//6JmgeD//0qwR7OB4L8HLb1Zs4HgidisM4nYrDOJ2KwzidisMyBNiIIgTYiCIE2IgiBNiIKcI9iwnCPYsJwj2LCcI9iwiwDsyosA7MqLAOzKiwDsyookYDaKJGA2iiRgNookYDbg3E4N4NxODeDcTg3g3E4N")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ra76l")
+
+[node name="dash_crystal" type="Area3D" unique_id=1371341528]
+script = ExtResource("1_r4dwi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2054807693]
+shape = SubResource("SphereShape3D_wkp8b")
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1785172638]
+wait_time = 3.0
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1908420144]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.8226677, 0)
+mesh = SubResource("ArrayMesh_mk6cu")
+skeleton = NodePath("")

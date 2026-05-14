@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://x2ghcud8ahsg"]
+
+[ext_resource type="PackedScene" uid="uid://d135n835n2dus" path="res://models/import/espinho de gelo.glb" id="1_a25wq"]
+
+[node name="espinho de gelo" unique_id=2121288956 instance=ExtResource("1_a25wq")]
