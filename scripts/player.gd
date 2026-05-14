@@ -44,15 +44,15 @@ const WALL_JUMP_MULT = 0.2
 # Parâmetros de Impulso
 const DASH_IMPULSE = 50.0
 
-const JUMP_HEIGHT = 6.0
+const JUMP_HEIGHT = 8.0
 const JUMP_DURATION = 0.3
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
-const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.7
+const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 32.0
 
 # Parâmetros de Atrito
-const FRICTION = 120.0
+const FRICTION = 200.0
 const SLIDE_FRICTION = 400.0
 const AIR_RESISTANCE = 65.0
 
@@ -83,8 +83,8 @@ var move_direction : Vector3 = Vector3.ZERO
 #var direction_v : Vector3 = Vector3.ZERO
 
 # Variáveis: Orientação da Cubo
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
-var current_face = FACE.SIX
+enum FACE {ONE, TWO, THREE, FOUR, FASE, TESTE} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
+@export var current_face = FACE.ONE
 #TODO: A câmera poderia ter o enum FACE
 
 
@@ -171,8 +171,8 @@ func _physics_momentum(delta: float, limit: float, accel: float, friction: float
 	var speed = move_direction * limit
 	var adaptative_accel = accel if move_direction != Vector3.ZERO else friction
 
-	if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
-		adaptative_accel *= 2.0
+	#if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
+	#	adaptative_accel *= 2.0
 
 	# Movimento base
 	velocity_h = velocity_h.move_toward(speed, adaptative_accel * delta)
