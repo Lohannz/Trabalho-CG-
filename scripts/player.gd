@@ -52,13 +52,16 @@ const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 32.0
 
 # Parâmetros de Atrito
-const FRICTION = 200.0
+const FRICTION = 300.0
 const SLIDE_FRICTION = 400.0
 const AIR_RESISTANCE = 65.0
 
 # Parâmetros de Interação com Vento
 var IN_WIND : bool = false
 var WIND_FORCE : Vector3 = Vector3.ZERO
+
+#Congela o player
+var FREEZE : bool = false
 
 # Parâmetros de Interação com Portais
 var SIDE_OF_PORTAL : String
@@ -92,6 +95,7 @@ enum FACE {ONE, TWO, THREE, FOUR, FASE, TESTE} # Acho que eu coloquei porque vai
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near
 	SIDE_OF_PORTAL = raycasts.get_side()
+	print(SIDE_OF_PORTAL)
 	
 func _on_portal_entered(destination : Vector3, face : int) -> void:
 	# Mudando a FACE do cubo para o PLAYER
@@ -100,7 +104,12 @@ func _on_portal_entered(destination : Vector3, face : int) -> void:
 	PORTAL_UI.visible = false
 	
 	# Mudando a orientação com base na nova FACE
+	velocity = Vector3.ZERO
 	camera._change_orientation(SIDE_OF_PORTAL)
+	FREEZE = true
+	await get_tree().create_timer(0.5).timeout
+	FREEZE = false
+	
 
 
 
@@ -155,6 +164,9 @@ func _physics_process(delta : float) -> void:
 	_handle_actions()
 	_handle_movement(delta)
 	
+	if FREEZE:
+		velocity = Vector3.ZERO
+	
 	#NAO SPAMMAR DASH NO CHAO
 	if dash_ground_timer > 0.0:
 		dash_ground_timer -= delta
@@ -171,8 +183,8 @@ func _physics_momentum(delta: float, limit: float, accel: float, friction: float
 	var speed = move_direction * limit
 	var adaptative_accel = accel if move_direction != Vector3.ZERO else friction
 
-	#if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
-	#	adaptative_accel *= 2.0
+	if velocity_h.length_squared() > 0.0 and move_direction.dot(velocity_h) < 0.0:
+		adaptative_accel *= 2.0
 
 	# Movimento base
 	velocity_h = velocity_h.move_toward(speed, adaptative_accel * delta)

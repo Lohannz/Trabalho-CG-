@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b2dwmjlmmt7aq"]
+
+[ext_resource type="PackedScene" uid="uid://ckwo734bidyop" path="res://models/import/Modelos Bloco Jogavel/SalaB.glb" id="1_hrjx6"]
+
+[node name="SalaB" unique_id=610309956 instance=ExtResource("1_hrjx6")]

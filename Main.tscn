@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://dfi8tjth6u5hg" path="res://models/import/CUBE 1.blend" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="4_03owx"]
 [ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
-[ext_resource type="PackedScene" uid="uid://b0ggxphuxwpl1" path="res://models/import/Cubo teste.glb" id="4_trn2v"]
 [ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://d0d5e5exesi0r" path="res://scripts/wind.gd" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://s7vvljimhsc7" path="res://textures/cagueiduro.jpg" id="8_trn2v"]
-[ext_resource type="PackedScene" uid="uid://c0buqvawbd412" path="res://models/import/modelos-leo/teste.glb" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://bdqmleiiw6ngl" path="res://scripts/dash_crystal.gd" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://b2dwmjlmmt7aq" path="res://scenes/FasePrototipo/salaB_FasePrototipo.tscn" id="9_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://cqdcm837m706n" path="res://scenes/FasePrototipo/salaC_FasePrototipo.tscn" id="10_20pc6"]
+[ext_resource type="PackedScene" uid="uid://bhtpvr0mxp4lm" path="res://scenes/FasePrototipo/salaA_FasePrototipo.tscn" id="10_wkp8b"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -43,7 +43,7 @@ func _get_spawnpoint_position(name) -> Vector3:
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
-size = Vector3(2.1982117, 2.9666595, 0.26913452)
+size = Vector3(2.8, 4.1, 0.26913452)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
 albedo_color = Color(1, 0.45021433, 0.17228884, 1)
@@ -102,19 +102,12 @@ radius = 1.5
 [sub_resource type="PrismMesh" id="PrismMesh_20pc6"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wkp8b"]
-size = Vector3(1, 1.2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5vvyt"]
-size = Vector3(1.1, 1, 1)
-
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = SubResource("GDScript_3dxm6")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1280582624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.457355, 12.7935705, 167.06464)
 script = ExtResource("1_lgr22")
-current_face = 4
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=573506790]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 7.108468, 18.216797)
@@ -164,14 +157,6 @@ collide_with_bodies = false
 target_position = Vector3(0, -5, 0)
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="Cubes" type="Node3D" parent="." unique_id=339504199]
-
-[node name="CUBE 1" parent="Cubes" unique_id=2112854242 instance=ExtResource("2_cm0pq")]
-transform = Transform3D(1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0, 1.0065727, 0, 0, 0)
-
-[node name="Cubo teste" parent="Cubes" unique_id=1367271068 instance=ExtResource("4_trn2v")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7032231, 0, 176.54277)
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
@@ -237,7 +222,7 @@ mesh = SubResource("BoxMesh_03owx")
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1096843379]
 
 [node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=145460742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.250072, 18.4372, 43.52722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -676.25006, 2.3372004, -3.0727797)
 
 [node name="TWO" type="Node3D" parent="Spawnpoints" unique_id=1478143757]
 transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 31.221668, 13.815621, 181.54892)
@@ -270,7 +255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.99384, 27.952326, 239.383
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 56, -47)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(0, 1, 0)
-WIND_POWER_V = 300.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 1" unique_id=1801656644]
@@ -287,7 +272,7 @@ mesh = SubResource("CylinderMesh_trn2v")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -61.909866, 82.133354, -77.62688)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(0, 0, -1)
-WIND_POWER_H = 400.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 2" unique_id=1636124836]
@@ -304,7 +289,7 @@ mesh = SubResource("CylinderMesh_trn2v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.909866, 26.133348, -64.62688)
 script = ExtResource("7_lgr22")
 WIND_DIRECTION = Vector3(-1, 0, 0)
-WIND_POWER_H = 220.0
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wind/wind 3" unique_id=2136239959]
@@ -569,39 +554,160 @@ mesh = SubResource("PrismMesh_20pc6")
 wait_time = 3.0
 one_shot = true
 
-[node name="Node3D" type="Node3D" parent="." unique_id=425434803]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 833)
+[node name="Bloco_Jogavel" type="Node3D" parent="." unique_id=813076414]
 
-[node name="Face1" parent="Node3D" unique_id=951052015 instance=ExtResource("8_wkp8b")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -23.258324, 1, -3.5817032)
+[node name="SalaA" parent="Bloco_Jogavel" unique_id=1708794515 instance=ExtResource("10_wkp8b")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Face1" unique_id=611281822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 74, 0)
+[node name="PortalAzulA" type="Area3D" parent="Bloco_Jogavel/SalaA" unique_id=943555267 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -692.02893, 30.813488, -4.421131)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaB/PortalAzulB")
+numFace = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Face1/StaticBody3D" unique_id=2053066696]
-transform = Transform3D(5.049, 0, 0, 0, 58.15041, 0, 0, 0, 37.867504, -8.400009, 47.436157, 68.22742)
-shape = SubResource("BoxShape3D_wkp8b")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaA/PortalAzulA" unique_id=217051392]
+transform = Transform3D(-1.7484165e-07, 0, 3.9999108, 0, 4, 0, -3.9999108, 0, -1.7484165e-07, -1.8149414, 3.809288, 0.7053585)
+shape = SubResource("BoxShape3D_3dxm6")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Face1/StaticBody3D" unique_id=671760466]
-transform = Transform3D(25.74, 0, 0, 0, 2.7024999, 0, 0, 0, 30.138748, -19.512993, 83.600006, 68)
-shape = SubResource("BoxShape3D_5vvyt")
+[node name="PortalRoxoA" type="Area3D" parent="Bloco_Jogavel/SalaA" unique_id=2135695204 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -638.3289, 79.5135, -4.221125)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaC/PortalRoxoC")
+numFace = 1
 
-[node name="dash_crystal" type="Area3D" parent="Node3D" unique_id=429460121]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.18189, 52.917366, 30.02716)
-script = ExtResource("9_03owx")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaA/PortalRoxoA" unique_id=1294658271]
+transform = Transform3D(1.4210855e-14, 1.7484555e-07, 3.9999087, 3.9999099, -1.7484561e-07, 5.684342e-14, 1.7484159e-07, 3.9999988, -1.7484155e-07, 2.2788467, 0.4092803, 0.5053711)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="SalaB" parent="Bloco_Jogavel" unique_id=610309956 instance=ExtResource("9_wkp8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.09999, 0, -71.9)
+
+[node name="PortalAzulB" type="Area3D" parent="Bloco_Jogavel/SalaB" unique_id=126536491 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -481.02893, 31.813488, 59.57887)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaA/PortalAzulA")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaB/PortalAzulB" unique_id=859891722]
+transform = Transform3D(3.9999113, 0, 0, 0, 4, 0, 0, 0, 3.9999113, 0.28503418, 3.809288, 0.7053585)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeB" type="Area3D" parent="Bloco_Jogavel/SalaB" unique_id=558990241 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -480.92896, 76.91349, -46.621124)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaC/PortalVerdeC")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaB/PortalVerdeB" unique_id=1013254506]
+transform = Transform3D(-1.7484159e-07, 0, 3.9999099, 5.684342e-14, 4, 5.684342e-14, -3.9999099, 0, -1.7484159e-07, 0.7850342, 1.3092804, 0.5053711)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="Bloco_Jogavel/SalaB" unique_id=192862575]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 35.399998, -61)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 1, 0)
+WIND_POWER = 300.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/dash_crystal" unique_id=2097055181]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("SphereShape3D_wkp8b")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaB/wind 1" unique_id=326912896]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/dash_crystal" unique_id=1234971476]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("PrismMesh_20pc6")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloco_Jogavel/SalaB/wind 1" unique_id=441273886]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
 
-[node name="RespawnTimer" type="Timer" parent="Node3D/dash_crystal" unique_id=1787330305]
-wait_time = 3.0
-one_shot = true
+[node name="SalaC" parent="Bloco_Jogavel" unique_id=2073761037 instance=ExtResource("10_20pc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 38.5, -59)
+
+[node name="PortalRoxoC" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=421216360 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -405.12897, 57.313484, 34.07887)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaA/PortalRoxoA")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/PortalRoxoC" unique_id=1390033840]
+transform = Transform3D(-1.748416e-07, -3.9999955, 0, 3.999911, -1.748454e-07, 0, 0, 0, 3.9999137, -1.7149658, -1.8907089, 5.9053364)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeC" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=897912829 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -508.22894, 54.01348, -45.621124)
+script = ExtResource("6_3dxm6")
+destination = NodePath("../../SalaB/PortalVerdeB")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/PortalVerdeC" unique_id=837432794]
+transform = Transform3D(7.642469e-15, 1.7484385e-07, 3.999882, 3.9999106, -1.7484555e-07, 0, 1.7483994e-07, 3.9999714, -1.7483994e-07, -0.014892578, 0.50572205, 1.5386963)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=1499615931]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 54.899994, -2.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/wind 1" unique_id=209443536]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloco_Jogavel/SalaC/wind 1" unique_id=1685026923]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 2" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=491648110]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -406, 54.899994, -26.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/wind 2" unique_id=464441768]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloco_Jogavel/SalaC/wind 2" unique_id=1543816493]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 3" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=978807471]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -428, 54.899994, -37.300003)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/wind 3" unique_id=1935051625]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloco_Jogavel/SalaC/wind 3" unique_id=537172358]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 4" type="Area3D" parent="Bloco_Jogavel/SalaC" unique_id=1792061933]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -389, 54.899994, -70.3)
+script = ExtResource("7_lgr22")
+WIND_DIRECTION = Vector3(-1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloco_Jogavel/SalaC/wind 4" unique_id=2081318782]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloco_Jogavel/SalaC/wind 4" unique_id=1232699594]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
 
 [connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
@@ -619,3 +725,25 @@ one_shot = true
 [connection signal="body_exited" from="Wind/wind 2" to="Wind/wind 2" method="_on_body_exited"]
 [connection signal="body_entered" from="Wind/wind 3" to="Wind/wind 3" method="_on_body_entered"]
 [connection signal="body_exited" from="Wind/wind 3" to="Wind/wind 3" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaA/PortalAzulA" to="Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaA/PortalAzulA" to="Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaA/PortalRoxoA" to="Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaA/PortalRoxoA" to="Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaB/PortalAzulB" to="Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaB/PortalAzulB" to="Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaB/PortalVerdeB" to="Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaB/PortalVerdeB" to="Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaB/wind 1" to="Bloco_Jogavel/SalaB/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaB/wind 1" to="Bloco_Jogavel/SalaB/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/PortalRoxoC" to="Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/PortalRoxoC" to="Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/PortalVerdeC" to="Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/PortalVerdeC" to="Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/wind 1" to="Bloco_Jogavel/SalaC/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/wind 1" to="Bloco_Jogavel/SalaC/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/wind 2" to="Bloco_Jogavel/SalaC/wind 2" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/wind 2" to="Bloco_Jogavel/SalaC/wind 2" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/wind 3" to="Bloco_Jogavel/SalaC/wind 3" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/wind 3" to="Bloco_Jogavel/SalaC/wind 3" method="_on_body_exited"]
+[connection signal="body_entered" from="Bloco_Jogavel/SalaC/wind 4" to="Bloco_Jogavel/SalaC/wind 4" method="_on_body_entered"]
+[connection signal="body_exited" from="Bloco_Jogavel/SalaC/wind 4" to="Bloco_Jogavel/SalaC/wind 4" method="_on_body_exited"]

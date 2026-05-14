@@ -1,7 +1,6 @@
 extends Area3D
 @export var WIND_DIRECTION : Vector3
-@export var WIND_POWER_V: float
-@export var WIND_POWER_H: float
+@export var WIND_POWER: float
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
@@ -13,8 +12,8 @@ func _on_body_entered(body: Node3D) -> void:
 		var vertical = up * dir.dot(up)
 		var horizontal = dir - vertical
 		
-		var wind_v = vertical * WIND_POWER_V
-		var wind_h = horizontal * WIND_POWER_H
+		var wind_v = vertical * WIND_POWER
+		var wind_h = horizontal * WIND_POWER
 		
 		body.WIND_FORCE = wind_v + wind_h
 
