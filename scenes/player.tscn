@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bs266gj3ylk0r"]
 
-[ext_resource type="Script" uid="uid://8yyxkmsolpi4" path="res://scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://p832wdur42de" path="res://scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://cqjodg3ikhnou" path="res://scripts/raycasts.gd" id="3_sweqy"]
+[ext_resource type="AudioStream" uid="uid://bmhubgnak1hkk" path="res://sounds/Dash.wav" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://e4s66hsq1boe" path="res://sounds/Landing.wav" id="5_fjrip"]
+[ext_resource type="AudioStream" uid="uid://dwmk8up72xpaw" path="res://sounds/Background.mp3" id="6_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
@@ -59,3 +62,18 @@ collide_with_bodies = false
 target_position = Vector3(0, -5, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="SoundEffects" type="Node3D" parent="." unique_id=565224511]
+
+[node name="Dash" type="AudioStreamPlayer" parent="SoundEffects" unique_id=8446185]
+stream = ExtResource("4_tuyoq")
+volume_db = -17.0
+
+[node name="Landing" type="AudioStreamPlayer" parent="SoundEffects" unique_id=643493348]
+stream = ExtResource("5_fjrip")
+volume_db = -5.0
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="SoundEffects" unique_id=1225786936]
+stream = ExtResource("6_smehm")
+volume_db = -31.0
+autoplay = true
