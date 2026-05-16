@@ -1,10 +1,8 @@
 extends CharacterBody3D
-@onready var camera = $Camera3D
+@onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = $UI/ui_entered_portal
 @onready var raycasts = $Raycasts
-@onready var Dash = $SoundEffects/Dash as AudioStreamPlayer
-@onready var Landing = $SoundEffects/Landing as AudioStreamPlayer	
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 25.0
@@ -73,7 +71,6 @@ var SIDE_OF_PORTAL : String
 # Constantes: Estados/Ações do Player
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
 var state : STATE = STATE.GROUNDED
-var was_on_floor := false # Incrivelmente nao temos uma função de detectar qnd pisa no chao
 
 # Variáveis: Orientação da Câmera
 var _orientation : Basis
@@ -175,11 +172,6 @@ func _physics_process(delta : float) -> void:
 		dash_ground_timer -= delta
 	
 	move_and_slide()
-	#a Detecta Landing (Aterrissagem, para os tolos)
-	if !was_on_floor and is_on_floor():
-		Landing.play()
-
-	was_on_floor = is_on_floor()
 
 
 ## FÍSICA DO PLAYER
@@ -237,7 +229,6 @@ func _physics_dashing(delta: float):
 	match dash_phase:
 		# fase de impulso inicial
 		DashPhase.START:
-			Dash.play()
 			velocity_v = Vector3.ZERO # Zera a velocidade vertical
 			velocity_h += dir * DASH_IMPULSE #impulso apenas na horizontal
 			velocity = velocity_h + velocity_v

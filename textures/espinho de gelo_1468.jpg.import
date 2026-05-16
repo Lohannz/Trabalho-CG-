@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3jt36esre6jk"
-path.s3tc="res://.godot/imported/Cube Base Color.png-3b1421b771e175119163118ef3bb1448.s3tc.ctex"
+uid="uid://yl4dtymt47wj"
+path.s3tc="res://.godot/imported/espinho de gelo_1468.jpg-e12472f7599b30cdb7aa35d127d0a772.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "325269037ab606a35ca5676d434a021c"
+}
 
 [deps]
 
-source_file="res://models/import/textures/Cube Base Color.png"
-dest_files=["res://.godot/imported/Cube Base Color.png-3b1421b771e175119163118ef3bb1448.s3tc.ctex"]
+source_file="res://textures/espinho de gelo_1468.jpg"
+dest_files=["res://.godot/imported/espinho de gelo_1468.jpg-e12472f7599b30cdb7aa35d127d0a772.s3tc.ctex"]
 
 [params]
 

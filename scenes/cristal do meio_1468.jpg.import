@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yl4dtymt47wj"
-path.s3tc="res://.godot/imported/espinho de gelo_1468.jpg-df6f8acba885bfa91418fd167279d2ef.s3tc.ctex"
+uid="uid://dw6nun6vbfqjd"
+path.s3tc="res://.godot/imported/cristal do meio_1468.jpg-1be6c8215495351d2c7232efbb851c40.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/import/textures/espinho de gelo_1468.jpg"
-dest_files=["res://.godot/imported/espinho de gelo_1468.jpg-df6f8acba885bfa91418fd167279d2ef.s3tc.ctex"]
+source_file="res://scenes/cristal do meio_1468.jpg"
+dest_files=["res://.godot/imported/cristal do meio_1468.jpg-1be6c8215495351d2c7232efbb851c40.s3tc.ctex"]
 
 [params]
 

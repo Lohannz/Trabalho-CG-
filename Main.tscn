@@ -4,13 +4,12 @@
 [ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://xaglbkocqp46" path="res://models/import/arvore de gelo.glb" id="7_5vvyt"]
 [ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://b1penju832q8m" path="res://scenes/FasePrototipo/bloco_jogavel.tscn" id="7_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://bs266gj3ylk0r" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="9_c2ibq"]
-[ext_resource type="PackedScene" uid="uid://b2dwmjlmmt7aq" path="res://scenes/FasePrototipo/salaB_FasePrototipo.tscn" id="9_wkp8b"]
-[ext_resource type="PackedScene" uid="uid://cqdcm837m706n" path="res://scenes/FasePrototipo/salaC_FasePrototipo.tscn" id="10_20pc6"]
 [ext_resource type="PackedScene" uid="uid://b5s20xe44pnk8" path="res://scenes/objetos/cristal_do_meio.tscn" id="10_j4qnp"]
-[ext_resource type="PackedScene" uid="uid://bhtpvr0mxp4lm" path="res://scenes/FasePrototipo/salaA_FasePrototipo.tscn" id="10_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
+[ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="12_5vvyt"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -42,6 +41,13 @@ func _get_spawnpoint_position(name) -> Vector3:
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
 size = Vector3(2.8, 4.1, 0.26913452)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
+albedo_color = Color(1, 0.45021433, 0.17228884, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
+material = SubResource("StandardMaterial3D_trn2v")
+size = Vector3(6, 8, 0.5)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_trn2v"]
 height = 50.0
 radius = 10.0
@@ -54,13 +60,6 @@ top_radius = 10.0
 bottom_radius = 10.0
 height = 50.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
-albedo_color = Color(1, 0.45021433, 0.17228884, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_03owx"]
-material = SubResource("StandardMaterial3D_trn2v")
-size = Vector3(6, 8, 0.5)
-
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
 background_color = Color(0.09019608, 0.74509805, 0.98039216, 1)
@@ -69,171 +68,31 @@ ambient_light_color = Color(1, 1, 1, 1)
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = SubResource("GDScript_3dxm6")
 
+[node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.457355, 12.7935705, 167.06464)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=460465529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.56326, 7.108468, 243.96823)
+script = ExtResource("12_5vvyt")
+
 [node name="BLOCOS" type="Node" parent="." unique_id=1912548303]
 
 [node name="Zona_Testes" parent="BLOCOS" unique_id=852784985 instance=ExtResource("1_20pc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.51665, 0, 172.1634)
 
-[node name="Bloco_Jogavel" type="Node3D" parent="BLOCOS" unique_id=813076414]
+[node name="cristal do meio" parent="BLOCOS/Zona_Testes" unique_id=1930203238 instance=ExtResource("10_j4qnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.861969, -9.566168, 33.49431)
 
-[node name="SalaA" parent="BLOCOS/Bloco_Jogavel" unique_id=1708794515 instance=ExtResource("10_wkp8b")]
+[node name="espinho de gelo" parent="BLOCOS/Zona_Testes" unique_id=2121288956 instance=ExtResource("11_fpfj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005279541, -4.5262823, 33.49431)
 
-[node name="PortalAzulA" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaA" unique_id=943555267 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -692.02893, 30.813488, -4.421131)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaB/PortalAzulB")
-numFace = 1
+[node name="dash_crystal2" parent="BLOCOS/Zona_Testes" unique_id=1371341528 instance=ExtResource("9_c2ibq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.344727, 3.632296, 35.313858)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" unique_id=217051392]
-transform = Transform3D(-1.7484165e-07, 0, 3.9999108, 0, 4, 0, -3.9999108, 0, -1.7484165e-07, -1.8149414, 3.809288, 0.7053585)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="PortalRoxoA" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaA" unique_id=2135695204 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -638.3289, 79.5135, -4.221125)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaC/PortalRoxoC")
-numFace = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" unique_id=1294658271]
-transform = Transform3D(1.4210855e-14, 1.7484555e-07, 3.9999087, 3.9999099, -1.7484561e-07, 5.684342e-14, 1.7484159e-07, 3.9999988, -1.7484155e-07, 2.2788467, 0.4092803, 0.5053711)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="SalaB" parent="BLOCOS/Bloco_Jogavel" unique_id=610309956 instance=ExtResource("9_wkp8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.09999, 0, -71.9)
-
-[node name="PortalAzulB" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=126536491 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -481.02893, 31.813488, 59.57887)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaA/PortalAzulA")
-numFace = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" unique_id=859891722]
-transform = Transform3D(3.9999113, 0, 0, 0, 4, 0, 0, 0, 3.9999113, 0.28503418, 3.809288, 0.7053585)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="PortalVerdeB" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=558990241 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.9106853e-15, 4.371139e-08, 0.99999994, 0.99999994, -4.371139e-08, 0, 4.3711385e-08, 1, -4.3711385e-08, -480.92896, 76.91349, -46.621124)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaC/PortalVerdeC")
-numFace = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" unique_id=1013254506]
-transform = Transform3D(-1.7484159e-07, 0, 3.9999099, 5.684342e-14, 4, 5.684342e-14, -3.9999099, 0, -1.7484159e-07, 0.7850342, 1.3092804, 0.5053711)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="wind 1" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaB" unique_id=192862575]
-transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 35.399998, -61)
-script = ExtResource("7_lgr22")
-WIND_DIRECTION = Vector3(0, 1, 0)
-WIND_POWER = 300.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB/wind 1" unique_id=326912896]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("CylinderShape3D_trn2v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaB/wind 1" unique_id=441273886]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_lgr22")
-transparency = 0.7
-mesh = SubResource("CylinderMesh_trn2v")
-
-[node name="SalaC" parent="BLOCOS/Bloco_Jogavel" unique_id=2073761037 instance=ExtResource("10_20pc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 38.5, -59)
-
-[node name="PortalRoxoC" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=421216360 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -405.12897, 57.313484, 34.07887)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaA/PortalRoxoA")
-numFace = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" unique_id=1390033840]
-transform = Transform3D(-1.748416e-07, -3.9999955, 0, 3.999911, -1.748454e-07, 0, 0, 0, 3.9999137, -1.7149658, -1.8907089, 5.9053364)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="PortalVerdeC" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=897912829 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -508.22894, 54.01348, -45.621124)
-script = ExtResource("6_3dxm6")
-destination = NodePath("../../SalaB/PortalVerdeB")
-numFace = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" unique_id=837432794]
-transform = Transform3D(7.642469e-15, 1.7484385e-07, 3.999882, 3.9999106, -1.7484555e-07, 0, 1.7483994e-07, 3.9999714, -1.7483994e-07, -0.014892578, 0.50572205, 1.5386963)
-shape = SubResource("BoxShape3D_3dxm6")
-
-[node name="wind 1" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=1499615931]
-transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -482, 54.899994, -2.300003)
-script = ExtResource("7_lgr22")
-WIND_DIRECTION = Vector3(1, 0, 0)
-WIND_POWER = 300.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 1" unique_id=209443536]
-transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
-shape = SubResource("CylinderShape3D_trn2v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 1" unique_id=1685026923]
-transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
-material_override = SubResource("StandardMaterial3D_lgr22")
-transparency = 0.7
-mesh = SubResource("CylinderMesh_trn2v")
-
-[node name="wind 2" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=491648110]
-transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -406, 54.899994, -26.300003)
-script = ExtResource("7_lgr22")
-WIND_DIRECTION = Vector3(0, 0, -1)
-WIND_POWER = 300.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 2" unique_id=464441768]
-transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
-shape = SubResource("CylinderShape3D_trn2v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 2" unique_id=1543816493]
-transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
-material_override = SubResource("StandardMaterial3D_lgr22")
-transparency = 0.7
-mesh = SubResource("CylinderMesh_trn2v")
-
-[node name="wind 3" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=978807471]
-transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -428, 54.899994, -37.300003)
-script = ExtResource("7_lgr22")
-WIND_DIRECTION = Vector3(0, 0, -1)
-WIND_POWER = 300.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 3" unique_id=1935051625]
-transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
-shape = SubResource("CylinderShape3D_trn2v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 3" unique_id=537172358]
-transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
-material_override = SubResource("StandardMaterial3D_lgr22")
-transparency = 0.7
-mesh = SubResource("CylinderMesh_trn2v")
-
-[node name="wind 4" type="Area3D" parent="BLOCOS/Bloco_Jogavel/SalaC" unique_id=1792061933]
-transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, -389, 54.899994, -70.3)
-script = ExtResource("7_lgr22")
-WIND_DIRECTION = Vector3(-1, 0, 0)
-WIND_POWER = 300.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 4" unique_id=2081318782]
-transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
-shape = SubResource("CylinderShape3D_trn2v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BLOCOS/Bloco_Jogavel/SalaC/wind 4" unique_id=1232699594]
-transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
-material_override = SubResource("StandardMaterial3D_lgr22")
-transparency = 0.7
-mesh = SubResource("CylinderMesh_trn2v")
+[node name="Bloco_Jogavel" parent="BLOCOS" unique_id=1514583003 instance=ExtResource("7_wkp8b")]
 
 [node name="arvore de gelo" parent="BLOCOS" unique_id=1305478869 instance=ExtResource("7_5vvyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.40965, 3.6609993, 225.87805)
-
-[node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.457355, 12.7935705, 167.06464)
 
 [node name="Portals" type="Node3D" parent="." unique_id=607137968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.107197, -1.5855942, 44.99829)
@@ -316,15 +175,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 3.4934387, 864.21)
 [node name="SIX" type="Node3D" parent="Spawnpoints" unique_id=1412533504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.61252, 9.705299, 187.51863)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
-environment = SubResource("Environment_cm0pq")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
-transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, 108.833755)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
-transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
-
 [node name="Wind" type="Node3D" parent="." unique_id=1938780482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.99384, 27.952326, 239.38324)
 
@@ -379,37 +229,15 @@ material_override = SubResource("StandardMaterial3D_lgr22")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_trn2v")
 
-[node name="cristal do meio" parent="." unique_id=1930203238 instance=ExtResource("10_j4qnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.65468, -9.566168, 205.65771)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
+environment = SubResource("Environment_cm0pq")
 
-[node name="espinho de gelo" parent="." unique_id=2121288956 instance=ExtResource("11_fpfj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.51137, -4.5262823, 205.65771)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
+transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, 108.833755)
 
-[node name="dash_crystal2" parent="." unique_id=1371341528 instance=ExtResource("9_c2ibq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.17192, 3.632296, 207.47726)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
+transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
 
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalAzulA" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" to="BLOCOS/Bloco_Jogavel/SalaA/PortalRoxoA" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalAzulB" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" to="BLOCOS/Bloco_Jogavel/SalaB/PortalVerdeB" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaB/wind 1" to="BLOCOS/Bloco_Jogavel/SalaB/wind 1" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaB/wind 1" to="BLOCOS/Bloco_Jogavel/SalaB/wind 1" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalRoxoC" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" to="BLOCOS/Bloco_Jogavel/SalaC/PortalVerdeC" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 1" to="BLOCOS/Bloco_Jogavel/SalaC/wind 1" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 1" to="BLOCOS/Bloco_Jogavel/SalaC/wind 1" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 2" to="BLOCOS/Bloco_Jogavel/SalaC/wind 2" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 2" to="BLOCOS/Bloco_Jogavel/SalaC/wind 2" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 3" to="BLOCOS/Bloco_Jogavel/SalaC/wind 3" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 3" to="BLOCOS/Bloco_Jogavel/SalaC/wind 3" method="_on_body_exited"]
-[connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC/wind 4" method="_on_body_entered"]
-[connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC/wind 4" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
 [connection signal="body_entered" from="Portals/portal 2" to="Portals/portal 2" method="_on_body_entered"]

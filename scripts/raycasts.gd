@@ -1,6 +1,6 @@
 extends Node3D
 @onready var raycasts := $".".get_children()
-@onready var camera = $/root/Principal/player/Camera3D
+@onready var camera = get_tree().current_scene.get_node("Camera3D")
 ## variavel que o pai(player) ver para identificar o sentido do portal que vai ser pego
 var SIDE : String 
 

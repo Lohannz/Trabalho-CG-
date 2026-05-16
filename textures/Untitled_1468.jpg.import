@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5kiaphwmihw"
-path="res://.godot/imported/cateyesmatLayer03.png-30980d3e6900c65eace34cfa38ae3f75.ctex"
+uid="uid://cjfqnk8es7553"
+path.s3tc="res://.godot/imported/Untitled_1468.jpg-98c130ac23a71c9c6e124d1633fa14a2.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "325269037ab606a35ca5676d434a021c"
 }
 
 [deps]
 
-source_file="res://models/import/textures/cateyesmatLayer03.png"
-dest_files=["res://.godot/imported/cateyesmatLayer03.png-30980d3e6900c65eace34cfa38ae3f75.ctex"]
+source_file="res://textures/Untitled_1468.jpg"
+dest_files=["res://.godot/imported/Untitled_1468.jpg-98c130ac23a71c9c6e124d1633fa14a2.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

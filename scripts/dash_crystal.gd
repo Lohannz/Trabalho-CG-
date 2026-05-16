@@ -3,17 +3,12 @@ extends Area3D
 @onready var mesh = $MeshInstance3D
 @onready var collision_shape = $CollisionShape3D
 @onready var respawn_timer = $RespawnTimer
-@onready var main = get_tree().current_scene
-var camera : Camera3D
+@onready var camera : Camera3D = get_tree().current_scene.get_node("Camera3D")
 
 func _ready() -> void:
 	# Conectando os sinais via código
 	body_entered.connect(_on_body_entered)
 	respawn_timer.timeout.connect(_on_respawn_timeout)
-	for child in main.get_children():
-		if child.name == "player":
-			if(child.get_node("Camera3D")):
-				camera = child.get_node("Camera3D")
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("restore_dash"):

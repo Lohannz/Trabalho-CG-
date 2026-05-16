@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bs266gj3ylk0r"]
 
-[ext_resource type="Script" uid="uid://p832wdur42de" path="res://scripts/player.gd" id="1_i3pqv"]
-[ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://8yyxkmsolpi4" path="res://scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://cqjodg3ikhnou" path="res://scripts/raycasts.gd" id="3_sweqy"]
 [ext_resource type="AudioStream" uid="uid://bmhubgnak1hkk" path="res://sounds/Dash.wav" id="4_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://e4s66hsq1boe" path="res://sounds/Landing.wav" id="5_fjrip"]
@@ -13,10 +12,6 @@
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
 script = ExtResource("1_i3pqv")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=233139283]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 7.108468, 18.216797)
-script = ExtResource("2_hqtel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
 transform = Transform3D(3.2, 0, 0, 0, 3.2, 0, 0, 0, 3.2, 0, 0, 0)

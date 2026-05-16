@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tk38fhhrvuf"
-path.s3tc="res://.godot/imported/leonan sky.png-ffb984a55fee6fb499b3852895a368b2.s3tc.ctex"
+uid="uid://d4iud8571cdhh"
+path.s3tc="res://.godot/imported/espinho de gelo_1468.jpg-3de256694be861b4fb0a67ae74693bda.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "325269037ab606a35ca5676d434a021c"
+}
 
 [deps]
 
-source_file="res://models/import/textures/leonan sky.png"
-dest_files=["res://.godot/imported/leonan sky.png-ffb984a55fee6fb499b3852895a368b2.s3tc.ctex"]
+source_file="res://scenes/espinho de gelo_1468.jpg"
+dest_files=["res://.godot/imported/espinho de gelo_1468.jpg-3de256694be861b4fb0a67ae74693bda.s3tc.ctex"]
 
 [params]
 
