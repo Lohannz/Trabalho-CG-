@@ -63,6 +63,7 @@ var WIND_FORCE : Vector3 = Vector3.ZERO
 #Congela o player
 var FREEZE : bool = false
 
+
 # Parâmetros de Interação com Portais
 var SIDE_OF_PORTAL : String
 
@@ -87,10 +88,12 @@ var move_direction : Vector3 = Vector3.ZERO
 
 # Variáveis: Orientação da Cubo
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
-@export var current_face = FACE.SIX
+@export var current_face = FACE.ONE
+
+enum Spawnpoint{ONE, TWO, THREE, FOUR, FIVE, SIX}
+var current_spawnpoint =  Spawnpoint.ONE
+
 #TODO: A câmera poderia ter o enum FACE
-
-
 ## INTERAÇÃO COM PORTAIS
 func _on_portal_nearby(is_near : bool) -> void:
 	PORTAL_UI.visible = is_near
@@ -100,14 +103,15 @@ func _on_portal_nearby(is_near : bool) -> void:
 func _on_portal_entered(destination : Vector3, face : int) -> void:
 	# Mudando a FACE do cubo para o PLAYER
 	global_position = destination
-	current_face = face # Essa variável da apontando como não usada? Fernando aq, e ela n ta sendo usada
+	current_face = face
+	current_spawnpoint = face
 	PORTAL_UI.visible = false
 	
 	# Mudando a orientação com base na nova FACE
 	velocity = Vector3.ZERO
 	camera._change_orientation(SIDE_OF_PORTAL)
 	FREEZE = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.95).timeout
 	FREEZE = false
 	
 
@@ -173,6 +177,13 @@ func _physics_process(delta : float) -> void:
 	
 	move_and_slide()
 
+## Função que gerencia o que acontece quando o player morre
+func die() -> void:
+	print("morreu!")
+	velocity = Vector3.ZERO
+	var spawn_name = Spawnpoint.keys()[current_spawnpoint]
+	global_position = get_parent()._get_spawnpoint_position(spawn_name)
+	
 
 ## FÍSICA DO PLAYER
 # Lógica da Física: MOMENTO
@@ -205,7 +216,6 @@ func _physics_momentum(delta: float, limit: float, accel: float, friction: float
 	# Clamp final
 	velocity_h = velocity_h.limit_length(TERMINAL_SPEED)
 	velocity = velocity_h + velocity_v
-
 
 # Lógica da Física: DASH
 # TODO: limitar a velocidade semelhante ao controle do momentum, mas com um limite maior.
@@ -257,9 +267,6 @@ func _physics_dashing(delta: float):
 	if dash_timer <= 0.0:
 		state = STATE.AIRBORNE
 
-
-
-
 # Lógica da Física: CLIMB
 func _physics_climbing():
 	var normal = get_wall_normal().normalized()
@@ -283,7 +290,6 @@ func _physics_steady():
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal()
 	return move_direction.dot(-normal) > 0.1
-	
 
 func _update_state(delta : float):
 	var fatigue = 0.0
@@ -318,7 +324,6 @@ func _update_state(delta : float):
 
 	stamina = clamp(stamina + fatigue * delta, -50.0, 100.0)
 
-
 ## AÇÕES DO PLAYER
 # Controlade do Sistema: AÇÕES
 func _handle_actions():
@@ -342,7 +347,6 @@ func _handle_actions():
 		_execute_dash()
 		input.dash.consume()
 		state = STATE.DASHING
-		
 		
 func _can_jump():
 	return state not in [STATE.AIRBORNE, STATE.DASHING]
@@ -417,8 +421,6 @@ func _handle_gravity(delta : float):
 				
 		if speed_v > terminal_speed:
 			velocity -= up * gravity * delta #* friction * delta
-			
-
 
 # Controle do Sistema: MOVIMENTAÇÃO E MOMENTO
 func _handle_movement(delta : float):
@@ -435,7 +437,6 @@ func _handle_movement(delta : float):
 			_physics_climbing()
 		STATE.STEADY:
 			_physics_steady()
-
 
 func _change_gravity(newUp : Vector3):
 	print("Recebi o signal - newUp: ", newUp)

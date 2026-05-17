@@ -9,6 +9,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
 size = Vector3(2.8, 4.1, 0.26913452)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmfuu"]
+size = Vector3(74.143585, 1, 46.16507)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_trn2v"]
 height = 50.0
 radius = 10.0
@@ -44,6 +47,16 @@ numFace = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SalaA/PortalRoxoA" unique_id=366448045]
 transform = Transform3D(1.4210855e-14, 1.7484555e-07, 3.9999087, 3.9999099, -1.7484561e-07, 5.684342e-14, 1.7484159e-07, 3.9999988, -1.7484155e-07, 2.2788467, 0.4092803, 0.5053711)
 shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SalaA" unique_id=670528030]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaA/StaticBody3D" unique_id=430482996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -658.14343, -1.1141167, -32.79348)
+shape = SubResource("BoxShape3D_xmfuu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SalaA/StaticBody3D" unique_id=678766400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -658.14343, -1.1141167, 25.459465)
+shape = SubResource("BoxShape3D_xmfuu")
 
 [node name="SalaB" parent="." unique_id=610309956 instance=ExtResource("3_ngv5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.09999, 0, -71.9)

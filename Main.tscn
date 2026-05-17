@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bs266gj3ylk0r" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="9_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://b5s20xe44pnk8" path="res://scenes/objetos/cristal_do_meio.tscn" id="10_j4qnp"]
+[ext_resource type="Script" uid="uid://mx710v6xnlcx" path="res://mata_se_encostar.gd" id="11_20pc6"]
 [ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
 [ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="12_5vvyt"]
 
@@ -16,22 +17,22 @@ script/source = "extends Node3D
 @export var Face := 1
 @onready var player := $player
 @onready var spawnpoints := $Spawnpoints.get_children()
+@onready var camera : Camera3D = $Camera3D
 
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
 
 # Ao iniciar cena, faz com que o player spawne no spawnpoint da current_face que ele está 
 # Player tem propriedade current_face que diz qual lado do cubo ele está
 func _ready() -> void:
-	# os spawnpoints tem os nomes da face(ex. ONE, TWO...)
-	var player_current_face = FACE.keys()[player.current_face] 
-	var current_spawn_position = _get_spawnpoint_position(player_current_face)
+	
+	var current_face = player.current_face
+	var player_current_spawnpoint = FACE.keys()[player.current_spawnpoint] 
+	var current_spawn_position = _get_spawnpoint_position(player_current_spawnpoint)
 	
 	player.position = current_spawn_position
 
 func _get_spawnpoint_position(name) -> Vector3:
 	for child in spawnpoints:
-		print(child.name)
-		print(name)
 		if child.name == str(name):
 			return child.global_position
 	return Vector3.ZERO
@@ -237,6 +238,13 @@ transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.859
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
+[node name="Mata se encostar" type="Node3D" parent="." unique_id=2045084599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -655.50995, 26.883495, -4.2197123)
+script = ExtResource("11_20pc6")
+
+[node name="espinho de gelo" parent="Mata se encostar" unique_id=573254198 instance=ExtResource("11_fpfj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.163391, -15.612507, 0)
 
 [connection signal="body_entered" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Portals/portal 1" to="Portals/portal 1" method="_on_body_exited"]
