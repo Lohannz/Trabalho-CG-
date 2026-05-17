@@ -18,6 +18,11 @@ config/name="teste jogo cg"
 run/main_scene="uid://mjwsijkcjeis"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[global_group]
+
+light_sensitive=""
+Moveble=""
+
 [input]
 
 move_left={

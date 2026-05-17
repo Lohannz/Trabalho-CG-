@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@onready var camera = $Camera3D
+@onready var camera = $"../Camera3D"
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = $UI/ui_entered_portal
 @onready var raycasts = $Raycasts
@@ -100,14 +100,14 @@ func _on_portal_nearby(is_near : bool) -> void:
 func _on_portal_entered(destination : Vector3, face : int) -> void:
 	# Mudando a FACE do cubo para o PLAYER
 	global_position = destination
-	current_face = face # Essa variável da apontando como não usada? Fernando aq, e ela n ta sendo usada
+	current_face = face # Essa variável da apontando como não usada? Fernando aq, e ela n ta sendo usada. Leo aqui, ainda nao ta sendo usada, mas vai ser, someday
 	PORTAL_UI.visible = false
 	
 	# Mudando a orientação com base na nova FACE
 	velocity = Vector3.ZERO
 	camera._change_orientation(SIDE_OF_PORTAL)
 	FREEZE = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	FREEZE = false
 	
 
@@ -147,7 +147,7 @@ func _ready() -> void:
 	_update_orientation()
 	
 	PORTAL_UI.visible = false
-	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
+	camera.orientation_changed.connect(_change_gravity) #captura um signal quando o up muda
 	for portal in get_tree().get_nodes_in_group("Portals"):
 		portal.player_entered.connect(_on_portal_entered)
 		portal.player_nearby.connect(_on_portal_nearby)
@@ -256,9 +256,6 @@ func _physics_dashing(delta: float):
 	# termina o estado de dash
 	if dash_timer <= 0.0:
 		state = STATE.AIRBORNE
-
-
-
 
 # Lógica da Física: CLIMB
 func _physics_climbing():
@@ -437,7 +434,5 @@ func _handle_movement(delta : float):
 			_physics_steady()
 
 
-func _change_gravity(newUp : Vector3):
-	print("Recebi o signal - newUp: ", newUp)
-	up_direction = newUp
-	#gravity = -UP
+func _change_gravity(newOrientation : Basis):
+	up_direction = newOrientation.y

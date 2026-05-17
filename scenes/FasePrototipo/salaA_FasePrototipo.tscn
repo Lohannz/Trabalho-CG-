@@ -1,5 +1,20 @@
-[gd_scene format=3 uid="uid://bhtpvr0mxp4lm"]
+[gd_scene format=3 uid="uid://h7l63eosw3qr"]
 
-[ext_resource type="PackedScene" uid="uid://dbay6wqc7eouc" path="res://models/import/Modelos Bloco Jogavel/SalaA.glb" id="1_8n1wn"]
+[ext_resource type="PackedScene" uid="uid://b8wgpiccww4jp" path="res://models/import/prototipo_certin/SalaA_prototipo.glb" id="1_lhhte"]
+[ext_resource type="Script" uid="uid://cccpuvg8gskpe" path="res://scripts/MoveObj.gd" id="2_7axol"]
 
-[node name="SalaA" unique_id=1708794515 instance=ExtResource("1_8n1wn")]
+[node name="SalaA_prototipo" unique_id=1963309915 instance=ExtResource("1_lhhte")]
+
+[node name="StaticBody3D" parent="plataforma_006" parent_id_path=PackedInt32Array(1011311251) index="0" unique_id=453936103 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_004" parent_id_path=PackedInt32Array(179201004) index="0" unique_id=1116092562 groups=["light_sensitive"]]
+
+[node name="Cubo" parent="." index="11" unique_id=1534538831 groups=["Moveble"]]
+script = ExtResource("2_7axol")
+center = Vector3(-30, 20, 0)
+radius = 10.0
+speed = 1.5
+
+[node name="StaticBody3D" parent="Cubo" index="0" unique_id=732893789 groups=["Moveble"]]
+
+[node name="CollisionShape3D" parent="Cubo/StaticBody3D" index="0" unique_id=1296290797 groups=["Moveble"]]
