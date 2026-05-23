@@ -1,10 +1,7 @@
-[gd_scene format=3 uid="uid://bs266gj3ylk0r"]
+[gd_scene format=3 uid="uid://dthroltbx82l7"]
 
-[ext_resource type="Script" uid="uid://8yyxkmsolpi4" path="res://scripts/player.gd" id="1_i3pqv"]
-[ext_resource type="Script" uid="uid://cqjodg3ikhnou" path="res://scripts/raycasts.gd" id="3_sweqy"]
-[ext_resource type="AudioStream" uid="uid://bmhubgnak1hkk" path="res://sounds/Dash.wav" id="4_tuyoq"]
-[ext_resource type="AudioStream" uid="uid://e4s66hsq1boe" path="res://sounds/Landing.wav" id="5_fjrip"]
-[ext_resource type="AudioStream" uid="uid://dwmk8up72xpaw" path="res://sounds/Background.mp3" id="6_smehm"]
+[ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="3_sweqy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
@@ -26,14 +23,6 @@ mesh = SubResource("CapsuleMesh_hdyhr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1846793232]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ekxg2")
-
-[node name="UI" type="Node3D" parent="." unique_id=431969954]
-
-[node name="ui_entered_portal" type="Label3D" parent="UI" unique_id=541963968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.540317, 18.446838)
-pixel_size = 0.02
-modulate = Color(0.5711475, 0.08250991, 0.8905668, 1)
-text = "Vai entrar no portal ou não? Se sim aperta 'U' kkkk"
 
 [node name="Raycasts" type="Node3D" parent="." unique_id=2054255546]
 script = ExtResource("3_sweqy")
@@ -57,18 +46,3 @@ collide_with_bodies = false
 target_position = Vector3(0, -5, 0)
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="SoundEffects" type="Node3D" parent="." unique_id=565224511]
-
-[node name="Dash" type="AudioStreamPlayer" parent="SoundEffects" unique_id=8446185]
-stream = ExtResource("4_tuyoq")
-volume_db = -17.0
-
-[node name="Landing" type="AudioStreamPlayer" parent="SoundEffects" unique_id=643493348]
-stream = ExtResource("5_fjrip")
-volume_db = -5.0
-
-[node name="Soundtrack" type="AudioStreamPlayer" parent="SoundEffects" unique_id=1225786936]
-stream = ExtResource("6_smehm")
-volume_db = -31.0
-autoplay = true

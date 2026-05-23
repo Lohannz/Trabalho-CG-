@@ -22,7 +22,7 @@ func has_movement():
 	return move.length_squared() > DEADZONE
 	
 func update(delta: float):
-	move = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	move = Input.get_vector("move_left", "move_right", "", "")
 	jump.update(delta, Input.is_action_pressed("action_jump"))
 	dash.update(delta, Input.is_action_just_pressed("action_dash"))
 	climb.update(delta, Input.is_action_pressed("action_climb"))

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://durxqdqtosm88"]
 
 [ext_resource type="Script" uid="uid://bdqmleiiw6ngl" path="res://scripts/dash_crystal.gd" id="1_r4dwi"]
-[ext_resource type="Texture2D" uid="uid://hhpwu0is8wjn" path="res://textures/cristal do meio_1468.jpg" id="2_01ofj"]
+[ext_resource type="Texture2D" uid="uid://hhpwu0is8wjn" path="res://models/import/textures/cristal do meio_1468.jpg" id="2_01ofj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wkp8b"]
 radius = 1.5

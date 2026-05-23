@@ -1,5 +1,207 @@
-[gd_scene format=3 uid="uid://b2dwmjlmmt7aq"]
+[gd_scene format=3 uid="uid://dctupl31nl40m"]
 
-[ext_resource type="PackedScene" uid="uid://ckwo734bidyop" path="res://models/import/Modelos Bloco Jogavel/SalaB.glb" id="1_hrjx6"]
+[ext_resource type="PackedScene" uid="uid://dwdjyfpb28blj" path="res://models/import/prototipo_certin/SalaB_prototipo.glb" id="1_omgo2"]
+[ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_1fhuw"]
+[ext_resource type="Texture2D" uid="uid://bd81e8xrh3y6" path="res://models/import/textures/icicles_ceil.png" id="3_qo4sq"]
+[ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="3_uyea2"]
+[ext_resource type="Texture2D" uid="uid://ciiuyvrpffg8k" path="res://models/import/textures/icicles_ceil_normal.png" id="4_2a0o1"]
+[ext_resource type="Texture2D" uid="uid://nmrhldkx36fn" path="res://models/import/textures/Platform_AO.png" id="4_5duaf"]
+[ext_resource type="Texture2D" uid="uid://cfqisvgvs8v56" path="res://models/import/textures/icicles_ceil_AO.png" id="5_1bpfg"]
+[ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="5_iqhm4"]
+[ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="6_qo4sq"]
+[ext_resource type="Material" uid="uid://ee4al66qhi37" path="res://models/import/materials/icicles.tres" id="9_2a0o1"]
 
-[node name="SalaB" unique_id=610309956 instance=ExtResource("1_hrjx6")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bpfg"]
+albedo_color = Color(0.8435348, 0.79792136, 0.95133334, 1)
+albedo_texture = ExtResource("3_uyea2")
+metallic = 0.15
+metallic_specular = 0.4
+metallic_texture = ExtResource("6_qo4sq")
+metallic_texture_channel = 2
+roughness = 0.85
+roughness_texture = ExtResource("6_qo4sq")
+normal_enabled = true
+normal_scale = -0.6
+normal_texture = ExtResource("5_iqhm4")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_iqhm4")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("4_5duaf")
+uv1_scale = Vector3(0.064, 0.88, -0.297)
+uv1_offset = Vector3(1.48, 0.532, -0.505)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a0o1"]
+transparency = 1
+albedo_texture = ExtResource("3_qo4sq")
+normal_enabled = true
+normal_scale = 10.82
+normal_texture = ExtResource("4_2a0o1")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("4_2a0o1")
+clearcoat_enabled = true
+clearcoat = 0.55
+clearcoat_roughness = 0.2
+clearcoat_texture = ExtResource("5_1bpfg")
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.11859901, 0.442716, 0.39033347, 1)
+uv1_scale = Vector3(0.065, 0.105, -0.135)
+uv1_offset = Vector3(-0.63, -1.13, -0.145)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo4sq"]
+albedo_color = Color(0.8435348, 0.79792136, 0.95133334, 1)
+albedo_texture = ExtResource("3_uyea2")
+metallic = 0.15
+metallic_specular = 0.4
+metallic_texture = ExtResource("6_qo4sq")
+metallic_texture_channel = 2
+roughness = 0.85
+roughness_texture = ExtResource("6_qo4sq")
+normal_enabled = true
+normal_scale = -0.6
+normal_texture = ExtResource("5_iqhm4")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_iqhm4")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("4_5duaf")
+uv1_scale = Vector3(0.054, 0.554, -0.178)
+uv1_offset = Vector3(1.48, 3.577, -0.088)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ency"]
+transparency = 1
+albedo_texture = ExtResource("3_qo4sq")
+normal_enabled = true
+normal_scale = 10.82
+normal_texture = ExtResource("4_2a0o1")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("4_2a0o1")
+clearcoat_enabled = true
+clearcoat = 0.55
+clearcoat_roughness = 0.2
+clearcoat_texture = ExtResource("5_1bpfg")
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.11859901, 0.442716, 0.39033347, 1)
+uv1_scale = Vector3(0.105, 0.12, 0.085)
+uv1_offset = Vector3(-0.445, -1.49, -0.03)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0o1m"]
+transparency = 1
+albedo_texture = ExtResource("3_qo4sq")
+normal_enabled = true
+normal_scale = 10.82
+normal_texture = ExtResource("4_2a0o1")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("4_2a0o1")
+clearcoat_enabled = true
+clearcoat = 0.55
+clearcoat_roughness = 0.2
+clearcoat_texture = ExtResource("5_1bpfg")
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.11859901, 0.442716, 0.39033347, 1)
+uv1_scale = Vector3(0.105, 0.08, 0.065)
+uv1_offset = Vector3(-0.08, -1.225, -0.36)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnyih"]
+albedo_color = Color(0, 0.78039217, 0.5372549, 0.69411767)
+emission = Color(0.17851625, 0.2256322, 0.07657768, 1)
+emission_energy_multiplier = 2.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uv4b6"]
+albedo_color = Color(0.9019973, 0.6710819, 0.25440124, 0.69411767)
+emission = Color(0.17851625, 0.2256322, 0.07657768, 1)
+emission_energy_multiplier = 2.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5t3y"]
+albedo_color = Color(0.76862746, 1, 1, 0.84705883)
+roughness = 0.7
+normal_enabled = true
+bent_normal_enabled = true
+clearcoat_enabled = true
+clearcoat = 0.85
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.2
+uv1_scale = Vector3(-0.055, 0.73, 0.1)
+uv1_offset = Vector3(0, -0.13, 0)
+
+[node name="SalaB_prototipo" unique_id=1512028510 instance=ExtResource("1_omgo2")]
+
+[node name="MeshB_exterior" parent="." index="0" unique_id=1751535463]
+material_override = ExtResource("2_1fhuw")
+
+[node name="platform_006" parent="MeshB_exterior" index="0" unique_id=551710725]
+material_override = SubResource("StandardMaterial3D_1bpfg")
+
+[node name="platform_006_icicles_001" parent="MeshB_exterior/platform_006" index="1" unique_id=698790416]
+layers = 2
+material_override = SubResource("StandardMaterial3D_2a0o1")
+
+[node name="platform_006_icicles_002" parent="MeshB_exterior/platform_006" index="2" unique_id=1678052725]
+layers = 2
+material_override = SubResource("StandardMaterial3D_2a0o1")
+
+[node name="platform_007" parent="MeshB_exterior" index="1" unique_id=2110567267]
+material_override = SubResource("StandardMaterial3D_qo4sq")
+
+[node name="platform_007_icicles_001" parent="MeshB_exterior/platform_007" index="1" unique_id=1699806321]
+layers = 2
+material_override = SubResource("StandardMaterial3D_3ency")
+
+[node name="platform_007_icicles_002" parent="MeshB_exterior/platform_007" index="2" unique_id=795538498]
+layers = 2
+material_override = SubResource("StandardMaterial3D_3ency")
+
+[node name="platform_008" parent="MeshB_exterior" index="2" unique_id=1878963133]
+material_override = ExtResource("2_1fhuw")
+
+[node name="platform_009" parent="MeshB_exterior" index="3" unique_id=309519304]
+transform = Transform3D(-4.4811677e-05, 0, 0.59043795, 0, 0.7356313, 0, -0.7356313, 0, -3.596709e-05, -0.06787848, -6.377313, -0.07599568)
+material_override = ExtResource("2_1fhuw")
+
+[node name="platform_009_icicles_001" parent="MeshB_exterior/platform_009" index="1" unique_id=964557762]
+layers = 2
+material_override = SubResource("StandardMaterial3D_i0o1m")
+
+[node name="platform_009_icicles_002" parent="MeshB_exterior/platform_009" index="2" unique_id=239000315]
+layers = 2
+material_override = SubResource("StandardMaterial3D_i0o1m")
+
+[node name="platform_009_001" parent="MeshB_exterior" index="4" unique_id=745235787]
+transform = Transform3D(-4.4811677e-05, 0, 0.59043795, 0, 0.7356313, 0, -0.7356313, 0, -3.596709e-05, -0.03574109, -6.3389015, -0.01961881)
+
+[node name="MeshB_interior" parent="." index="1" unique_id=1668451244]
+material_override = ExtResource("2_1fhuw")
+
+[node name="MeshB_icicles_001" parent="MeshB_interior" index="1" unique_id=2012208724]
+transform = Transform3D(1.0268862, 0, 0, 0, 1, 0, -7.275958e-12, 0, 0.99999845, 0, 0.6347549, -3.516674e-06)
+layers = 2
+material_override = ExtResource("9_2a0o1")
+
+[node name="MeshB_interior_icicles" parent="MeshB_interior" index="2" unique_id=1667279702]
+transform = Transform3D(1.0268862, 0, 0, 0, 1, 0, -7.275958e-12, 0, 0.99999845, 0, 0.6347549, 0)
+layers = 2
+material_override = ExtResource("9_2a0o1")
+
+[node name="portalVerde_001" parent="MeshB_interior" index="3" unique_id=436202707]
+material_override = SubResource("StandardMaterial3D_wnyih")
+
+[node name="portalVerde_002" parent="MeshB_interior" index="4" unique_id=1389585191]
+material_override = SubResource("StandardMaterial3D_uv4b6")
+
+[node name="MeshB_interior_001" parent="." index="2" unique_id=87911830]
+material_override = SubResource("StandardMaterial3D_j5t3y")

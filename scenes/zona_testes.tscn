@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://duwkvg0r1ul2o"]
+[gd_scene format=3 uid="uid://ck88qc7najwf4"]
 
 [ext_resource type="Texture2D" uid="uid://s7vvljimhsc7" path="res://models/import/textures/cagueiduro.jpg" id="1_clg2e"]
 
@@ -23,7 +23,11 @@ size = Vector3(10, 10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_20pc6"]
 size = Vector3(10, 10, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clg2e"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_trn2v"]
+material = SubResource("StandardMaterial3D_clg2e")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03owx"]

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dhca3kmwy0uhs"]
+
+[ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="1_wx8gj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_trn2v"]
+height = 50.0
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgr22"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx8gj"]
+albedo_color = Color(0, 0.5529412, 0.5529412, 0.18039216)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_trn2v"]
+material = SubResource("StandardMaterial3D_wx8gj")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 50.0
+
+[node name="wind 1" type="Area3D" unique_id=394741060]
+transform = Transform3D(1.5508842, 0, 0, 0, 0.7034511, 0, 0, 0, 1.3679622, 0, 0, 0)
+script = ExtResource("1_wx8gj")
+WIND_DIRECTION = Vector3(0, 1, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1087465202]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865382078]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

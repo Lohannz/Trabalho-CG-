@@ -1,8 +1,8 @@
 extends CharacterBody3D
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var areaDetection = $areaDetection
-@onready var PORTAL_UI = $UI/ui_entered_portal
-@onready var raycasts = $Raycasts
+@onready var PORTAL_UI = $"/root/Principal/Camera3D/UI/Control/Label"
+
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 25.0
@@ -63,11 +63,6 @@ var WIND_FORCE : Vector3 = Vector3.ZERO
 #Congela o player
 var FREEZE : bool = false
 
-
-# Parâmetros de Interação com Portais
-var SIDE_OF_PORTAL : String
-
-
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
@@ -90,31 +85,21 @@ var move_direction : Vector3 = Vector3.ZERO
 enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
 @export var current_face = FACE.ONE
 
-enum Spawnpoint{ONE, TWO, THREE, FOUR, FIVE, SIX}
-var current_spawnpoint =  Spawnpoint.ONE
+enum SPAWNPOINT{ONE, TWO, THREE, FOUR, FIVE, SIX}
+var current_spawnpoint =  SPAWNPOINT.ONE
 
-#TODO: A câmera poderia ter o enum FACE
-## INTERAÇÃO COM PORTAIS
-func _on_portal_nearby(is_near : bool) -> void:
-	PORTAL_UI.visible = is_near
-	SIDE_OF_PORTAL = raycasts.get_side()
-	print(SIDE_OF_PORTAL)
-	
-func _on_portal_entered(destination : Vector3, face : int) -> void:
-	# Mudando a FACE do cubo para o PLAYER
-	global_position = destination
-	current_face = face
-	current_spawnpoint = face
-	PORTAL_UI.visible = false
-	
-	# Mudando a orientação com base na nova FACE
+# INTERAÇÃO COM PORTAL #
+func use_portal(portal):
 	velocity = Vector3.ZERO
-	camera._change_orientation(SIDE_OF_PORTAL)
+	global_position = portal.destination.global_position
 	FREEZE = true
-	await get_tree().create_timer(0.95).timeout
+	process_mode = Node.PROCESS_MODE_DISABLED
+	current_spawnpoint = portal.numFace
+	PORTAL_UI.visible = false
+	camera._change_orientation(portal.get_normal())
+	await get_tree().create_timer(0.9).timeout
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	FREEZE = false
-	
-
 
 
 ## FUNÇÕES AUXILIARES
@@ -149,39 +134,40 @@ func _update_facing_direction(delta):
 func _ready() -> void:
 	input = PlayerInput.new()
 	_update_orientation()
-	
 	PORTAL_UI.visible = false
-	camera.up_changed.connect(_change_gravity) #captura um signal quando o up muda
-	for portal in get_tree().get_nodes_in_group("Portals"):
-		portal.player_entered.connect(_on_portal_entered)
-		portal.player_nearby.connect(_on_portal_nearby)
+	camera.orientation_changed.connect(_change_gravity) #captura um signal quando o up muda
 
 ## PROCESSOS
 func _physics_process(delta : float) -> void:
-	_update_orientation()
 	
-	_update_movement_direction(delta)
-	_update_facing_direction(delta)
-	_update_state(delta)
-	
-	_handle_gravity(delta)
-	_handle_actions()
-	_handle_movement(delta)
-	
-	if FREEZE:
+	if not FREEZE:
+		_update_orientation()
+		
+		_update_movement_direction(delta)
+		_update_facing_direction(delta)
+		_update_state(delta)
+		
+		_handle_gravity(delta)
+		_handle_actions()
+		_handle_movement(delta)
+		
+		#NAO SPAMMAR DASH NO CHAO
+		if dash_ground_timer > 0.0:
+			dash_ground_timer -= delta
+			
+		move_and_slide()
+	else:
 		velocity = Vector3.ZERO
 	
-	#NAO SPAMMAR DASH NO CHAO
-	if dash_ground_timer > 0.0:
-		dash_ground_timer -= delta
+
 	
-	move_and_slide()
+	
 
 ## Função que gerencia o que acontece quando o player morre
 func die() -> void:
 	print("morreu!")
 	velocity = Vector3.ZERO
-	var spawn_name = Spawnpoint.keys()[current_spawnpoint]
+	var spawn_name = SPAWNPOINT.keys()[current_spawnpoint]
 	global_position = get_parent()._get_spawnpoint_position(spawn_name)
 	
 
@@ -300,6 +286,11 @@ func _update_state(delta : float):
 		if stamina < 100.0: fatigue = REST_FATIGUE
 	
 	elif is_on_wall():
+		if STATE.DASHING:
+			velocity = Vector3.ZERO
+			
+		
+		
 		if input.climb.is_down and stamina > 0.0:
 			if input.has_movement():
 				state = STATE.CLIMBING
@@ -317,7 +308,7 @@ func _update_state(delta : float):
 	elif state != STATE.DASHING:
 		state = STATE.AIRBORNE
 	
-
+	
  	# Recuperação de STAMINA no vento
 	if IN_WIND:
 		fatigue = REST_FATIGUE * 0.5
@@ -438,7 +429,6 @@ func _handle_movement(delta : float):
 		STATE.STEADY:
 			_physics_steady()
 
-func _change_gravity(newUp : Vector3):
-	print("Recebi o signal - newUp: ", newUp)
-	up_direction = newUp
+func _change_gravity(newOrientation : Basis):
+	up_direction = newOrientation.y
 	#gravity = -UP

@@ -1,0 +1,30 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1vqu101oqae4"]
+
+[ext_resource type="Texture2D" uid="uid://b2f8prmi2j02t" path="res://models/import/textures/Cobble.png" id="1_44gd6"]
+[ext_resource type="Texture2D" uid="uid://clfqycm1g15hf" path="res://models/import/textures/Cobble_AO.png" id="2_7n75a"]
+[ext_resource type="Texture2D" uid="uid://chy7hltgn428f" path="res://models/import/textures/Cobble_normal.png" id="2_8ur2m"]
+[ext_resource type="Texture2D" uid="uid://bbhb5c6m0uoeo" path="res://models/import/textures/Cobble_spec.png" id="4_jnbmi"]
+
+[resource]
+albedo_color = Color(0.14847258, 0.22256717, 0.3733754, 0.7372549)
+albedo_texture = ExtResource("1_44gd6")
+metallic = 0.2
+metallic_specular = 0.0
+metallic_texture = ExtResource("4_jnbmi")
+roughness_texture = ExtResource("1_44gd6")
+normal_enabled = true
+normal_texture = ExtResource("2_8ur2m")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_8ur2m")
+rim_texture = ExtResource("1_44gd6")
+clearcoat = 0.4
+clearcoat_roughness = 0.3
+clearcoat_texture = ExtResource("1_44gd6")
+ao_enabled = true
+ao_light_affect = 0.15
+ao_texture = ExtResource("2_7n75a")
+uv1_scale = Vector3(0.106, 0.12, 0.12)
+uv1_offset = Vector3(0.01, -0.015, 0.38)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.5
+uv1_world_triplanar = true

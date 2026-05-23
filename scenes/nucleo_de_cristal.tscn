@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bate6pkhecjfr"]
+
+[ext_resource type="PackedScene" uid="uid://ddi7i8dtfhxps" path="res://models/import/Nucleo_de_Cristal.glb" id="1_t3ab4"]
+
+[node name="Nucleo_de_Cristal" unique_id=1250307743 instance=ExtResource("1_t3ab4")]
