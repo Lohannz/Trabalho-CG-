@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dthroltbx82l7"]
 
-[ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_i3pqv"]
-[ext_resource type="Script" uid="uid://dphg6oown1vfw" path="res://scripts/raycasts.gd" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://im4vrm1g5bbc" path="res://scripts/player.gd" id="1_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
 
@@ -23,26 +22,3 @@ mesh = SubResource("CapsuleMesh_hdyhr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1846793232]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ekxg2")
-
-[node name="Raycasts" type="Node3D" parent="." unique_id=2054255546]
-script = ExtResource("3_sweqy")
-
-[node name="left" type="RayCast3D" parent="Raycasts" unique_id=2103518326]
-target_position = Vector3(-5, 0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="right" type="RayCast3D" parent="Raycasts" unique_id=636456494]
-target_position = Vector3(5, 0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="up" type="RayCast3D" parent="Raycasts" unique_id=27283954]
-target_position = Vector3(0, 5, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="down" type="RayCast3D" parent="Raycasts" unique_id=1750705153]
-target_position = Vector3(0, -5, 0)
-collide_with_areas = true
-collide_with_bodies = false

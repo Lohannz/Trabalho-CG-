@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="PackedScene" uid="uid://bea0ewl38sm11" path="res://scenes/objetos/nucleo_de_cristal.tscn" id="2_c6i3y"]
-[ext_resource type="Script" uid="uid://s5ydtebjn0ed" path="res://scenes/objetos/rotate_core.gd" id="3_c2ibq"]
 [ext_resource type="Script" uid="uid://b06rd4qf0iyug" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bupt6kqok5blg" path="res://scripts/portals.gd" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://cqdcm837m706n" path="res://scenes/FasePrototipo/salaC_FasePrototipo.tscn" id="7_c6i3y"]
@@ -10,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="9_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://h7l63eosw3qr" path="res://scenes/FasePrototipo/salaA_FasePrototipo.tscn" id="10_wkp8b"]
-[ext_resource type="Script" uid="uid://b55uu0q8xtknb" path="res://scripts/light_detection.gd" id="11_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
 [ext_resource type="Shader" uid="uid://boqbt5jewa6fp" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://c8gy6tyghu5v5" path="res://scripts/kill_object.gd" id="14_c2ibq"]
+[ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="15_j4qnp"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -61,7 +59,7 @@ height = 50.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
-shader_parameter/pixel_size = 3
+shader_parameter/pixel_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_c2ibq"]
 font_size = 40
@@ -70,14 +68,15 @@ outline_size = 20
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
-background_color = Color(0.003921569, 0.16470589, 0.27450982, 1)
-background_energy_multiplier = 0.5
+background_color = Color(0.021913113, 0.38595343, 0.6061241, 1)
+background_energy_multiplier = 0.34
 ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
+tonemap_mode = 3
+glow_enabled = true
+fog_light_color = Color(0.014731812, 0.3201193, 0.52595764, 1)
+fog_light_energy = 0.15
 fog_depth_end = 3175.3
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_c2ibq"]
-height = 181.91641
-radius = 66.1
+volumetric_fog_detail_spread = 1.9318736
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = SubResource("GDScript_3dxm6")
@@ -87,9 +86,8 @@ script = SubResource("GDScript_3dxm6")
 [node name="Bloco_Jogavel" type="Node3D" parent="BLOCOS" unique_id=813076414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 601, 0, 0)
 
-[node name="Nucleo_de_Cristal" parent="BLOCOS/Bloco_Jogavel" unique_id=719794009 instance=ExtResource("2_c6i3y")]
-transform = Transform3D(1.8993137, 0.006137587, -0.0055804797, -0.005885183, 1.9492016, 0.03960546, 0.005106876, -0.036379654, 2.1210978, -649.9285, -45.781487, -201.07593)
-script = ExtResource("3_c2ibq")
+[node name="Core" parent="BLOCOS/Bloco_Jogavel" unique_id=1417270398 instance=ExtResource("15_j4qnp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -650.36566, -46.34735, -205.36534)
 
 [node name="SalaA_prototipo" parent="BLOCOS/Bloco_Jogavel" unique_id=434370503 instance=ExtResource("10_wkp8b")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -647, 0, 0)
@@ -108,7 +106,7 @@ shape = SubResource("BoxShape3D_3dxm6")
 transform = Transform3D(0.99999994, 0, -4.3711385e-08, -4.3711385e-08, 1.9106855e-15, -0.99999994, 0, 1, 1.9106853e-15, 13.772118, 37.874996, -0.33153725)
 script = ExtResource("6_3dxm6")
 destination = NodePath("../../SalaC_prototipo/PortalRoxoC")
-numFace = 2
+numFace = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaA_prototipo/PortalRoxoA" unique_id=952921251]
 transform = Transform3D(3.4968323e-07, 3.9999988, -3.496831e-07, 3.9999096, -3.4969108e-07, 1.748416e-07, 1.748416e-07, -3.4969105e-07, -3.9999084, 0.5053711, 0.40928036, -2.2788506)
@@ -121,7 +119,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -843.89856, 0, -192.109
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0.93513477, -3.1647966, 64.77367)
 script = ExtResource("6_3dxm6")
 destination = NodePath("../../SalaA_prototipo/PortalAzulA")
-numFace = 2
+numFace = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB_prototipo/PortalAzulB" unique_id=1453280712]
 transform = Transform3D(3.9999113, 0, 0, 0, 4, 0, 0, 0, 3.9999113, 0.28503418, 3.809288, -1.7888815)
@@ -131,7 +129,7 @@ shape = SubResource("BoxShape3D_3dxm6")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.7935791, 39.91972, -58.04956)
 script = ExtResource("6_3dxm6")
 destination = NodePath("../../SalaC_prototipo/PortalVerdeC")
-numFace = 2
+numFace = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaB_prototipo/PortalVerdeB" unique_id=2086929730]
 transform = Transform3D(3.99991, 0, 0, 0, 4, 0, 0, 0, 3.99991, 0.78500366, 0.5053711, -1.3092804)
@@ -174,7 +172,7 @@ shape = SubResource("BoxShape3D_3dxm6")
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -65.88882, -0.5647583, -21.713226)
 script = ExtResource("6_3dxm6")
 destination = NodePath("../../SalaB_prototipo/PortalVerdeB")
-numFace = 6
+numFace = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BLOCOS/Bloco_Jogavel/SalaC_prototipo/PortalVerdeC" unique_id=1286843865]
 transform = Transform3D(-1.7483991e-07, -3.999971, -4.689582e-13, 3.9999104, -1.7484557e-07, 0, -1.01210705e-14, -4.689582e-13, 3.9998815, -0.23869324, 0.50572205, -0.014892578)
@@ -326,28 +324,6 @@ transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.859
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment" unique_id=1792434462]
-transform = Transform3D(-0.9999738, 0.0038676858, 0.006135087, 0.0039050407, 0.9999739, 0.0060884696, -0.0061113783, 0.0061122677, -0.9999627, -49.3, -3.6734238, -291.72845)
-light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
-light_energy = 0.2
-light_size = 0.528
-shadow_enabled = true
-spot_range = 209.0
-spot_attenuation = -0.77
-script = ExtResource("11_c6i3y")
-
-[node name="Area3D" type="Area3D" parent="WorldEnvironment/SpotLight3D" unique_id=1670086340]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/SpotLight3D/Area3D" unique_id=1812932278]
-transform = Transform3D(1, -1.8626451e-08, -3.2159733e-09, -6.91216e-11, -2.514571e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.392334e-05, 1.4305115e-06, -95.361496)
-shape = SubResource("CylinderShape3D_c2ibq")
-
-[node name="RayCast3D" type="RayCast3D" parent="WorldEnvironment/SpotLight3D" unique_id=1021676303]
-target_position = Vector3(0, 0, -100)
-
-[node name="Wind" type="Node3D" parent="." unique_id=1938780482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.99384, 27.952326, 239.38324)
-
 [node name="Node3D" type="Node3D" parent="." unique_id=1882873431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -249, -22, -190)
 script = ExtResource("14_c2ibq")
@@ -377,4 +353,3 @@ transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 7.511383, -17.026283, -1.09
 [connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 3" to="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 3" method="_on_body_exited"]
 [connection signal="body_entered" from="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 4" method="_on_body_entered"]
 [connection signal="body_exited" from="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 4" to="BLOCOS/Bloco_Jogavel/SalaC_prototipo/wind 4" method="_on_body_exited"]
-[connection signal="body_entered" from="WorldEnvironment/SpotLight3D/Area3D" to="WorldEnvironment/SpotLight3D" method="_on_area_3d_body_entered"]
