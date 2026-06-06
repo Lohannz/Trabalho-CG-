@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
 [ext_resource type="Shader" uid="uid://5yqaxh6bkmr3" path="res://shaders/core.gdshader" id="1_5634n"]
-[ext_resource type="Script" uid="uid://s5ydtebjn0ed" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
-[ext_resource type="Script" uid="uid://b55uu0q8xtknb" path="res://scripts/light_detection.gd" id="3_c8oal"]
+[ext_resource type="Script" uid="uid://b5eaaudttpn2v" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Script" uid="uid://5utdu3go0l1g" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
 albedo_color = Color(0.8875014, 0.7163662, 1.189535, 1)
@@ -88,8 +88,8 @@ radial_segments = 16
 rings = 16
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gmp2s"]
-height = 181.91641
-radius = 66.1
+height = 324.9791
+radius = 146.0
 
 [node name="Core" type="Node3D" unique_id=1417270398]
 script = ExtResource("1_hlf4f")
@@ -112,14 +112,14 @@ light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
 shadow_enabled = true
-spot_range = 209.0
+spot_range = 250.0
 spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D" unique_id=656646044]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D/Area3D" unique_id=30030153]
-transform = Transform3D(1, -1.8626451e-08, -3.2159733e-09, -6.91216e-11, -2.514571e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.392334e-05, 1.4305115e-06, -95.361496)
+transform = Transform3D(1, -3.152527e-07, -3.844616e-08, 2.3977918e-08, 1.6996637e-07, -1, 3.1245872e-07, 1, -3.0267984e-07, -0.1966911, 0.1968174, -166.58122)
 shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D" unique_id=1561210278]
@@ -131,14 +131,14 @@ light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
 shadow_enabled = true
-spot_range = 209.0
+spot_range = 250.0
 spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D2" unique_id=545240098]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D2/Area3D" unique_id=115048738]
-transform = Transform3D(1, -1.8626451e-08, -3.2159733e-09, -6.91216e-11, -2.514571e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.392334e-05, 1.4305115e-06, -95.361496)
+transform = Transform3D(1, -1.8605903e-08, 1.3504177e-08, 0, -5.8761657e-08, -1, 1.8757152e-08, 1, -6.224604e-08, 0.00090265274, 0.23405075, -140.06085)
 shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D2" unique_id=2090979108]
@@ -150,14 +150,14 @@ light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
 shadow_enabled = true
-spot_range = 209.0
+spot_range = 250.0
 spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D3" unique_id=377086572]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D3/Area3D" unique_id=395931260]
-transform = Transform3D(1, -1.8626451e-08, -3.2159733e-09, -6.91216e-11, -2.514571e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.392334e-05, 1.4305115e-06, -95.361496)
+transform = Transform3D(1, -1.8626544e-08, -3.259629e-09, 0, -2.5145711e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.440018e-05, -2.0861626e-07, -189.77194)
 shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D3" unique_id=1466086483]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cef7qxmvdew80"]
+
+[ext_resource type="PackedScene" uid="uid://bskm4xkqvde35" path="res://models/import/modelos-leo/CUBAO1.glb" id="1_vsm2m"]
+
+[node name="CUBAO1" unique_id=32902115 instance=ExtResource("1_vsm2m")]

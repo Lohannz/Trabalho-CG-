@@ -5,8 +5,8 @@ extends CharacterBody3D
 
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
-const SPEED = 25.0
-const ACCELERATION = 30.0
+const SPEED = 28.0
+const ACCELERATION = 70.0
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 70.0
@@ -16,7 +16,7 @@ const CLIMB_SPEED = 10.0
 const SLIDE_SPEED = 4.0
 
 const DASH_SPEED = 85.0
-const DASH_DURATION = 0.6
+const DASH_DURATION = 0.5
 const DASH_DECAY = 90.0
 const DASH_FALLSPEED = 125.0
 const DASH_CORRECTION = 180.0
@@ -44,8 +44,8 @@ const WALL_JUMP_MULT = 0.2
 # Parâmetros de Impulso
 const DASH_IMPULSE = 50.0
 
-const JUMP_HEIGHT = 8.0
-const JUMP_DURATION = 0.3
+const JUMP_HEIGHT = 11.5
+const JUMP_DURATION = 0.28
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
 const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
@@ -54,7 +54,7 @@ const WALL_JUMP_PUSHWAY = 32.0
 # Parâmetros de Atrito
 const FRICTION = 300.0
 const SLIDE_FRICTION = 400.0
-const AIR_RESISTANCE = 65.0
+const AIR_RESISTANCE = 55.0
 
 # Parâmetros de Interação com Vento
 var IN_WIND : bool = false
@@ -62,6 +62,10 @@ var WIND_FORCE : Vector3 = Vector3.ZERO
 
 #Congela o player
 var FREEZE : bool = false
+
+const COYOTE_MAX = 0.25
+var COYOTE_TIMER : float = COYOTE_MAX
+var IS_FALLING : bool = false
 
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
@@ -109,7 +113,7 @@ func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
 	
 
 func _update_orientation() -> void:
-	_orientation = camera.global_transform.basis
+	_orientation = camera.game_basis  # ← basis puro, sem tilt
 	up = _orientation.y
 	right = _orientation.x
 	forward = _orientation.z
@@ -156,6 +160,10 @@ func _physics_process(delta : float) -> void:
 			dash_ground_timer -= delta
 			
 		move_and_slide()
+		if is_on_floor():
+			COYOTE_TIMER = COYOTE_MAX
+		else:
+			COYOTE_TIMER -= delta
 	else:
 		velocity = Vector3.ZERO
 	
@@ -177,6 +185,12 @@ func _physics_momentum(delta: float, limit: float, accel: float, friction: float
 	var velocity_v = up * velocity.dot(up)
 	var velocity_h = velocity - velocity_v
 	
+	if state == STATE.AIRBORNE:
+		IS_FALLING = not is_on_floor() and velocity.dot(_orientation.y) < 0
+		COYOTE_TIMER -= delta
+	else:
+		IS_FALLING = false
+		
 	var speed = move_direction * limit
 	var adaptative_accel = accel if move_direction != Vector3.ZERO else friction
 
@@ -319,7 +333,8 @@ func _update_state(delta : float):
 # Controlade do Sistema: AÇÕES
 func _handle_actions():
 	# PULO (Espaço - gerenciado pelo seu sistema)
-	if input.jump.is_triggered() and _can_jump():
+	if input.jump.is_triggered() and (_can_jump() or (state == STATE.AIRBORNE and COYOTE_TIMER > 0)):
+		COYOTE_TIMER = 0
 		_execute_jump()
 		input.jump.consume()
 		state = STATE.AIRBORNE
@@ -369,6 +384,8 @@ func _execute_jump():
 	#TODO: atualmente dá para pular enquanto STEADY na parede, isso faz o jogador deslizar
 	# 	   um pouco para cima, não era para isso ser possível
 	var normal = get_wall_normal().normalized()
+	var vertical = velocity.dot(up)
+	velocity -= up * vertical
 	
 	if state == STATE.STEADY and move_direction.dot(-normal) < 0.7:
 		velocity = up * JUMP_VERTICAL_BOOST + (normal + _facing_direction) * WALL_JUMP_PUSHWAY
@@ -419,7 +436,7 @@ func _handle_movement(delta : float):
 		STATE.GROUNDED:
 			_physics_momentum(delta, SPEED, ACCELERATION, FRICTION)
 		STATE.AIRBORNE:
-			_physics_momentum(delta, AIR_SPEED, ACCELERATION, AIR_RESISTANCE * 0.6)
+			_physics_momentum(delta, AIR_SPEED, AIR_RESISTANCE, FRICTION)
 		STATE.DASHING:
 			_physics_dashing(delta)
 		STATE.SLIDING:

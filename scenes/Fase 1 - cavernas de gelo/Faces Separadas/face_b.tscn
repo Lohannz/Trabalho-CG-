@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bjvn5pf12opxo"]
+
+[ext_resource type="PackedScene" uid="uid://cs18owdt8wolu" path="res://models/import/modelos-leo/FaceB.glb" id="1_lacq4"]
+
+[node name="FaceB" unique_id=1654253418 instance=ExtResource("1_lacq4")]
