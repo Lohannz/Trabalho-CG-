@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://n1wudfyde562"]
 
 [ext_resource type="PackedScene" uid="uid://by5wsfmlt8xkj" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_a.tscn" id="1_62cav"]
-[ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="2_g2wj8"]
+[ext_resource type="Script" uid="uid://bupt6kqok5blg" path="res://scripts/portals.gd" id="2_g2wj8"]
 [ext_resource type="PackedScene" uid="uid://bjvn5pf12opxo" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_b.tscn" id="2_qugii"]
 [ext_resource type="PackedScene" uid="uid://b4v7u2rwig5cf" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_c.tscn" id="3_fop18"]
-[ext_resource type="Script" uid="uid://d0d5e5exesi0r" path="res://scripts/wind.gd" id="5_fop18"]
+[ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="5_fop18"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qugii"]
@@ -377,7 +377,7 @@ mesh = SubResource("ArrayMesh_alpyq")
 skeleton = NodePath("")
 
 [node name="PortalVermelhoC" type="Area3D" parent="FaceC/Portais C/portalRed" unique_id=1310210515 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.9106867e-15, 4.3711424e-08, 1.0000007, 1.0000007, -4.3711424e-08, 0, 4.371142e-08, 1.0000008, -4.371142e-08, -0.32592773, 0.09942627, -0.49990845)
+transform = Transform3D(-6.377743e-10, -4.370677e-08, -1.0000007, -0.9998942, 0.014590472, 3.5527137e-15, 0.014590472, 0.9998944, -4.3711417e-08, -0.32592767, 0.078183904, -1.9556608)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceB/Portais B/portalRed/PortalVermelhoB")
 numFace = 2
