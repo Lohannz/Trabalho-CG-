@@ -347,6 +347,10 @@ func _handle_actions():
 			if input.dash.has_method("consume"):
 				input.dash.consume()
 			state = STATE.DASHING
+	
+	# RESET (mal feito, vou melhorar dps)
+	if input.reset.is_triggered():
+		die()
 
 
 	if input.dash.is_triggered() and _can_dash():

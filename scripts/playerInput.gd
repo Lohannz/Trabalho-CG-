@@ -6,12 +6,16 @@ var move := Vector2.ZERO
 var jump  : PlayerAction
 var dash  : PlayerAction
 var climb : PlayerAction
+var reset : PlayerAction
+
 var _actions : Array[PlayerAction] = []
 
 func _init():
 	jump  = _create_action(0.2, 0.1)
 	dash  = _create_action(0.2, 2.0)
 	climb = _create_action(0.4, 0.0)
+	reset = _create_action(0.2, 0.1)
+	
 
 func _create_action(buff_lifetime, cool_duration) -> PlayerAction:
 	var action = PlayerAction.new(buff_lifetime, cool_duration)
@@ -26,4 +30,6 @@ func update(delta: float):
 	jump.update(delta, Input.is_action_pressed("action_jump"))
 	dash.update(delta, Input.is_action_just_pressed("action_dash"))
 	climb.update(delta, Input.is_action_pressed("action_climb"))
+	reset.update(delta, Input.is_action_pressed("action_reset"))
+	
 	# Alterar tecla do climb ou mudar para just_pressed (Não da para andar diagonal direita/cima com o 'KEY E').
