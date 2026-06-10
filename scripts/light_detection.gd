@@ -24,12 +24,13 @@ func _handle_light(body):
 	
 	if cObj == body:
 		material.albedo_color = Color(1, 1, 1, 1)
-		print("UUUUUUUUUUUUUUUUUUUUUUu")
-		
+		if body.is_in_group("killObj"):
+			body.remove_from_group("killObj")
+
 	else:
 		material.albedo_color = Color(1, 0, 0, 1)
-		print("AAAAAAAAAAAAAAAAAAAAAAAA")
-
+		if !body.is_in_group("killObj"):
+			body.add_to_group("killObj")
 	
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("light_sensitive"):

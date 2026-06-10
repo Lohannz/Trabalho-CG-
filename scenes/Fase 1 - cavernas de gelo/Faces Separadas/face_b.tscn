@@ -3,3 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cs18owdt8wolu" path="res://models/import/modelos-leo/FaceB.glb" id="1_lacq4"]
 
 [node name="FaceB" unique_id=1654253418 instance=ExtResource("1_lacq4")]
+
+[node name="StaticBody3D" parent="plataforma_frente_013" parent_id_path=PackedInt32Array(1792337649) index="0" unique_id=1916685947 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_011" parent_id_path=PackedInt32Array(614588019) index="0" unique_id=1942320087 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_015" parent_id_path=PackedInt32Array(1688975669) index="0" unique_id=775299416 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_016" parent_id_path=PackedInt32Array(267843983) index="0" unique_id=47451114 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_017" parent_id_path=PackedInt32Array(56713381) index="0" unique_id=525586895 groups=["light_sensitive"]]

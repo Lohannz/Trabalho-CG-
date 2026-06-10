@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://c87rh300pnr1" path="res://models/import/modelos-leo/FaceA.glb" id="1_574c1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bmlv"]
-size = Vector3(13, 2.8, 16)
+size = Vector3(23.2, 2.8, 25)
 
 [node name="FaceA" unique_id=1216805780 instance=ExtResource("1_574c1")]
+
+[node name="StaticBody3D" parent="plataforma_frente_006" parent_id_path=PackedInt32Array(819895716) index="0" unique_id=735940588 groups=["light_sensitive"]]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="espinhos2" parent_id_path=PackedInt32Array(3587302) index="0" unique_id=611554431 groups=["killObj"]]
 

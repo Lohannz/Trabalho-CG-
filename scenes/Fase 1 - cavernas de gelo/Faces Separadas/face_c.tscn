@@ -10,24 +10,24 @@ size = Vector3(5.2000003, 13.2, 22.800001)
 
 [node name="FaceC" unique_id=266438791 instance=ExtResource("1_ue856")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="espinho7" parent_id_path=PackedInt32Array(635631860) index="0" unique_id=389861329 groups=["killObj"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="espinho7" parent_id_path=PackedInt32Array(84764277) index="0" unique_id=389861329 groups=["killObj"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinho7/StaticBody3D" index="0" unique_id=1520049302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1999817, -0.19999695, 0.2999878)
 shape = SubResource("BoxShape3D_ue856")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="espinho6" parent_id_path=PackedInt32Array(1461776157) index="0" unique_id=1143650844 groups=["killObj"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="espinho6" parent_id_path=PackedInt32Array(1329277292) index="0" unique_id=1143650844 groups=["killObj"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.600006, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinho6/StaticBody3D" index="0" unique_id=924799171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8000183, -0.69999695, 0.2999878)
 shape = SubResource("BoxShape3D_ue856")
 
-[node name="StaticBody3D" parent="CrystalCompleto_002" parent_id_path=PackedInt32Array(1822081583) index="0" unique_id=1909682213 groups=["killObj"]]
+[node name="StaticBody3D" parent="CrystalCompleto_002" parent_id_path=PackedInt32Array(211948756) index="0" unique_id=1860795463 groups=["killObj"]]
 
-[node name="StaticBody3D" parent="CrystalCompleto_003" parent_id_path=PackedInt32Array(531575626) index="0" unique_id=1273231899 groups=["killObj"]]
+[node name="StaticBody3D" parent="CrystalCompleto_003" parent_id_path=PackedInt32Array(623697106) index="0" unique_id=1922801985 groups=["killObj"]]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="espinho8" parent_id_path=PackedInt32Array(1125608120) index="0" unique_id=93898134 groups=["killObj"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="espinho8" parent_id_path=PackedInt32Array(1420700601) index="0" unique_id=93898134 groups=["killObj"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinho8/StaticBody3D" index="0" unique_id=733207429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6999817, -0.099990845, 0.099975586)

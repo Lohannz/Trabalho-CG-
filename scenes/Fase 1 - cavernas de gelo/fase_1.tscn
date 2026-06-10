@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://n1wudfyde562"]
 
 [ext_resource type="PackedScene" uid="uid://by5wsfmlt8xkj" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_a.tscn" id="1_62cav"]
-[ext_resource type="Script" uid="uid://bupt6kqok5blg" path="res://scripts/portals.gd" id="2_g2wj8"]
+[ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="2_g2wj8"]
 [ext_resource type="PackedScene" uid="uid://bjvn5pf12opxo" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_b.tscn" id="2_qugii"]
 [ext_resource type="PackedScene" uid="uid://b4v7u2rwig5cf" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_c.tscn" id="3_fop18"]
-[ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="5_fop18"]
+[ext_resource type="Script" uid="uid://d0d5e5exesi0r" path="res://scripts/wind.gd" id="5_fop18"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
+[ext_resource type="Script" uid="uid://3cu1txjsb8ep" path="res://scripts/nevascaEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qugii"]
 albedo_color = Color(0, 0.78039217, 0.5372549, 0.69411767)
@@ -133,6 +134,16 @@ albedo_color = Color(0, 1, 1, 1)
 top_radius = 10.0
 bottom_radius = 10.0
 height = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alpyq"]
+albedo_color = Color(0.8560673, 0.8560673, 0.85606724, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3scg"]
+material = SubResource("StandardMaterial3D_alpyq")
+size = Vector3(500, 500, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ldnf"]
+size = Vector3(500, 500, 1)
 
 [node name="FASE 1" type="Node3D" unique_id=2032177878]
 
@@ -413,6 +424,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 445.09738, 106.83913, 361.961
 
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659)
+
+[node name="Nevasca" type="Node3D" parent="." unique_id=504961007]
+script = ExtResource("8_o8l6r")
+
+[node name="Nevoa" type="Node3D" parent="." unique_id=1446417969]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nevoa" unique_id=363879107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.30001, 135.7, 249.20001)
+transparency = 0.05
+mesh = SubResource("BoxMesh_k3scg")
+
+[node name="nevoinha =3" type="StaticBody3D" parent="Nevoa/MeshInstance3D" unique_id=1789324732 groups=["neblina"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nevoa/MeshInstance3D/nevoinha =3" unique_id=564623898]
+shape = SubResource("BoxShape3D_8ldnf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nevoa" unique_id=345620152]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -181.79999, 141.6, 1.0000134)
+transparency = 0.05
+mesh = SubResource("BoxMesh_k3scg")
+
+[node name="nevoinha =3" type="StaticBody3D" parent="Nevoa/MeshInstance3D2" unique_id=1570730177 groups=["neblina"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nevoa/MeshInstance3D2/nevoinha =3" unique_id=2008282931]
+shape = SubResource("BoxShape3D_8ldnf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Nevoa" unique_id=1453932595]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 94.30001, 431.60004, -3.4000053)
+transparency = 0.05
+mesh = SubResource("BoxMesh_k3scg")
+
+[node name="nevoinha =3" type="StaticBody3D" parent="Nevoa/MeshInstance3D3" unique_id=1433575981 groups=["neblina"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nevoa/MeshInstance3D3/nevoinha =3" unique_id=2050262481]
+shape = SubResource("BoxShape3D_8ldnf")
 
 [connection signal="body_entered" from="FaceA/Portais A/portalVerde/PortalVerdeA" to="FaceA/Portais A/portalVerde/PortalVerdeA" method="_on_body_entered"]
 [connection signal="body_exited" from="FaceA/Portais A/portalVerde/PortalVerdeA" to="FaceA/Portais A/portalVerde/PortalVerdeA" method="_on_body_exited"]

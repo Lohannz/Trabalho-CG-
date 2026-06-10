@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="1_3dxm6"]
+[ext_resource type="Shader" uid="uid://ti14rrjo2iyp" path="res://shaders/nevasca.gdshader" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="5_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
@@ -46,12 +47,15 @@ func _process(delta: float) -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
-shader_parameter/flake_texture = ExtResource("5_lgr22")
-shader_parameter/speed = 5.0
-shader_parameter/density = 36.114001667915
-shader_parameter/size = 0.13800000585648
-shader_parameter/wind = -1.0
 shader_parameter/pixel_size = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
+shader = ExtResource("4_3dxm6")
+shader_parameter/flake_texture = ExtResource("5_lgr22")
+shader_parameter/speed = 10.000000471740119
+shader_parameter/density = 30.0000013775
+shader_parameter/size = 0.07000000262648
+shader_parameter/wind = -1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_c2ibq"]
 font_size = 40
@@ -94,9 +98,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -6.0
 offset_top = -8.0
-offset_right = 16.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento" unique_id=1092781589]
+material = SubResource("ShaderMaterial_lgr22")
+offset_right = 1158.0
+offset_bottom = 644.0
 
 [node name="UI" type="CanvasLayer" parent="Camera3D" unique_id=52951886]
 
