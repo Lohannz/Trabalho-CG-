@@ -36,6 +36,7 @@ func _change_orientation(normal: Vector3):
 		_orientation = _orientation.rotated(up, deg_to_rad(-90.0))
 		player.rotate(up, deg_to_rad(-90.0))
 	elif is_equal_approx(orthogonality, 1.0):
+		print("aq")
 		_orientation = _orientation.rotated(up, deg_to_rad(90.0))
 		player.rotate(up, deg_to_rad(90.0))
 

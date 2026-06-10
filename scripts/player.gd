@@ -12,7 +12,7 @@ const ACCELERATION = 70.0
 const TERMINAL_SPEED = 70.0
 
 const AIR_SPEED = 30.0
-const CLIMB_SPEED = 10.0
+const CLIMB_SPEED = 20.0
 const SLIDE_SPEED = 4.0
 
 const DASH_SPEED = 85.0
@@ -86,10 +86,10 @@ var move_direction : Vector3 = Vector3.ZERO
 #var direction_v : Vector3 = Vector3.ZERO
 
 # Variáveis: Orientação da Cubo
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
 @export var current_face = FACE.ONE
 
-enum SPAWNPOINT{ONE, TWO, THREE, FOUR, FIVE, SIX}
+enum SPAWNPOINT{ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE}
 var current_spawnpoint =  SPAWNPOINT.ONE
 
 # INTERAÇÃO COM PORTAL #
@@ -143,7 +143,11 @@ func _ready() -> void:
 
 ## PROCESSOS
 func _physics_process(delta : float) -> void:
-	
+	for body in areaDetection.get_overlapping_bodies():
+		if body.is_in_group("killObj"):
+			die()
+		#if(body != self):
+		#	print(body.name)
 	if not FREEZE:
 		_update_orientation()
 		
@@ -166,10 +170,6 @@ func _physics_process(delta : float) -> void:
 			COYOTE_TIMER -= delta
 	else:
 		velocity = Vector3.ZERO
-	
-
-	
-	
 
 ## Função que gerencia o que acontece quando o player morre
 func die() -> void:

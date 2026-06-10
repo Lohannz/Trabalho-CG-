@@ -50,6 +50,7 @@ shadow_mesh = SubResource("ArrayMesh_ra76l")
 script = ExtResource("1_r4dwi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2054807693]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_wkp8b")
 
 [node name="RespawnTimer" type="Timer" parent="." unique_id=1785172638]
@@ -57,6 +58,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1908420144]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.8226677, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.8226677, 0)
 mesh = SubResource("ArrayMesh_mk6cu")
 skeleton = NodePath("")

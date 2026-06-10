@@ -17,7 +17,7 @@ script/source = "extends Node3D
 var spawnpoints
 var current_level
 
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
+enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE}
 
 # Ao iniciar cena, faz com que o player spawne no spawnpoint da current_face que ele está 
 # Player tem propriedade current_face que diz qual lado do cubo ele está

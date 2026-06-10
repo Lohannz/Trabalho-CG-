@@ -4,6 +4,7 @@ extends Node3D
 @export var numFace : int
 
 func _on_body_entered(body: Node3D) -> void:
+	print(get_normal())
 	if body == player:
 		player.PORTAL_UI.visible = true
 		set_process_unhandled_input(true)

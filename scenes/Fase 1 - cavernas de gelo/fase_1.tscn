@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4v7u2rwig5cf" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/face_c.tscn" id="3_fop18"]
 [ext_resource type="Script" uid="uid://dffpim5pm1m33" path="res://scripts/wind.gd" id="5_fop18"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
+[ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qugii"]
 albedo_color = Color(0, 0.78039217, 0.5372549, 0.69411767)
@@ -135,189 +136,194 @@ height = 50.0
 
 [node name="FASE 1" type="Node3D" unique_id=2032177878]
 
-[node name="FaceA" parent="." unique_id=666942652 instance=ExtResource("1_62cav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -331.3335, 0, 260.56415)
+[node name="FaceA" parent="." unique_id=1514634432 instance=ExtResource("1_62cav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.166521, 0, 165.16415)
 
 [node name="Portais A" type="Node3D" parent="FaceA" unique_id=1592292430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.80002, -22.999998, 190.69998)
 
 [node name="portalVerde" type="MeshInstance3D" parent="FaceA/Portais A" unique_id=487141334]
-transform = Transform3D(0.9993163, 0.03686679, -0.002794241, -0.036873877, 0.9993167, -0.0025277932, 0.0026991377, 0.0026291024, 0.9999929, 198.26573, 67.97101, 5.266693)
+transform = Transform3D(0.9993163, 0.03686679, -0.002794241, -0.036873877, 0.9993167, -0.0025277932, 0.0026991377, 0.0026291024, 0.9999929, 198.76573, 67.97101, 5.266693)
 material_override = SubResource("StandardMaterial3D_qugii")
 mesh = SubResource("ArrayMesh_fop18")
 skeleton = NodePath("")
 
 [node name="PortalVerdeA" type="Area3D" parent="FaceA/Portais A/portalVerde" unique_id=1952430383 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(-3.9626684e-09, 4.4237822e-08, 1.0000007, 1.0000007, -4.353933e-08, 6.9649104e-09, 4.4470653e-08, 1.0000008, -4.33065e-08, 2.1740723, 0.59942245, -0.49990845)
+transform = Transform3D(-7.6865945e-09, 4.4237822e-08, 1.0000008, 1.0000008, -4.377216e-08, 1.06906555e-08, 4.4703484e-08, 1.000001, -4.33065e-08, 2.8735962, 0.6252327, -0.5018616)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceC/Portais C/portalVerde/PortalVerdeC")
 numFace = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/Portais A/portalVerde/PortalVerdeA" unique_id=583648034]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, 0, 0, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -1.7137299)
+transform = Transform3D(-1.7508864e-07, -3.999971, -3.2136086e-08, 3.9999096, -1.7695129e-07, 9.313226e-10, 0, 1.1605152e-09, 3.9998808, -0.31980133, 0.5118408, -2.2133865)
 shape = SubResource("BoxShape3D_whobl")
 
 [node name="portalRosa" type="MeshInstance3D" parent="FaceA/Portais A" unique_id=780449717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308.0851, 139.77332, 6.3780212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308.0851, 140.8733, 6.3780212)
 material_override = SubResource("StandardMaterial3D_g2wj8")
 mesh = SubResource("ArrayMesh_whobl")
 skeleton = NodePath("")
 
 [node name="PortalRosaA" type="Area3D" parent="FaceA/Portais A/portalRosa" unique_id=1599279685 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.0000007, 0, -4.371142e-08, -4.371142e-08, 1.9106872e-15, -1.0000007, 0, 1.0000008, 1.9106867e-15, -0.22592735, -2.4005737, -0.49990845)
+transform = Transform3D(1.0000007, 0, -4.371142e-08, -4.371142e-08, 1.9106872e-15, -1.0000007, 0, 1.0000008, 1.9106867e-15, -0.22592926, -3.0005722, -0.49990845)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceB/Portais B/portalRosa/PortalRosaB")
 numFace = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/Portais A/portalRosa/PortalRosaA" unique_id=644485692]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, 0, 0, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -1.7137299)
+transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, -8.4703295e-22, 0, 1.167777e-09, 3.9998813, -0.3013687, 0.5104675, -2.5137253)
 shape = SubResource("BoxShape3D_whobl")
 
+[node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.33348, 102.5, 201.03586)
+
 [node name="FaceB" parent="." unique_id=1654253418 instance=ExtResource("2_qugii")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 14.880005, 413, 139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.880005, 38.399994, 139)
 
-[node name="Portais B" type="Node3D" parent="FaceB" unique_id=2111240854]
+[node name="Portais B" type="Node3D" parent="FaceB" unique_id=533274933]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 95.600006, 484.5, 22.300003)
 
-[node name="portalRosa" type="MeshInstance3D" parent="FaceB/Portais B" unique_id=1845525543]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 93.08511, 22.773315, 2.3780212)
+[node name="portalRosa" type="MeshInstance3D" parent="FaceB/Portais B" unique_id=803050369]
+transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, 93.08511, 22.573288, 2.3779907)
 material_override = SubResource("StandardMaterial3D_g2wj8")
 mesh = SubResource("ArrayMesh_whobl")
 skeleton = NodePath("")
 
-[node name="PortalRosaB" type="Area3D" parent="FaceB/Portais B/portalRosa" unique_id=1928503995 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.0000007, 0, -4.371142e-08, -4.371142e-08, 3.5527137e-15, -1.0000007, 0, 1.0000008, 3.5527137e-15, 0.17407227, -1.9005737, -0.49990845)
+[node name="PortalRosaB" type="Area3D" parent="FaceB/Portais B/portalRosa" unique_id=593831257 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.0000007, 0, 0, 0, -1.0000008, 8.742283e-08, 0, -8.742285e-08, -1.0000007, 0.17407227, -2.5005798, 0.70007324)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceA/Portais A/portalRosa/PortalRosaA")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Portais B/portalRosa/PortalRosaB" unique_id=815539781]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, 0, 0, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -1.7137299)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Portais B/portalRosa/PortalRosaB" unique_id=1461273064]
+transform = Transform3D(-1.7484163e-07, -3.999971, 0, -1.7484155e-07, 7.64268e-15, -3.9998813, 3.99991, -1.7484429e-07, -1.7484007e-07, -0.70137024, -2.2894897, -1.0137329)
 shape = SubResource("BoxShape3D_whobl")
 
-[node name="portalRed" type="MeshInstance3D" parent="FaceB/Portais B" unique_id=424546247]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -148.32506, 251.9823, -59.857788)
+[node name="portalRed" type="MeshInstance3D" parent="FaceB/Portais B" unique_id=1383228118]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -148.32506, 251.9823, -59.857788)
 material_override = SubResource("StandardMaterial3D_o8l6r")
 mesh = SubResource("ArrayMesh_alpyq")
 skeleton = NodePath("")
 
-[node name="PortalVermelhoB" type="Area3D" parent="FaceB/Portais B/portalRed" unique_id=657352209 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.910686e-15, 4.3711424e-08, 1.0000007, 1.0000007, -4.3711424e-08, -4.2351647e-22, 4.371142e-08, 1.0000008, -4.3711417e-08, 1.1740723, 0.4994278, -0.49990845)
+[node name="PortalVermelhoB" type="Area3D" parent="FaceB/Portais B/portalRed" unique_id=736034969 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1.910686e-15, 4.3711424e-08, 1.0000007, 1.0000007, -4.3711424e-08, 8.4703295e-22, 4.371142e-08, 1.0000008, -4.3711424e-08, -0.4259262, 0.4994278, -0.49990845)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceC/Portais C/portalRed/PortalVermelhoC")
 numFace = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Portais B/portalRed/PortalVermelhoB" unique_id=1907906948]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, 0, 0, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -1.7137299)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Portais B/portalRed/PortalVermelhoB" unique_id=85175813]
+transform = Transform3D(-1.7484163e-07, -3.999971, 1.167765e-09, 3.99991, -1.748443e-07, -1.0209223e-16, -1.1368684e-13, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -0.31373215)
 shape = SubResource("BoxShape3D_whobl")
 
-[node name="Ventos B" type="Node3D" parent="FaceB" unique_id=1020177747]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -14.880005, 139.00002, -413)
+[node name="Ventos B" type="Node3D" parent="FaceB" unique_id=920830732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.619995, 68.39993, -114.499985)
 
-[node name="wind 1" type="Area3D" parent="FaceB/Ventos B" unique_id=181515611]
+[node name="wind 1" type="Area3D" parent="FaceB/Ventos B" unique_id=1803363758]
 transform = Transform3D(-3.278354e-08, -1.4, 4.371139e-08, 0, -6.119594e-08, -1, 0.75, -6.119594e-08, 1.9106855e-15, -43.03731, 416.82083, 5.141913)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 1" unique_id=326025963]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 1" unique_id=40772320]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 1" unique_id=1127140731]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 1" unique_id=797636399]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="wind 2" type="Area3D" parent="FaceB/Ventos B" unique_id=384546840]
-transform = Transform3D(-2.6226834e-08, -1.4, 4.371139e-08, 0, -6.119594e-08, -1, 0.6, -6.119594e-08, 1.9106855e-15, 115.56269, 422.82083, -43.858086)
+[node name="wind 2" type="Area3D" parent="FaceB/Ventos B" unique_id=1524621284]
+transform = Transform3D(-2.6226834e-08, -1.4, 4.371139e-08, 0, -6.119594e-08, -1, 0.6, -6.119594e-08, 1.9106855e-15, 115.56268, 419.62082, -43.858086)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 2" unique_id=1122855092]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 2" unique_id=1004486962]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 2" unique_id=1851091838]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 2" unique_id=429478136]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="wind 3" type="Area3D" parent="FaceB/Ventos B" unique_id=917480480]
+[node name="wind 3" type="Area3D" parent="FaceB/Ventos B" unique_id=1336703532]
 transform = Transform3D(-2.6226834e-08, -1.4, 4.371139e-08, 0, -6.119594e-08, -1, 0.6, -6.119594e-08, 1.9106855e-15, 115.56269, 367.52084, -68.858086)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 3" unique_id=457231023]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 3" unique_id=1838942654]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 3" unique_id=1892161294]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 3" unique_id=2104587859]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="wind 4" type="Area3D" parent="FaceB/Ventos B" unique_id=1172574275]
+[node name="wind 4" type="Area3D" parent="FaceB/Ventos B" unique_id=773434759]
 transform = Transform3D(-2.6226834e-08, -1.4, 4.371139e-08, 0, -6.119594e-08, -1, 0.6, -6.119594e-08, 1.9106855e-15, -16.43731, 345.32086, -101.858086)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 4" unique_id=334359034]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 4" unique_id=5187725]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 4" unique_id=1876657384]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 4" unique_id=2946761]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="wind 5" type="Area3D" parent="FaceB/Ventos B" unique_id=1646509004]
+[node name="wind 5" type="Area3D" parent="FaceB/Ventos B" unique_id=1005005515]
 transform = Transform3D(0.6, 0, 0, 0, 1.4, 0, 0, 0, 1, -77.43731, 345.32086, -135.8581)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 5" unique_id=1051212932]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 5" unique_id=1746713123]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 5" unique_id=902687960]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 5" unique_id=1269397499]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="wind 6" type="Area3D" parent="FaceB/Ventos B" unique_id=1291348321]
+[node name="wind 6" type="Area3D" parent="FaceB/Ventos B" unique_id=749760240]
 transform = Transform3D(0.9, 0, 0, 0, 1.4, 0, 0, 0, 1, -108.43731, 384.42084, -27.558094)
 script = ExtResource("5_fop18")
 WIND_DIRECTION = Vector3(1, 0, 0)
 WIND_POWER = 500.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 6" unique_id=319255096]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/Ventos B/wind 6" unique_id=1840049724]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 shape = SubResource("CylinderShape3D_g2wj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 6" unique_id=553523616]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FaceB/Ventos B/wind 6" unique_id=1224643475]
 transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
 material_override = SubResource("StandardMaterial3D_whobl")
 transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
-[node name="FaceC" parent="." unique_id=1386856878 instance=ExtResource("3_fop18")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -271.19995, -0.70000076, 365)
+[node name="FaceC" parent="." unique_id=266438791 instance=ExtResource("3_fop18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.652634, 0.30001068, 141.52632)
 
 [node name="Ventos C" type="Node3D" parent="FaceC" unique_id=728916025]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -365, 0.70000076, -271.19992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.399979, 0.5, -124.29992)
 
 [node name="wind 1" type="Area3D" parent="FaceC/Ventos C" unique_id=587567554]
 transform = Transform3D(-4.8082526e-08, -1.4, 0, 1.1, -6.119594e-08, 0, 0, 0, 1, -273.8373, 107.82082, 76.74191)
@@ -354,52 +360,59 @@ transparency = 0.7
 mesh = SubResource("CylinderMesh_o8l6r")
 
 [node name="Portais C" type="Node3D" parent="FaceC" unique_id=53965881]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -256.60004, 4.20002, 241.2)
 
 [node name="portalVerde" type="MeshInstance3D" parent="FaceC/Portais C" unique_id=2136017649]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -1, -248.73419, 99.671005, 1.0669861)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -1, -249.13416, 97.371, 1.0670471)
 material_override = SubResource("StandardMaterial3D_qugii")
 mesh = SubResource("ArrayMesh_fop18")
 skeleton = NodePath("")
 
 [node name="PortalVerdeC" type="Area3D" parent="FaceC/Portais C/portalVerde" unique_id=1074375307 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(1.910687e-15, 4.3711424e-08, 1.0000007, 1.0000007, -4.3711424e-08, 0, 4.371142e-08, 1.0000008, -4.371142e-08, 1.9740753, 0.4994278, -0.49990845)
+transform = Transform3D(-1.0000007, 0, -8.742283e-08, 0, 1.0000008, 0, 8.742283e-08, 0, -1.0000007, 2.2740784, 0.4994278, -0.49990845)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceA/Portais A/portalVerde/PortalVerdeA")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/Portais C/portalVerde/PortalVerdeC" unique_id=250917536]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695129e-07, 0, 0, 1.1677912e-09, 3.9998813, -0.3013687, 0.5104675, -1.7137299)
+transform = Transform3D(-1.7484166e-07, 0, 3.9998813, 0, 3.999971, 0, -3.99991, 0, -1.7484012e-07, 1.9986496, 0.5104675, 0.5862427)
 shape = SubResource("BoxShape3D_whobl")
 
 [node name="portalRed" type="MeshInstance3D" parent="FaceC/Portais C" unique_id=1621952481]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -496.62506, 223.5823, -59.857788)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -496.62506, 221.68231, -59.857788)
 material_override = SubResource("StandardMaterial3D_o8l6r")
 mesh = SubResource("ArrayMesh_alpyq")
 skeleton = NodePath("")
 
 [node name="PortalVermelhoC" type="Area3D" parent="FaceC/Portais C/portalRed" unique_id=1310210515 node_paths=PackedStringArray("destination") groups=["Portals"]]
-transform = Transform3D(-6.377743e-10, -4.370677e-08, -1.0000007, -0.9998942, 0.014590472, 3.5527137e-15, 0.014590472, 0.9998944, -4.3711417e-08, -0.32592767, 0.078183904, -1.9556608)
+transform = Transform3D(1.0000007, -2.1175824e-22, 0, 0, -4.3711424e-08, -1.0000007, 2.1175824e-22, 1.0000008, -4.371142e-08, -2.3259277, -0.90057373, -0.49990845)
 script = ExtResource("2_g2wj8")
 destination = NodePath("../../../../FaceB/Portais B/portalRed/PortalVermelhoB")
 numFace = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/Portais C/portalRed/PortalVermelhoC" unique_id=579862984]
-transform = Transform3D(-1.7508864e-07, -3.999971, -2.3319444e-09, 3.99991, -1.7695126e-07, 3.2960929e-22, 6.5574885e-15, 1.1678338e-09, 3.9998813, -0.30137634, 1.6104736, -0.4137268)
+transform = Transform3D(7.642561e-15, 1.748443e-07, 3.9998813, 3.99991, -1.7484429e-07, 2.5410988e-21, 1.7484163e-07, 3.999971, -1.7484037e-07, 1.9986115, 0.11047363, -0.4137268)
 shape = SubResource("BoxShape3D_whobl")
+
+[node name="dash_crystal" parent="FaceC" unique_id=1783694374 instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.34735, 98.799995, -153.82631)
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=799892938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
 [node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=547420725]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 343.44995, 27.937202, 269.22723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 352.34995, 49.137203, 362.32724)
 
 [node name="TWO" type="Node3D" parent="Spawnpoints" unique_id=387891363]
-transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 105.42166, 98.015625, 105.2489)
+transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 101.12167, 107.61562, 117.7489)
 
 [node name="THREE" type="Node3D" parent="Spawnpoints" unique_id=962348196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 487.19733, 403.33908, 102.46109)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 586.0974, 525.0391, 134.66109)
+
+[node name="TESTE" type="Node3D" parent="Spawnpoints" unique_id=902627109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 445.09738, 106.83913, 361.96106)
 
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.965662, 69.65265, -12.365341)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659)
 
 [connection signal="body_entered" from="FaceA/Portais A/portalVerde/PortalVerdeA" to="FaceA/Portais A/portalVerde/PortalVerdeA" method="_on_body_entered"]
 [connection signal="body_exited" from="FaceA/Portais A/portalVerde/PortalVerdeA" to="FaceA/Portais A/portalVerde/PortalVerdeA" method="_on_body_exited"]

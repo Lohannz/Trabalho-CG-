@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://dthroltbx82l7"]
 
-[ext_resource type="Script" uid="uid://im4vrm1g5bbc" path="res://scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://b28gq8hciu3ir" path="res://scripts/player.gd" id="1_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
+height = 2.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hdyhr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+radius = 1.7
+height = 6.9132814
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
 script = ExtResource("1_i3pqv")
@@ -19,6 +24,6 @@ mesh = SubResource("CapsuleMesh_hdyhr")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1846793232]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ekxg2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1219103866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03632784, 0)
+shape = SubResource("CapsuleShape3D_3vyb7")

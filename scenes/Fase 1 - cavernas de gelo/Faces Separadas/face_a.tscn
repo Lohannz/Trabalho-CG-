@@ -2,4 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://c87rh300pnr1" path="res://models/import/modelos-leo/FaceA.glb" id="1_574c1"]
 
-[node name="FaceA" unique_id=666942652 instance=ExtResource("1_574c1")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4bmlv"]
+size = Vector3(13, 2.8, 16)
+
+[node name="FaceA" unique_id=1216805780 instance=ExtResource("1_574c1")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos2" parent_id_path=PackedInt32Array(3587302) index="0" unique_id=611554431 groups=["killObj"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos2/StaticBody3D" index="0" unique_id=1545376915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 1.4000015, 0.2999878)
+shape = SubResource("BoxShape3D_4bmlv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos1" parent_id_path=PackedInt32Array(1483917026) index="0" unique_id=81847748 groups=["killObj"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos1/StaticBody3D" index="0" unique_id=2126297912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 1.4000015, 0.2999878)
+shape = SubResource("BoxShape3D_4bmlv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos3" parent_id_path=PackedInt32Array(2031726299) index="0" unique_id=1189287214 groups=["killObj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos3/StaticBody3D" index="0" unique_id=687137081]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 5, 0.20000458, -0.2000122)
+shape = SubResource("BoxShape3D_4bmlv")
