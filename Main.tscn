@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="1_3dxm6"]
-[ext_resource type="Script" uid="uid://b06rd4qf0iyug" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="5_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
-[ext_resource type="Shader" uid="uid://boqbt5jewa6fp" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
-[ext_resource type="Script" uid="uid://c8gy6tyghu5v5" path="res://scripts/kill_object.gd" id="14_c2ibq"]
+[ext_resource type="Shader" uid="uid://oc0q4p8hbc5q" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -138,7 +137,6 @@ transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89
 [node name="Obstaculos" type="Node3D" parent="." unique_id=1882873431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -249, -22, -190)
 visible = false
-script = ExtResource("14_c2ibq")
 
 [node name="espinho de gelo" parent="Obstaculos" unique_id=1354857526 instance=ExtResource("11_fpfj3")]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 7.511383, -17.026283, -1.0923004)
