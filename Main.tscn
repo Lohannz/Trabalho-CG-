@@ -52,7 +52,7 @@ shader_parameter/pixel_size = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
 shader = ExtResource("4_3dxm6")
 shader_parameter/flake_texture = ExtResource("5_lgr22")
-shader_parameter/speed = 10.000000471740119
+shader_parameter/speed = 10.00000047174012
 shader_parameter/density = 30.0000013775
 shader_parameter/size = 0.07000000262648
 shader_parameter/wind = -1.0

@@ -188,6 +188,9 @@ shape = SubResource("BoxShape3D_whobl")
 [node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.33348, 102.5, 201.03586)
 
+[node name="dash_crystal2" parent="FaceA" unique_id=201893181 instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1330566, 15.299991, 183.47171)
+
 [node name="FaceB" parent="." unique_id=1654253418 instance=ExtResource("2_qugii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.880005, 38.399994, 139)
 
