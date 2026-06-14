@@ -259,11 +259,8 @@ func _physics_dashing(delta: float):
 		DashPhase.CONTROL:
 			var target = dir * DASH_SPEED
 			velocity_h = velocity_h.move_toward(target, DASH_CORRECTION * delta)
-
-			if input.jump.is_down:
-				velocity_v = velocity_v.move_toward(up * DASH_SPEED, DASH_CORRECTION * delta)
-			else:
-				velocity_v = Vector3.ZERO
+			
+			velocity_v = Vector3.ZERO
 
 			velocity = velocity_h + velocity_v
 			if progress >= 0.75:
