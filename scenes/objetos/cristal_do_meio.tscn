@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5s20xe44pnk8"]
+
+[ext_resource type="PackedScene" uid="uid://drra05va46dvc" path="res://models/import/cristal do meio.glb" id="1_asv8w"]
+
+[node name="cristal do meio" unique_id=1930203238 instance=ExtResource("1_asv8w")]

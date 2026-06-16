@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://bjvn5pf12opxo"]
+
+[ext_resource type="PackedScene" uid="uid://bkh5bj3wnsccq" path="res://models/import/modelos-leo/FaceB.glb" id="1_lacq4"]
+[ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_paak5"]
+[ext_resource type="Material" uid="uid://cfwdhyca7wdgv" path="res://models/import/materials/platform.tres" id="3_bffqw"]
+[ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="4_bfdpn"]
+[ext_resource type="Texture2D" uid="uid://nmrhldkx36fn" path="res://models/import/textures/Platform_AO.png" id="5_m0y7i"]
+[ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="6_sg7oa"]
+[ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="7_bfdpn"]
+[ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="7_mwj7t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78hdn"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("4_bfdpn")
+metallic_specular = 0.09
+metallic_texture = ExtResource("7_mwj7t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("7_mwj7t")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("6_sg7oa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("6_sg7oa")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("5_m0y7i")
+uv1_scale = Vector3(20.655, 0.32, 20.045)
+uv1_offset = Vector3(0.65, 3.541, -1.005)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg7oa"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("4_bfdpn")
+metallic_specular = 0.09
+metallic_texture = ExtResource("7_mwj7t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("7_mwj7t")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("6_sg7oa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("6_sg7oa")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("5_m0y7i")
+uv1_scale = Vector3(20.77, 0.3, 20.165)
+uv1_offset = Vector3(-0.015, 3.481, -1.01)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfdpn"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("4_bfdpn")
+metallic_specular = 0.09
+metallic_texture = ExtResource("7_mwj7t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("7_mwj7t")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("6_sg7oa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("6_sg7oa")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("5_m0y7i")
+uv1_scale = Vector3(20.53, 0.3, 18.975)
+uv1_offset = Vector3(0.35, 3.496, -0.995)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwj7t"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("4_bfdpn")
+metallic_specular = 0.09
+metallic_texture = ExtResource("7_mwj7t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("7_mwj7t")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("6_sg7oa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("6_sg7oa")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("5_m0y7i")
+uv1_scale = Vector3(21.715, 0.3, 25.66)
+uv1_offset = Vector3(0.515, 3.536, -0.485)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0y7i"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("4_bfdpn")
+metallic_specular = 0.09
+metallic_texture = ExtResource("7_mwj7t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("7_mwj7t")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("6_sg7oa")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("6_sg7oa")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("5_m0y7i")
+uv1_scale = Vector3(16.865, 0.3, 11.985)
+uv1_offset = Vector3(0.01, 3.496, -1.54)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[node name="FaceB" unique_id=123047431 instance=ExtResource("1_lacq4")]
+
+[node name="StaticBody3D" parent="plataforma_frente_013" parent_id_path=PackedInt32Array(497611032) index="0" unique_id=1186925187 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_011" parent_id_path=PackedInt32Array(438521184) index="0" unique_id=569812641 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_015" parent_id_path=PackedInt32Array(462636105) index="0" unique_id=1078368051 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_016" parent_id_path=PackedInt32Array(1113465182) index="0" unique_id=1996149274 groups=["light_sensitive"]]
+
+[node name="StaticBody3D" parent="plataforma_frente_017" parent_id_path=PackedInt32Array(938955783) index="0" unique_id=1871906470 groups=["light_sensitive"]]
+
+[node name="plataforma_frente_021" parent="." index="5" unique_id=1619761576]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_054" parent="plataforma_frente_021" index="0" unique_id=476499763]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_022" parent="." index="6" unique_id=62099312]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_019" parent="." index="7" unique_id=1462272924]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_023" parent="." index="8" unique_id=1267719857]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=533884401]
+material_override = SubResource("StandardMaterial3D_78hdn")
+
+[node name="plataforma_frente_024" parent="." index="9" unique_id=327275414]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente" parent="plataforma_frente_024" index="0" unique_id=1427962660]
+material_override = ExtResource("7_bfdpn")
+
+[node name="plataforma_frente_001" parent="plataforma_frente_024/plataforma_frente" index="0" unique_id=1718127677]
+material_override = ExtResource("7_bfdpn")
+
+[node name="plataforma_frente_061" parent="plataforma_frente_024" index="1" unique_id=1782328410]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_025" parent="." index="10" unique_id=322750726]
+material_override = ExtResource("3_bffqw")
+
+[node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=1062336668]
+material_override = SubResource("StandardMaterial3D_sg7oa")
+
+[node name="PlanoTrue" parent="." index="11" unique_id=546414077]
+material_override = ExtResource("2_paak5")
+
+[node name="paredeTRUETRUE_002" parent="." index="12" unique_id=1795885105]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_055" parent="." index="13" unique_id=1117460470]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=1386278005]
+material_override = SubResource("StandardMaterial3D_bfdpn")
+
+[node name="plataforma_frente_056" parent="." index="14" unique_id=1402363789]
+material_override = ExtResource("3_bffqw")
+
+[node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=738326854]
+material_override = SubResource("StandardMaterial3D_sg7oa")
+
+[node name="plataforma_frente_057" parent="." index="15" unique_id=1763655360]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1406343987]
+material_override = SubResource("StandardMaterial3D_78hdn")
+
+[node name="plataforma_frente_058" parent="." index="16" unique_id=1028422740]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=1618872025]
+material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="plataforma_frente_059" parent="." index="17" unique_id=1729973212]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=1274991894]
+material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="plataforma_frente_060" parent="." index="18" unique_id=1297643436]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=674558917]
+material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="plataforma_frente_062" parent="." index="19" unique_id=715605472]
+material_override = ExtResource("2_paak5")
+
+[node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=2086492481]
+material_override = SubResource("StandardMaterial3D_m0y7i")

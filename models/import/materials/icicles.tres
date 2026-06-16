@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ee4al66qhi37"]
+
+[ext_resource type="Texture2D" uid="uid://bd81e8xrh3y6" path="res://models/import/textures/icicles_ceil.png" id="1_ngdvq"]
+[ext_resource type="Texture2D" uid="uid://ciiuyvrpffg8k" path="res://models/import/textures/icicles_ceil_normal.png" id="2_ld0v4"]
+[ext_resource type="Texture2D" uid="uid://cfqisvgvs8v56" path="res://models/import/textures/icicles_ceil_AO.png" id="3_asu71"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_ngdvq")
+normal_enabled = true
+normal_scale = 10.82
+normal_texture = ExtResource("2_ld0v4")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_ld0v4")
+clearcoat_enabled = true
+clearcoat = 0.55
+clearcoat_roughness = 0.2
+clearcoat_texture = ExtResource("3_asu71")
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.11859901, 0.442716, 0.39033347, 1)
+uv1_scale = Vector3(0.14, 0.1, 0)
+uv1_offset = Vector3(0.06, 0.095, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5

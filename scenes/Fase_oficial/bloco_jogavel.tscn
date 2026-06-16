@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://cbyntx7htg5en"]
+
+[ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="1_uac4e"]
+[ext_resource type="PackedScene" uid="uid://h7l63eosw3qr" path="res://scenes/FasePrototipo/salaA_FasePrototipo.tscn" id="2_no2at"]
+[ext_resource type="Script" uid="uid://bic3edh0gitu6" path="res://scripts/portals.gd" id="3_2oaq6"]
+[ext_resource type="PackedScene" uid="uid://dctupl31nl40m" path="res://scenes/FasePrototipo/salaB_FasePrototipo.tscn" id="4_ery0y"]
+[ext_resource type="Script" uid="uid://d0d5e5exesi0r" path="res://scripts/wind.gd" id="5_rgyx6"]
+[ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="6_u5dw8"]
+[ext_resource type="PackedScene" uid="uid://cqdcm837m706n" path="res://scenes/FasePrototipo/salaC_FasePrototipo.tscn" id="7_j62lh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
+size = Vector3(2.8, 4.1, 0.26913452)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_trn2v"]
+height = 50.0
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgr22"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_trn2v"]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 50.0
+
+[node name="Bloco_Jogavel" type="Node3D" unique_id=26563897]
+
+[node name="Core" parent="." unique_id=1417270398 instance=ExtResource("1_uac4e")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.6343384, -46.34735, -85.36534)
+
+[node name="SalaA_prototipo" parent="." unique_id=1859577132 instance=ExtResource("2_no2at")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 7, 0, 120)
+
+[node name="PortalAzulA" type="Area3D" parent="SalaA_prototipo" unique_id=1698154405 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -53.4034, -10.328405, -0.53007984)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaB_prototipo/PortalAzulB")
+numFace = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaA_prototipo/PortalAzulA" unique_id=1204480309]
+transform = Transform3D(3.9999104, 0, 0, 0, 4, 0, 0, 0, 3.9999104, -1.8149414, 1.7092896, -1.3333113)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalRoxoA" type="Area3D" parent="SalaA_prototipo" unique_id=2074927818 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(0.99999994, 0, -4.3711385e-08, -4.3711385e-08, 1.9106855e-15, -0.99999994, 0, 1, 1.9106853e-15, 13.772118, 37.874996, -0.33153725)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaC_prototipo/PortalRoxoC")
+numFace = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaA_prototipo/PortalRoxoA" unique_id=1695082802]
+transform = Transform3D(3.4968323e-07, 3.9999988, -3.496831e-07, 3.9999096, -3.4969108e-07, 1.748416e-07, 1.748416e-07, -3.4969105e-07, -3.9999084, 0.5053711, 0.40928036, -2.2788506)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="SalaB_prototipo" parent="." unique_id=1512028510 instance=ExtResource("4_ery0y")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -189.89856, 0, -72.1098)
+
+[node name="PortalAzulB" type="Area3D" parent="SalaB_prototipo" unique_id=1610835633 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0.93513477, -3.1647966, 64.77367)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaA_prototipo/PortalAzulA")
+numFace = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaB_prototipo/PortalAzulB" unique_id=207579135]
+transform = Transform3D(3.9999113, 0, 0, 0, 4, 0, 0, 0, 3.9999113, 0.28503418, 3.809288, -1.7888815)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeB" type="Area3D" parent="SalaB_prototipo" unique_id=1461217142 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.7935791, 39.91972, -58.04956)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaC_prototipo/PortalVerdeC")
+numFace = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaB_prototipo/PortalVerdeB" unique_id=1369113815]
+transform = Transform3D(3.99991, 0, 0, 0, 4, 0, 0, 0, 3.99991, 0.78500366, 0.5053711, -1.3092804)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="SalaB_prototipo" unique_id=779485732]
+transform = Transform3D(1.5508842, 0, 0, 0, 0.7034511, 0, 0, 0, 1.3679622, -0.5, 0.2693863, -56.28978)
+script = ExtResource("5_rgyx6")
+WIND_DIRECTION = Vector3(0, 1, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaB_prototipo/wind 1" unique_id=1421136405]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SalaB_prototipo/wind 1" unique_id=1988344443]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="dash_crystal2" parent="SalaB_prototipo" unique_id=1371341528 instance=ExtResource("6_u5dw8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.6719055, 22.507296, -0.3977356)
+
+[node name="SalaC_prototipo" parent="." unique_id=1142985049 instance=ExtResource("7_j62lh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 7, 162, -39)
+
+[node name="PortalRoxoC" type="Area3D" parent="SalaC_prototipo" unique_id=509480322 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 37.571167, -0.4325409, 63.257484)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaA_prototipo/PortalRoxoA")
+numFace = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/PortalRoxoC" unique_id=1496309603]
+transform = Transform3D(-4.3711393e-07, -10, 1.1368684e-13, 10, -4.3711393e-07, 0, 6.7762636e-21, 1.1368684e-13, 10, 0.28503418, 2.109314, -0.41812134)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="PortalVerdeC" type="Area3D" parent="SalaC_prototipo" unique_id=1782895722 node_paths=PackedStringArray("destination") groups=["Portals"]]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -65.88882, -0.5647583, -21.713226)
+script = ExtResource("3_2oaq6")
+destination = NodePath("../../SalaB_prototipo/PortalVerdeB")
+numFace = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/PortalVerdeC" unique_id=872106350]
+transform = Transform3D(-1.7483991e-07, -3.999971, -4.689582e-13, 3.9999104, -1.7484557e-07, 0, -1.01210705e-14, -4.689582e-13, 3.9998815, -0.23869324, 0.50572205, -0.014892578)
+shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="wind 1" type="Area3D" parent="SalaC_prototipo" unique_id=674710799]
+transform = Transform3D(0.8811045, 0, 0, 0, 1.4, 0, 0, 0, 1, -41.23729, -0.2791748, 18.041916)
+script = ExtResource("5_rgyx6")
+WIND_DIRECTION = Vector3(1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/wind 1" unique_id=1738409467]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SalaC_prototipo/wind 1" unique_id=2001817006]
+transform = Transform3D(-2.1855694e-08, -2, 0, 0.5, -8.742278e-08, 0, 0, 0, 0.7, 22, 0, 0)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 2" type="Area3D" parent="SalaC_prototipo" unique_id=785752246]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 0.8037024, 32.93328, 0.20167542, -11.47197)
+script = ExtResource("5_rgyx6")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/wind 2" unique_id=424516672]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SalaC_prototipo/wind 2" unique_id=1701501111]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 3" type="Area3D" parent="SalaC_prototipo" unique_id=138969531]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 0.8037024, 8.4500885, 0.20167542, -17.913376)
+script = ExtResource("5_rgyx6")
+WIND_DIRECTION = Vector3(0, 0, -1)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/wind 3" unique_id=2093806460]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SalaC_prototipo/wind 3" unique_id=1808081475]
+transform = Transform3D(5.7320567e-16, 3.4969112e-08, 0.4, 0.3, -3.4969112e-08, 0, 1.3113417e-08, 0.8, -1.7484556e-08, 2, 0, -11)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="wind 4" type="Area3D" parent="SalaC_prototipo" unique_id=1625140538]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, 53.700134, 1.7524261, -48.13246)
+script = ExtResource("5_rgyx6")
+WIND_DIRECTION = Vector3(-1, 0, 0)
+WIND_POWER = 300.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SalaC_prototipo/wind 4" unique_id=428669657]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+shape = SubResource("CylinderShape3D_trn2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SalaC_prototipo/wind 4" unique_id=228659875]
+transform = Transform3D(-1.3113417e-08, -2, 1.880791e-37, 0.3, -8.742278e-08, 5.293956e-23, -3.970467e-23, 1.1570309e-29, 0.4, -36, 0, -7)
+material_override = SubResource("StandardMaterial3D_lgr22")
+transparency = 0.7
+mesh = SubResource("CylinderMesh_trn2v")
+
+[node name="Spawnpoints" type="Node3D" parent="." unique_id=1279463658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 0, 0)
+
+[node name="ONE" type="Node3D" parent="Spawnpoints" unique_id=516768576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.25006, -27.6628, 120.827225)
+
+[node name="TWO" type="Node3D" parent="Spawnpoints" unique_id=1255934098]
+transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, -316.77832, -1.1843786, -23.251081)
+
+[node name="THREE" type="Node3D" parent="Spawnpoints" unique_id=2035255898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.30269, 162.63908, 5.1610875)
+
+[connection signal="body_entered" from="SalaA_prototipo/PortalAzulA" to="SalaA_prototipo/PortalAzulA" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaA_prototipo/PortalAzulA" to="SalaA_prototipo/PortalAzulA" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaA_prototipo/PortalRoxoA" to="SalaA_prototipo/PortalRoxoA" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaA_prototipo/PortalRoxoA" to="SalaA_prototipo/PortalRoxoA" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaB_prototipo/PortalAzulB" to="SalaB_prototipo/PortalAzulB" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaB_prototipo/PortalAzulB" to="SalaB_prototipo/PortalAzulB" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaB_prototipo/PortalVerdeB" to="SalaB_prototipo/PortalVerdeB" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaB_prototipo/PortalVerdeB" to="SalaB_prototipo/PortalVerdeB" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaB_prototipo/wind 1" to="SalaB_prototipo/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaB_prototipo/wind 1" to="SalaB_prototipo/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/PortalRoxoC" to="SalaC_prototipo/PortalRoxoC" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/PortalRoxoC" to="SalaC_prototipo/PortalRoxoC" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/PortalVerdeC" to="SalaC_prototipo/PortalVerdeC" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/PortalVerdeC" to="SalaC_prototipo/PortalVerdeC" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/wind 1" to="SalaC_prototipo/wind 1" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/wind 1" to="SalaC_prototipo/wind 1" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/wind 2" to="SalaC_prototipo/wind 2" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/wind 2" to="SalaC_prototipo/wind 2" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/wind 3" to="SalaC_prototipo/wind 3" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/wind 3" to="SalaC_prototipo/wind 3" method="_on_body_exited"]
+[connection signal="body_entered" from="SalaC_prototipo/wind 4" to="SalaC_prototipo/wind 4" method="_on_body_entered"]
+[connection signal="body_exited" from="SalaC_prototipo/wind 4" to="SalaC_prototipo/wind 4" method="_on_body_exited"]

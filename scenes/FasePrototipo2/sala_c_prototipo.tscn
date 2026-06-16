@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://h77pcg3xrw0w"]
+
+[ext_resource type="PackedScene" uid="uid://codq8hqnigkjm" path="res://models/import/prototipo_certin/SalaC_prototipo.glb" id="1_4xbbl"]
+
+[node name="SalaC_prototipo" unique_id=1374708071 instance=ExtResource("1_4xbbl")]
