@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="1_3dxm6"]
-[ext_resource type="Shader" uid="uid://ti14rrjo2iyp" path="res://shaders/nevasca.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://byvsncxli41tk" path="res://shaders/nevasca.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="5_lgr22"]
+[ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="7_03owx"]
+[ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="7_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
+[ext_resource type="Script" uid="uid://dgpbyspuf100w" path="res://barra_stamina.gd" id="8_wkp8b"]
+[ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="9_20pc6"]
 [ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
-[ext_resource type="Shader" uid="uid://oc0q4p8hbc5q" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://dmo0pnh3gluic" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -133,6 +137,29 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Aperte 'F'"
 label_settings = SubResource("LabelSettings_c2ibq")
+
+[node name="GatoAvatar" type="TextureRect" parent="Camera3D/UI/Control" unique_id=879241400]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -308.0
+offset_right = 115.0
+offset_bottom = -220.0
+texture = ExtResource("7_20pc6")
+expand_mode = 1
+
+[node name="BarraStamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=1312120479]
+layout_mode = 0
+offset_left = 55.0
+offset_top = -275.0
+offset_right = 1367.0
+offset_bottom = 924.0
+scale = Vector2(0.15, 0.15)
+value = 100.0
+fill_mode = 5
+radial_fill_degrees = 340.8
+texture_under = ExtResource("7_03owx")
+texture_progress = ExtResource("9_20pc6")
+script = ExtResource("8_wkp8b")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
 environment = SubResource("Environment_cm0pq")
