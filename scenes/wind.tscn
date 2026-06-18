@@ -131,13 +131,14 @@ skeleton = NodePath("")
 transform = Transform3D(0.4414992, 0, 0, 0, 1.0000001, 0, 0, 0, 0.5, 0, -0.2705079, 0)
 shape = SubResource("CylinderShape3D_trn2v")
 
-[node name="WindParticlesBottom" type="GPUParticles3D" parent="." unique_id=755653934]
+[node name="WindParticles" type="GPUParticles3D" parent="." unique_id=755653934]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -23.700874, 0)
 material_override = SubResource("ShaderMaterial_4pwos")
 cast_shadow = 0
 amount = 32
 preprocess = 1.0
-randomness = 0.04
+explosiveness = 0.06
+randomness = 0.25
 fixed_fps = 60
 visibility_aabb = AABB(-4, -4, -4, 8, 49.93, 8)
 process_material = SubResource("ParticleProcessMaterial_yawee")

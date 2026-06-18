@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="2_5twts"]
 
 [sub_resource type="Gradient" id="Gradient_2kodj"]
-offsets = PackedFloat32Array(0, 0.16062176, 0.39378238, 0.5103735, 0.68393785)
-colors = PackedColorArray(0.23988676, 0.4627605, 1, 0.0627451, 0.145177, 0.6493774, 0.8770973, 0.4745098, 0.38009503, 0.81729746, 1, 0.9098039, 0.3518925, 0.77215105, 0.981857, 1, 3.85046e-07, 0.7229738, 0.92865795, 1)
+offsets = PackedFloat32Array(0, 0.16062176, 0.39378238, 0.5154639, 0.69072163)
+colors = PackedColorArray(0.5935042, 0.72699577, 1, 0.0627451, 0.18971983, 0.49748427, 0.775605, 0.4745098, 0.3175447, 0.65099907, 0.88417786, 0.9098039, 0.4165746, 0.75524575, 1.0261168, 1, 0.4668734, 0.73767173, 0.9586565, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4pwos"]
 gradient = SubResource("Gradient_2kodj")

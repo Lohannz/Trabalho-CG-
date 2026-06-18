@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
-[ext_resource type="Shader" uid="uid://5yqaxh6bkmr3" path="res://shaders/core.gdshader" id="1_5634n"]
-[ext_resource type="Script" uid="uid://b5eaaudttpn2v" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
-[ext_resource type="Script" uid="uid://5utdu3go0l1g" path="res://scripts/light_detection.gd" id="3_c8oal"]
+[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="1_5634n"]
+[ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Script" uid="uid://cxb5j6glgtibo" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
 albedo_color = Color(0.8875014, 0.7163662, 1.189535, 1)

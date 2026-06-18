@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbir1f1oqqnuu"
-path.s3tc="res://.godot/imported/wind_particle.png-ff13abba204d68580f0103d5f0e5cc17.s3tc.ctex"
+uid="uid://ob6uf70eysg6"
+path.s3tc="res://.godot/imported/portal_swirl_noise.jpg-06d178d9940fc9b7b571844aff6bb7af.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/import/textures/wind_particle.png"
-dest_files=["res://.godot/imported/wind_particle.png-ff13abba204d68580f0103d5f0e5cc17.s3tc.ctex"]
+source_file="res://models/import/textures/portal_swirl_noise.jpg"
+dest_files=["res://.godot/imported/portal_swirl_noise.jpg-06d178d9940fc9b7b571844aff6bb7af.s3tc.ctex"]
 
 [params]
 
