@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchamfcae2nbn"
-path.s3tc="res://.godot/imported/snow_noise.png-b0f002808576fb51b238fae4bb4502b9.s3tc.ctex"
+uid="uid://bb3ghfbbelj5c"
+path.s3tc="res://.godot/imported/cat_cat.png-6e0f3508ecad1752d5b8d5576e1edb74.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "b3a1e25f67c4f58f4cdee6a270c19515"
+}
 
 [deps]
 
-source_file="res://models/import/textures/snow_noise.png"
-dest_files=["res://.godot/imported/snow_noise.png-b0f002808576fb51b238fae4bb4502b9.s3tc.ctex"]
+source_file="res://models/import/cat_cat.png"
+dest_files=["res://.godot/imported/cat_cat.png-6e0f3508ecad1752d5b8d5576e1edb74.s3tc.ctex"]
 
 [params]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="1_1ffj6"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="2_1ffj6"]
+[ext_resource type="Script" uid="uid://swj8sa0a3xw0" path="res://scripts/portals.gd" id="3_jr6l0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jr6l0"]
 render_priority = 0
@@ -44,8 +45,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_byics")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4jfq"]
+size = Vector3(1.8905334, 14.25885, 1)
+
 [node name="Portal" type="MeshInstance3D" unique_id=1134528590]
-transform = Transform3D(0.9993163, 0.03686679, -0.002794241, -0.036873877, 0.9993167, -0.0025277932, 0.0026991377, 0.0026291024, 0.9999929, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_jr6l0")
 mesh = SubResource("ArrayMesh_fop18")
 skeleton = NodePath("")
+
+[node name="PortalArea" type="Area3D" parent="." unique_id=1967604049]
+transform = Transform3D(-4.371139e-08, 0, 3.6487424, 0, 1, 0, -1, 0, -1.5949159e-07, 3.281941, -0.17573562, -0.4810181)
+script = ExtResource("3_jr6l0")
+
+[node name="PortalCol" type="CollisionShape3D" parent="PortalArea" unique_id=1665133991]
+transform = Transform3D(-1.071021e-08, -1.1641532e-09, -10.618902, -9.7194516e-08, 1, 2.4214387e-08, 0.27407193, 1.5297223e-07, -2.3562461e-07, -0.481018, 0.4224097, -0.7340855)
+shape = SubResource("BoxShape3D_d4jfq")
+
+[connection signal="body_entered" from="PortalArea" to="PortalArea" method="_on_body_entered"]
+[connection signal="body_exited" from="PortalArea" to="PortalArea" method="_on_body_exited"]

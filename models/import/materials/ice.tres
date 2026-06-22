@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cpwd3y5t7rrxs"]
+
+[ext_resource type="Shader" uid="uid://cvvtkjv1wxp7e" path="res://shaders/icy.gdshader" id="1_g1dsn"]
+[ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="2_7jutm"]
+[ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="3_1pl4y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_g1dsn")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.7411765, 0.92941177, 1)
+shader_parameter/base_color = Color(0, 0.70182806, 1.5999943, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("2_7jutm")
+shader_parameter/normal_tex = ExtResource("3_1pl4y")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5

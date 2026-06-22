@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjvn5pf12opxo"]
 
 [ext_resource type="PackedScene" uid="uid://bkh5bj3wnsccq" path="res://models/import/modelos-leo/FaceB.glb" id="1_lacq4"]
+[ext_resource type="Material" uid="uid://cpwd3y5t7rrxs" path="res://models/import/materials/ice.tres" id="2_m0y7i"]
 [ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_paak5"]
 [ext_resource type="Material" uid="uid://cfwdhyca7wdgv" path="res://models/import/materials/platform.tres" id="3_bffqw"]
 [ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="4_bfdpn"]
@@ -116,96 +117,111 @@ uv1_triplanar_sharpness = 2.0
 
 [node name="FaceB" unique_id=123047431 instance=ExtResource("1_lacq4")]
 
-[node name="StaticBody3D" parent="plataforma_frente_013" parent_id_path=PackedInt32Array(497611032) index="0" unique_id=1186925187 groups=["light_sensitive"]]
+[node name="plataforma_frente_013" parent="." index="0" unique_id=964471735]
+material_override = ExtResource("2_m0y7i")
 
-[node name="StaticBody3D" parent="plataforma_frente_011" parent_id_path=PackedInt32Array(438521184) index="0" unique_id=569812641 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_013" index="0" unique_id=1907794815 groups=["light_sensitive"]]
 
-[node name="StaticBody3D" parent="plataforma_frente_015" parent_id_path=PackedInt32Array(462636105) index="0" unique_id=1078368051 groups=["light_sensitive"]]
+[node name="plataforma_frente_011" parent="." index="1" unique_id=162640779]
+material_override = ExtResource("2_m0y7i")
 
-[node name="StaticBody3D" parent="plataforma_frente_016" parent_id_path=PackedInt32Array(1113465182) index="0" unique_id=1996149274 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_011" index="0" unique_id=1520966066 groups=["light_sensitive"]]
 
-[node name="StaticBody3D" parent="plataforma_frente_017" parent_id_path=PackedInt32Array(938955783) index="0" unique_id=1871906470 groups=["light_sensitive"]]
+[node name="plataforma_frente_015" parent="." index="2" unique_id=414956568]
+material_override = ExtResource("2_m0y7i")
 
-[node name="plataforma_frente_021" parent="." index="5" unique_id=1619761576]
+[node name="StaticBody3D" parent="plataforma_frente_015" index="0" unique_id=140936037 groups=["light_sensitive"]]
+
+[node name="plataforma_frente_016" parent="." index="3" unique_id=1125747723]
+material_override = ExtResource("2_m0y7i")
+
+[node name="StaticBody3D" parent="plataforma_frente_016" index="0" unique_id=553389155 groups=["light_sensitive"]]
+
+[node name="plataforma_frente_017" parent="." index="4" unique_id=1746172895]
+material_override = ExtResource("2_m0y7i")
+
+[node name="StaticBody3D" parent="plataforma_frente_017" index="0" unique_id=657835136 groups=["light_sensitive"]]
+
+[node name="plataforma_frente_021" parent="." index="5" unique_id=692423638]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_054" parent="plataforma_frente_021" index="0" unique_id=476499763]
+[node name="plataforma_frente_054" parent="plataforma_frente_021" index="0" unique_id=255291101]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_022" parent="." index="6" unique_id=62099312]
+[node name="plataforma_frente_022" parent="." index="6" unique_id=362700871]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_019" parent="." index="7" unique_id=1462272924]
+[node name="plataforma_frente_019" parent="." index="7" unique_id=222530927]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_023" parent="." index="8" unique_id=1267719857]
+[node name="plataforma_frente_023" parent="." index="8" unique_id=2051392668]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=533884401]
+[node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=1156336233]
 material_override = SubResource("StandardMaterial3D_78hdn")
 
-[node name="plataforma_frente_024" parent="." index="9" unique_id=327275414]
+[node name="plataforma_frente_024" parent="." index="9" unique_id=2015335061]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente" parent="plataforma_frente_024" index="0" unique_id=1427962660]
+[node name="plataforma_frente" parent="plataforma_frente_024" index="0" unique_id=1884427961]
 material_override = ExtResource("7_bfdpn")
 
-[node name="plataforma_frente_001" parent="plataforma_frente_024/plataforma_frente" index="0" unique_id=1718127677]
+[node name="plataforma_frente_001" parent="plataforma_frente_024/plataforma_frente" index="0" unique_id=2019883617]
 material_override = ExtResource("7_bfdpn")
 
-[node name="plataforma_frente_061" parent="plataforma_frente_024" index="1" unique_id=1782328410]
+[node name="plataforma_frente_061" parent="plataforma_frente_024" index="1" unique_id=147307416]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_025" parent="." index="10" unique_id=322750726]
+[node name="plataforma_frente_025" parent="." index="10" unique_id=1182731022]
 material_override = ExtResource("3_bffqw")
 
-[node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=1062336668]
+[node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=186077953]
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
-[node name="PlanoTrue" parent="." index="11" unique_id=546414077]
+[node name="PlanoTrue" parent="." index="11" unique_id=2125858685]
 material_override = ExtResource("2_paak5")
 
-[node name="paredeTRUETRUE_002" parent="." index="12" unique_id=1795885105]
+[node name="paredeTRUETRUE_002" parent="." index="12" unique_id=1078575457]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_055" parent="." index="13" unique_id=1117460470]
+[node name="plataforma_frente_055" parent="." index="13" unique_id=178338048]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=1386278005]
+[node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=585788549]
 material_override = SubResource("StandardMaterial3D_bfdpn")
 
-[node name="plataforma_frente_056" parent="." index="14" unique_id=1402363789]
+[node name="plataforma_frente_056" parent="." index="14" unique_id=1968748391]
 material_override = ExtResource("3_bffqw")
 
-[node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=738326854]
+[node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=1179303091]
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
-[node name="plataforma_frente_057" parent="." index="15" unique_id=1763655360]
+[node name="plataforma_frente_057" parent="." index="15" unique_id=1099675926]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1406343987]
+[node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1122626004]
 material_override = SubResource("StandardMaterial3D_78hdn")
 
-[node name="plataforma_frente_058" parent="." index="16" unique_id=1028422740]
+[node name="plataforma_frente_058" parent="." index="16" unique_id=1339170668]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=1618872025]
+[node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=632910315]
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
-[node name="plataforma_frente_059" parent="." index="17" unique_id=1729973212]
+[node name="plataforma_frente_059" parent="." index="17" unique_id=1266083928]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=1274991894]
+[node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=998564147]
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
-[node name="plataforma_frente_060" parent="." index="18" unique_id=1297643436]
+[node name="plataforma_frente_060" parent="." index="18" unique_id=549764383]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=674558917]
+[node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=132178686]
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
-[node name="plataforma_frente_062" parent="." index="19" unique_id=715605472]
+[node name="plataforma_frente_062" parent="." index="19" unique_id=145756385]
 material_override = ExtResource("2_paak5")
 
-[node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=2086492481]
+[node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=5616325]
 material_override = SubResource("StandardMaterial3D_m0y7i")

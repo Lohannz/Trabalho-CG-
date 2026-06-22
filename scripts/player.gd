@@ -46,7 +46,7 @@ const DASH_IMPULSE = 50.0
 
 const JUMP_HEIGHT = 11.5
 const JUMP_DURATION = 0.28
-const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
+const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION) 
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
 const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 32.0
@@ -83,26 +83,20 @@ var forward : Vector3 = Vector3.ZERO
 var input: PlayerInput
 var gravity : float = GRAVITY
 var move_direction : Vector3 = Vector3.ZERO
-#var direction_v : Vector3 = Vector3.ZERO
 
-# Variáveis: Orientação da Cubo
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE} # Acho que eu coloquei porque vai ser preciso para o spawnpoint
-@export var current_face = FACE.ONE
-
-enum SPAWNPOINT{ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE}
-var current_spawnpoint =  SPAWNPOINT.ONE
+var spawnpoint : int = 0
 
 # INTERAÇÃO COM PORTAL #
 func use_portal(portal):
 	velocity = Vector3.ZERO
 	global_position = portal.destination.global_position
 	FREEZE = true
-	process_mode = Node.PROCESS_MODE_DISABLED
-	current_spawnpoint = portal.numFace
+	#process_mode = Node.PROCESS_MODE_DISABLED
+	spawnpoint = portal.destination.spawnpoint
 	PORTAL_UI.visible = false
 	camera._change_orientation(portal.get_normal())
 	await get_tree().create_timer(0.9).timeout
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	#process_mode = Node.PROCESS_MODE_ALWAYS
 	FREEZE = false
 
 
@@ -113,7 +107,7 @@ func project_on_plane(v: Vector3, normal: Vector3) -> Vector3:
 	
 
 func _update_orientation() -> void:
-	_orientation = camera.game_basis  # ← basis puro, sem tilt
+	_orientation = camera.game_basis
 	up = _orientation.y
 	right = _orientation.x
 	forward = _orientation.z
@@ -122,17 +116,20 @@ func _update_orientation() -> void:
 func _update_movement_direction(delta):
 	input.update(delta)
 	move_direction = right * input.move.x + forward * input.move.y
-	#direction_v = up * 
-	if input.has_movement():
-		move_direction = move_direction.normalized()
-	else:
-		move_direction = Vector3.ZERO	
+	move_direction = move_direction.normalized()
 	
 func _update_facing_direction(delta):
 	if move_direction != Vector3.ZERO:
 		_facing_direction = _facing_direction.slerp(move_direction, 10.0 * delta)
-	_facing_direction.normalized()
-
+	_facing_direction = _facing_direction.normalized()
+	
+	if move_direction != Vector3.ZERO:
+		var y = up.normalized()
+		var z = move_direction.normalized()
+		var x = y.cross(z).normalized()
+		z = x.cross(y).normalized()
+		var orientation = Basis(x, y, z)
+		$cat_obj.global_transform.basis = $cat_obj.global_transform.basis.slerp(orientation, 12.0 * delta)
 	
 ## INICIALIZAÇÃO
 func _ready() -> void:
@@ -175,8 +172,7 @@ func _physics_process(delta : float) -> void:
 func die() -> void:
 	print("morreu!")
 	velocity = Vector3.ZERO
-	var spawn_name = SPAWNPOINT.keys()[current_spawnpoint]
-	global_position = get_parent()._get_spawnpoint_position(spawn_name)
+	global_position = get_parent()._get_spawnpoint_position(spawnpoint)
 	
 
 ## FÍSICA DO PLAYER
@@ -289,39 +285,56 @@ func _physics_steady():
 # Verificação Movimentação contra parede
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal()
-	return move_direction.dot(-normal) > 0.1
-
+	return move_direction.dot(-normal) > 0.
+	
+"""	# Não está funcionando
+func is_on_climbable_wall() -> bool:
+	#if not is_on_wall(): return false
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("Climbable"):
+			return true
+	return false
+"""
 func _update_state(delta : float):
 	var fatigue = 0.0
 	
 	if is_on_floor() and state != STATE.DASHING and not input.climb.is_down:
-		state = STATE.GROUNDED
-		has_dash = true
-		if stamina < 100.0: fatigue = REST_FATIGUE
+			state = STATE.GROUNDED
+			has_dash = true
+			if stamina < 100.0: fatigue = REST_FATIGUE
+			
+			if input.has_movement():
+				if $AnimationPlayer.current_animation != &"run": 
+					$AnimationPlayer.play(&"run")
+					$AnimationPlayer.speed_scale = 1.5
 	
+				#$AnimationPlayer.speed_scale = clamp(speed/SPEED, 0.2, 4.5)
+			else:
+				$AnimationPlayer.play(&"idle")
+				$AnimationPlayer.speed_scale = 1.0
+			
 	elif is_on_wall():
 		if STATE.DASHING:
 			velocity = Vector3.ZERO
 			
-		
-		
-		if input.climb.is_down and stamina > 0.0:
-			if input.has_movement():
-				state = STATE.CLIMBING
-			else:
-				state = STATE.STEADY
-			fatigue = CLIMB_FATIGUE	
-							
-		elif is_pushing_wall() and stamina > -50.0:
-			state = STATE.SLIDING
-			fatigue = SLIDE_FATIGUE
-			
+			if input.climb.is_down and stamina > 0.0:
+				if input.has_movement():
+					state = STATE.CLIMBING
+				else:
+					state = STATE.STEADY
+				fatigue = CLIMB_FATIGUE	
+									
+			elif is_pushing_wall() and stamina > -50.0:
+				state = STATE.SLIDING
+				fatigue = SLIDE_FATIGUE
+					
 		elif state != STATE.DASHING:
 			state = STATE.AIRBORNE
 			
 	elif state != STATE.DASHING:
 		state = STATE.AIRBORNE
-	
 	
  	# Recuperação de STAMINA no vento
 	if IN_WIND:
@@ -386,7 +399,7 @@ func _execute_dash():
 # Executor da Ação: PULO
 func _execute_jump():
 	#TODO: atualmente dá para pular enquanto STEADY na parede, isso faz o jogador deslizar
-	# 	   um pouco para cima, não era para isso ser possível
+	# 	    um pouco para cima, não era para isso ser possível
 	var normal = get_wall_normal().normalized()
 	var vertical = velocity.dot(up)
 	velocity -= up * vertical
@@ -399,41 +412,48 @@ func _execute_jump():
 	else:
 		velocity -= up * velocity.dot(up)
 		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST
-	
+		$AnimationPlayer.play(&"jump")
+		
 ## MOVIMENTAÇÃO DO PLAYER
 # Controle do Sistema: GRAVIDADE
 func _handle_gravity(delta : float):
 	if state in [STATE.AIRBORNE, STATE.SLIDING]:
 		gravity = GRAVITY
-		
 		var speed_v = velocity.dot(up)
-		var speed_h = velocity.dot(move_direction)
 		var terminal_speed = -TERMINAL_SPEED
 		
 		match state:
-			# Ajusta a suavidade da ascensão/queda.
 			STATE.AIRBORNE:
-				if speed_v < 0.0:
-					gravity *= FALL_MULT
-				else:
+				if speed_v > 0.0: 
 					gravity *= ASCEND_MULT
 					
-					# Controle da distância/altura do pulo.
-					if input.jump.released:
+					if input.jump.released: # Jump cut
 						velocity -= up * speed_v * 0.6
-					
-						if speed_h > 0.0:
-							velocity -= move_direction * speed_h * 0.4
-					
-			# Limita a velocidade do SLIDE.	
+						speed_v = velocity.dot(up)
+						
+					# Sincroniza a animação com o tempo restante do salto.
+					if $AnimationPlayer.current_animation == &"jump":
+						var jump_animation = $AnimationPlayer.current_animation_length
+						
+						# Tempo restante até a queda.
+						var lasting_time = speed_v/gravity
+						var scale = jump_animation/max(lasting_time, 0.1)
+						$AnimationPlayer.speed_scale = clampf(scale, 0.5, 2.5)
+					else:
+						$AnimationPlayer.speed_scale = 1.0
+				else:
+					gravity *= FALL_MULT
+					$AnimationPlayer.speed_scale = 1.0
+
+			# Limita a velocidade do slide.
 			STATE.SLIDING:
 				gravity *= SLIDE_MULT
 				terminal_speed = -SLIDE_SPEED
-				# Aplica SLIDE_FRICTION para segurar a velocidade da queda.
-				
-		if speed_v > terminal_speed:
-			velocity -= up * gravity * delta #* friction * delta
+				$AnimationPlayer.speed_scale = 1.0
 
+		if speed_v > terminal_speed:
+			velocity -= up * gravity * delta
+		
 # Controle do Sistema: MOVIMENTAÇÃO E MOMENTO
 func _handle_movement(delta : float):
 	match state:
@@ -452,4 +472,3 @@ func _handle_movement(delta : float):
 
 func _change_gravity(newOrientation : Basis):
 	up_direction = newOrientation.y
-	#gravity = -UP
