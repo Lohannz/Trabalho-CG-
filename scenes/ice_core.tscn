@@ -118,8 +118,8 @@ spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D" unique_id=656646044]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D/Area3D" unique_id=30030153]
 transform = Transform3D(1, -3.2270327e-07, -3.8493454e-08, 2.3967004e-08, 1.6996637e-07, -1, 3.1432137e-07, 1, -3.1013042e-07, -0.19668776, 0.1968174, -177.78648)
@@ -141,8 +141,8 @@ spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D2" unique_id=545240098]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D2/Area3D" unique_id=115048738]
 transform = Transform3D(1, -1.8592166e-08, 2.142042e-08, 0, -7.459438e-08, -1, 1.8818998e-08, 1, -6.224603e-08, 0.0015053749, 0.40631485, -172.96036)
@@ -164,8 +164,8 @@ spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D3" unique_id=377086572]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SpotLight3D3/Area3D" unique_id=395931260]
 transform = Transform3D(1, -1.8626567e-08, -3.259629e-09, 0, -2.5145711e-08, -1, 1.8626451e-08, 1, -6.239861e-08, 8.440018e-05, -1.7881393e-06, -228.07193)

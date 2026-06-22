@@ -189,30 +189,40 @@ layers = 8
 material_override = SubResource("ShaderMaterial_6q7ss")
 
 [node name="StaticBody3D" parent="plataforma_frente_013" index="0" unique_id=1907794815 groups=["lightSensitive"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="plataforma_frente_011" parent="." index="1" unique_id=162640779]
 layers = 8
 material_override = SubResource("ShaderMaterial_uc5lc")
 
 [node name="StaticBody3D" parent="plataforma_frente_011" index="0" unique_id=1520966066 groups=["lightSensitive"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="plataforma_frente_015" parent="." index="2" unique_id=414956568]
 layers = 8
 material_override = SubResource("ShaderMaterial_dmbf8")
 
 [node name="StaticBody3D" parent="plataforma_frente_015" index="0" unique_id=140936037 groups=["lightSensitive"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="plataforma_frente_016" parent="." index="3" unique_id=1125747723]
 layers = 8
 material_override = SubResource("ShaderMaterial_yirek")
 
 [node name="StaticBody3D" parent="plataforma_frente_016" index="0" unique_id=553389155 groups=["lightSensitive"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="plataforma_frente_017" parent="." index="4" unique_id=1746172895]
 layers = 8
 material_override = SubResource("ShaderMaterial_wmar6")
 
 [node name="StaticBody3D" parent="plataforma_frente_017" index="0" unique_id=657835136 groups=["lightSensitive"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="plataforma_frente_021" parent="." index="5" unique_id=692423638]
 material_override = ExtResource("2_paak5")

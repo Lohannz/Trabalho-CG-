@@ -120,7 +120,7 @@ func _update_movement_direction(delta):
 	
 func _update_facing_direction(delta):
 	if move_direction != Vector3.ZERO:
-		_facing_direction = _facing_direction.slerp(move_direction, 10.0 * delta)
+		_facing_direction = _facing_direction.slerp(move_direction, 10.0 * delta).normalized()
 	_facing_direction = _facing_direction.normalized()
 	
 	if move_direction != Vector3.ZERO:
@@ -128,9 +128,9 @@ func _update_facing_direction(delta):
 		var z = move_direction.normalized()
 		var x = y.cross(z).normalized()
 		z = x.cross(y).normalized()
-		var orientation = Basis(x, y, z)
-		$cat_obj.global_transform.basis = $cat_obj.global_transform.basis.slerp(orientation, 12.0 * delta)
-	
+		var orientation = Basis(x,y,z)
+		$cat_obj.global_transform.basis = $cat_obj.global_transform.basis.slerp(orientation, 12.0 * delta).orthonormalized()
+		
 ## INICIALIZAÇÃO
 func _ready() -> void:
 	input = PlayerInput.new()

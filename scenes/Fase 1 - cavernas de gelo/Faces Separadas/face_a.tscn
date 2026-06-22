@@ -661,6 +661,12 @@ material_override = SubResource("StandardMaterial3D_y74fa")
 layers = 2
 material_override = SubResource("StandardMaterial3D_bqhkd")
 
+[node name="StaticBody3D" parent="plataforma_fundo_012/plataforma_fundo_001" index="0" unique_id=1927444223]
+transform = Transform3D(0.9999999, 0, 0, 7.275958e-12, 1, 0, 0, 0, 0.9999999, -1.4662743e-05, -2.4365654, 0)
+
+[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_001/StaticBody3D" index="0" unique_id=650630848]
+transform = Transform3D(0.9999999, 0, 0, 7.275958e-12, 1, 0, 0, 0, 0.9999999, 1.4305115e-05, 2.4249573, 0)
+
 [node name="plataforma_fundo_010" parent="plataforma_fundo_012" index="2" unique_id=1378465051]
 material_override = SubResource("StandardMaterial3D_bvd0m")
 
@@ -668,8 +674,12 @@ material_override = SubResource("StandardMaterial3D_bvd0m")
 material_override = ExtResource("2_4bmlv")
 
 [node name="plataforma_fundo_006" parent="plataforma_fundo_012/plataforma_fundo_011" index="0" unique_id=403807541]
+transform = Transform3D(0.99999994, -1.3322676e-15, 0, 1.1175871e-08, 1.0756612, 0, 0, 0, 0.99999994, 0.209, -0.049, 0.05)
 layers = 2
 material_override = SubResource("StandardMaterial3D_acge8")
+
+[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_011/plataforma_fundo_006/StaticBody3D" parent_id_path=PackedInt32Array(2059349933) index="0" unique_id=1009522943]
+transform = Transform3D(1.002, 7.465481e-09, 0, -7.465481e-09, 1.002, 0, 0, 0, 1.002, 0, 0, 0)
 
 [node name="plataforma_fundo_001_003" parent="." index="14" unique_id=829572984]
 material_override = ExtResource("2_4bmlv")
