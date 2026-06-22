@@ -29,9 +29,8 @@ func event_loop():
 
 func start_blizzard():
 	active_event = true
-	
-	mist.get_child(0).collision_layer = 1
-		
+	mist.get_node("NevoaBody/NevoaCol").disabled = false
+
 	for snow in snows:
 		var particle : ParticleProcessMaterial = snow.process_material
 		particle.initial_velocity_min = 10.0
@@ -51,9 +50,8 @@ func start_blizzard():
 
 func end_blizzard():
 	active_event = false
-	
-	mist.get_child(0).collision_layer = 2
-		
+	mist.get_node("NevoaBody/NevoaCol").disabled = true
+
 	for snow in snows:
 		var particle : ParticleProcessMaterial = snow.process_material
 		particle.initial_velocity_min = 0.0

@@ -6,12 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekxg2"]
-height = 2.1694856
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlg0r"]
+size = Vector3(1.0668387, 2.1313324, 0.92004395)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
-radius = 1.6308594
-height = 7.2733555
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
+size = Vector3(3.3554993, 7.184326, 2.974121)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76dn1"]
 resource_name = "cat.skin"
@@ -1302,14 +1301,14 @@ _data = {
 script = ExtResource("1_i3pqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
-transform = Transform3D(3.7375357, 0, 0, 0, 3.2, 0, 0, 0, 3.374634, 0, -0.0060493536, 0)
-shape = SubResource("CapsuleShape3D_ekxg2")
+transform = Transform3D(3.7375357, 0, 0, 0, 3.2, 0, 0, 0, 3.374634, 0, 0.030194335, 0.034809154)
+shape = SubResource("BoxShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1219103866]
-transform = Transform3D(1.2460076, 0, 0, 0, 0.9944305, 0, 0, 0, 1.132867, 0, -0.017056197, 0)
-shape = SubResource("CapsuleShape3D_3vyb7")
+transform = Transform3D(1.2460076, 0, 0, 0, 0.9944305, 0, 0, 0, 1.132867, 0.00013306737, 0.01608336, 0.060570776)
+shape = SubResource("BoxShape3D_tuyoq")
 
 [node name="cat_obj" type="Node3D" parent="." unique_id=572664525]
 transform = Transform3D(0.88, 0, 0, 0, 0.88, 0, 0, 0, 0.88, 0, -1.5064895, -0.29265046)

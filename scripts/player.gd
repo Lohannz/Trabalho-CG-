@@ -286,17 +286,16 @@ func _physics_steady():
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal()
 	return move_direction.dot(-normal) > 0.
-	
-"""	# Não está funcionando
-func is_on_climbable_wall() -> bool:
-	#if not is_on_wall(): return false
+
+func is_on_layer(layer : int) -> bool:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if collider and collider.is_in_group("Climbable"):
+		var parent = collider.get_parent()
+		if parent is MeshInstance3D and parent.get_layer_mask_value(layer):
 			return true
 	return false
-"""
+	
 func _update_state(delta : float):
 	var fatigue = 0.0
 	
@@ -316,22 +315,22 @@ func _update_state(delta : float):
 				$AnimationPlayer.speed_scale = 1.0
 			
 	elif is_on_wall():
-		if STATE.DASHING:
-			velocity = Vector3.ZERO
-			
-			if input.climb.is_down and stamina > 0.0:
-				if input.has_movement():
-					state = STATE.CLIMBING
-				else:
-					state = STATE.STEADY
-				fatigue = CLIMB_FATIGUE	
-									
-			elif is_pushing_wall() and stamina > -50.0:
-				state = STATE.SLIDING
-				fatigue = SLIDE_FATIGUE
+		if is_on_layer(3) and input.climb.is_down and stamina > 0.0:
+			if input.has_movement():
+				state = STATE.CLIMBING
+			else:
+				state = STATE.STEADY
+			fatigue = CLIMB_FATIGUE	
+							
+		elif not is_on_layer(2) and is_pushing_wall() and stamina > -50.0:
+			state = STATE.SLIDING
+			fatigue = SLIDE_FATIGUE
 					
 		elif state != STATE.DASHING:
 			state = STATE.AIRBORNE
+			
+		else: velocity = Vector3.ZERO
+		
 			
 	elif state != STATE.DASHING:
 		state = STATE.AIRBORNE

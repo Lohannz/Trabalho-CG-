@@ -44,21 +44,6 @@ level_scene = ExtResource("1_3dxm6")
 [node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55735016, 3.1935701, 1.0646362)
 
-[node name="Skeleton3D" parent="player/cat_obj/armature_cat" parent_id_path=PackedInt32Array(455683885, 1591027206) index="0" unique_id=672315071]
-bones/0/rotation = Quaternion(-3.2386456e-08, 4.944008e-08, 0.037674494, 0.99929005)
-bones/5/rotation = Quaternion(0.90481204, -0.18722244, -0.35045695, 0.15311107)
-bones/7/rotation = Quaternion(-0.8051581, 0.2675258, -0.48747438, 0.20620155)
-bones/9/rotation = Quaternion(0.99998194, 6.1661936e-05, 0.0050067785, -0.0033259494)
-bones/10/rotation = Quaternion(0.00042228468, -0.007529357, 0.05067768, 0.9986866)
-bones/11/rotation = Quaternion(0.00026794404, 0.0078044967, 0.03323137, 0.99941725)
-bones/20/rotation = Quaternion(-0.0063588815, -8.168803e-08, -0.8001267, 0.5997974)
-bones/24/rotation = Quaternion(0.5065631, -0.5308041, 0.46875924, -0.49183914)
-
-[node name="Skeleton3D" parent="player/cat_obj/cat_tail/armature_tail" parent_id_path=PackedInt32Array(455683885, 1673467853) index="0" unique_id=1495902340]
-bones/0/rotation = Quaternion(0.8577358, -0.512958, -0.033944108, -0.0033307285)
-bones/1/rotation = Quaternion(0.018833132, 0.05305052, -0.19604452, 0.97897786)
-bones/3/rotation = Quaternion(0.04628657, 0.018607996, 0.41063866, 0.91043246)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=22637776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
 fov = 80.0

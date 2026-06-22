@@ -1,14 +1,81 @@
 [gd_scene format=3 uid="uid://bjvn5pf12opxo"]
 
 [ext_resource type="PackedScene" uid="uid://bkh5bj3wnsccq" path="res://models/import/modelos-leo/FaceB.glb" id="1_lacq4"]
-[ext_resource type="Material" uid="uid://cpwd3y5t7rrxs" path="res://models/import/materials/ice.tres" id="2_m0y7i"]
+[ext_resource type="Shader" uid="uid://cvvtkjv1wxp7e" path="res://shaders/icy.gdshader" id="2_mwj7t"]
 [ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_paak5"]
+[ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="3_78hdn"]
 [ext_resource type="Material" uid="uid://cfwdhyca7wdgv" path="res://models/import/materials/platform.tres" id="3_bffqw"]
+[ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="4_64sia"]
 [ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="4_bfdpn"]
 [ext_resource type="Texture2D" uid="uid://nmrhldkx36fn" path="res://models/import/textures/Platform_AO.png" id="5_m0y7i"]
 [ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="6_sg7oa"]
 [ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="7_bfdpn"]
 [ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="7_mwj7t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6q7ss"]
+render_priority = 0
+shader = ExtResource("2_mwj7t")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.75, 0.95, 1)
+shader_parameter/base_color = Color(0, 0.702, 1.6, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("3_78hdn")
+shader_parameter/normal_tex = ExtResource("4_64sia")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc5lc"]
+render_priority = 0
+shader = ExtResource("2_mwj7t")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.75, 0.95, 1)
+shader_parameter/base_color = Color(0, 0.702, 1.6, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("3_78hdn")
+shader_parameter/normal_tex = ExtResource("4_64sia")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmbf8"]
+render_priority = 0
+shader = ExtResource("2_mwj7t")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.75, 0.95, 1)
+shader_parameter/base_color = Color(0, 0.702, 1.6, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("3_78hdn")
+shader_parameter/normal_tex = ExtResource("4_64sia")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yirek"]
+render_priority = 0
+shader = ExtResource("2_mwj7t")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.75, 0.95, 1)
+shader_parameter/base_color = Color(0, 0.702, 1.6, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("3_78hdn")
+shader_parameter/normal_tex = ExtResource("4_64sia")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmar6"]
+render_priority = 0
+shader = ExtResource("2_mwj7t")
+shader_parameter/fres_intensity = 6.2
+shader_parameter/fres_color = Color(0, 0.75, 0.95, 1)
+shader_parameter/base_color = Color(0, 0.702, 1.6, 1)
+shader_parameter/uv_tiling = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv_offset = Vector3(0, -0.062, -0.375)
+shader_parameter/noise_tex = ExtResource("3_78hdn")
+shader_parameter/normal_tex = ExtResource("4_64sia")
+shader_parameter/refraction = 0.2
+shader_parameter/normal_depth = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78hdn"]
 albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
@@ -118,29 +185,34 @@ uv1_triplanar_sharpness = 2.0
 [node name="FaceB" unique_id=123047431 instance=ExtResource("1_lacq4")]
 
 [node name="plataforma_frente_013" parent="." index="0" unique_id=964471735]
-material_override = ExtResource("2_m0y7i")
+layers = 8
+material_override = SubResource("ShaderMaterial_6q7ss")
 
-[node name="StaticBody3D" parent="plataforma_frente_013" index="0" unique_id=1907794815 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_013" index="0" unique_id=1907794815 groups=["lightSensitive"]]
 
 [node name="plataforma_frente_011" parent="." index="1" unique_id=162640779]
-material_override = ExtResource("2_m0y7i")
+layers = 8
+material_override = SubResource("ShaderMaterial_uc5lc")
 
-[node name="StaticBody3D" parent="plataforma_frente_011" index="0" unique_id=1520966066 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_011" index="0" unique_id=1520966066 groups=["lightSensitive"]]
 
 [node name="plataforma_frente_015" parent="." index="2" unique_id=414956568]
-material_override = ExtResource("2_m0y7i")
+layers = 8
+material_override = SubResource("ShaderMaterial_dmbf8")
 
-[node name="StaticBody3D" parent="plataforma_frente_015" index="0" unique_id=140936037 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_015" index="0" unique_id=140936037 groups=["lightSensitive"]]
 
 [node name="plataforma_frente_016" parent="." index="3" unique_id=1125747723]
-material_override = ExtResource("2_m0y7i")
+layers = 8
+material_override = SubResource("ShaderMaterial_yirek")
 
-[node name="StaticBody3D" parent="plataforma_frente_016" index="0" unique_id=553389155 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_016" index="0" unique_id=553389155 groups=["lightSensitive"]]
 
 [node name="plataforma_frente_017" parent="." index="4" unique_id=1746172895]
-material_override = ExtResource("2_m0y7i")
+layers = 8
+material_override = SubResource("ShaderMaterial_wmar6")
 
-[node name="StaticBody3D" parent="plataforma_frente_017" index="0" unique_id=657835136 groups=["light_sensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_017" index="0" unique_id=657835136 groups=["lightSensitive"]]
 
 [node name="plataforma_frente_021" parent="." index="5" unique_id=692423638]
 material_override = ExtResource("2_paak5")
@@ -158,6 +230,7 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=1156336233]
+layers = 2
 material_override = SubResource("StandardMaterial3D_78hdn")
 
 [node name="plataforma_frente_024" parent="." index="9" unique_id=2015335061]
@@ -176,6 +249,7 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=186077953]
+layers = 2
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
 [node name="PlanoTrue" parent="." index="11" unique_id=2125858685]
@@ -188,40 +262,47 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=585788549]
+layers = 2
 material_override = SubResource("StandardMaterial3D_bfdpn")
 
 [node name="plataforma_frente_056" parent="." index="14" unique_id=1968748391]
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=1179303091]
+layers = 2
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
 [node name="plataforma_frente_057" parent="." index="15" unique_id=1099675926]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1122626004]
+layers = 2
 material_override = SubResource("StandardMaterial3D_78hdn")
 
 [node name="plataforma_frente_058" parent="." index="16" unique_id=1339170668]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=632910315]
+layers = 2
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_059" parent="." index="17" unique_id=1266083928]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=998564147]
+layers = 2
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_060" parent="." index="18" unique_id=549764383]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=132178686]
+layers = 2
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_062" parent="." index="19" unique_id=145756385]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=5616325]
+layers = 2
 material_override = SubResource("StandardMaterial3D_m0y7i")

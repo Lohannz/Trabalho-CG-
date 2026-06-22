@@ -20,9 +20,8 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [global_group]
 
-light_sensitive=""
 Moveble=""
-Climbable=""
+lightSensitive=""
 
 [input]
 

@@ -294,10 +294,10 @@ mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
 [node name="NevoaBody" type="StaticBody3D" parent="FaceA/Nevasca/Nevoa" unique_id=1789324732]
-collision_layer = 2
 
 [node name="NevoaCol" type="CollisionShape3D" parent="FaceA/Nevasca/Nevoa/NevoaBody" unique_id=564623898]
 shape = SubResource("BoxShape3D_8ldnf")
+disabled = true
 
 [node name="NeveA1" type="GPUParticles3D" parent="FaceA/Nevasca" unique_id=1386064216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.280384, 64.40179, 376.97357)
@@ -386,11 +386,11 @@ mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
 [node name="NevoaBody" type="StaticBody3D" parent="FaceB/Nevasca/Nevoa" unique_id=1570730177]
-collision_layer = 2
 
 [node name="NevoaCol" type="CollisionShape3D" parent="FaceB/Nevasca/Nevoa/NevoaBody" unique_id=2008282931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0, 0)
 shape = SubResource("BoxShape3D_8ldnf")
+disabled = true
 
 [node name="NeveB1" type="GPUParticles3D" parent="FaceB/Nevasca" unique_id=1112612091]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -296.14282, 104.27051, -15.987762)
@@ -486,10 +486,10 @@ mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
 [node name="NevoaBody" type="StaticBody3D" parent="FaceC/Nevasca/Nevoa" unique_id=1433575981]
-collision_layer = 2
 
 [node name="NevoaCol" type="CollisionShape3D" parent="FaceC/Nevasca/Nevoa/NevoaBody" unique_id=2050262481]
 shape = SubResource("BoxShape3D_8ldnf")
+disabled = true
 
 [node name="NeveC1" type="GPUParticles3D" parent="FaceC/Nevasca" unique_id=924473061]
 transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 197.80148, 540.6534, 127.40081)
