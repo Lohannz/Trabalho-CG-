@@ -128,7 +128,7 @@ func _update_facing_direction(delta):
 		var z = move_direction.normalized()
 		var x = y.cross(z).normalized()
 		z = x.cross(y).normalized()
-		var orientation = Basis(x,y,z)
+		var orientation = Basis(x,	y,z)
 		$cat_obj.global_transform.basis = $cat_obj.global_transform.basis.slerp(orientation, 12.0 * delta).orthonormalized()
 		
 ## INICIALIZAÇÃO
