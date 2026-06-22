@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bekhibng8xcgg" path="res://models/import/textures/snowmap_spec.png" id="4_8d1sp"]
 
 [resource]
-albedo_color = Color(0.55776006, 0.8062941, 0.93199116, 1)
+albedo_color = Color(0.3372549, 0.6666667, 0.81960785, 1)
 albedo_texture = ExtResource("1_o3rgd")
 metallic_specular = 0.0
 roughness_texture = ExtResource("4_8d1sp")

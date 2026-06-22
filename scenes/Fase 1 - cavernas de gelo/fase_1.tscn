@@ -12,7 +12,8 @@
 [ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
-albedo_color = Color(0.7056229, 0.9400322, 0.9776197, 1)
+transparency = 1
+albedo_color = Color(0.7058824, 0.9411765, 0.9764706, 0.88235295)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alpyq"]
 albedo_color = Color(0.8560673, 0.8560673, 0.85606724, 1)
@@ -64,7 +65,8 @@ _data = [Vector2(0, 0.11578941), 0.0, 9.782457, 0, 0, Vector2(0.11788619, 0.6736
 point_count = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3scg"]
-albedo_color = Color(0.7724981, 1.0166047, 1.0821912, 1)
+transparency = 1
+albedo_color = Color(0.7734331, 1.0185504, 1.0819428, 0.78431374)
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.195, 0.225, 0)
 billboard_mode = 3
@@ -279,7 +281,7 @@ transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0
 [node name="Spawn3" type="Marker3D" parent="Spawnpoints" unique_id=2016292211]
 transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 586.097, 525.039, 127.9272)
 
-[node name="FaceA" parent="." unique_id=1438050943 instance=ExtResource("1_62cav")]
+[node name="FaceA" parent="." unique_id=66732541 instance=ExtResource("1_62cav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.166521, 0, 165.16415)
 
 [node name="Nevasca" type="Node3D" parent="FaceA" unique_id=504961007]
@@ -451,7 +453,7 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 3" parent="FaceB/Ventos B" unique_id=1784307513 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-1.7, 2.015794e-07, -1.12204015e-14, 0, -5.8354704e-08, -1.7, -2.5669289e-07, -1.335, 7.430936e-08, 112.295, 364.35147, -56.141)
+transform = Transform3D(-1.7, 1.6203388e-07, -1.12204015e-14, 0, -4.6906774e-08, -1.7, -2.5669289e-07, -1.0731019, 7.430936e-08, 112.295, 364.35147, -56.141)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
@@ -461,7 +463,7 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 5" parent="FaceB/Ventos B" unique_id=1307451334 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-7.430936e-08, -1.3672446, 0, 1.7, -5.976416e-08, 0, 0, 0, 1.7, -64.970474, 345.32086, -132.74808)
+transform = Transform3D(-7.430936e-08, -1.3030128, 0, 1.7, -5.6956505e-08, 0, 0, 0, 1.7, -75.232956, 345.32086, -132.74808)
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 
@@ -524,7 +526,7 @@ transform = Transform3D(1.7, -9.163066e-15, 0, 7.788606e-15, 2, 0, 0, 0, 1.7, -2
 WIND_POWER = 500.0
 
 [node name="wind 2" parent="FaceC/Ventos C" unique_id=478673952 instance=ExtResource("7_k3scg")]
-transform = Transform3D(1.7, -1.4173997e-08, 0, 1.0615615e-08, 2.2698445, 0, 0, 0, 1.7, -212.2373, 156.01746, -131.25809)
+transform = Transform3D(1.7, -1.3823875e-08, 0, 1.0615615e-08, 2.2137754, 0, 0, 0, 1.7, -212.2373, 156.01746, -131.25809)
 WIND_POWER = 500.0
 
 [node name="Portais C" type="Node3D" parent="FaceC" unique_id=53965881]

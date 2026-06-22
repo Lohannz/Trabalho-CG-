@@ -1,9 +1,8 @@
 shader_type spatial;
-render_mode blend_mix, specular_schlick_ggx, unshaded;
+render_mode depth_prepass_alpha, blend_mix, specular_schlick_ggx, unshaded;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
-// --- Uniforms ---
 // Fresnel
 uniform float fres_intensity = 2.5;
 uniform vec4 fres_color : source_color;

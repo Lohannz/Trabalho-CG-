@@ -4,7 +4,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform int pixel_size : hint_range(1, 32) = 8;
 
 void fragment() {
-    vec2 screen_size = 1.0 / SCREEN_PIXEL_SIZE;
+    vec2 screen_size = 1.0/SCREEN_PIXEL_SIZE;
 
     float x = float(int(SCREEN_UV.x * screen_size.x) % pixel_size);
     float y = float(int(SCREEN_UV.y * screen_size.y) % pixel_size);

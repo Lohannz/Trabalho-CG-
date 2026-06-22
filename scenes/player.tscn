@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlg0r"]
 radius = 0.5366211
-height = 2.28656
+height = 2.256073
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76dn1"]
 resource_name = "cat.skin"
@@ -1299,13 +1299,13 @@ _data = {
 script = ExtResource("1_i3pqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
-transform = Transform3D(3.7375357, 0, 0, 0, 3.3020043, 0, 0, 0, 3.1833467, 0, -0.09824994, 0.035)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.09824994, 0.035)
 shape = SubResource("CapsuleShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
-transform = Transform3D(4, 0, 0, 0, 3.533, 0, 0, 0, 3.406, 0, -0.09824994, 0.035)
+transform = Transform3D(3.65, 0, 0, 0, 3.65, 0, 0, 0, 3.65, 0, -0.04439455, 0.035)
 shape = SubResource("CapsuleShape3D_qlg0r")
 
 [node name="cat_obj" type="Node3D" parent="." unique_id=572664525]

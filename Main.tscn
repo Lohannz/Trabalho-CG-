@@ -5,20 +5,34 @@
 [ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
+[ext_resource type="Shader" uid="uid://cnmu1annvf3oq" path="res://shaders/outline.gdshader" id="5_trn2v"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
-shader = ExtResource("4_3dxm6")
-shader_parameter/noise_texture = ExtResource("5_lgr22")
-shader_parameter/wind = 7.0
-shader_parameter/fog_density = 0.4
-shader_parameter/fog_color = Color(0.58, 0.82, 0.95, 1)
-shader_parameter/blur = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
 shader_parameter/pixel_size = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
+shader = ExtResource("4_3dxm6")
+shader_parameter/noise_texture = ExtResource("5_lgr22")
+shader_parameter/wind = 3.5
+shader_parameter/fog_density = 0.4
+shader_parameter/fog_color = Color(0.5803922, 0.81960785, 0.9490196, 0.78431374)
+shader_parameter/blur = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03owx"]
+render_priority = 10
+shader = ExtResource("5_trn2v")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 0.650000030875
+shader_parameter/sensitivity = 0.400000019
+shader_parameter/normal_sensitivity = 0.750000035625
+
+[sub_resource type="QuadMesh" id="QuadMesh_wkp8b"]
+material = SubResource("ShaderMaterial_03owx")
+uv2_padding = 0.0
+size = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c2ibq"]
 font_size = 40
@@ -54,15 +68,6 @@ tilt_degrees = 0.0
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
 
-[node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
-
-[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
-light_mask = 7
-visibility_layer = 7
-material = SubResource("ShaderMaterial_lgr22")
-offset_right = 1158.0
-offset_bottom = 644.0
-
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 
 [node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento/Pixelização" unique_id=447402171]
@@ -77,6 +82,22 @@ offset_top = -8.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
+
+[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
+light_mask = 15
+visibility_layer = 15
+material = SubResource("ShaderMaterial_lgr22")
+offset_right = 1158.0
+offset_bottom = 644.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1330836404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11222394, 0.17240715, -0.5001831)
+visible = false
+layers = 15
+mesh = SubResource("QuadMesh_wkp8b")
 
 [node name="UI" type="CanvasLayer" parent="Camera3D" unique_id=52951886]
 

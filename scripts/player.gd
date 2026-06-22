@@ -120,7 +120,7 @@ func _update_movement_direction(delta):
 	
 func _update_facing_direction(delta):
 	if move_direction != Vector3.ZERO:
-		_facing_direction = _facing_direction.slerp(move_direction, 10.0 * delta).normalized()
+		_facing_direction = (_facing_direction.slerp(move_direction, 10.0 * delta)).normalized()
 	_facing_direction = _facing_direction.normalized()
 	
 	if move_direction != Vector3.ZERO:

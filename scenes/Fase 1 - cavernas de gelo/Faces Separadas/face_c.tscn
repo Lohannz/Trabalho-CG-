@@ -292,7 +292,7 @@ transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274
 shape = SubResource("BoxShape3D_ue856")
 
 [node name="plataforma_fundo_005" parent="." index="1" unique_id=1778889014]
-layers = 4
+layers = 6
 material_override = ExtResource("2_xmwy0")
 
 [node name="plataforma_fundo_013" parent="plataforma_fundo_005" index="0" unique_id=1452998313]
@@ -315,7 +315,7 @@ shape = SubResource("BoxShape3D_pgdnc")
 material_override = ExtResource("3_pgdnc")
 
 [node name="espinhos_004" parent="plataforma_fundo_007" index="0" unique_id=1311141668]
-transform = Transform3D(1.01927515e-08, -3.6958223e-05, -0.0783759, 2.1516412e-07, -9.791098, 2.958437e-07, -0.057002004, -3.695823e-05, -1.4013587e-08, 0.009212732, -7.106079, 0.0024256706)
+transform = Transform3D(1.01927515e-08, -3.6958223e-05, -0.0783759, 2.1516412e-07, -9.791098, 2.958437e-07, -0.057002004, -3.695823e-05, -1.4013587e-08, 0.009212732, -9.413376, 0.0024256706)
 material_override = ExtResource("2_xmwy0")
 
 [node name="espinho7#StaticBody3D" type="StaticBody3D" parent="plataforma_fundo_007/espinhos_004" index="0" unique_id=389861329 groups=["killObj"]]

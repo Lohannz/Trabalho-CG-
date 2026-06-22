@@ -2,7 +2,8 @@
 
 [resource]
 transparency = 1
-albedo_color = Color(0.59535277, 0.55508894, 1.2679033, 0.816)
+depth_draw_mode = 1
+albedo_color = Color(0.53529346, 0.4467679, 1.2680886, 0.78431374)
 metallic = 0.7
 metallic_specular = 0.3
 roughness = 0.35
@@ -14,10 +15,11 @@ clearcoat_roughness = 0.7
 ao_light_affect = 0.15
 backlight_enabled = true
 backlight = Color(0.77680385, 0.40685734, 0.99155146, 1)
-refraction_enabled = true
 refraction_scale = 0.2
 uv1_scale = Vector3(-0.28, -0.28, -0.28)
 uv1_offset = Vector3(-0.63, -0.555, 0)
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.5
 uv1_world_triplanar = true
+stencil_flags = 2
+stencil_outline_thickness = 0.3
