@@ -1,11 +1,10 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
-[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="1_5634n"]
 [ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Material" uid="uid://042e88k1v6ly" path="res://models/import/materials/crystal_core.tres" id="2_sjmgp"]
 [ext_resource type="Script" uid="uid://cxb5j6glgtibo" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
-transparency = 4
 depth_draw_mode = 1
 albedo_color = Color(0.8875014, 0.7163662, 1.189535, 1)
 metallic = 0.79
@@ -77,13 +76,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i1pvj")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hlf4f"]
-render_priority = 0
-shader = ExtResource("1_5634n")
-shader_parameter/emission_color = Color(0, 0.54, 0.7, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_c8oal"]
-material = SubResource("ShaderMaterial_hlf4f")
+material = ExtResource("2_sjmgp")
 radius = 6.0
 height = 12.0
 radial_segments = 16
