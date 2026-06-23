@@ -1,38 +1,28 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="1_3dxm6"]
-[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
+[ext_resource type="Shader" uid="uid://b7dirf4wgp0g4" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
-[ext_resource type="Shader" uid="uid://cnmu1annvf3oq" path="res://shaders/outline.gdshader" id="5_trn2v"]
+[ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
-shader = ExtResource("12_c2ibq")
-shader_parameter/pixel_size = 2
+[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/barra_stamina.gd" id="8_trn2v"]
+[ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
+[ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
+[ext_resource type="Shader" uid="uid://c1vq0glpi5bpq" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
 shader = ExtResource("4_3dxm6")
 shader_parameter/noise_texture = ExtResource("5_lgr22")
-shader_parameter/wind = 3.5
+shader_parameter/wind = 7.0
 shader_parameter/fog_density = 0.4
-shader_parameter/fog_color = Color(0.5803922, 0.81960785, 0.9490196, 0.78431374)
-shader_parameter/blur = 0.03
+shader_parameter/fog_color = Color(0.58, 0.82, 0.95, 1)
+shader_parameter/blur = 0.02
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_03owx"]
-render_priority = 10
-shader = ExtResource("5_trn2v")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/shadow_thickness = 0.650000030875
-shader_parameter/sensitivity = 0.400000019
-shader_parameter/normal_sensitivity = 0.750000035625
-
-[sub_resource type="QuadMesh" id="QuadMesh_wkp8b"]
-material = SubResource("ShaderMaterial_03owx")
-uv2_padding = 0.0
-size = Vector2(3, 3)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
+shader = ExtResource("12_c2ibq")
+shader_parameter/pixel_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_c2ibq"]
 font_size = 40
@@ -51,12 +41,63 @@ volumetric_fog_detail_spread = 1.9318736
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_scene = ExtResource("1_3dxm6")
+level_scene = ExtResource("2_20pc6")
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
 [node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55735016, 3.1935701, 1.0646362)
+
+[node name="Skeleton3D" parent="player/cat_obj/armature_cat" parent_id_path=PackedInt32Array(455683885, 1591027206) index="0" unique_id=672315071]
+bones/0/position = Vector3(2.9545987e-08, 0, 1.2732926e-10)
+bones/0/rotation = Quaternion(-3.2386396e-08, 4.9441578e-08, 0.03767449, 0.99929005)
+bones/1/rotation = Quaternion(5.2517026e-09, -5.102154e-08, -0.11235191, 0.9936685)
+bones/2/rotation = Quaternion(-6.8442616e-09, 5.601867e-08, 0.110139735, 0.99391615)
+bones/4/rotation = Quaternion(3.832671e-15, 1.1920839e-07, -3.7252903e-09, 1)
+bones/5/rotation = Quaternion(0.71891445, -0.12322481, -0.022075633, 0.6837326)
+bones/6/rotation = Quaternion(-0.053718258, -0.022775725, -0.13287131, 0.9894144)
+bones/7/rotation = Quaternion(-0.7118548, 0.06848708, 0.01633631, 0.6987886)
+bones/8/rotation = Quaternion(0.017852118, -0.0019714707, -0.11475992, 0.9932309)
+bones/9/rotation = Quaternion(0.99996126, 0.00879233, -0.0003966695, 3.4877833e-06)
+bones/10/rotation = Quaternion(0.00045316023, -0.007527888, 0.05438299, 0.99849164)
+bones/11/rotation = Quaternion(0.00030987352, 0.0078030406, 0.03843162, 0.99923074)
+bones/12/rotation = Quaternion(0.9999524, 0.008790567, -0.00035961196, 0.004222193)
+bones/13/rotation = Quaternion(0.0046656323, -0.007757203, 0.054347362, 0.9984811)
+bones/14/rotation = Quaternion(0.00030499944, 0.007929734, 0.038431656, 0.9992297)
+bones/15/position = Vector3(-0.08671206, -3.0979154, -0.83090675)
+bones/15/rotation = Quaternion(-0.70710677, 0.70710677, -1.5453026e-08, -1.5455598e-08)
+bones/16/position = Vector3(-0.0012009499, -0.027485345, -0.027114533)
+bones/16/rotation = Quaternion(0.015119911, -0.015739756, -0.80000895, 0.59959096)
+bones/17/rotation = Quaternion(-0.012387242, 0.001972028, -0.41797394, 0.90837246)
+bones/18/position = Vector3(-1.4564872, -1.7133515, -0.027114565)
+bones/18/rotation = Quaternion(1.776357e-15, 9.094948e-13, 1, 8.1315176e-20)
+bones/19/position = Vector3(-0.08671201, -3.0793881, 0.7766777)
+bones/19/rotation = Quaternion(0.7068577, -0.7068577, -0.01876767, -0.01876767)
+bones/20/position = Vector3(-0.0026381435, -0.027485397, -0.027012635)
+bones/20/rotation = Quaternion(-0.00635888, -8.074188e-08, -0.8001266, 0.5997975)
+bones/21/rotation = Quaternion(-0.013545347, 1.4353677e-08, -0.41793787, 0.90837467)
+bones/22/position = Vector3(-1.4558742, -1.713351, 0.05021111)
+bones/23/position = Vector3(0.13537578, 2.1828437, 4.3320165)
+bones/24/position = Vector3(-1.0176518e-07, -5.1120878e-08, 0)
+bones/24/rotation = Quaternion(0.7070261, -0.7070262, -0.010679514, 0.010678988)
+bones/25/position = Vector3(1.6878195, -1.6583133, -0.035290718)
+bones/26/position = Vector3(0.13537578, 2.1659217, -4.3235555)
+bones/26/rotation = Quaternion(-0.5122483, 0.5122484, 0.487444, 0.48744395)
+bones/27/position = Vector3(-1.160879e-08, 7.757626e-08, -4.893989e-07)
+bones/27/rotation = Quaternion(0.035564493, -0.035564143, -0.70621175, 0.7062119)
+bones/28/position = Vector3(-1.8635426, -1.683696, -0.0832607)
+bones/28/rotation = Quaternion(-0.053137075, 5.6923846e-14, 0.99858725, 9.107814e-13)
+
+[node name="Skeleton3D" parent="player/cat_obj/cat_tail/armature_tail" parent_id_path=PackedInt32Array(455683885, 1673467853) index="0" unique_id=1495902340]
+bones/0/position = Vector3(1.02772, -0.0019242764, -0.0003172333)
+bones/0/rotation = Quaternion(0.7097724, -0.70432216, -0.009591486, 0.007837964)
+bones/1/rotation = Quaternion(0.012831215, 0.043621834, 0.025797438, 0.99863255)
+bones/2/rotation = Quaternion(-0.0035771728, -0.042527363, -0.03725671, 0.998394)
+bones/3/rotation = Quaternion(0.019806584, -8.29312e-06, 0.018644586, 0.99963)
+bones/4/rotation = Quaternion(-0.024479546, 0.00038503148, -0.021582132, 0.9994673)
+bones/5/rotation = Quaternion(0.0056791063, -0.00044580715, 0.012422016, 0.9999066)
+bones/6/position = Vector3(-0.71053684, -0.009918451, 0.0023982206)
+bones/6/rotation = Quaternion(-0.7065336, 0.70765084, 0.0044855755, -0.004511023)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=22637776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
@@ -67,6 +108,15 @@ offset_Y = 12.0
 tilt_degrees = 0.0
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
+
+[node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
+
+[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
+light_mask = 7
+visibility_layer = 7
+material = SubResource("ShaderMaterial_lgr22")
+offset_right = 1158.0
+offset_bottom = 644.0
 
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 
@@ -82,22 +132,6 @@ offset_top = -8.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
-
-[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
-light_mask = 15
-visibility_layer = 15
-material = SubResource("ShaderMaterial_lgr22")
-offset_right = 1158.0
-offset_bottom = 644.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1330836404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11222394, 0.17240715, -0.5001831)
-visible = false
-layers = 15
-mesh = SubResource("QuadMesh_wkp8b")
 
 [node name="UI" type="CanvasLayer" parent="Camera3D" unique_id=52951886]
 
@@ -125,6 +159,28 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Aperte 'F'"
 label_settings = SubResource("LabelSettings_c2ibq")
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/UI/Control" unique_id=690208351]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -308.0
+offset_right = 115.0
+offset_bottom = -220.0
+texture = ExtResource("8_20pc6")
+expand_mode = 1
+
+[node name="Barra_estamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=2032986935]
+layout_mode = 0
+offset_left = 39.0
+offset_top = -285.0
+offset_right = 1351.0
+offset_bottom = 914.0
+scale = Vector2(0.15, 0.15)
+fill_mode = 5
+radial_fill_degrees = 340.0
+texture_under = ExtResource("9_5vvyt")
+texture_progress = ExtResource("10_c6i3y")
+script = ExtResource("8_trn2v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
 environment = SubResource("Environment_cm0pq")

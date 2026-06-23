@@ -5,8 +5,8 @@ extends CharacterBody3D
 
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
-const SPEED = 28.0
-const ACCELERATION = 70.0
+const SPEED = 30.0
+const ACCELERATION = 90.0
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 70.0
@@ -15,13 +15,15 @@ const AIR_SPEED = 30.0
 const CLIMB_SPEED = 20.0
 const SLIDE_SPEED = 4.0
 
+const DASH_DISTANCE = 15
 const DASH_SPEED = 85.0
 const DASH_DURATION = 0.5
-const DASH_DECAY = 90.0
-const DASH_FALLSPEED = 125.0
+const DASH_DECAY = 200.0
+const DASH_FALLSPEED = 250.0
 const DASH_CORRECTION = 180.0
 var dash_timer : float = DASH_DURATION
 var has_dash : bool = true
+var lock_dash : bool = false
 const DASH_GROUND_COOLDOWN = 2.0
 var dash_ground_timer := 0.0
 
@@ -42,11 +44,11 @@ const CLIMB_MULT = 0.4
 const WALL_JUMP_MULT = 0.2
 
 # Parâmetros de Impulso
-const DASH_IMPULSE = 50.0
+const DASH_IMPULSE = 100.0
 
-const JUMP_HEIGHT = 11.5
+const JUMP_HEIGHT = 12.0
 const JUMP_DURATION = 0.28
-const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION) 
+const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
 const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 32.0
@@ -219,6 +221,9 @@ func _physics_momentum(delta: float, limit: float, accel: float, friction: float
 #		START: inicia com um impulso forte para uma direção
 #		CONTROL: corrige a direção com um pouco de esforço
 #		END: decaimento da velocidade e queda
+
+var startPos : Vector3
+
 func _physics_dashing(delta: float):
 	var velocity_v = up * velocity.dot(up)
 	var velocity_h = velocity - velocity_v
@@ -229,39 +234,45 @@ func _physics_dashing(delta: float):
 		dir = move_direction
 	else:
 		dir = _facing_direction
-	
-	dash_timer -= delta
-	
+
+	# Impede de reiniciar a posiçao inicial todo frame
+	if !lock_dash:
+		startPos = global_position
+		lock_dash = true
+
+	var distance = global_position.distance_to(startPos)
+	var progress = distance / DASH_DISTANCE
+
 	match dash_phase:
 		# fase de impulso inicial
 		DashPhase.START:
-			velocity_v = Vector3.ZERO # Zera a velocidade vertical
-			velocity_h += dir * DASH_IMPULSE #impulso apenas na horizontal
+			velocity_v = Vector3.ZERO
+			velocity_h = dir * DASH_IMPULSE
 			velocity = velocity_h + velocity_v
+
 			dash_phase = DashPhase.CONTROL
-			
+
 		# fase de controle da direção
 		DashPhase.CONTROL:
 			var target = dir * DASH_SPEED
 			velocity_h = velocity_h.move_toward(target, DASH_CORRECTION * delta)
 			
-			if input.jump.is_down:
-				velocity_v = velocity_v.move_toward(up * DASH_SPEED, DASH_CORRECTION * delta)
-			else:
-				velocity_v = Vector3.ZERO #Dash continua zerado
-			
-			if dash_timer <= 0.25: 
+			velocity_v = Vector3.ZERO
+
+			velocity = velocity_h + velocity_v
+			if progress >= 0.75:
 				dash_phase = DashPhase.END
-		
+
 		# fase de queda e desaceleração
 		DashPhase.END:
-			velocity_h = velocity_h.move_toward(Vector3.ZERO, DASH_DECAY * delta)
-			velocity_v += -up * DASH_FALLSPEED * delta
+			velocity_h = velocity_h.move_toward(Vector3.ZERO,DASH_DECAY * delta)
+			velocity_v += velocity_v.move_toward(Vector3.ZERO,DASH_FALLSPEED * delta)
 			velocity = velocity_h + velocity_v
 
-	# termina o estado de dash
-	if dash_timer <= 0.0:
+	# Cancela se bater numa parede
+	if is_on_wall() or progress >= 1.0:
 		state = STATE.AIRBORNE
+		lock_dash = false
 
 # Lógica da Física: CLIMB
 func _physics_climbing():
@@ -382,7 +393,9 @@ func _can_dash():
 func restore_dash() -> void:
 	has_dash = true
 	if state == STATE.DASHING:
-		state = STATE.AIRBORNE
+		pass
+		#state = STATE.AIRBORNE
+		
 # Executor da Ação: DASH
 func _execute_dash():
 	dash_phase = DashPhase.START
