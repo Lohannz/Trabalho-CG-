@@ -2,7 +2,7 @@
 
 [resource]
 transparency = 1
-albedo_color = Color(0.6425731, 0.5326773, 1.268, 0.816)
+albedo_color = Color(0.78885543, 0.6394984, 1.353, 0.741)
 metallic = 0.7
 metallic_specular = 0.3
 roughness = 0.35
@@ -13,7 +13,7 @@ clearcoat = 0.25
 clearcoat_roughness = 0.7
 ao_light_affect = 0.15
 backlight_enabled = true
-backlight = Color(0.77680385, 0.40685734, 0.99155146, 1)
+backlight = Color(0.4076962, 0.0019315833, 0.88060784, 1)
 refraction_enabled = true
 refraction_scale = 0.2
 uv1_scale = Vector3(-0.28, -0.28, -0.28)

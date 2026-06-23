@@ -44,7 +44,7 @@ const CLIMB_MULT = 0.4
 const WALL_JUMP_MULT = 0.2
 
 # Parâmetros de Impulso
-const DASH_IMPULSE = 100.0
+const DASH_IMPULSE = 60.0
 
 const JUMP_HEIGHT = 12.0
 const JUMP_DURATION = 0.28

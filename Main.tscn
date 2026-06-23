@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
-[ext_resource type="Shader" uid="uid://b7dirf4wgp0g4" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/barra_stamina.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
-[ext_resource type="Shader" uid="uid://c1vq0glpi5bpq" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
 shader = ExtResource("4_3dxm6")
 shader_parameter/noise_texture = ExtResource("5_lgr22")
 shader_parameter/wind = 7.0
 shader_parameter/fog_density = 0.4
-shader_parameter/fog_color = Color(0.58, 0.82, 0.95, 1)
+shader_parameter/fog_color = Color(0.6243741, 0.9378328, 1.105, 0.784)
 shader_parameter/blur = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
@@ -112,8 +112,8 @@ tilt_degrees = 0.0
 [node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
 
 [node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
-light_mask = 7
-visibility_layer = 7
+light_mask = 15
+visibility_layer = 15
 material = SubResource("ShaderMaterial_lgr22")
 offset_right = 1158.0
 offset_bottom = 644.0
@@ -121,8 +121,8 @@ offset_bottom = 644.0
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 
 [node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento/Pixelização" unique_id=447402171]
-light_mask = 7
-visibility_layer = 7
+light_mask = 15
+visibility_layer = 15
 material = SubResource("ShaderMaterial_j4qnp")
 anchors_preset = 15
 anchor_right = 1.0

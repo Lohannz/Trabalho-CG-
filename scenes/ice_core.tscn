@@ -6,7 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
 depth_draw_mode = 1
-albedo_color = Color(0.8875014, 0.7163662, 1.189535, 1)
+albedo_color = Color(0.73189545, 0.6310375, 1.19, 1)
 metallic = 0.79
 metallic_specular = 0.45
 metallic_texture_channel = 2
