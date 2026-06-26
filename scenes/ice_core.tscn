@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
-[ext_resource type="Shader" uid="uid://5yqaxh6bkmr3" path="res://shaders/core.gdshader" id="1_5634n"]
 [ext_resource type="Script" uid="uid://b5eaaudttpn2v" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Material" uid="uid://042e88k1v6ly" path="res://models/import/materials/crystal_core.tres" id="2_sjmgp"]
 [ext_resource type="Script" uid="uid://5utdu3go0l1g" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]

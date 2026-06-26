@@ -7,7 +7,7 @@ extends CharacterBody3D
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 30.0
-const ACCELERATION = 70.0
+const ACCELERATION = 120.0
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 70.0
@@ -47,7 +47,7 @@ const WALL_JUMP_MULT = 0.2
 # Parâmetros de Impulso
 const DASH_IMPULSE = 100.0
 
-const JUMP_HEIGHT = 12.0
+const JUMP_HEIGHT = 12.5
 const JUMP_DURATION = 0.28
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION

@@ -281,6 +281,8 @@ bind/33/bone = -1
 bind/33/pose = Transform3D(2.3813806, 0, 0, 0, 0, -2.3813806, 0, 2.3813806, 0, -1.6960014, -5.229341, -3.6414008)
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
+collision_layer = 257
+collision_mask = 257
 script = ExtResource("1_i3pqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]

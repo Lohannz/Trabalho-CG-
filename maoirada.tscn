@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dbaeat1mx8gbs"]
+
+[ext_resource type="PackedScene" uid="uid://cfl7fjn5cl7xw" path="res://models/import/modelos-leo/maoirada.glb" id="1_epbqx"]
+[ext_resource type="Material" uid="uid://bamnp0no8kxuf" path="res://models/import/materials/portal.tres" id="2_j63gg"]
+[ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="3_peamf"]
+[ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="4_w2wjy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cltla"]
+render_priority = 0
+shader = ExtResource("3_peamf")
+shader_parameter/alpha_spread = 3.6060001712850003
+shader_parameter/vortex_distortion = 3.50000016625
+shader_parameter/spiral_rotation = 0.45
+shader_parameter/spiral_texture = ExtResource("4_w2wjy")
+shader_parameter/portal_base = Color(0.8116174, 1.4893991, 1.8247963, 1)
+
+[node name="maoirada" unique_id=636862494 instance=ExtResource("1_epbqx")]
+material_override = ExtResource("2_j63gg")
+
+[node name="Cube" parent="." index="0" unique_id=1381187149]
+material_override = SubResource("ShaderMaterial_cltla")

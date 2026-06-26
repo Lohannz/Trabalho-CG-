@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="1_3dxm6"]
-[ext_resource type="Shader" uid="uid://byvsncxli41tk" path="res://shaders/nevasca.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dtqn378u2bvk7" path="res://scripts/playerCamera.gd" id="4_fos0i"]
-[ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="5_lgr22"]
-[ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="7_03owx"]
-[ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="7_20pc6"]
+[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
+[ext_resource type="Shader" uid="uid://b7dirf4wgp0g4" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
+[ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Script" uid="uid://dgpbyspuf100w" path="res://barra_stamina.gd" id="8_wkp8b"]
-[ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="9_20pc6"]
-[ext_resource type="PackedScene" uid="uid://x2ghcud8ahsg" path="res://scenes/objetos/espinho_de_gelo.tscn" id="11_fpfj3"]
-[ext_resource type="Shader" uid="uid://dmo0pnh3gluic" path="res://shaders/pixelazação.gdshader" id="12_c2ibq"]
+[ext_resource type="Script" uid="uid://lsvvg1wtmb2x" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+[ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
+[ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
+[ext_resource type="Shader" uid="uid://c1vq0glpi5bpq" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 
 [sub_resource type="GDScript" id="GDScript_3dxm6"]
 script/source = "extends Node3D
@@ -90,12 +90,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
 fov = 80.0
 script = ExtResource("4_fos0i")
 offset_Z = 50.0
-offset_Y = 12.0
+offset_Y = 20.0
 tilt_degrees = 0.0
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
 
-[node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento" unique_id=447402171]
+[node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
+
+[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
+light_mask = 15
+visibility_layer = 15
+material = SubResource("ShaderMaterial_lgr22")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
+
+[node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento/Pixelização" unique_id=447402171]
+light_mask = 15
+visibility_layer = 15
 material = SubResource("ShaderMaterial_j4qnp")
 anchors_preset = 15
 anchor_right = 1.0
