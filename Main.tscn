@@ -7,7 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+=======
+[ext_resource type="Script" uid="uid://lsvvg1wtmb2x" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+>>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
 [ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
@@ -104,7 +108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
 fov = 80.0
 script = ExtResource("4_fos0i")
 offset_Z = 50.0
-offset_Y = 12.0
+offset_Y = 20.0
 tilt_degrees = 0.0
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
