@@ -18,6 +18,10 @@ config/name="teste jogo cg"
 run/main_scene="uid://mjwsijkcjeis"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 Moveble=""

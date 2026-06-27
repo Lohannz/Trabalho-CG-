@@ -28,8 +28,7 @@ func has_movement():
 func update(delta: float):
 	move = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	jump.update(delta, Input.is_action_pressed("action_jump"))
-	dash.update(delta, Input.is_action_just_pressed("action_dash"))
+	dash.update(delta, Input.is_action_pressed("action_dash"))
 	climb.update(delta, Input.is_action_pressed("action_climb"))
 	reset.update(delta, Input.is_action_pressed("action_reset"))
 	
-	# Alterar tecla do climb ou mudar para just_pressed (Não da para andar diagonal direita/cima com o 'KEY E').
