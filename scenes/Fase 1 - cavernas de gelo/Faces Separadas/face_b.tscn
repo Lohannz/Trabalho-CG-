@@ -308,7 +308,7 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=769326134]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_78hdn")
 
 [node name="plataforma_frente_024" parent="." index="9" unique_id=499080176]
@@ -327,7 +327,7 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=212731436]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
 [node name="PlanoTrue" parent="." index="11" unique_id=279369267]
@@ -340,49 +340,49 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=1044841801]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_bfdpn")
 
 [node name="plataforma_frente_056" parent="." index="14" unique_id=116221715]
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=91822741]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_sg7oa")
 
 [node name="plataforma_frente_057" parent="." index="15" unique_id=720640722]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1538542920]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_78hdn")
 
 [node name="plataforma_frente_058" parent="." index="16" unique_id=1903988856]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=1737491141]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_059" parent="." index="17" unique_id=1597222577]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=914920519]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_060" parent="." index="18" unique_id=2114607798]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=202183071]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
 
 [node name="plataforma_frente_062" parent="." index="19" unique_id=1812370676]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=10817184]
-layers = 2
+layers = 3
 material_override = SubResource("StandardMaterial3D_m0y7i")
 
 [node name="espinhos" type="MeshInstance3D" parent="." index="20" unique_id=1847625254]

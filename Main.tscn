@@ -1,20 +1,16 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
-[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://b7dirf4wgp0g4" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
-=======
 [ext_resource type="Script" uid="uid://lsvvg1wtmb2x" path="res://scripts/staminaUI.gd" id="8_trn2v"]
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
-[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://c1vq0glpi5bpq" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
 shader = ExtResource("4_3dxm6")
@@ -169,19 +165,19 @@ label_settings = SubResource("LabelSettings_c2ibq")
 
 [node name="TextureRect" type="TextureRect" parent="Camera3D/UI/Control" unique_id=690208351]
 layout_mode = 0
-offset_left = 36.0
-offset_top = -299.0
-offset_right = 132.0
-offset_bottom = -211.0
+offset_left = 19.0
+offset_top = -308.0
+offset_right = 115.0
+offset_bottom = -220.0
 texture = ExtResource("8_20pc6")
 expand_mode = 1
 
 [node name="Barra_estamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=2032986935]
 layout_mode = 0
-offset_left = 52.0
-offset_top = -291.0
-offset_right = 695.0
-offset_bottom = 301.33325
+offset_left = 39.0
+offset_top = -285.0
+offset_right = 1351.0
+offset_bottom = 914.0
 scale = Vector2(0.15, 0.15)
 fill_mode = 5
 radial_fill_degrees = 340.0

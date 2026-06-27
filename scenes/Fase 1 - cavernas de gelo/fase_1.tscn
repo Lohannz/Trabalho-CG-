@@ -10,12 +10,8 @@
 [ext_resource type="Script" uid="uid://cs0dnfxxc6yjg" path="res://scripts/descongelar.gd" id="7_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="7_k3scg"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
-=======
 [ext_resource type="Shader" uid="uid://4b8aiwinswtc" path="res://shaders/emission.gdshader" id="8_dc6vk"]
 [ext_resource type="Script" uid="uid://bblggwnr3ef06" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
 albedo_color = Color(0.3311052, 0.77166843, 0.99936634, 0.88235295)
@@ -132,8 +128,6 @@ shader_parameter/spiral_rotation = 0.75
 shader_parameter/spiral_texture = ExtResource("5_8ldnf")
 shader_parameter/portal_base = Color(2.2561388, 1.1566873, 0.03870454, 1)
 
-<<<<<<< HEAD
-=======
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bcrg8"]
 render_priority = 0
 shader = ExtResource("8_dc6vk")
@@ -201,7 +195,6 @@ shadow_mesh = SubResource("ArrayMesh_nnhtl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bcrg8"]
 size = Vector3(500, 500, 10)
 
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ldnf"]
 lifetime_randomness = 0.12
 emission_shape_offset = Vector3(49.24, 80, 0)
@@ -439,16 +432,9 @@ spawnpoint = 1
 transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 8.7456665)
 material_override = SubResource("ShaderMaterial_k3scg")
 
-<<<<<<< HEAD
-[node name="PortalArea" parent="FaceA/Portais A/PortalFinal" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination")]
-transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
-destination = NodePath("../../../../FaceC/Portais C/PortalVerde/PortalArea")
-spawnpoint = 1
-=======
 [node name="PortalArea" parent="FaceA/Portais A/PortalFinal" index="0" unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 script = null
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 
 [node name="PortalCol" parent="FaceA/Portais A/PortalFinal/PortalArea" index="0" unique_id=1665133991]
 visible = false
@@ -583,11 +569,7 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 5" parent="FaceB/Ventos B" unique_id=1307451334 instance=ExtResource("7_k3scg")]
-<<<<<<< HEAD
-transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -72.31466, 345.32086, -132.74808)
-=======
 transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -80.614655, 345.32086, -137.64807)
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 

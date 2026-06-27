@@ -6,11 +6,7 @@ extends CharacterBody3D
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 30.0
-<<<<<<< HEAD
 const ACCELERATION = 150.0
-=======
-const ACCELERATION = 120.0
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 
 # Limites de Velocidade
 const TERMINAL_SPEED = 80.0
@@ -45,11 +41,7 @@ const FALL_MULT = 1.2
 const CLIMB_MULT = 0.4
 const WALL_JUMP_MULT = 0.2
 
-<<<<<<< HEAD
 # Parâmetros de Pulo
-=======
-# Parâmetros de Impulso
->>>>>>> 926de0aa1102d6daad7f8992026a91612b7731cd
 const DASH_IMPULSE = 60.0
 
 const JUMP_HEIGHT = 12.5
