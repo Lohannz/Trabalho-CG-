@@ -78,6 +78,7 @@ particles_anim_loop = false
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8ldnf"]
 material = SubResource("StandardMaterial3D_k3scg")
+shape = 0
 section_segments = 15
 curve = SubResource("Curve_alpyq")
 
@@ -112,6 +113,17 @@ turbulence_influence_max = 0.119
 turbulence_initial_displacement_min = 1.490116e-06
 turbulence_initial_displacement_max = 1.490116e-06
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dc6vk"]
+transparency = 1
+albedo_color = Color(0.2898835, 0.82220966, 0.67404914, 1)
+emission_enabled = true
+emission = Color(0, 2.731, 1.987, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dc6vk"]
 render_priority = 0
 shader = ExtResource("4_k3scg")
@@ -121,6 +133,17 @@ shader_parameter/spiral_rotation = 0.75
 shader_parameter/spiral_texture = ExtResource("5_8ldnf")
 shader_parameter/portal_base = Color(1.8456577, 0.45232442, 2.1226103, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcrg8"]
+transparency = 1
+albedo_color = Color(2.203, 0.46, 2.447, 1)
+emission_enabled = true
+emission = Color(2.2025673, 0.46026102, 2.447, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3scg"]
 render_priority = 0
 shader = ExtResource("4_k3scg")
@@ -129,6 +152,17 @@ shader_parameter/vortex_distortion = 6.5
 shader_parameter/spiral_rotation = 0.75
 shader_parameter/spiral_texture = ExtResource("5_8ldnf")
 shader_parameter/portal_base = Color(2.2561388, 1.1566873, 0.03870454, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5vkj"]
+transparency = 1
+albedo_color = Color(1.1809056, 0.5520851, 0, 1)
+emission_enabled = true
+emission = Color(0.9828769, 0.4866194, 0, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bcrg8"]
 render_priority = 0
@@ -265,6 +299,17 @@ shader_parameter/spiral_rotation = 0.75
 shader_parameter/spiral_texture = ExtResource("5_8ldnf")
 shader_parameter/portal_base = Color(1.9626389, 0, 0.36110112, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3f4b"]
+transparency = 1
+albedo_color = Color(1.4162054, 0, 0.3789278, 1)
+emission_enabled = true
+emission = Color(1.1811731, 0.07286352, 0.2932453, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dc6vk"]
 lifetime_randomness = 0.12
 emission_shape_offset = Vector3(70, 250, 0)
@@ -323,6 +368,17 @@ turbulence_influence_min = 0.07
 turbulence_influence_max = 0.119
 turbulence_initial_displacement_min = 1.490116e-06
 turbulence_initial_displacement_max = 1.490116e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvtg6"]
+transparency = 1
+albedo_color = Color(1.4162054, 0, 0.3789278, 1)
+emission_enabled = true
+emission = Color(1.1811731, 0.07286352, 0.2932453, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="FASE 1" type="Node3D" unique_id=2032177878]
 
@@ -412,7 +468,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.80002, -22.999998, 190.6
 [node name="PortalVerde" parent="FaceA/Portais A" unique_id=1134528590 instance=ExtResource("3_alpyq")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 198.76573, 67.97101, 5.266693)
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalVerde" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination")]
+[node name="GPUParticles3D" parent="FaceA/Portais A/PortalVerde" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_dc6vk")
+
+[node name="PortalArea" parent="FaceA/Portais A/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 destination = NodePath("../../../../FaceC/Portais C/PortalVerde/PortalArea")
 spawnpoint = 1
@@ -421,7 +480,10 @@ spawnpoint = 1
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 308.0851, 140.8733, 6.3780212)
 material_override = SubResource("ShaderMaterial_dc6vk")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalRosa" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="GPUParticles3D" parent="FaceA/Portais A/PortalRosa" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_bcrg8")
+
+[node name="PortalArea" parent="FaceA/Portais A/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
 destination = NodePath("../../../../FaceB/Portais B/PortalRosa/PortalArea")
 spawnpoint = 1
 
@@ -429,7 +491,10 @@ spawnpoint = 1
 transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 8.7456665)
 material_override = SubResource("ShaderMaterial_k3scg")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalFinal" index="0" unique_id=1967604049]
+[node name="GPUParticles3D" parent="FaceA/Portais A/PortalFinal" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_f5vkj")
+
+[node name="PortalArea" parent="FaceA/Portais A/PortalFinal" index="1" unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 script = null
 
@@ -526,7 +591,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 95.6
 transform = Transform3D(-4.371139e-08, -0.99999994, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 93.08511, 24.079208, 2.3779907)
 material_override = SubResource("ShaderMaterial_dc6vk")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalRosa" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="GPUParticles3D" parent="FaceB/Portais B/PortalRosa" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_bcrg8")
+
+[node name="PortalArea" parent="FaceB/Portais B/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
 destination = NodePath("../../../../FaceA/Portais A/PortalRosa/PortalArea")
 spawnpoint = 3
 
@@ -534,7 +602,10 @@ spawnpoint = 3
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -148.32506, 251.9823, -59.857788)
 material_override = SubResource("ShaderMaterial_u3f4b")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalVermelho" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="GPUParticles3D" parent="FaceB/Portais B/PortalVermelho" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_u3f4b")
+
+[node name="PortalArea" parent="FaceB/Portais B/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
 transform = Transform3D(-4.371139e-08, 0, 3.6487424, 0, 1, 0, -1, 0, -1.5949159e-07, 3.2819405, -0.17573547, -0.48101807)
 destination = NodePath("../../../../FaceC/Portais C/PortalVermelho/PortalArea")
 spawnpoint = 3
@@ -654,7 +725,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -256
 [node name="PortalVerde" parent="FaceC/Portais C" unique_id=1882055563 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999998, 0, -8.742277e-08, 0, -1, -249.13411, 97.371, 1.0671387)
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVerde" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination")]
+[node name="GPUParticles3D" parent="FaceC/Portais C/PortalVerde" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_dc6vk")
+
+[node name="PortalArea" parent="FaceC/Portais C/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination")]
 destination = NodePath("../../../../FaceA/Portais A/PortalVerde/PortalArea")
 spawnpoint = 2
 
@@ -662,7 +736,10 @@ spawnpoint = 2
 transform = Transform3D(-4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 0, 0, 1, -496.62506, 221.51456, -59.857788)
 material_override = SubResource("ShaderMaterial_u3f4b")
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="GPUParticles3D" parent="FaceC/Portais C/PortalVermelho" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_jvtg6")
+
+[node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
 destination = NodePath("../../../../FaceB/Portais B/PortalVermelho/PortalArea")
 spawnpoint = 2
 
