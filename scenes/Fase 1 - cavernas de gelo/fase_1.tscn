@@ -7,11 +7,11 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="4_k3scg"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="5_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
-[ext_resource type="Script" uid="uid://cs0dnfxxc6yjg" path="res://scripts/descongelar.gd" id="7_8ldnf"]
+[ext_resource type="Script" uid="uid://dcfc0cfadrlei" path="res://scripts/descongelar.gd" id="7_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="7_k3scg"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
-[ext_resource type="Shader" uid="uid://4b8aiwinswtc" path="res://shaders/emission.gdshader" id="8_dc6vk"]
-[ext_resource type="Script" uid="uid://bblggwnr3ef06" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
+[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="8_dc6vk"]
+[ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
 albedo_color = Color(0.3311052, 0.77166843, 0.99936634, 0.88235295)
@@ -339,8 +339,8 @@ transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0
 [node name="Spawn3" type="Marker3D" parent="Spawnpoints" unique_id=2016292211]
 transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 586.097, 525.039, 127.9272)
 
-[node name="FaceA" parent="." unique_id=285556901 instance=ExtResource("1_62cav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.166521, 0, 165.16415)
+[node name="FaceA" parent="." unique_id=1591384302 instance=ExtResource("1_62cav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.166521, -2, 164.16415)
 
 [node name="Nevasca" type="Node3D" parent="FaceA" unique_id=504961007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.166521, 0, -165.16415)
@@ -443,7 +443,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.33348, 102.5, 201.03586)
 
 [node name="dash_crystal2" parent="FaceA" unique_id=25332783 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.76698, 171.29999, 200.77164)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.76698, 163.77138, 200.77164)
 
 [node name="luzinha" type="Node3D" parent="FaceA" unique_id=149965231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 251.79999, 128.9)
@@ -468,8 +468,8 @@ skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="FaceA" unique_id=2013399105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30000305)
-collision_layer = 256
-collision_mask = 256
+collision_layer = 258
+collision_mask = 258
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/StaticBody3D" unique_id=656552327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
@@ -601,7 +601,7 @@ shape = SubResource("BoxShape3D_bcrg8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
 
-[node name="FaceC" parent="." unique_id=500234430 instance=ExtResource("3_fop18")]
+[node name="FaceC" parent="." unique_id=1794520556 instance=ExtResource("3_fop18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.652634, 0.30001068, 141.52632)
 
 [node name="Nevasca" type="Node3D" parent="FaceC" unique_id=1517393601]
@@ -685,11 +685,11 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/StaticBody3D" unique_id=671165144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 211.99997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 211.99997)
 shape = SubResource("BoxShape3D_bcrg8")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceC/StaticBody3D" unique_id=478380535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
 
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]

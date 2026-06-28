@@ -328,8 +328,10 @@ func is_on_layer(layer : int) -> bool:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		var parent = collider.get_parent()
-		if parent is MeshInstance3D and parent.get_layer_mask_value(layer):
-			return true
+		if parent is MeshInstance3D:
+			return parent.get_layer_mask_value(layer)
+		elif parent is StaticBody3D:		
+			return parent.get_collision_mask_value(layer)
 	return false
 
 # Controle do Sistema: MOVIMENTAÇÃO E MOMENTO

@@ -504,6 +504,27 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqgl5"]
+albedo_color = Color(0.39316458, 0.86068755, 1.25516, 1)
+albedo_texture = ExtResource("3_ebny3")
+metallic_specular = 0.09
+metallic_texture = ExtResource("6_j4gax")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("6_j4gax")
+normal_enabled = true
+normal_scale = -0.6
+normal_texture = ExtResource("5_4sjd8")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_4sjd8")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("4_epk08")
+uv1_scale = Vector3(31.825, -0.296, 0.02)
+uv1_offset = Vector3(0.506, 0.325, 0.495)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c4nn"]
 albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
 albedo_texture = ExtResource("3_ebny3")
 metallic_specular = 0.09
@@ -519,8 +540,71 @@ clearcoat = 0.65
 ao_enabled = true
 ao_light_affect = 0.48
 ao_texture = ExtResource("4_epk08")
-uv1_scale = Vector3(33.79, 0.23, 24.133)
-uv1_offset = Vector3(0.475, 3.696, 0)
+uv1_scale = Vector3(0.41, 0.308, 0.276)
+uv1_offset = Vector3(0.475, 2.738, -0.497)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul7th"]
+albedo_color = Color(0.39316458, 0.86068755, 1.25516, 1)
+albedo_texture = ExtResource("3_ebny3")
+metallic_specular = 0.09
+metallic_texture = ExtResource("6_j4gax")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("6_j4gax")
+normal_enabled = true
+normal_scale = -0.6
+normal_texture = ExtResource("5_4sjd8")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_4sjd8")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("4_epk08")
+uv1_scale = Vector3(31.825, 0.23, 0.02)
+uv1_offset = Vector3(0.506, 0.445, 0.495)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il6rx"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("3_ebny3")
+metallic_specular = 0.09
+metallic_texture = ExtResource("6_j4gax")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("6_j4gax")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("5_4sjd8")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_4sjd8")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("4_epk08")
+uv1_scale = Vector3(37.2, 0.233, 24.286)
+uv1_offset = Vector3(0.475, 2.653, -0.937)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16kp5"]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("3_ebny3")
+metallic_specular = 0.09
+metallic_texture = ExtResource("6_j4gax")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("6_j4gax")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("5_4sjd8")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("5_4sjd8")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("4_epk08")
+uv1_scale = Vector3(34.27, 0.314, 22.285)
+uv1_offset = Vector3(0.48, 3.477, -1.495)
 uv1_triplanar = true
 uv1_triplanar_sharpness = 2.0
 
@@ -647,85 +731,64 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ehovk")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16kp5"]
-albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
-albedo_texture = ExtResource("3_ebny3")
-metallic_specular = 0.09
-metallic_texture = ExtResource("6_j4gax")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("6_j4gax")
-normal_enabled = true
-normal_scale = 1.28
-normal_texture = ExtResource("5_4sjd8")
-bent_normal_enabled = true
-bent_normal_texture = ExtResource("5_4sjd8")
-clearcoat = 0.65
-ao_enabled = true
-ao_light_affect = 0.48
-ao_texture = ExtResource("4_epk08")
-uv1_scale = Vector3(34.27, 0.314, 22.285)
-uv1_offset = Vector3(0.48, 3.477, -1.495)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 2.0
-
 [node name="FaceA" unique_id=1591384302 instance=ExtResource("1_574c1")]
 
-[node name="plataforma_frente_001_001" parent="." index="1" unique_id=1202883269]
+[node name="plataforma_frente_001_001" parent="." index="0" unique_id=1820159309]
 material_override = SubResource("StandardMaterial3D_a6anf")
 
-[node name="plataforma_frente_001_009" parent="plataforma_frente_001_001" index="0" unique_id=403232461]
+[node name="plataforma_frente_001_009" parent="plataforma_frente_001_001" index="0" unique_id=1083842458]
 layers = 3
 material_override = SubResource("StandardMaterial3D_36vc4")
 
-[node name="plataforma_frente_001_006" parent="." index="2" unique_id=1140329693]
+[node name="plataforma_frente_001_006" parent="." index="1" unique_id=1682302718]
 layers = 5
 material_override = ExtResource("6_7usmn")
 
-[node name="plataforma_frente_001_015" parent="plataforma_frente_001_006" index="0" unique_id=1369223620]
+[node name="plataforma_frente_001_015" parent="plataforma_frente_001_006" index="0" unique_id=458242447]
 layers = 3
 material_override = SubResource("StandardMaterial3D_pftrf")
 
-[node name="plataforma_frente_001" parent="." index="3" unique_id=1623130152]
+[node name="plataforma_frente_001" parent="." index="2" unique_id=396679964]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_frente_027" parent="plataforma_frente_001" index="0" unique_id=1253036233]
+[node name="plataforma_frente_027" parent="plataforma_frente_001" index="0" unique_id=1469751685]
 layers = 3
 material_override = SubResource("StandardMaterial3D_or2es")
 
-[node name="plataforma_frente_002" parent="." index="4" unique_id=645100284]
+[node name="plataforma_frente_002" parent="." index="3" unique_id=855562417]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_frente_037" parent="plataforma_frente_002" index="0" unique_id=536928899]
+[node name="plataforma_frente_037" parent="plataforma_frente_002" index="0" unique_id=634318519]
 layers = 3
 material_override = SubResource("StandardMaterial3D_or2es")
 
-[node name="plataforma_frente_006" parent="." index="5" unique_id=2039215951]
+[node name="plataforma_frente_006" parent="." index="4" unique_id=1968507821]
 layers = 8
 material_override = SubResource("ShaderMaterial_y74fa")
 
-[node name="StaticBody3D" parent="plataforma_frente_006" index="0" unique_id=1209400583 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="plataforma_frente_006" index="0" unique_id=162975640 groups=["lightSensitive"]]
 collision_layer = 9
 collision_mask = 9
 
-[node name="plataforma_fundo_002" parent="." index="6" unique_id=1790509517]
+[node name="plataforma_fundo_002" parent="." index="5" unique_id=1686948091]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_009" parent="plataforma_fundo_002" index="0" unique_id=1765073080]
+[node name="plataforma_fundo_009" parent="plataforma_fundo_002" index="0" unique_id=436396848]
 layers = 3
 material_override = SubResource("StandardMaterial3D_or2es")
 
-[node name="plataforma_fundo_003" parent="." index="7" unique_id=851841218]
+[node name="plataforma_fundo_003" parent="." index="6" unique_id=118146971]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_008" parent="plataforma_fundo_003" index="0" unique_id=328210096]
+[node name="plataforma_fundo_008" parent="plataforma_fundo_003" index="0" unique_id=1341785565]
 layers = 3
 material_override = SubResource("StandardMaterial3D_or2es")
 
-[node name="PlanoFundo_004" parent="." index="8" unique_id=1352104481]
+[node name="PlanoFundo_004" parent="." index="7" unique_id=429614070]
 transform = Transform3D(174.9208, 0, 0, 0, 174.9208, 0, 0, 0, 174.9208, 64.52736, 64.41092, 169.34828)
 material_override = ExtResource("2_4bmlv")
 
-[node name="espinhos" parent="PlanoFundo_004" index="0" unique_id=736436283]
+[node name="espinhos" parent="PlanoFundo_004" index="0" unique_id=1073314300]
 transform = Transform3D(0.017785933, 0, 0, 0, 0.017785933, 0, 0, 0, 0.01358206, 0.04918629, -0.16105159, 0.15691459)
 material_override = ExtResource("6_7usmn")
 
@@ -736,7 +799,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_4bmlv")
 
-[node name="espinhos_001" parent="PlanoFundo_004" index="1" unique_id=1171482602]
+[node name="espinhos_001" parent="PlanoFundo_004" index="1" unique_id=1913248397]
 transform = Transform3D(0.017785933, 0, 0, 0, -0.017785933, -2.050834e-09, 0, 2.6856009e-09, -0.01358206, 0.04918629, -0.0757958, 0.15644503)
 material_override = ExtResource("6_7usmn")
 
@@ -746,120 +809,120 @@ material_override = ExtResource("6_7usmn")
 transform = Transform3D(0.3214266, 0, 0, 0, -0.3214266, 4.8533835e-08, 0, -6.355616e-08, -0.42091355, -0.05819702, 0.19268608, 0.076911926)
 shape = SubResource("BoxShape3D_4bmlv")
 
-[node name="neve_001" parent="PlanoFundo_004" index="2" unique_id=1300200261]
+[node name="neve_001" parent="PlanoFundo_004" index="2" unique_id=1700981766]
 material_override = ExtResource("13_2qpa8")
 
-[node name="neve_002" parent="PlanoFundo_004/neve_001" index="0" unique_id=1111790452]
+[node name="neve_002" parent="PlanoFundo_004/neve_001" index="0" unique_id=641165508]
 material_override = ExtResource("13_2qpa8")
 
-[node name="neve_003" parent="PlanoFundo_004/neve_001" index="1" unique_id=2141546899]
+[node name="neve_003" parent="PlanoFundo_004/neve_001" index="1" unique_id=814084254]
 material_override = ExtResource("13_2qpa8")
 
-[node name="neve_004" parent="PlanoFundo_004/neve_001/neve_003" index="0" unique_id=1144393907]
+[node name="neve_004" parent="PlanoFundo_004/neve_001/neve_003" index="0" unique_id=1954835679]
 material_override = ExtResource("13_2qpa8")
 
-[node name="quina_004" parent="PlanoFundo_004" index="3" unique_id=1741889219]
+[node name="quina_004" parent="PlanoFundo_004" index="3" unique_id=1652218360]
 layers = 3
 material_override = SubResource("StandardMaterial3D_c5otr")
 
-[node name="quina_001" parent="PlanoFundo_004/quina_004" index="0" unique_id=2063559325]
+[node name="quina_001" parent="PlanoFundo_004/quina_004" index="0" unique_id=1170559868]
 layers = 2
 material_override = SubResource("StandardMaterial3D_2qpa8")
 
-[node name="quina_002" parent="PlanoFundo_004/quina_004/quina_001" index="0" unique_id=1645160320]
+[node name="quina_002" parent="PlanoFundo_004/quina_004/quina_001" index="0" unique_id=2020652744]
 layers = 2
 material_override = SubResource("StandardMaterial3D_had5p")
 
-[node name="quina_003" parent="PlanoFundo_004/quina_004/quina_001" index="1" unique_id=435550672]
+[node name="quina_003" parent="PlanoFundo_004/quina_004/quina_001" index="1" unique_id=349046945]
 layers = 2
 material_override = ExtResource("3_epk08")
 
-[node name="paredeTRUETRUE_001" parent="." index="9" unique_id=245741967]
+[node name="paredeTRUETRUE_001" parent="." index="8" unique_id=1745750646]
 material_override = ExtResource("2_4bmlv")
 
-[node name="Cylinder" parent="." index="10" unique_id=886969955]
+[node name="Cylinder" parent="." index="9" unique_id=1508330732]
 material_override = ExtResource("18_4kj6e")
 
-[node name="StaticBody3D" parent="Cylinder" index="0" unique_id=69488682 groups=["pilar"]]
+[node name="StaticBody3D" parent="Cylinder" index="0" unique_id=2088392705 groups=["pilar"]]
 
-[node name="plataforma_frente_038" parent="." index="11" unique_id=1987952887]
+[node name="plataforma_frente_038" parent="." index="10" unique_id=1944380037]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_003" parent="plataforma_frente_038" index="0" unique_id=671890966]
+[node name="plataforma_frente_003" parent="plataforma_frente_038" index="0" unique_id=811286915]
 layers = 3
 material_override = SubResource("StandardMaterial3D_m0045")
 
-[node name="plataforma_frente_041" parent="." index="13" unique_id=2127172203]
+[node name="plataforma_frente_041" parent="." index="12" unique_id=1354369979]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_042" parent="plataforma_frente_041" index="0" unique_id=1764468992]
+[node name="plataforma_frente_042" parent="plataforma_frente_041" index="0" unique_id=392776351]
 material_override = SubResource("StandardMaterial3D_24te2")
 
-[node name="plataforma_frente_004" parent="plataforma_frente_041/plataforma_frente_042" index="0" unique_id=91450861]
+[node name="plataforma_frente_004" parent="plataforma_frente_041/plataforma_frente_042" index="0" unique_id=245361977]
 layers = 3
 material_override = SubResource("StandardMaterial3D_t2iwa")
 
-[node name="plataforma_fundo_012" parent="." index="14" unique_id=1942501483]
+[node name="plataforma_fundo_012" parent="." index="13" unique_id=1656004547]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_043" parent="plataforma_fundo_012" index="0" unique_id=1040569570]
+[node name="plataforma_frente_043" parent="plataforma_fundo_012" index="0" unique_id=1749753395]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_005" parent="plataforma_fundo_012/plataforma_frente_043" index="0" unique_id=1885846850]
+[node name="plataforma_frente_005" parent="plataforma_fundo_012/plataforma_frente_043" index="0" unique_id=198012556]
 layers = 3
 material_override = SubResource("StandardMaterial3D_y74fa")
 
-[node name="plataforma_fundo_001" parent="plataforma_fundo_012" index="1" unique_id=2133103611]
+[node name="plataforma_fundo_001" parent="plataforma_fundo_012" index="1" unique_id=198231787]
 layers = 3
 material_override = SubResource("StandardMaterial3D_bqhkd")
 
-[node name="StaticBody3D" parent="plataforma_fundo_012/plataforma_fundo_001" index="0" unique_id=1602871318]
+[node name="StaticBody3D" parent="plataforma_fundo_012/plataforma_fundo_001" index="0" unique_id=602136047]
 transform = Transform3D(0.9999999, 0, 0, 7.275958e-12, 1, 0, 0, 0, 0.9999999, -1.4662743e-05, -2.4365654, 0)
 
-[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_001/StaticBody3D" index="0" unique_id=1405640659]
+[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_001/StaticBody3D" index="0" unique_id=1194773779]
 transform = Transform3D(0.9999999, 0, 0, 7.275958e-12, 1, 0, 0, 0, 0.9999999, 1.4305115e-05, 2.4249573, 0)
 
-[node name="plataforma_fundo_010" parent="plataforma_fundo_012" index="2" unique_id=1835458208]
+[node name="plataforma_fundo_010" parent="plataforma_fundo_012" index="2" unique_id=1042205592]
 material_override = SubResource("StandardMaterial3D_bvd0m")
 
-[node name="plataforma_fundo_011" parent="plataforma_fundo_012" index="3" unique_id=2130827775]
+[node name="plataforma_fundo_011" parent="plataforma_fundo_012" index="3" unique_id=1104221267]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_fundo_006" parent="plataforma_fundo_012/plataforma_fundo_011" index="0" unique_id=942277245]
+[node name="plataforma_fundo_006" parent="plataforma_fundo_012/plataforma_fundo_011" index="0" unique_id=1104676583]
 transform = Transform3D(0.99999994, -1.3322676e-15, 0, 1.1175871e-08, 1.0756612, 0, 0, 0, 0.99999994, 0.209, -0.049, 0.05)
 layers = 3
 material_override = SubResource("StandardMaterial3D_acge8")
 
-[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_011/plataforma_fundo_006/StaticBody3D" parent_id_path=PackedInt32Array(1927409858) index="0" unique_id=305895052]
+[node name="CollisionShape3D" parent="plataforma_fundo_012/plataforma_fundo_011/plataforma_fundo_006/StaticBody3D" parent_id_path=PackedInt32Array(1301116480) index="0" unique_id=822608335]
 transform = Transform3D(1.002, 7.465481e-09, 0, -7.465481e-09, 1.002, 0, 0, 0, 1.002, 0, 0, 0)
 
-[node name="plataforma_fundo_001_003" parent="." index="15" unique_id=2136101686]
+[node name="plataforma_fundo_001_003" parent="." index="14" unique_id=77663531]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_040" parent="." index="16" unique_id=2089979599]
+[node name="plataforma_frente_040" parent="." index="15" unique_id=276058101]
 layers = 5
 material_override = ExtResource("6_7usmn")
 
-[node name="plataforma_frente_007" parent="plataforma_frente_040" index="0" unique_id=819032521]
+[node name="plataforma_frente_007" parent="plataforma_frente_040" index="0" unique_id=1432956353]
 layers = 3
 material_override = SubResource("StandardMaterial3D_3grtx")
 
-[node name="plataforma_frente_001_010" parent="." index="17" unique_id=1478705456]
+[node name="plataforma_frente_001_010" parent="." index="16" unique_id=236036570]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_001_008" parent="plataforma_frente_001_010" index="0" unique_id=153363528]
+[node name="plataforma_frente_001_008" parent="plataforma_frente_001_010" index="0" unique_id=586879610]
 layers = 3
 material_override = SubResource("StandardMaterial3D_jov75")
 
-[node name="plataforma_frente_001_011" parent="." index="18" unique_id=996314948]
+[node name="plataforma_frente_001_011" parent="." index="17" unique_id=211426642]
 layers = 5
 material_override = ExtResource("6_7usmn")
 
-[node name="plataforma_frente_001_017" parent="plataforma_frente_001_011" index="0" unique_id=2111765845]
+[node name="plataforma_frente_001_017" parent="plataforma_frente_001_011" index="0" unique_id=1049993444]
 layers = 3
 material_override = SubResource("StandardMaterial3D_2ub5g")
 
-[node name="espinhos_002" parent="plataforma_frente_001_011/plataforma_frente_001_017" index="0" unique_id=1309309230]
+[node name="espinhos_002" parent="plataforma_frente_001_011/plataforma_frente_001_017" index="0" unique_id=1420070859]
 material_override = ExtResource("6_7usmn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="plataforma_frente_001_011/plataforma_frente_001_017/espinhos_002" index="0" unique_id=884961912 groups=["killObj"]]
@@ -869,78 +932,95 @@ transform = Transform3D(0.32142666, 6.3948846e-14, 0, 0, 0.29576814, 0, 0, 0, 0.
 transform = Transform3D(-0.29576814, 9.284214e-08, 0, -1.00896344e-07, -0.32142666, 0, 0, 0, 0.41607264, -0.28268433, 1.3720093, -0.26457214)
 shape = SubResource("BoxShape3D_574c1")
 
-[node name="StaticBody3D" parent="plataforma_frente_001_011" index="1" unique_id=642209641]
+[node name="StaticBody3D" parent="plataforma_frente_001_011" index="1" unique_id=1323341664]
 collision_layer = 7
 
-[node name="plataforma_frente_001_012" parent="." index="19" unique_id=519650382]
+[node name="plataforma_frente_001_012" parent="." index="18" unique_id=1321075975]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_001_003" parent="plataforma_frente_001_012" index="0" unique_id=1929431293]
+[node name="plataforma_frente_001_003" parent="plataforma_frente_001_012" index="0" unique_id=1634904232]
 layers = 3
 material_override = SubResource("StandardMaterial3D_yml3y")
 
-[node name="plataforma_frente_001_013" parent="." index="20" unique_id=1771358341]
+[node name="plataforma_frente_001_013" parent="." index="19" unique_id=1005361625]
 material_override = ExtResource("2_4bmlv")
 
-[node name="plataforma_frente_001_004" parent="plataforma_frente_001_013" index="0" unique_id=97789062]
+[node name="plataforma_frente_001_004" parent="plataforma_frente_001_013" index="0" unique_id=2106244576]
 layers = 3
 material_override = SubResource("StandardMaterial3D_xvbmj")
 
-[node name="plataforma_fundo_001_007" parent="." index="22" unique_id=1350872156]
+[node name="plataforma_frente_001_014" parent="." index="20" unique_id=828253997]
+layers = 5
+material_override = ExtResource("6_7usmn")
+
+[node name="plataforma_frente_001_005" parent="plataforma_frente_001_014" index="0" unique_id=921991469]
+layers = 3
+material_override = SubResource("StandardMaterial3D_pftrf")
+
+[node name="plataforma_fundo_001_012" parent="." index="22" unique_id=1637620760]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_011" parent="plataforma_fundo_001_007" index="0" unique_id=1701952988]
+[node name="plataforma_fundo_001_002" parent="plataforma_fundo_001_012" index="0" unique_id=1242380537]
 layers = 3
 material_override = SubResource("StandardMaterial3D_4kj6e")
 
-[node name="plataforma_fundo_001_012" parent="." index="23" unique_id=1902196804]
+[node name="plataforma_fundo_001_013" parent="." index="23" unique_id=254032345]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_002" parent="plataforma_fundo_001_012" index="0" unique_id=248756046]
+[node name="plataforma_fundo_001_001" parent="plataforma_fundo_001_013" index="0" unique_id=2088831314]
 layers = 3
 material_override = SubResource("StandardMaterial3D_4kj6e")
 
-[node name="plataforma_fundo_001_013" parent="." index="24" unique_id=1422154483]
+[node name="plataforma_fundo_001_014" parent="." index="24" unique_id=976698521]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_001" parent="plataforma_fundo_001_013" index="0" unique_id=919088208]
+[node name="plataforma_fundo_001_009" parent="plataforma_fundo_001_014" index="0" unique_id=1114760866]
 layers = 3
 material_override = SubResource("StandardMaterial3D_4kj6e")
 
-[node name="plataforma_fundo_001_014" parent="." index="25" unique_id=1881921964]
+[node name="plataforma_fundo_001_015" parent="." index="25" unique_id=887591533]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_009" parent="plataforma_fundo_001_014" index="0" unique_id=452512995]
+[node name="plataforma_fundo_001_008" parent="plataforma_fundo_001_015" index="0" unique_id=757568717]
 layers = 3
 material_override = SubResource("StandardMaterial3D_4kj6e")
 
-[node name="plataforma_fundo_001_015" parent="." index="26" unique_id=158559803]
-material_override = ExtResource("7_7usmn")
-
-[node name="plataforma_fundo_001_008" parent="plataforma_fundo_001_015" index="0" unique_id=1394660413]
+[node name="plataforma_fundo_001_016" parent="." index="26" unique_id=1247908208]
 layers = 3
-material_override = SubResource("StandardMaterial3D_4kj6e")
-
-[node name="plataforma_fundo_001_016" parent="." index="27" unique_id=1335206304]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_004" parent="plataforma_fundo_001_016" index="0" unique_id=484830706]
+[node name="plataforma_fundo_001_004" parent="plataforma_fundo_001_016" index="0" unique_id=908196457]
 layers = 3
 material_override = SubResource("StandardMaterial3D_5yw5j")
 
-[node name="plataforma_fundo_001_017" parent="." index="28" unique_id=2069929578]
+[node name="plataforma_fundo_001_017" parent="." index="27" unique_id=965812388]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_005" parent="plataforma_fundo_001_017" index="0" unique_id=842041619]
+[node name="plataforma_fundo_001_005" parent="plataforma_fundo_001_017" index="0" unique_id=290159289]
 layers = 3
 material_override = SubResource("StandardMaterial3D_3168b")
 
-[node name="plataforma_fundo_001_018" parent="plataforma_fundo_001_017" index="1" unique_id=1207020064]
+[node name="plataforma_fundo_001_018" parent="plataforma_fundo_001_017" index="1" unique_id=703654331]
+material_override = SubResource("StandardMaterial3D_gqgl5")
+
+[node name="plataforma_fundo_001_010" parent="plataforma_fundo_001_017/plataforma_fundo_001_018" index="0" unique_id=976020859]
+layers = 3
+material_override = SubResource("StandardMaterial3D_0c4nn")
+
+[node name="plataforma_fundo_001_020" parent="plataforma_fundo_001_017" index="2" unique_id=1448094620]
+transform = Transform3D(1, 8.742278e-08, 8.742494e-08, 8.742278e-08, -1, 0, 8.742278e-08, 7.642742e-15, -1.0000247, 0.39755175, -12.494658, 0)
+material_override = SubResource("StandardMaterial3D_ul7th")
+
+[node name="plataforma_fundo_001_019" parent="plataforma_fundo_001_017/plataforma_fundo_001_020" index="0" unique_id=894932210]
+layers = 3
+material_override = SubResource("StandardMaterial3D_il6rx")
+
+[node name="plataforma_frente_001_016" parent="." index="28" unique_id=279670138]
 material_override = ExtResource("7_7usmn")
 
-[node name="plataforma_fundo_001_010" parent="plataforma_fundo_001_017/plataforma_fundo_001_018" index="0" unique_id=783600054]
+[node name="plataforma_frente_001_007" parent="plataforma_frente_001_016" index="0" unique_id=1924735849]
 layers = 3
-material_override = SubResource("StandardMaterial3D_gqgl5")
+material_override = SubResource("StandardMaterial3D_16kp5")
 
 [node name="espinhos_003" type="MeshInstance3D" parent="." index="29" unique_id=71299751]
 transform = Transform3D(-2.6445392e-07, -4, 0, 6.05, -1.7484555e-07, 0, 0, 0, 5, 201.62852, 66.6962, 162.23291)
@@ -1098,9 +1178,10 @@ transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783
 transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
 shape = SubResource("BoxShape3D_bqhkd")
 
-[node name="plataforma_frente_001_016" parent="." index="41" unique_id=854221571]
-material_override = ExtResource("7_7usmn")
+[node name="plataforma_frente_001_002" parent="." index="41" unique_id=536272522]
+layers = 5
+material_override = ExtResource("6_7usmn")
 
-[node name="plataforma_frente_001_007" parent="plataforma_frente_001_016" index="0" unique_id=1947847146]
+[node name="plataforma_frente_001_018" parent="plataforma_frente_001_002" index="0" unique_id=1568486110]
 layers = 3
-material_override = SubResource("StandardMaterial3D_16kp5")
+material_override = SubResource("StandardMaterial3D_pftrf")
