@@ -1,8 +1,7 @@
 extends CharacterBody3D
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var areaDetection = $areaDetection
-@onready var PORTAL_UI = $"/root/Principal/Camera3D/UI/Control/Label"
-
+@onready var PORTAL_UI = get_tree().current_scene.get_node("Camera3D/UI/Control/Label")
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 30.0

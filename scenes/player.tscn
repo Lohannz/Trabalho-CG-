@@ -13,14 +13,12 @@ size = Vector3(1, 0.9614258, 1.0389404)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76dn1"]
 resource_name = "cat.skin"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_qlg0r")
 roughness = 0.80044246
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hbec"]
 resource_name = "cat.clothes"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_tuyoq")
 roughness = 0.8
@@ -219,7 +217,6 @@ bind/28/pose = Transform3D(-5.597419, -0.31777167, 0.00021461441, 0.00021495997,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ept7"]
 resource_name = "cat.skin.tail"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_smehm")
 roughness = 0.8

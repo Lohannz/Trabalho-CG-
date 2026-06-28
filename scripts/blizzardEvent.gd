@@ -6,7 +6,7 @@ extends Node3D
 var active_event := false
 var snows : Array[GPUParticles3D]
 
-@onready var weather = $"/root/Principal/Camera3D/Pos-processamento/Nevasca/nevasca"
+@onready var weather = get_tree().current_scene.get_node("Camera3D/Pos-processamento/Nevasca/nevasca")
 @onready var mist = $"Nevoa"
 @onready var blizzard = self
 
