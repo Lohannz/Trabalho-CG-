@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
-albedo_color = Color(0.3311052, 0.77166843, 0.99936634, 0.88235295)
+depth_draw_mode = 1
+albedo_color = Color(0.32941177, 0.77254903, 1, 0.88235295)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alpyq"]
 albedo_color = Color(0.8560673, 0.8560673, 0.85606724, 1)
@@ -66,6 +67,7 @@ _data = [Vector2(0, 0.11578941), 0.0, 9.782457, 0, 0, Vector2(0.11788619, 0.6736
 point_count = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3scg"]
+transparency = 1
 albedo_color = Color(0.7724981, 1.0166047, 1.0821912, 1)
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.195, 0.225, 0)
@@ -349,7 +351,6 @@ script = ExtResource("8_o8l6r")
 [node name="Nevoa" type="MeshInstance3D" parent="FaceA/Nevasca" unique_id=363879107]
 transform = Transform3D(1.0004023, 0, 0, 0, 1.0004023, 0, 0, 0, 1.0004023, 94.30001, 135.7, 249.20001)
 material_override = SubResource("StandardMaterial3D_8ldnf")
-transparency = 0.05
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
@@ -361,7 +362,6 @@ disabled = true
 
 [node name="NeveA1" type="GPUParticles3D" parent="FaceA/Nevasca" unique_id=1386064216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.280384, 64.40179, 376.97357)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 5.0
@@ -374,7 +374,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
 [node name="NeveA2" type="GPUParticles3D" parent="FaceA/Nevasca" unique_id=882951082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.40328, 61.140366, 277.06827)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 5.0
@@ -386,7 +385,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
 [node name="NeveA3" type="GPUParticles3D" parent="FaceA/Nevasca" unique_id=219938882]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.85074, 189.81544, 377.4378)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 8.0
@@ -399,7 +397,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
 [node name="NeveA4" type="GPUParticles3D" parent="FaceA/Nevasca" unique_id=433640617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.21907, 203.67776, 276.3362)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 8.0
@@ -501,7 +498,6 @@ disabled = true
 
 [node name="NeveB1" type="GPUParticles3D" parent="FaceB/Nevasca" unique_id=1112612091]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -296.14282, 104.27051, -15.987762)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 6.0
@@ -514,7 +510,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
 [node name="NeveB2" type="GPUParticles3D" parent="FaceB/Nevasca" unique_id=247848803]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -198.07082, 133.39389, -54.677048)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 6.0
@@ -621,7 +616,6 @@ disabled = true
 
 [node name="NeveC1" type="GPUParticles3D" parent="FaceC/Nevasca" unique_id=924473061]
 transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 197.80148, 540.6534, 127.40081)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 8.0
@@ -634,7 +628,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
 [node name="NeveC2" type="GPUParticles3D" parent="FaceC/Nevasca" unique_id=2132344006]
 transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 146.33185, 438.783, -40.645996)
-layers = 3
 amount = 500
 lifetime = 15.0
 preprocess = 8.0

@@ -43,7 +43,6 @@ func start_blizzard():
 	var screen_blizz = weather.material as ShaderMaterial
 	screen_blizz.set_shader_parameter("weather_fog",0.6)
 	screen_blizz.set_shader_parameter("wind",7.0)
-	screen_blizz.set_shader_parameter("blur",0.01)
 	
 	weather.show()
 	mist.show()

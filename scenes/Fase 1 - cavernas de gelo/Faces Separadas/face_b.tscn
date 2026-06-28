@@ -183,7 +183,8 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64sia"]
-transparency = 1
+transparency = 4
+depth_draw_mode = 1
 albedo_color = Color(0.086161606, 0.67943454, 0.97399664, 0.8156863)
 metallic = 0.7
 metallic_specular = 0.3

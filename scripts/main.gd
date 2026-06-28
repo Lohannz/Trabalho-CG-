@@ -17,12 +17,9 @@ func _ready() -> void:
 		for spawnpoint in markers:
 			spawnpoints.append(spawnpoint.global_position)
 
-	# Cada índice é o Spawnpoint de uma face, o MainSpawn = 0.
-	player.position = spawnpoints[0]
-	player.spawnpoint = 0
+		# Cada índice é o Spawnpoint de uma face, o MainSpawn = 0.
+		player.position = spawnpoints[0]
+		player.spawnpoint = 0
 
 func _get_spawnpoint_position(index : int) -> Vector3:
 	return spawnpoints[index]
-
-func _process(delta : float) -> void:
-	pass
