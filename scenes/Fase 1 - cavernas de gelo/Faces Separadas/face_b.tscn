@@ -253,44 +253,34 @@ size = Vector3(24.143215, 2.708554, 24.784925)
 [node name="FaceB" unique_id=1708946299 instance=ExtResource("1_lacq4")]
 
 [node name="plataforma_frente_013" parent="." index="0" unique_id=1493591121]
-layers = 8
 material_override = SubResource("ShaderMaterial_6q7ss")
 
 [node name="StaticBody3D" parent="plataforma_frente_013" index="0" unique_id=1903504706 groups=["lightSensitive"]]
 collision_layer = 9
-collision_mask = 9
 
 [node name="plataforma_frente_011" parent="." index="1" unique_id=1398170090]
-layers = 8
 material_override = SubResource("ShaderMaterial_uc5lc")
 
 [node name="StaticBody3D" parent="plataforma_frente_011" index="0" unique_id=2062891338 groups=["lightSensitive"]]
 collision_layer = 9
-collision_mask = 9
 
 [node name="plataforma_frente_015" parent="." index="2" unique_id=1371999395]
-layers = 8
 material_override = SubResource("ShaderMaterial_dmbf8")
 
 [node name="StaticBody3D" parent="plataforma_frente_015" index="0" unique_id=1920329893 groups=["lightSensitive"]]
 collision_layer = 9
-collision_mask = 9
 
 [node name="plataforma_frente_016" parent="." index="3" unique_id=1684086946]
-layers = 8
 material_override = SubResource("ShaderMaterial_yirek")
 
 [node name="StaticBody3D" parent="plataforma_frente_016" index="0" unique_id=1275429139 groups=["lightSensitive"]]
 collision_layer = 9
-collision_mask = 9
 
 [node name="plataforma_frente_017" parent="." index="4" unique_id=1918082281]
-layers = 8
 material_override = SubResource("ShaderMaterial_wmar6")
 
 [node name="StaticBody3D" parent="plataforma_frente_017" index="0" unique_id=1615566921 groups=["lightSensitive"]]
 collision_layer = 9
-collision_mask = 9
 
 [node name="plataforma_frente_021" parent="." index="5" unique_id=1468712685]
 material_override = ExtResource("2_paak5")
@@ -308,8 +298,10 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_064" parent="plataforma_frente_023" index="0" unique_id=769326134]
-layers = 3
 material_override = SubResource("StandardMaterial3D_78hdn")
+
+[node name="StaticBody3D" parent="plataforma_frente_023/plataforma_frente_064" index="0" unique_id=177340063]
+collision_layer = 2
 
 [node name="plataforma_frente_024" parent="." index="9" unique_id=499080176]
 material_override = ExtResource("2_paak5")
@@ -327,8 +319,10 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_063" parent="plataforma_frente_025" index="0" unique_id=212731436]
-layers = 3
 material_override = SubResource("StandardMaterial3D_sg7oa")
+
+[node name="StaticBody3D" parent="plataforma_frente_025/plataforma_frente_063" index="0" unique_id=2049058813]
+collision_layer = 2
 
 [node name="PlanoTrue" parent="." index="11" unique_id=279369267]
 material_override = ExtResource("2_paak5")
@@ -340,50 +334,64 @@ material_override = ExtResource("2_paak5")
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_014" parent="plataforma_frente_055" index="0" unique_id=1044841801]
-layers = 3
 material_override = SubResource("StandardMaterial3D_bfdpn")
+
+[node name="StaticBody3D" parent="plataforma_frente_055/plataforma_frente_014" index="0" unique_id=1918388552]
+collision_layer = 2
 
 [node name="plataforma_frente_056" parent="." index="14" unique_id=116221715]
 material_override = ExtResource("3_bffqw")
 
 [node name="plataforma_frente_012" parent="plataforma_frente_056" index="0" unique_id=91822741]
-layers = 3
 material_override = SubResource("StandardMaterial3D_sg7oa")
+
+[node name="StaticBody3D" parent="plataforma_frente_056/plataforma_frente_012" index="0" unique_id=373880120]
+collision_layer = 2
 
 [node name="plataforma_frente_057" parent="." index="15" unique_id=720640722]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_018" parent="plataforma_frente_057" index="0" unique_id=1538542920]
-layers = 3
 material_override = SubResource("StandardMaterial3D_78hdn")
+
+[node name="StaticBody3D" parent="plataforma_frente_057/plataforma_frente_018" index="0" unique_id=247269619]
+collision_layer = 2
 
 [node name="plataforma_frente_058" parent="." index="16" unique_id=1903988856]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_010" parent="plataforma_frente_058" index="0" unique_id=1737491141]
-layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="StaticBody3D" parent="plataforma_frente_058/plataforma_frente_010" index="0" unique_id=1955421470]
+collision_layer = 2
 
 [node name="plataforma_frente_059" parent="." index="17" unique_id=1597222577]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_008" parent="plataforma_frente_059" index="0" unique_id=914920519]
-layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="StaticBody3D" parent="plataforma_frente_059/plataforma_frente_008" index="0" unique_id=606522817]
+collision_layer = 2
 
 [node name="plataforma_frente_060" parent="." index="18" unique_id=2114607798]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_009" parent="plataforma_frente_060" index="0" unique_id=202183071]
-layers = 3
 material_override = SubResource("StandardMaterial3D_mwj7t")
+
+[node name="StaticBody3D" parent="plataforma_frente_060/plataforma_frente_009" index="0" unique_id=2064465303]
+collision_layer = 2
 
 [node name="plataforma_frente_062" parent="." index="19" unique_id=1812370676]
 material_override = ExtResource("2_paak5")
 
 [node name="plataforma_frente_020" parent="plataforma_frente_062" index="0" unique_id=10817184]
-layers = 3
 material_override = SubResource("StandardMaterial3D_m0y7i")
+
+[node name="StaticBody3D" parent="plataforma_frente_062/plataforma_frente_020" index="0" unique_id=1359502496]
+collision_layer = 2
 
 [node name="espinhos" type="MeshInstance3D" parent="." index="20" unique_id=1847625254]
 transform = Transform3D(1.2037319e-14, -2.5409432e-07, 5.77, -6.3, -2.5409432e-07, 1.8008849e-23, 2.7538175e-07, -5.813, -2.522147e-07, 61.456184, 425.4755, -2.2762403)

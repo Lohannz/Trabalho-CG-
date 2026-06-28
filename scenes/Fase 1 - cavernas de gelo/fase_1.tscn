@@ -469,7 +469,6 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="FaceA" unique_id=2013399105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30000305)
 collision_layer = 258
-collision_mask = 258
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/StaticBody3D" unique_id=656552327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
@@ -590,8 +589,7 @@ disabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="FaceB" unique_id=1773208561]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 13.900002, 610.1, -280.1)
-collision_layer = 256
-collision_mask = 256
+collision_layer = 258
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/StaticBody3D" unique_id=373345006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
@@ -681,8 +679,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.34735, 98.799995, -153.8
 
 [node name="StaticBody3D" type="StaticBody3D" parent="FaceC" unique_id=1207291402]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -382.90002, 73.19996, -88.100006)
-collision_layer = 256
-collision_mask = 258
+collision_layer = 258
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/StaticBody3D" unique_id=671165144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 211.99997)

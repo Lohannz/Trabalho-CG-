@@ -322,7 +322,7 @@ func _movement_steady(vel : PackedVector3Array):
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal().normalized()
 	return move_direction.dot(-normal) > 0.2
-
+"""
 func is_on_layer(layer : int) -> bool:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
@@ -335,6 +335,15 @@ func is_on_layer(layer : int) -> bool:
 		elif collider is StaticBody3D:		
 			return collider.get_collision_mask_value(layer)
 	return false
+"""
+func is_on_layer(layer: int) -> bool:
+	for i in get_slide_collision_count():
+		var collider := get_slide_collision(i).get_collider()
+		if collider is CollisionObject3D:
+			if collider.get_collision_layer_value(layer):
+				return true
+	return false
+	
 
 # Controle do Sistema: MOVIMENTAÇÃO E MOMENTO
 func _handle_movement(delta : float):
