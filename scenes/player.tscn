@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlg0r"]
-radius = 0.5366211
-height = 2.256073
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlg0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
+size = Vector3(1, 0.9614258, 1.0389404)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76dn1"]
 resource_name = "cat.skin"
@@ -1297,17 +1298,19 @@ _data = {
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
 collision_mask = 263
+floor_max_angle = 0.2617994
+safe_margin = 0.01
 script = ExtResource("1_i3pqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.09824994, 0.035)
-shape = SubResource("CapsuleShape3D_qlg0r")
+transform = Transform3D(3.5, 0, 0, 0, 6.935786, 0, 0, 0, 3.3240716, 0, -0.09824994, 0.035)
+shape = SubResource("BoxShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
-transform = Transform3D(3.65, 0, 0, 0, 3.65, 0, 0, 0, 3.65, 0, -0.04439455, 0.035)
-shape = SubResource("CapsuleShape3D_qlg0r")
+transform = Transform3D(3.65, 0, 0, 0, 7.538468, 0, 0, 0, 3.5046957, 0, -0.09776749, 0.028350944)
+shape = SubResource("BoxShape3D_tuyoq")
 
 [node name="cat_obj" type="Node3D" parent="." unique_id=572664525]
 transform = Transform3D(0.88, 0, 0, 0, 0.88, 0, 0, 0, 0.88, 0, -1.5064895, -0.29265046)

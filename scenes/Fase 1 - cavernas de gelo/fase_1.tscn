@@ -670,7 +670,6 @@ transform = Transform3D(-4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 0, 
 material_override = SubResource("ShaderMaterial_u3f4b")
 
 [node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="0" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
-priority = 2
 destination = NodePath("../../../../FaceB/Portais B/PortalVermelho/PortalArea")
 spawnpoint = 2
 

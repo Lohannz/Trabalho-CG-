@@ -322,20 +322,7 @@ func _movement_steady(vel : PackedVector3Array):
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal().normalized()
 	return move_direction.dot(-normal) > 0.2
-"""
-func is_on_layer(layer : int) -> bool:
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		var parent = collider.get_parent()
-		# Camadas para entidades com Mesh.
-		if parent is MeshInstance3D:
-			return parent.get_layer_mask_value(layer)
-		# Camadas para entidades somente com StaticBody.
-		elif collider is StaticBody3D:		
-			return collider.get_collision_mask_value(layer)
-	return false
-"""
+
 func is_on_layer(layer: int) -> bool:
 	for i in get_slide_collision_count():
 		var collider := get_slide_collision(i).get_collider()
@@ -441,10 +428,8 @@ func _can_dash():
 	
 func restore_dash() -> void:
 	has_dash = true
-	if state == STATE.DASHING:
-		pass
-		#state = STATE.AIRBORNE
-		
+	input.dash.reset()
+
 # Executor da Ação: DASH
 func _execute_dash():
 	dash_start = global_position
