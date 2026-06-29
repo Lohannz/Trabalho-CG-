@@ -68,6 +68,13 @@ var ICE_INERTIA: float = 80.0
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
 var state : STATE = STATE.GROUNDED
 
+# Variáveis: Partículas de Movimentação
+@onready var running_particles: CPUParticles3D = $cat_obj/RunParticles
+@onready var sliding_particles: CPUParticles3D = $cat_obj/SlidingParticles
+@onready var jumping_particles: CPUParticles3D = $cat_obj/JumpParticles
+@onready var dashing_particles: CPUParticles3D = $cat_obj/DashParticles
+
+
 # Variáveis: Orientação da Câmera
 var _orientation : Basis
 var _visual_direction: Vector3 = Vector3.FORWARD
@@ -364,36 +371,23 @@ func _update_state(delta):
 		if is_on_wall() or is_pushing_wall():
 			finish_dash(STATE.AIRBORNE)	
 		
-		$RunParticles.emitting = false
-		#$SlidingParticles.emitting = false
-	
 	elif input.climb.is_down and _can_climb():
 		if state != STATE.CLIMBING: velocity = Vector3.ZERO
 		state = STATE.CLIMBING if input.has_movement() else STATE.STEADY
 		fatigue = CLIMB_FATIGUE
-
-		$RunParticles.emitting = false
-		#$SlidingParticles.emitting = false
-
+		
 	elif is_pushing_wall() and _can_slide():
 		state = STATE.SLIDING
 		fatigue = SLIDE_FATIGUE
-		"""
-		if not $SlidingParticles.emitting:
-			await get_tree().create_timer(0.3).timeout
-			if state == STATE.SLIDING:
-				#$SlidingParticles.emitting = true
-		"""
-		$RunParticles.emitting = false	
 		
 	elif is_on_floor():
 		if state == STATE.AIRBORNE:
-			var jumpParticles = $JumpParticles.duplicate()
-			add_child(jumpParticles)
-			#jumpParticles.global_position = global_position
-			jumpParticles.emitting = true
-			jumpParticles.finished.connect(jumpParticles.queue_free)
-		
+			var particles = jumping_particles.duplicate()
+			get_parent().add_child(particles)
+			particles.global_position = jumping_particles.global_position
+			particles.emitting = true
+			particles.finished.connect(particles.queue_free)
+	
 		state = STATE.GROUNDED
 		if not has_dash: 
 			if not dash_lock: restore_dash()
@@ -407,30 +401,66 @@ func _update_state(delta):
 			if $AnimationPlayer.current_animation != &"run": 
 				$AnimationPlayer.play(&"run") 
 				$AnimationPlayer.speed_scale = 1.5 	
-			
-			var vel_h = velocity - up * velocity.dot(up)
-			var speed_h = vel_h.length()
-			$RunParticles.emitting = move_direction.dot(vel_h.normalized()) <= -0.5
 		else: 
 			$AnimationPlayer.play(&"idle") 
 			$AnimationPlayer.speed_scale = 1.0
-			$RunParticles.emitting = false
-		#$SlidingParticles.emitting = false
+			
 	else:
 		state = STATE.AIRBORNE
-		$RunParticles.emitting = false
-		#$SlidingParticles.emitting = false
-		
+
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5
 
 	stamina = clamp(stamina + fatigue * delta, -50.0, 100.0)
-	
+	_update_particles()
+
+func _update_particles() -> void:
+	match state:
+		STATE.GROUNDED:
+			running_particles.show()
+
+			var vel_h := velocity - up * velocity.dot(up)
+			running_particles.emitting = input.has_movement() and vel_h.length() >= 15.0
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+
+		STATE.AIRBORNE:
+			running_particles.emitting = false
+			running_particles.hide()
+			running_particles.restart()
+
+			sliding_particles.emitting = false
+			sliding_particles.hide()
+			sliding_particles.restart()
+
+		STATE.DASHING:
+			running_particles.emitting = false
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+				sliding_particles.restart()
+
+		STATE.SLIDING:
+			running_particles.emitting = false
+			if !sliding_particles.visible:
+				await get_tree().create_timer(0.2).timeout
+				if state == STATE.SLIDING:
+					sliding_particles.show()
+					sliding_particles.emitting = true
+
+		STATE.CLIMBING, STATE.STEADY:
+			running_particles.emitting = false
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+				sliding_particles.restart()
+		
 func _can_climb():
 	return is_on_wall() and is_on_layer(3) and stamina > 0.0
 	
 func _can_slide():
-	return is_on_wall() and not is_on_layer(2) and stamina > -50.0
+	return is_on_wall_only() and not is_on_layer(2) and stamina > -50.0
 
 ## AÇÕES DO PLAYER
 func _handle_actions():
@@ -465,6 +495,13 @@ func _execute_dash():
 	has_dash = false 
 	velocity = Vector3.ZERO
 	
+	var particles = dashing_particles.duplicate()
+	get_parent().add_child(particles)
+	particles.global_position = dashing_particles.global_position
+	particles.global_rotation = dashing_particles.global_rotation
+	particles.emitting = true
+	particles.finished.connect(particles.queue_free)
+
 # Executor da Ação: PULO
 func _execute_jump():
 	var normal = get_wall_normal().normalized()
@@ -474,11 +511,11 @@ func _execute_jump():
 	if state == STATE.STEADY and move_direction.dot(-normal) < 0.7:
 		velocity = up * JUMP_VERTICAL_BOOST + (normal + move_direction) * WALL_JUMP_PUSHWAY
 		$AnimationPlayer.play(&"jump")
-		#$SlidingParticles.emitting = false
+
 	elif state in [STATE.SLIDING, STATE.CLIMBING]:
 		velocity = up * JUMP_VERTICAL_BOOST + normal * WALL_JUMP_PUSHWAY
 		$AnimationPlayer.play(&"jump")
-		#$SlidingParticles.emitting = false
+
 	else:
 		velocity -= up * velocity.dot(up)
 		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST
