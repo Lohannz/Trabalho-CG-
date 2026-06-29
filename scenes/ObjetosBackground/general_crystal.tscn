@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://8a05axkc4nat"]
+
+[ext_resource type="PackedScene" uid="uid://cce8ne261el2h" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalCrystal.glb" id="1_8wq1t"]
+
+[node name="generalCrystal" unique_id=371514144 instance=ExtResource("1_8wq1t")]

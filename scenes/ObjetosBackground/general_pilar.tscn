@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://br6koytykvgso"]
+
+[ext_resource type="PackedScene" uid="uid://bke4v10n2auhy" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalPilar.glb" id="1_2hrme"]
+[ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_oi67x"]
+
+[node name="generalPilar" unique_id=1403941570 instance=ExtResource("1_2hrme")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1991281503]
+material_override = ExtResource("2_oi67x")

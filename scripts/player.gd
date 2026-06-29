@@ -430,6 +430,7 @@ func _can_dash():
 	
 func restore_dash() -> void:
 	has_dash = true
+	input.dash.reset()
 	if state == STATE.DASHING:
 		pass
 		#state = STATE.AIRBORNE
