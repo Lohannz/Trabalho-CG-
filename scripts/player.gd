@@ -82,7 +82,7 @@ var forward : Vector3 = Vector3.ZERO
 var input: PlayerInput
 var move_direction : Vector3 = Vector3.ZERO
 
-var spawnpoint : int = 0
+var spawnpoint : Vector3 = Vector3.ZERO
 
 # INTERAÇÃO COM PORTAL #
 func use_portal(portal):
@@ -90,11 +90,10 @@ func use_portal(portal):
 	global_position = portal.destination.global_position
 	
 	FREEZE = true
-	
-	spawnpoint = portal.destination.spawnpoint
 	PORTAL_UI.visible = false
 	camera._change_orientation(portal.get_normal())
-	
+	_update_orientation()
+	spawnpoint = portal.destination.get_spawn()
 	await get_tree().create_timer(0.9).timeout
 	FREEZE = false
 
@@ -178,9 +177,8 @@ func _physics_process(delta : float) -> void:
 
 ## Função que gerencia o que acontece quando o player morre
 func die() -> void:
-	print("morreu!")
 	velocity = Vector3.ZERO
-	global_position = get_parent()._get_spawnpoint_position(spawnpoint)
+	global_position = spawnpoint
 	
 
 ## MOVIMENTO DO PLAYER

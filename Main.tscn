@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
+[ext_resource type="Script" uid="uid://dhbri6d2bhotl" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
@@ -33,6 +34,7 @@ shader_parameter/noise_texture = ExtResource("5_lgr22")
 shader_parameter/wind = 7.0
 shader_parameter/fog_density = 0.4
 shader_parameter/fog_color = Color(0.6243741, 0.9378328, 1.105, 0.784)
+shader_parameter/direction = Vector2(0, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
@@ -142,6 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_c2ibq")
 
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 

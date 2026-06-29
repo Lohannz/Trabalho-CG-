@@ -389,13 +389,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432.09805, 7.836628, 358.6674)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=1966279607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 352.35, 42.166, 362.327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.35, 42.166, 360.327)
 
 [node name="Spawn2" type="Marker3D" parent="Spawnpoints" unique_id=623827718]
-transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 98.59909, 102.4987, 119.96758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.59909, 102.4987, 119.96758)
 
 [node name="Spawn3" type="Marker3D" parent="Spawnpoints" unique_id=2016292211]
-transform = Transform3D(0.96892947, 0.24733724, 0, -0.24733724, 0.96892947, 0, 0, 0, 1, 586.097, 525.039, 127.9272)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 586.097, 525.039, 127.9272)
+
+[node name="Spawn4" type="Marker3D" parent="Spawnpoints" unique_id=604100759]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 159.59909, 215.4987, -115.03242)
+
+[node name="Spawn5" type="Marker3D" parent="Spawnpoints" unique_id=424982517]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 354.097, 463.039, -91.4728)
 
 [node name="FaceA" parent="." unique_id=1591384302 instance=ExtResource("1_62cav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.166521, -2, 164.16415)
@@ -471,10 +477,10 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 198.76573, 67.97101, 
 [node name="GPUParticles3D" parent="FaceA/Portais A/PortalVerde" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_dc6vk")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination")]
+[node name="PortalArea" parent="FaceA/Portais A/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 destination = NodePath("../../../../FaceC/Portais C/PortalVerde/PortalArea")
-spawnpoint = 1
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 
 [node name="PortalRosa" parent="FaceA/Portais A" unique_id=217679012 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 308.0851, 140.8733, 6.3780212)
@@ -483,9 +489,9 @@ material_override = SubResource("ShaderMaterial_dc6vk")
 [node name="GPUParticles3D" parent="FaceA/Portais A/PortalRosa" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_bcrg8")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="PortalArea" parent="FaceA/Portais A/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
 destination = NodePath("../../../../FaceB/Portais B/PortalRosa/PortalArea")
-spawnpoint = 1
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 
 [node name="PortalFinal" parent="FaceA/Portais A" unique_id=1728206204 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 8.7456665)
@@ -594,9 +600,9 @@ material_override = SubResource("ShaderMaterial_dc6vk")
 [node name="GPUParticles3D" parent="FaceB/Portais B/PortalRosa" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_bcrg8")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="PortalArea" parent="FaceB/Portais B/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
 destination = NodePath("../../../../FaceA/Portais A/PortalRosa/PortalArea")
-spawnpoint = 3
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn3")]
 
 [node name="PortalVermelho" parent="FaceB/Portais B" unique_id=1810851273 instance=ExtResource("3_alpyq")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -148.32506, 251.9823, -59.857788)
@@ -605,10 +611,10 @@ material_override = SubResource("ShaderMaterial_u3f4b")
 [node name="GPUParticles3D" parent="FaceB/Portais B/PortalVermelho" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_u3f4b")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="PortalArea" parent="FaceB/Portais B/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
 transform = Transform3D(-4.371139e-08, 0, 3.6487424, 0, 1, 0, -1, 0, -1.5949159e-07, 3.2819405, -0.17573547, -0.48101807)
 destination = NodePath("../../../../FaceC/Portais C/PortalVermelho/PortalArea")
-spawnpoint = 3
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn5")]
 
 [node name="Ventos B" type="Node3D" parent="FaceB" unique_id=920830732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.619995, 68.39993, -114.499985)
@@ -634,7 +640,7 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 5" parent="FaceB/Ventos B" unique_id=1307451334 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -80.614655, 345.32086, -137.64807)
+transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -86.15529, 345.32086, -133.22807)
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 
@@ -728,9 +734,9 @@ transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999998, 0, -8.742277e-08, 0, 
 [node name="GPUParticles3D" parent="FaceC/Portais C/PortalVerde" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_dc6vk")
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination")]
+[node name="PortalArea" parent="FaceC/Portais C/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 destination = NodePath("../../../../FaceA/Portais A/PortalVerde/PortalArea")
-spawnpoint = 2
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2")]
 
 [node name="PortalVermelho" parent="FaceC/Portais C" unique_id=190466061 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 0, 0, 1, -496.62506, 221.51456, -59.857788)
@@ -739,9 +745,9 @@ material_override = SubResource("ShaderMaterial_u3f4b")
 [node name="GPUParticles3D" parent="FaceC/Portais C/PortalVermelho" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_jvtg6")
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination") groups=["Portals"]]
+[node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
 destination = NodePath("../../../../FaceB/Portais B/PortalVermelho/PortalArea")
-spawnpoint = 2
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2"), NodePath("../../../../Spawnpoints/Spawn4")]
 
 [node name="dash_crystal" parent="FaceC" unique_id=1783694374 instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.34735, 98.799995, -153.82631)
