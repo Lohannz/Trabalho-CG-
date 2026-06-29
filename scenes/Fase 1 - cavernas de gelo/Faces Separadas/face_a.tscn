@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="12_4kj6e"]
 [ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="13_2qpa8"]
 [ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="13_bqhkd"]
+[ext_resource type="Script" uid="uid://3m4q865s7ist" path="res://scripts/ice.gd" id="15_bqhkd"]
 [ext_resource type="Material" uid="uid://cpwd3y5t7rrxs" path="res://models/import/materials/ice.tres" id="18_4kj6e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6anf"]
@@ -118,6 +119,8 @@ shader_parameter/noise_tex = ExtResource("12_4kj6e")
 shader_parameter/normal_tex = ExtResource("13_bqhkd")
 shader_parameter/refraction = 0.2
 shader_parameter/normal_depth = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acge8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bmlv"]
 size = Vector3(24.143215, 2.708554, 24.784925)
@@ -397,27 +400,6 @@ uv1_triplanar_sharpness = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_574c1"]
 size = Vector3(44.650635, 9.986166, 41.024178)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yml3y"]
-albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
-albedo_texture = ExtResource("3_ebny3")
-metallic_specular = 0.09
-metallic_texture = ExtResource("6_j4gax")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("6_j4gax")
-normal_enabled = true
-normal_scale = 1.28
-normal_texture = ExtResource("5_4sjd8")
-bent_normal_enabled = true
-bent_normal_texture = ExtResource("5_4sjd8")
-clearcoat = 0.65
-ao_enabled = true
-ao_light_affect = 0.48
-ao_texture = ExtResource("4_epk08")
-uv1_scale = Vector3(23.55, 0.255, 22.676)
-uv1_offset = Vector3(-0.53, 1.987, -0.485)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvbmj"]
 albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
@@ -778,6 +760,14 @@ material_override = SubResource("ShaderMaterial_y74fa")
 [node name="StaticBody3D" parent="plataforma_frente_006" index="0" unique_id=162975640 groups=["lightSensitive"]]
 collision_layer = 9
 
+[node name="Area3D" type="Area3D" parent="plataforma_frente_006/StaticBody3D" index="1" unique_id=454226416]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 2.131466, 0)
+script = ExtResource("15_bqhkd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataforma_frente_006/StaticBody3D/Area3D" index="0" unique_id=1868499215]
+transform = Transform3D(0.2, 0, 0, 0, 4, 0, 0, 0, 0.206, 0, 0, 0)
+shape = SubResource("BoxShape3D_acge8")
+
 [node name="plataforma_fundo_002" parent="." index="5" unique_id=1686948091]
 material_override = ExtResource("7_7usmn")
 
@@ -861,6 +851,7 @@ collision_layer = 2
 material_override = ExtResource("2_4bmlv")
 
 [node name="Cylinder" parent="." index="9" unique_id=1508330732]
+transform = Transform3D(0, -5.285009, 0, 5.285009, 0, 0, 0, 0, 5.285009, 199.37909, 142.19164, 41.486324)
 material_override = ExtResource("18_4kj6e")
 
 [node name="StaticBody3D" parent="Cylinder" index="0" unique_id=2088392705 groups=["pilar"]]
@@ -974,10 +965,8 @@ collision_layer = 4
 material_override = ExtResource("2_4bmlv")
 
 [node name="plataforma_frente_001_003" parent="plataforma_frente_001_012" index="0" unique_id=1634904232]
-material_override = SubResource("StandardMaterial3D_yml3y")
-
-[node name="StaticBody3D" parent="plataforma_frente_001_012/plataforma_frente_001_003" index="0" unique_id=1118351129]
-collision_layer = 2
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.00010180473, -0.07235718, 2.7894974e-05)
+material_override = ExtResource("2_4bmlv")
 
 [node name="plataforma_frente_001_013" parent="." index="19" unique_id=1005361625]
 material_override = ExtResource("2_4bmlv")
@@ -1249,3 +1238,6 @@ collision_layer = 2
 
 [node name="StaticBody3D" parent="plataforma_frente_001_002" index="1" unique_id=818531598]
 collision_layer = 4
+
+[connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]

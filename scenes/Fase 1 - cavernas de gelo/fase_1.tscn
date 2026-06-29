@@ -389,7 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432.09805, 7.836628, 358.6674)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=1966279607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.35, 42.166, 360.327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 346.34998, 42.166, 360.92697)
 
 [node name="Spawn2" type="Marker3D" parent="Spawnpoints" unique_id=623827718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.59909, 102.4987, 119.96758)
@@ -411,7 +411,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.166521, 0, -165.16415)
 script = ExtResource("8_o8l6r")
 
 [node name="Nevoa" type="MeshInstance3D" parent="FaceA/Nevasca" unique_id=363879107]
-transform = Transform3D(1.0004023, 0, 0, 0, 1.0004023, 0, 0, 0, 1.0004023, 94.30001, 135.7, 249.20001)
+transform = Transform3D(1.0004023, 0, 0, 0, 1.0004023, 0, 0, 0, 1.0004023, 94.30001, 135.7, 267.507)
 material_override = SubResource("StandardMaterial3D_8ldnf")
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
@@ -468,50 +468,49 @@ visibility_aabb = AABB(-60, -200, 0, 120, 300, 150)
 process_material = SubResource("ParticleProcessMaterial_o8l6r")
 draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
-[node name="Portais A" type="Node3D" parent="FaceA" unique_id=1592292430]
+[node name="Portais" type="Node3D" parent="FaceA" unique_id=1592292430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.80002, -22.999998, 190.69998)
 
-[node name="PortalVerde" parent="FaceA/Portais A" unique_id=1134528590 instance=ExtResource("3_alpyq")]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 198.76573, 67.97101, 5.266693)
+[node name="PortalVerde" parent="FaceA/Portais" unique_id=1134528590 instance=ExtResource("3_alpyq")]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 198.76573, 67.97101, 6.266693)
 
-[node name="GPUParticles3D" parent="FaceA/Portais A/PortalVerde" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceA/Portais/PortalVerde" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_dc6vk")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
+[node name="PortalArea" parent="FaceA/Portais/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
-destination = NodePath("../../../../FaceC/Portais C/PortalVerde/PortalArea")
+destination = NodePath("../../../../FaceC/Portais/PortalVerde/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 
-[node name="PortalRosa" parent="FaceA/Portais A" unique_id=217679012 instance=ExtResource("3_alpyq")]
+[node name="PortalRosa" parent="FaceA/Portais" unique_id=217679012 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 308.0851, 140.8733, 6.3780212)
 material_override = SubResource("ShaderMaterial_dc6vk")
 
-[node name="GPUParticles3D" parent="FaceA/Portais A/PortalRosa" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceA/Portais/PortalRosa" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_bcrg8")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
-destination = NodePath("../../../../FaceB/Portais B/PortalRosa/PortalArea")
+[node name="PortalArea" parent="FaceA/Portais/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
+destination = NodePath("../../../../FaceB/Portais/PortalRosa/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 
-[node name="PortalFinal" parent="FaceA/Portais A" unique_id=1728206204 instance=ExtResource("3_alpyq")]
+[node name="PortalFinal" parent="FaceA/Portais" unique_id=1728206204 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 8.7456665)
 material_override = SubResource("ShaderMaterial_k3scg")
 
-[node name="GPUParticles3D" parent="FaceA/Portais A/PortalFinal" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceA/Portais/PortalFinal" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_f5vkj")
 
-[node name="PortalArea" parent="FaceA/Portais A/PortalFinal" index="1" unique_id=1967604049]
+[node name="PortalArea" parent="FaceA/Portais/PortalFinal" index="1" unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
-script = null
 
-[node name="PortalCol" parent="FaceA/Portais A/PortalFinal/PortalArea" index="0" unique_id=1665133991]
+[node name="PortalCol" parent="FaceA/Portais/PortalFinal/PortalArea" index="0" unique_id=1665133991]
 visible = false
 
 [node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.33348, 102.5, 201.03586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.33348, 102.5, 201.03586)
 
 [node name="dash_crystal2" parent="FaceA" unique_id=25332783 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.76698, 163.77138, 200.77164)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.76698, 165.77138, 200.77164)
 
 [node name="luzinha" type="Node3D" parent="FaceA" unique_id=149965231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 251.79999, 128.9)
@@ -590,61 +589,61 @@ visibility_aabb = AABB(-60, -80, 0, 300, 150, 150)
 process_material = SubResource("ParticleProcessMaterial_k3scg")
 draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
-[node name="Portais B" type="Node3D" parent="FaceB" unique_id=533274933]
+[node name="Portais" type="Node3D" parent="FaceB" unique_id=533274933]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 95.600006, 484.5, 22.300003)
 
-[node name="PortalRosa" parent="FaceB/Portais B" unique_id=1707050859 instance=ExtResource("3_alpyq")]
+[node name="PortalRosa" parent="FaceB/Portais" unique_id=1707050859 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, -0.99999994, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 93.08511, 24.079208, 2.3779907)
 material_override = SubResource("ShaderMaterial_dc6vk")
 
-[node name="GPUParticles3D" parent="FaceB/Portais B/PortalRosa" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceB/Portais/PortalRosa" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_bcrg8")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
-destination = NodePath("../../../../FaceA/Portais A/PortalRosa/PortalArea")
+[node name="PortalArea" parent="FaceB/Portais/PortalRosa" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
+destination = NodePath("../../../../FaceA/Portais/PortalRosa/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn3")]
 
-[node name="PortalVermelho" parent="FaceB/Portais B" unique_id=1810851273 instance=ExtResource("3_alpyq")]
+[node name="PortalVermelho" parent="FaceB/Portais" unique_id=1810851273 instance=ExtResource("3_alpyq")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -148.32506, 251.9823, -59.857788)
 material_override = SubResource("ShaderMaterial_u3f4b")
 
-[node name="GPUParticles3D" parent="FaceB/Portais B/PortalVermelho" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceB/Portais/PortalVermelho" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_u3f4b")
 
-[node name="PortalArea" parent="FaceB/Portais B/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
+[node name="PortalArea" parent="FaceB/Portais/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
 transform = Transform3D(-4.371139e-08, 0, 3.6487424, 0, 1, 0, -1, 0, -1.5949159e-07, 3.2819405, -0.17573547, -0.48101807)
-destination = NodePath("../../../../FaceC/Portais C/PortalVermelho/PortalArea")
+destination = NodePath("../../../../FaceC/Portais/PortalVermelho/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn5")]
 
-[node name="Ventos B" type="Node3D" parent="FaceB" unique_id=920830732]
+[node name="Ventos" type="Node3D" parent="FaceB" unique_id=920830732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.619995, 68.39993, -114.499985)
 
-[node name="wind 1" parent="FaceB/Ventos B" unique_id=394741060 instance=ExtResource("7_k3scg")]
+[node name="wind 1" parent="FaceB/Ventos" unique_id=394741060 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-1.7, -2.2739968e-07, 1.12204015e-14, 0, -6.5829354e-08, -1.7, 2.5669289e-07, -1.506, 7.430936e-08, -43.03731, 416.8208, 19.613647)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
-[node name="wind 2" parent="FaceB/Ventos B" unique_id=1590202860 instance=ExtResource("7_k3scg")]
+[node name="wind 2" parent="FaceB/Ventos" unique_id=1590202860 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-1.7, 1.8904674e-07, -1.12204015e-14, 0, -5.472666e-08, -1.7, -2.5669289e-07, -1.252, 7.430936e-08, 112.29529, 419.62085, -32.44001)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
-[node name="wind 3" parent="FaceB/Ventos B" unique_id=1784307513 instance=ExtResource("7_k3scg")]
+[node name="wind 3" parent="FaceB/Ventos" unique_id=1784307513 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-1.7, 1.5463743e-07, -1.12204015e-14, 0, -4.4765596e-08, -1.7, -2.5669289e-07, -1.0241175, 7.430936e-08, 112.295, 364.35147, -56.141)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
-[node name="wind 4" parent="FaceB/Ventos B" unique_id=2076798834 instance=ExtResource("7_k3scg")]
+[node name="wind 4" parent="FaceB/Ventos" unique_id=2076798834 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-1.7, 2.0565807e-07, -1.12204015e-14, 0, -5.9535427e-08, -1.7, -2.5669289e-07, -1.3620119, 7.430936e-08, -16.437311, 345.32086, -91.795364)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
-[node name="wind 5" parent="FaceB/Ventos B" unique_id=1307451334 instance=ExtResource("7_k3scg")]
+[node name="wind 5" parent="FaceB/Ventos" unique_id=1307451334 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -86.15529, 345.32086, -133.22807)
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 
-[node name="Wind 6" parent="FaceB/Ventos B" unique_id=246408046 instance=ExtResource("7_k3scg")]
+[node name="Wind 6" parent="FaceB/Ventos" unique_id=246408046 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-7.430936e-08, 2.0708902, 0, -1.7, -9.052148e-08, 0, 0, 0, 1.7, -88.89149, 384.42084, -27.558094)
 WIND_DIRECTION = Vector3(1, 0, 0)
 WIND_POWER = 500.0
@@ -714,39 +713,39 @@ visibility_aabb = AABB(-125, 80, 0, 270, -330, -150)
 process_material = SubResource("ParticleProcessMaterial_bcrg8")
 draw_pass_1 = SubResource("RibbonTrailMesh_8ldnf")
 
-[node name="Ventos C" type="Node3D" parent="FaceC" unique_id=728916025]
+[node name="Ventos" type="Node3D" parent="FaceC" unique_id=728916025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.399979, 0.5, -124.29992)
 
-[node name="wind 1" parent="FaceC/Ventos C" unique_id=1844258202 instance=ExtResource("7_k3scg")]
+[node name="wind 1" parent="FaceC/Ventos" unique_id=1844258202 instance=ExtResource("7_k3scg")]
 transform = Transform3D(1.7, -9.163066e-15, 0, 7.788606e-15, 2, 0, 0, 0, 1.7, -272.82306, 132.80136, 80.174416)
 WIND_POWER = 500.0
 
-[node name="wind 2" parent="FaceC/Ventos C" unique_id=478673952 instance=ExtResource("7_k3scg")]
+[node name="wind 2" parent="FaceC/Ventos" unique_id=478673952 instance=ExtResource("7_k3scg")]
 transform = Transform3D(1.7, -1.4362302e-08, 0, 1.0615615e-08, 2.3, 0, 0, 0, 1.7, -212.2373, 156.01746, -131.25809)
 WIND_POWER = 500.0
 
-[node name="Portais C" type="Node3D" parent="FaceC" unique_id=53965881]
+[node name="Portais" type="Node3D" parent="FaceC" unique_id=53965881]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -256.60004, 4.20002, 241.2)
 
-[node name="PortalVerde" parent="FaceC/Portais C" unique_id=1882055563 instance=ExtResource("3_alpyq")]
+[node name="PortalVerde" parent="FaceC/Portais" unique_id=1882055563 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999998, 0, -8.742277e-08, 0, -1, -249.13411, 97.371, 1.0671387)
 
-[node name="GPUParticles3D" parent="FaceC/Portais C/PortalVerde" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceC/Portais/PortalVerde" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_dc6vk")
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
-destination = NodePath("../../../../FaceA/Portais A/PortalVerde/PortalArea")
+[node name="PortalArea" parent="FaceC/Portais/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
+destination = NodePath("../../../../FaceA/Portais/PortalVerde/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2")]
 
-[node name="PortalVermelho" parent="FaceC/Portais C" unique_id=190466061 instance=ExtResource("3_alpyq")]
+[node name="PortalVermelho" parent="FaceC/Portais" unique_id=190466061 instance=ExtResource("3_alpyq")]
 transform = Transform3D(-4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 0, 0, 1, -496.62506, 221.51456, -59.857788)
 material_override = SubResource("ShaderMaterial_u3f4b")
 
-[node name="GPUParticles3D" parent="FaceC/Portais C/PortalVermelho" index="0" unique_id=2074984000]
+[node name="GPUParticles3D" parent="FaceC/Portais/PortalVermelho" index="0" unique_id=2074984000]
 material_override = SubResource("StandardMaterial3D_jvtg6")
 
-[node name="PortalArea" parent="FaceC/Portais C/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
-destination = NodePath("../../../../FaceB/Portais B/PortalVermelho/PortalArea")
+[node name="PortalArea" parent="FaceC/Portais/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints") groups=["Portals"]]
+destination = NodePath("../../../../FaceB/Portais/PortalVermelho/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2"), NodePath("../../../../Spawnpoints/Spawn4")]
 
 [node name="dash_crystal" parent="FaceC" unique_id=1783694374 instance=ExtResource("7_whobl")]
@@ -764,16 +763,19 @@ shape = SubResource("BoxShape3D_bcrg8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
 
+[node name="dash_crystal3" parent="FaceC" unique_id=1264910672 instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.34735, 194.79999, -30.82631)
+
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659)
 
 [connection signal="body_entered" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_exited"]
 
-[editable path="FaceA/Portais A/PortalVerde"]
-[editable path="FaceA/Portais A/PortalRosa"]
-[editable path="FaceA/Portais A/PortalFinal"]
-[editable path="FaceB/Portais B/PortalRosa"]
-[editable path="FaceB/Portais B/PortalVermelho"]
-[editable path="FaceC/Portais C/PortalVerde"]
-[editable path="FaceC/Portais C/PortalVermelho"]
+[editable path="FaceA/Portais/PortalVerde"]
+[editable path="FaceA/Portais/PortalRosa"]
+[editable path="FaceA/Portais/PortalFinal"]
+[editable path="FaceB/Portais/PortalRosa"]
+[editable path="FaceB/Portais/PortalVermelho"]
+[editable path="FaceC/Portais/PortalVerde"]
+[editable path="FaceC/Portais/PortalVermelho"]

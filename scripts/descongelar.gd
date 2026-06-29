@@ -20,7 +20,7 @@ func _on_body_exited(body: Node3D) -> void:
 	if body == player:
 		player.PORTAL_UI.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if cond:
 		if Input.is_action_just_pressed("ui_F"):
 				descongela()

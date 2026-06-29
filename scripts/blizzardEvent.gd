@@ -3,15 +3,14 @@ extends Node3D
 @export var cooldown_timer : float = 4.5
 @export var event_duration : float = 6.0
 
+@onready var weather = get_tree().current_scene.get_node("Camera3D/Pos-processamento/Nevasca/nevasca")
+@onready var mist = $"Nevoa"
+
 var active_event := false
 var snows : Array[GPUParticles3D]
 
-@onready var weather = get_tree().current_scene.get_node("Camera3D/Pos-processamento/Nevasca/nevasca")
-@onready var mist = $"Nevoa"
-@onready var blizzard = self
-
 func _ready():
-	for snow in blizzard.get_children():
+	for snow in get_children():
 		if snow is GPUParticles3D:
 			snows.append(snow)
 		

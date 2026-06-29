@@ -4,12 +4,11 @@ extends Area3D
 
 func _ready():
 	# Calcula a rotação do vento baseado na força.
-	# OBS: O vento ta bugado, a força nao muda nada no impulso do personagem.
 	$WindMesh.set_instance_shader_parameter("rotation_speed", (WIND_POWER/100.0) * 0.15)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
-		body.IN_WIND = true
+		body.ext_effects.append(Globals.EFFECTS.WIND)
 		
 		var dir = WIND_DIRECTION.normalized()
 		var up = body._orientation.y
@@ -24,5 +23,5 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is CharacterBody3D:
-		body.IN_WIND = false
+		body.ext_effects.erase(Globals.EFFECTS.WIND)
 		body.WIND_FORCE = Vector3.ZERO

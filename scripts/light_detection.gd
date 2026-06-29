@@ -43,7 +43,6 @@ func _handle_light(body: Node3D) -> void:
 			else:
 				_apply_material_colors(material, ICE_DARK_BASE, ICE_DARK_FRES)
 				body.set_collision_layer_value(1, true)
-				
 
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
