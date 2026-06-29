@@ -355,26 +355,45 @@ func _handle_movement(delta : float):
 			
 	_apply_external_forces(vel,delta)
 	velocity = vel[0].limit_length(MOMENTUM) + vel[1].limit_length(MOMENTUM)
-	
-	
+
+
 func _update_state(delta):
 	var fatigue := 0.0
-	$RunParticles.emitting = false
-	
+
 	if state == STATE.DASHING:
 		if is_on_wall() or is_pushing_wall():
 			finish_dash(STATE.AIRBORNE)	
 		
+		$RunParticles.emitting = false
+		#$SlidingParticles.emitting = false
+	
 	elif input.climb.is_down and _can_climb():
 		if state != STATE.CLIMBING: velocity = Vector3.ZERO
 		state = STATE.CLIMBING if input.has_movement() else STATE.STEADY
 		fatigue = CLIMB_FATIGUE
-			
+
+		$RunParticles.emitting = false
+		#$SlidingParticles.emitting = false
+
 	elif is_pushing_wall() and _can_slide():
 		state = STATE.SLIDING
 		fatigue = SLIDE_FATIGUE
-
+		"""
+		if not $SlidingParticles.emitting:
+			await get_tree().create_timer(0.3).timeout
+			if state == STATE.SLIDING:
+				#$SlidingParticles.emitting = true
+		"""
+		$RunParticles.emitting = false	
+		
 	elif is_on_floor():
+		if state == STATE.AIRBORNE:
+			var jumpParticles = $JumpParticles.duplicate()
+			add_child(jumpParticles)
+			#jumpParticles.global_position = global_position
+			jumpParticles.emitting = true
+			jumpParticles.finished.connect(jumpParticles.queue_free)
+		
 		state = STATE.GROUNDED
 		if not has_dash: 
 			if not dash_lock: restore_dash()
@@ -396,9 +415,12 @@ func _update_state(delta):
 			$AnimationPlayer.play(&"idle") 
 			$AnimationPlayer.speed_scale = 1.0
 			$RunParticles.emitting = false
+		#$SlidingParticles.emitting = false
 	else:
 		state = STATE.AIRBORNE
-
+		$RunParticles.emitting = false
+		#$SlidingParticles.emitting = false
+		
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5
 
@@ -451,17 +473,16 @@ func _execute_jump():
 	
 	if state == STATE.STEADY and move_direction.dot(-normal) < 0.7:
 		velocity = up * JUMP_VERTICAL_BOOST + (normal + move_direction) * WALL_JUMP_PUSHWAY
-		
+		$AnimationPlayer.play(&"jump")
+		#$SlidingParticles.emitting = false
 	elif state in [STATE.SLIDING, STATE.CLIMBING]:
 		velocity = up * JUMP_VERTICAL_BOOST + normal * WALL_JUMP_PUSHWAY
-		
+		$AnimationPlayer.play(&"jump")
+		#$SlidingParticles.emitting = false
 	else:
 		velocity -= up * velocity.dot(up)
 		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST
 		$AnimationPlayer.play(&"jump")
-		#$JumpParticles.emitting = true
-		#await get_tree().create_timer(0.3).timeout
-		#$JumpParticles.emitting = false 
 
 func _change_gravity(newOrientation : Basis):
 	up_direction = newOrientation.y

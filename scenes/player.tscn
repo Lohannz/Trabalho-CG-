@@ -1293,37 +1293,44 @@ _data = {
 &"run": SubResource("Animation_gv4mq")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.7058824, 0.85490197, 0.99607843, 1)
+[sub_resource type="Curve" id="Curve_qlg0r"]
+_data = [Vector2(0, 0.14736843), 0.0, 5.549999, 0, 0, Vector2(0.16216215, 0.6631579), 1.3263161, 1.3263161, 0, 0, Vector2(0.518018, 0.8947369), 0.0, 0.0, 0, 0, Vector2(0.7792793, 0.75789475), -1.2240605, -1.2240605, 0, 0, Vector2(1, 0.14736843), -4.965788, 0.0, 0, 0]
+point_count = 5
 
-[sub_resource type="SphereMesh" id="SphereMesh_qlg0r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.6483949, 0.8211485, 1.1679995, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qlg0r"]
 material = SubResource("StandardMaterial3D_qlg0r")
-radial_segments = 8
-rings = 4
+shape = 0
+size = 2.0
+sections = 8
+section_length = 0.21
+curve = SubResource("Curve_qlg0r")
 
 [sub_resource type="Curve" id="Curve_tuyoq"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
-_data = [Vector2(0, 11.368408), 0.0, -901.63336, 0, 0, Vector2(0.5260869, -155.36841), 0.0, 0.0, 0, 0, Vector2(1, 72), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 117.47366), 0.0, -901.63336, 0, 0, Vector2(0.48260868, -79.57898), 0.0, 0.0, 0, 0, Vector2(1, 185.6842), 751.3611, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_smehm"]
-_data = [Vector2(0.008695647, 0.30526316), 0.0, 0.0, 0, 0, Vector2(0.48695657, 0.4736842), 0.0, 0.0, 0, 0, Vector2(1, 0.6526316), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.23157895), 0.0, 0.0, 0, 0, Vector2(0.48695657, 0.4736842), 0.0, 0.0, 0, 0, Vector2(1, 0.76842105), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="SphereMesh" id="SphereMesh_tuyoq"]
-material = SubResource("StandardMaterial3D_qlg0r")
-radial_segments = 8
-rings = 4
+[sub_resource type="Gradient" id="Gradient_tuyoq"]
+offsets = PackedFloat32Array(0, 0.3181818, 0.5808081, 1)
+colors = PackedColorArray(0.82815754, 0.8788615, 0.9893481, 1, 0.70154124, 0.8168612, 0.9941005, 0.6616162, 0.6546412, 0.8082322, 0.98134714, 0.73333335, 0.62291753, 0.7759151, 1, 0)
 
 [sub_resource type="Curve" id="Curve_fjrip"]
-_data = [Vector2(0, 0.6421053), 0.0, 0.0, 0, 0, Vector2(0.47391304, 0.77894735), 1.089473, 1.089473, 0, 0, Vector2(1, 0.7263158), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.49473685), 0.0, 0.0, 0, 0, Vector2(0.53913045, 0.69473684), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_qlg0r"]
-offsets = PackedFloat32Array(0, 0.17171717, 0.35353535, 0.6969697, 1)
-colors = PackedColorArray(0.64705884, 0.827451, 1, 0.42745098, 0.85651284, 1.0290293, 1.3395095, 0.8039216, 0.5430099, 0.75171083, 0.98060113, 1, 1.1700428, 1.2328587, 1.353256, 1, 1.240764, 1.2794123, 1.3532554, 1)
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
 collision_mask = 263
@@ -1627,50 +1634,77 @@ visible = false
 amount = 2
 
 [node name="JumpParticles" type="CPUParticles3D" parent="." unique_id=1470418976]
-transform = Transform3D(1.755, 0, 0, 0, -7.6713484e-08, 1.755, 0, -1.755, -7.6713484e-08, 0, -2.9561114, -0.16855001)
-visible = false
-lifetime = 0.3
-speed_scale = 1.2
-explosiveness = 0.2
-mesh = SubResource("SphereMesh_qlg0r")
+transform = Transform3D(2.3497775, 0, 0, 0, -1.027639e-07, 0.24523191, 0, -2.3509638, -1.0719428e-08, 0, -2.8353329, -0.0014545918)
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+mesh = SubResource("RibbonTrailMesh_qlg0r")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
-emission_ring_radius = 1.0
+emission_ring_radius = 0.6
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
 particle_flag_align_y = true
-direction = Vector3(0, 1, 0)
-spread = 120.0
-gravity = Vector3(0, 2, 0)
-initial_velocity_min = 0.5
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.4, 0)
+initial_velocity_min = 1.0
 initial_velocity_max = 2.0
 angular_velocity_min = -5.0
 angular_velocity_max = 5.0
 angular_velocity_curve = SubResource("Curve_tuyoq")
-linear_accel_max = 1.0
-radial_accel_max = 1.0
-tangential_accel_max = 1.0
-angle_min = -180.0
-angle_max = 180.0
-scale_amount_min = 2.0
-scale_amount_max = 3.5
+linear_accel_min = -2.0
+linear_accel_max = 2.0
+damping_min = 2.0
+damping_max = 3.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_smehm")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
 
-[node name="SlidingParticles" type="CPUParticles3D" parent="." unique_id=1003657219]
-visible = false
+[node name="SlidingParticles" type="CPUParticles3D" parent="." unique_id=518229080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3052461, -1.9941083, 0.004455328)
+amount = 10
+lifetime = 0.9
+speed_scale = 1.2
+randomness = 0.2
+lifetime_randomness = 0.1
+mesh = SubResource("RibbonTrailMesh_qlg0r")
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 4, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 3.0
+linear_accel_min = 1.0
+linear_accel_max = 4.0
+angle_min = -60.0
+angle_max = 60.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_fjrip")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
 
 [node name="RunParticles" type="CPUParticles3D" parent="." unique_id=1569673723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6901977, -0.69716597)
-amount = 10
+emitting = false
+amount = 15
 lifetime = 0.5
-speed_scale = 1.1
-explosiveness = 0.4
-randomness = 0.05
+preprocess = 0.25
+speed_scale = 1.5
+explosiveness = 0.6
+randomness = 0.2
 lifetime_randomness = 0.1
-mesh = SubResource("SphereMesh_tuyoq")
+mesh = SubResource("RibbonTrailMesh_qlg0r")
 direction = Vector3(0, 0, -0.2)
-spread = 43.7
+spread = 40.0
 gravity = Vector3(0, 5, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 2.5
@@ -1680,8 +1714,8 @@ radial_accel_min = 2.5
 radial_accel_max = 6.0
 angle_min = -60.0
 angle_max = 60.0
-scale_amount_min = 2.5
-scale_amount_max = 3.5
+scale_amount_min = 7.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_fjrip")
-color = Color(0.59837383, 0.773617, 0.9509651, 1)
-color_ramp = SubResource("Gradient_qlg0r")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
