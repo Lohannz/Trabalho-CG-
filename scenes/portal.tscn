@@ -45,6 +45,44 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_byics")
 
+[sub_resource type="Curve" id="Curve_d4jfq"]
+_data = [Vector2(0, 0.14736843), 0.0, 0.0, 0, 0, Vector2(0.15853661, 0.6105263), 0.0, 0.0, 0, 0, Vector2(0.32113823, 0), 0.0, 0.0, 0, 0, Vector2(0.40243906, 0.34736842), 0.0, 0.0, 0, 0, Vector2(0.6422765, 0.8947369), 0.0, 0.0, 0, 0, Vector2(0.88211393, 0.36842108), 0.0, 0.0, 0, 0, Vector2(1, 0.84210527), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_dyed0"]
+curve = SubResource("Curve_d4jfq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jr6l0"]
+lifetime_randomness = 0.1
+emission_shape_scale = Vector3(4, 4, 4)
+emission_shape = 1
+emission_sphere_radius = 1.0
+velocity_pivot = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 0)
+spread = 100.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 0.71999776
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 3.9999976
+tangential_accel_min = 4.9999976
+tangential_accel_max = 9.999997
+scale_min = 0.79999995
+scale_max = 1.5
+alpha_curve = SubResource("CurveTexture_dyed0")
+
+[sub_resource type="Curve" id="Curve_jr6l0"]
+_data = [Vector2(0, 0), 0.0, -0.17167562, 0, 0, Vector2(0.3453237, 0.05403459), 1.0393326, 1.0393326, 0, 0, Vector2(0.46402878, 0.39121032), 3.7428858, 3.7428858, 0, 0, Vector2(0.51079136, 1), 0.0, 0.0, 0, 0, Vector2(0.5863309, 0.37247837), -4.206052, -4.206052, 0, 0, Vector2(0.72661865, 0.03530252), -1.0257179, -1.0257179, 0, 0, Vector2(1, 0), 0.34922093, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d4jfq"]
+shape = 0
+size = 0.8
+section_length = 0.5
+section_segments = 5
+curve = SubResource("Curve_jr6l0")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4jfq"]
 size = Vector3(1.8905334, 14.25885, 1)
 
@@ -53,6 +91,15 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_jr6l0")
 mesh = SubResource("ArrayMesh_fop18")
 skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2074984000]
+amount = 15
+lifetime = 1.5
+preprocess = 1.0
+explosiveness = 0.05
+randomness = 0.05
+process_material = SubResource("ParticleProcessMaterial_jr6l0")
+draw_pass_1 = SubResource("RibbonTrailMesh_d4jfq")
 
 [node name="PortalArea" type="Area3D" parent="." unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.6487424, 0, 1, 0, -1, 0, -1.5949159e-07, 3.281941, -0.17573562, -0.4810181)

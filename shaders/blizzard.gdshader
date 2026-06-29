@@ -7,18 +7,14 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform float wind = 0.5;
 uniform float fog_density = 0.4;
 uniform vec4 fog_color : source_color = vec4(0.58, 0.82, 0.95, 1.0);
-uniform float blur = 0.02;
+uniform vec2 direction = vec2(0.0, -1.0); 
 
 void fragment() {
-	vec2 uv_translation = SCREEN_UV + vec2(TIME * wind * 0.08, TIME * (wind * -0.7));
+	vec2 dynamic_wind = vec2(direction.x * wind * 0.08,direction.y * wind * 0.7);
+	vec2 uv_translation = SCREEN_UV + (TIME * dynamic_wind);
 
 	float noise = texture(noise_texture, uv_translation).r;
-	
-	vec2 uv_distorcion = SCREEN_UV + vec2(noise - 0.5) * blur;
-	
-	vec3 screen_image = texture(SCREEN_TEXTURE, uv_distorcion).rgb;
-	
-	//float weather_mask = smoothstep(0.2, 0.8, noise) * fog_density;
+	vec3 screen_image = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	
 	float snow_cells = 0.25;
 	float sharpness = 0.70;    

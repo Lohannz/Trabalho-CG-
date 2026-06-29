@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
-[ext_resource type="Script" uid="uid://b5eaaudttpn2v" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
 [ext_resource type="Material" uid="uid://042e88k1v6ly" path="res://models/import/materials/crystal_core.tres" id="2_sjmgp"]
-[ext_resource type="Script" uid="uid://5utdu3go0l1g" path="res://scripts/light_detection.gd" id="3_c8oal"]
+[ext_resource type="Script" uid="uid://cxb5j6glgtibo" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
+transparency = 4
 depth_draw_mode = 1
 albedo_color = Color(0.73189545, 0.6310375, 1.19, 1)
 metallic = 0.79
@@ -104,7 +105,7 @@ mesh = SubResource("SphereMesh_c8oal")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=909911807]
 transform = Transform3D(-0.9999738, 0.0038676858, 0.006135087, 0.0039050407, 0.9999739, 0.0060884696, -0.0061113783, 0.0061122677, -0.9999627, 0.33098984, 21.818924, 15.844704)
-layers = 32
+layers = 512
 light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
@@ -123,11 +124,11 @@ shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D" unique_id=1561210278]
 target_position = Vector3(0, 0, -100)
-collision_mask = 15
+collision_mask = 63
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=965895913]
 transform = Transform3D(-1.8320636e-05, -0.0052359323, 0.9999863, 0.0034906035, 0.9999802, 0.0052359644, -0.9999939, 0.0034906515, -4.3708425e-08, -21.20124, 21.818924, -4.574753)
-layers = 32
+layers = 512
 light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
@@ -146,11 +147,11 @@ shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D2" unique_id=2090979108]
 target_position = Vector3(0, 0, -100)
-collision_mask = 15
+collision_mask = 63
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1993625629]
 transform = Transform3D(0.0034906077, 0.9999939, -4.371139e-08, -1.5258123e-10, -4.3711122e-08, -1, -0.9999939, 0.0034906077, 1.915123e-15, 0.33098984, 57.69113, -4.574753)
-layers = 32
+layers = 512
 light_color = Color(3.465414e-06, 0.6708741, 0.90664536, 1)
 light_energy = 0.2
 light_size = 0.528
@@ -169,7 +170,7 @@ shape = SubResource("CylinderShape3D_gmp2s")
 
 [node name="RayCast3D" type="RayCast3D" parent="Lights/SpotLight3D3" unique_id=1466086483]
 target_position = Vector3(0, 0, -100)
-collision_mask = 15
+collision_mask = 63
 
 [connection signal="body_entered" from="Lights/SpotLight3D/Area3D" to="Lights/SpotLight3D" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Lights/SpotLight3D/Area3D" to="Lights/SpotLight3D" method="_on_area_3d_body_exited"]

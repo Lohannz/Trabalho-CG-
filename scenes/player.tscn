@@ -6,20 +6,67 @@
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlg0r"]
-radius = 0.5366211
-height = 2.256073
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlg0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
+size = Vector3(1, 0.9614258, 1.0389404)
+
+[sub_resource type="Curve" id="Curve_qlg0r"]
+_data = [Vector2(0, 0), 0.43047094, 0.43047094, 0, 0, Vector2(0.22972974, 0.55789477), 2.6591654, 2.6591654, 0, 0, Vector2(0.3738739, 0.30526316), -1.9119614, -1.9119614, 0, 0, Vector2(0.5720721, 0.49473685), 0.0, 0.0, 0, 0, Vector2(0.8333334, 0.2842105), 0.0, 0.0, 0, 0, Vector2(0.9009009, 0.50526315), -0.7081335, -0.7081335, 0, 0, Vector2(1, 0.32631576), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.6483949, 0.8211485, 1.1679995, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_fjrip"]
+material = SubResource("StandardMaterial3D_qlg0r")
+shape = 0
+size = 2.739
+sections = 4
+section_length = 0.15
+section_segments = 4
+curve = SubResource("Curve_qlg0r")
+
+[sub_resource type="Curve" id="Curve_fjrip"]
+_data = [Vector2(0, 0.49473685), 0.0, 0.0, 0, 0, Vector2(0.53913045, 0.69473684), 0.0, 0.0, 0, 0, Vector2(1, 0.2631579), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tuyoq"]
+offsets = PackedFloat32Array(0, 0.3181818, 0.5808081, 1)
+colors = PackedColorArray(0.82815754, 0.8788615, 0.9893481, 1, 0.70154124, 0.8168612, 0.9941005, 0.6616162, 0.6546412, 0.8082322, 0.98134714, 0.73333335, 0.62291753, 0.7759151, 1, 0)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qlg0r"]
+material = SubResource("StandardMaterial3D_qlg0r")
+shape = 0
+size = 2.0
+sections = 8
+section_length = 0.21
+curve = SubResource("Curve_qlg0r")
+
+[sub_resource type="Curve" id="Curve_tuyoq"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 117.47366), 0.0, -901.63336, 0, 0, Vector2(0.48260868, -79.57898), 0.0, 0.0, 0, 0, Vector2(1, 185.6842), 751.3611, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_smehm"]
+_data = [Vector2(0, 0.23157895), 0.0, 0.0, 0, 0, Vector2(0.48695657, 0.4736842), 0.0, 0.0, 0, 0, Vector2(1, 0.76842105), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76dn1"]
 resource_name = "cat.skin"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_qlg0r")
 roughness = 0.80044246
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hbec"]
 resource_name = "cat.clothes"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_tuyoq")
 roughness = 0.8
@@ -218,7 +265,6 @@ bind/28/pose = Transform3D(-5.597419, -0.31777167, 0.00021461441, 0.00021495997,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ept7"]
 resource_name = "cat.skin.tail"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_smehm")
 roughness = 0.8
@@ -1296,22 +1342,147 @@ _data = {
 }
 
 [node name="player" type="CharacterBody3D" unique_id=455683885]
-collision_layer = 257
-collision_mask = 257
+collision_mask = 263
+floor_max_angle = 0.2617994
+safe_margin = 0.01
 script = ExtResource("1_i3pqv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.09824994, 0.035)
-shape = SubResource("CapsuleShape3D_qlg0r")
+transform = Transform3D(3.5, 0, 0, 0, 6.935786, 0, 0, 0, 3.3240716, 0, -0.09824994, 0.035)
+shape = SubResource("BoxShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
-transform = Transform3D(3.65, 0, 0, 0, 3.65, 0, 0, 0, 3.65, 0, -0.04439455, 0.035)
-shape = SubResource("CapsuleShape3D_qlg0r")
+transform = Transform3D(3.65, 0, 0, 0, 7.538468, 0, 0, 0, 3.5046957, 0, -0.09776749, 0.028350944)
+shape = SubResource("BoxShape3D_tuyoq")
 
 [node name="cat_obj" type="Node3D" parent="." unique_id=572664525]
 transform = Transform3D(0.88, 0, 0, 0, 0.88, 0, 0, 0, 0.88, 0, -1.5064895, -0.29265046)
+
+[node name="DashParticles" type="CPUParticles3D" parent="cat_obj" unique_id=90999344]
+transform = Transform3D(1.1363636, 0, 0, 0, 1.8937273, 0, 0, 0, 1.7192024, -0.123291396, 1.1167823, 0.3695364)
+emitting = false
+amount = 100
+lifetime = 0.8
+one_shot = true
+preprocess = 0.25
+speed_scale = 3.0
+explosiveness = 0.4
+randomness = 1.0
+lifetime_randomness = 0.4
+draw_order = 1
+mesh = SubResource("RibbonTrailMesh_fjrip")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, -0.25)
+spread = 5.0
+gravity = Vector3(0, 0, -0.25)
+initial_velocity_max = 2.5
+linear_accel_min = 2.0
+linear_accel_max = 8.0
+radial_accel_min = 2.5
+radial_accel_max = 6.0
+angle_min = -30.0
+angle_max = 30.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_fjrip")
+color = Color(0.7982455, 1.4228634, 1.8249996, 1)
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="SlidingParticles" type="CPUParticles3D" parent="cat_obj" unique_id=518229080]
+transform = Transform3D(1.1363636, 0, 0, 0, 1.1363636, 0, 0, 0, 1.1363636, 0.2495939, -0.76665056, 1.8193847)
+emitting = false
+amount = 10
+lifetime = 0.9
+speed_scale = 1.2
+randomness = 0.2
+lifetime_randomness = 0.1
+mesh = SubResource("RibbonTrailMesh_qlg0r")
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 4, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 3.0
+linear_accel_min = 1.0
+linear_accel_max = 4.0
+angle_min = -60.0
+angle_max = 60.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_fjrip")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="RunParticles" type="CPUParticles3D" parent="cat_obj" unique_id=1569673723]
+transform = Transform3D(1.1363636, 0, 0, 0, 1.1363636, 0, 0, 0, 1.1363636, -0.123291396, -1.6729943, -0.7341596)
+emitting = false
+amount = 12
+lifetime = 0.5
+preprocess = 0.25
+speed_scale = 1.5
+explosiveness = 0.4
+randomness = 0.4
+lifetime_randomness = 0.4
+draw_order = 1
+mesh = SubResource("RibbonTrailMesh_qlg0r")
+direction = Vector3(0, 0, -0.2)
+spread = 70.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 2.5
+linear_accel_min = 0.5
+linear_accel_max = 3.0
+radial_accel_min = 2.5
+radial_accel_max = 6.0
+angle_min = -60.0
+angle_max = 60.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_fjrip")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="JumpParticles" type="CPUParticles3D" parent="cat_obj" unique_id=1470418976]
+transform = Transform3D(2.6702015, 0, 0, 0, -1.1677716e-07, 0.27867264, 0, -2.6715498, -1.2181168e-08, 0, -1.1055378, 0.3309044)
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+mesh = SubResource("RibbonTrailMesh_qlg0r")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 0.6
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+angular_velocity_curve = SubResource("Curve_tuyoq")
+linear_accel_min = -2.0
+linear_accel_max = 2.0
+damping_min = 2.0
+damping_max = 3.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 7.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_smehm")
+color = Color(1.007, 1.496, 1.825, 1)
+color_ramp = SubResource("Gradient_tuyoq")
 
 [node name="armature_cat" type="Node3D" parent="cat_obj" unique_id=1591027206]
 transform = Transform3D(3.3950488e-05, 0, -0.88, 0, 0.88, 0, 0.88, 0, 3.3950488e-05, 0.0015238612, 0.7924986, 0.15597633)

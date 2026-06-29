@@ -3,16 +3,15 @@ extends Camera3D
 @export var offset_Z := 15.0
 @export var offset_Y := 15.0
 @export var lerp_speed := 3.0
-@export var tilt_degrees := -50.0  # inclinação visual — ajuste aqui
+@export var tilt_degrees := -50.0
 
 @onready var player : CharacterBody3D = get_tree().current_scene.get_node("player")
 
 signal orientation_changed(newOrientation)
 
-var _orientation : Basis  # basis puro de jogo, NUNCA tem tilt
+var _orientation : Basis
 var changed
 
-# Propriedade pública: o player lê isso em vez de global_transform.basis
 var game_basis : Basis:
 	get: return _orientation
 
@@ -22,7 +21,6 @@ func _ready() -> void:
 	position += _orientation.y * offset_Y
 
 func _get_visual_basis(base: Basis) -> Basis:
-	# Aplica tilt apenas no eixo X local (inclinação para baixo)
 	var tilt = Basis(base.x, deg_to_rad(tilt_degrees))
 	return base * tilt
 

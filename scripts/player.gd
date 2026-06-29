@@ -1,8 +1,7 @@
 extends CharacterBody3D
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var areaDetection = $areaDetection
-@onready var PORTAL_UI = $"/root/Principal/Camera3D/UI/Control/Label"
-
+@onready var PORTAL_UI = get_tree().current_scene.get_node("Camera3D/UI/Control/Label")
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 30.0
@@ -42,35 +41,39 @@ const CLIMB_MULT = 0.4
 const WALL_JUMP_MULT = 0.2
 
 # Parâmetros de Pulo
-const DASH_IMPULSE = 60.0
-
+const DASH_IMPULSE = 50.0
 const JUMP_HEIGHT = 12.5
 const JUMP_DURATION = 0.28
 const GRAVITY = (2.0 * JUMP_HEIGHT) / (JUMP_DURATION * JUMP_DURATION)  
 const JUMP_VERTICAL_BOOST = GRAVITY * JUMP_DURATION
 const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
-const WALL_JUMP_PUSHWAY = 32.0
-
-# Parâmetros de Atrito
-const FRICTION = 300.0
-const AIR_RESISTANCE = 45.0
-const SLIDE_FRICTION = 600.0
-
-# Parâmetros de Interação com Vento
-var IN_WIND : bool = false
-var WIND_FORCE : Vector3 = Vector3.ZERO
-
-#Congela o player
-var FREEZE : bool = false
-
+const WALL_JUMP_PUSHWAY = 30.0
 const COYOTE_MAX = 0.25
 var COYOTE_TIMER : float = COYOTE_MAX
 var IS_FALLING : bool = false
+
+
+# Parâmetros de Atrito
+const FRICTION = 300.0
+const AIR_RESISTANCE = 125.0
+const SLIDE_FRICTION = 900.0
+
+# Parâmetros de Efeitos Externos
+var ext_effects : Array[Globals.EFFECTS]
+var WIND_FORCE : Vector3 = Vector3.ZERO
+var ICE_INERTIA: float = 80.0
 
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
 var state : STATE = STATE.GROUNDED
+
+# Variáveis: Partículas de Movimentação
+@onready var running_particles: CPUParticles3D = $cat_obj/RunParticles
+@onready var sliding_particles: CPUParticles3D = $cat_obj/SlidingParticles
+@onready var jumping_particles: CPUParticles3D = $cat_obj/JumpParticles
+@onready var dashing_particles: CPUParticles3D = $cat_obj/DashParticles
+
 
 # Variáveis: Orientação da Câmera
 var _orientation : Basis
@@ -83,7 +86,8 @@ var forward : Vector3 = Vector3.ZERO
 var input: PlayerInput
 var move_direction : Vector3 = Vector3.ZERO
 
-var spawnpoint : int = 0
+var FREEZE : bool = false
+var spawnpoint : Vector3 = Vector3.ZERO
 
 # INTERAÇÃO COM PORTAL #
 func use_portal(portal):
@@ -91,11 +95,10 @@ func use_portal(portal):
 	global_position = portal.destination.global_position
 	
 	FREEZE = true
-	
-	spawnpoint = portal.destination.spawnpoint
 	PORTAL_UI.visible = false
 	camera._change_orientation(portal.get_normal())
-	
+	_update_orientation()
+	spawnpoint = portal.destination.get_spawn()
 	await get_tree().create_timer(0.9).timeout
 	FREEZE = false
 
@@ -179,9 +182,8 @@ func _physics_process(delta : float) -> void:
 
 ## Função que gerencia o que acontece quando o player morre
 func die() -> void:
-	print("morreu!")
 	velocity = Vector3.ZERO
-	global_position = get_parent()._get_spawnpoint_position(spawnpoint)
+	global_position = spawnpoint
 	
 
 ## MOVIMENTO DO PLAYER
@@ -197,7 +199,7 @@ func add(x : PackedVector3Array, y : PackedVector3Array) -> void:
 # Forças externas
 # TODO: enum EFFECT: {FLYING...} para VENTO ao invés de um BOOL?
 func _apply_external_forces(vel : PackedVector3Array, delta : float):
-	if IN_WIND:
+	if Globals.EFFECTS.WIND in ext_effects:
 		var wind_v = up * WIND_FORCE.dot(up)
 		var wind_h = WIND_FORCE - wind_v
 		var wind : PackedVector3Array = [wind_h, wind_v]
@@ -205,8 +207,14 @@ func _apply_external_forces(vel : PackedVector3Array, delta : float):
 		mult(wind,delta)
 		add(vel,wind)
 		
-		vel[0] = vel[0].limit_length(SPEED + 40.0)
+		vel[0] = vel[0].limit_length(MOMENTUM + 40.0)
 		vel[1] = vel[1].limit_length(SPEED + 20.0)
+		
+	if Globals.EFFECTS.ICE in ext_effects:
+		var ice_factor = pow(ICE_INERTIA, delta)
+		vel[0] = vel[0] * ice_factor
+		vel[0] = vel[0].limit_length(MOMENTUM + 50.0)
+
 
 # Lógica da Física: GROUNDED
 func _movement_grounded(vel : PackedVector3Array, delta : float):
@@ -321,18 +329,16 @@ func _movement_steady(vel : PackedVector3Array):
 # Verificação Movimentação contra parede
 func is_pushing_wall() -> bool:
 	var normal = get_wall_normal().normalized()
-	return move_direction.dot(-normal) > 0.
+	return move_direction.dot(-normal) > 0.5
 
-func is_on_layer(layer : int) -> bool:
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		var parent = collider.get_parent()
-		if parent is MeshInstance3D:
-			return parent.get_layer_mask_value(layer)
-		elif parent is StaticBody3D:		
-			return parent.get_collision_mask_value(layer)
+func is_on_layer(layer: int) -> bool:
+	for i in get_slide_collision_count():
+		var collider := get_slide_collision(i).get_collider()
+		if collider is CollisionObject3D:
+			if collider.get_collision_layer_value(layer):
+				return true
 	return false
+	
 
 # Controle do Sistema: MOVIMENTAÇÃO E MOMENTO
 func _handle_movement(delta : float):
@@ -353,36 +359,41 @@ func _handle_movement(delta : float):
 			_movement_climbing(vel,delta)
 		STATE.STEADY:
 			_movement_steady(vel)
-	
+			
 	_apply_external_forces(vel,delta)
 	velocity = vel[0].limit_length(MOMENTUM) + vel[1].limit_length(MOMENTUM)
-	
+
+
 func _update_state(delta):
 	var fatigue := 0.0
 
 	if state == STATE.DASHING:
 		if is_on_wall() or is_pushing_wall():
-			finish_dash(STATE.AIRBORNE)
-
+			finish_dash(STATE.AIRBORNE)	
+		
 	elif input.climb.is_down and _can_climb():
 		if state != STATE.CLIMBING: velocity = Vector3.ZERO
 		state = STATE.CLIMBING if input.has_movement() else STATE.STEADY
 		fatigue = CLIMB_FATIGUE
-			
+		
 	elif is_pushing_wall() and _can_slide():
 		state = STATE.SLIDING
 		fatigue = SLIDE_FATIGUE
-
+		
 	elif is_on_floor():
+		if state == STATE.AIRBORNE:
+			var particles = jumping_particles.duplicate()
+			get_parent().add_child(particles)
+			particles.global_position = jumping_particles.global_position
+			particles.emitting = true
+			particles.finished.connect(particles.queue_free)
+	
 		state = STATE.GROUNDED
-		
 		if not has_dash: 
-			if not dash_lock: 
+			if not dash_lock: restore_dash()
+			elif input.dash.is_ready(): 
 				has_dash = true 
-				input.dash.reset()
-			elif not input.dash.is_ready(): 
-				has_dash = true 
-		
+			
 		if stamina < 100.0:
 			fatigue = REST_FATIGUE
 			
@@ -393,19 +404,63 @@ func _update_state(delta):
 		else: 
 			$AnimationPlayer.play(&"idle") 
 			$AnimationPlayer.speed_scale = 1.0
+			
 	else:
 		state = STATE.AIRBORNE
 
-	if IN_WIND:
+	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5
 
 	stamina = clamp(stamina + fatigue * delta, -50.0, 100.0)
-	
+	_update_particles()
+
+func _update_particles() -> void:
+	match state:
+		STATE.GROUNDED:
+			running_particles.show()
+
+			var vel_h := velocity - up * velocity.dot(up)
+			running_particles.emitting = input.has_movement() and vel_h.length() >= 15.0
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+
+		STATE.AIRBORNE:
+			running_particles.emitting = false
+			running_particles.hide()
+			running_particles.restart()
+
+			sliding_particles.emitting = false
+			sliding_particles.hide()
+			sliding_particles.restart()
+
+		STATE.DASHING:
+			running_particles.emitting = false
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+				sliding_particles.restart()
+
+		STATE.SLIDING:
+			running_particles.emitting = false
+			if !sliding_particles.visible:
+				await get_tree().create_timer(0.2).timeout
+				if state == STATE.SLIDING:
+					sliding_particles.show()
+					sliding_particles.emitting = true
+
+		STATE.CLIMBING, STATE.STEADY:
+			running_particles.emitting = false
+			if sliding_particles.visible:
+				sliding_particles.emitting = false
+				sliding_particles.hide()
+				sliding_particles.restart()
+		
 func _can_climb():
 	return is_on_wall() and is_on_layer(3) and stamina > 0.0
 	
 func _can_slide():
-	return is_on_wall() and not is_on_layer(2) and stamina > -50.0
+	return is_on_wall_only() and not is_on_layer(2) and stamina > -50.0
 
 ## AÇÕES DO PLAYER
 func _handle_actions():
@@ -431,10 +486,7 @@ func _can_dash():
 func restore_dash() -> void:
 	has_dash = true
 	input.dash.reset()
-	if state == STATE.DASHING:
-		pass
-		#state = STATE.AIRBORNE
-		
+	
 # Executor da Ação: DASH
 func _execute_dash():
 	dash_start = global_position
@@ -443,6 +495,13 @@ func _execute_dash():
 	has_dash = false 
 	velocity = Vector3.ZERO
 	
+	var particles = dashing_particles.duplicate()
+	get_parent().add_child(particles)
+	particles.global_position = dashing_particles.global_position
+	particles.global_rotation = dashing_particles.global_rotation
+	particles.emitting = true
+	particles.finished.connect(particles.queue_free)
+
 # Executor da Ação: PULO
 func _execute_jump():
 	var normal = get_wall_normal().normalized()
@@ -451,10 +510,12 @@ func _execute_jump():
 	
 	if state == STATE.STEADY and move_direction.dot(-normal) < 0.7:
 		velocity = up * JUMP_VERTICAL_BOOST + (normal + move_direction) * WALL_JUMP_PUSHWAY
-		
+		$AnimationPlayer.play(&"jump")
+
 	elif state in [STATE.SLIDING, STATE.CLIMBING]:
 		velocity = up * JUMP_VERTICAL_BOOST + normal * WALL_JUMP_PUSHWAY
-		
+		$AnimationPlayer.play(&"jump")
+
 	else:
 		velocity -= up * velocity.dot(up)
 		velocity += up * JUMP_VERTICAL_BOOST + move_direction * JUMP_HORIZONTAL_BOOST

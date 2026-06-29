@@ -1,16 +1,32 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://bd4a635v6cy3r" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
-[ext_resource type="Shader" uid="uid://b7dirf4wgp0g4" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://dg6ky501cis66" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
+[ext_resource type="Script" uid="uid://dhbri6d2bhotl" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Script" uid="uid://lsvvg1wtmb2x" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
-[ext_resource type="Shader" uid="uid://c1vq0glpi5bpq" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
+[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
+render_priority = 0
+shader = ExtResource("11_20pc6")
+shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
+shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/sensitivity = 0.5
+shader_parameter/normal_sensitivity = 1.0
+shader_parameter/max_distance = 1000.0000474525
+shader_parameter/distance_fade_range = 20.0000009025
+
+[sub_resource type="QuadMesh" id="QuadMesh_c6i3y"]
+material = SubResource("ShaderMaterial_c6i3y")
+size = Vector2(7, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
 shader = ExtResource("4_3dxm6")
@@ -18,7 +34,7 @@ shader_parameter/noise_texture = ExtResource("5_lgr22")
 shader_parameter/wind = 7.0
 shader_parameter/fog_density = 0.4
 shader_parameter/fog_color = Color(0.6243741, 0.9378328, 1.105, 0.784)
-shader_parameter/blur = 0.02
+shader_parameter/direction = Vector2(0, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
@@ -37,6 +53,8 @@ ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
 fog_light_color = Color(0.014731812, 0.3201193, 0.52595764, 1)
 fog_light_energy = 0.15
 fog_depth_end = 3175.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 volumetric_fog_detail_spread = 1.9318736
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
@@ -102,30 +120,37 @@ bones/6/rotation = Quaternion(-0.7065336, 0.70765084, 0.0044855755, -0.004511023
 [node name="Camera3D" type="Camera3D" parent="." unique_id=22637776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
 fov = 80.0
+far = 1000.0
 script = ExtResource("4_fos0i")
 offset_Z = 50.0
 offset_Y = 20.0
 tilt_degrees = 0.0
+
+[node name="Outline" type="MeshInstance3D" parent="Camera3D" unique_id=346215192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4461937)
+layers = 512
+mesh = SubResource("QuadMesh_c6i3y")
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
 
 [node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
 
 [node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
-light_mask = 15
-visibility_layer = 15
+light_mask = 31
+visibility_layer = 31
 material = SubResource("ShaderMaterial_lgr22")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_c2ibq")
 
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 
 [node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento/Pixelização" unique_id=447402171]
-light_mask = 15
-visibility_layer = 15
+light_mask = 31
+visibility_layer = 31
 material = SubResource("ShaderMaterial_j4qnp")
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,7 +205,7 @@ offset_right = 1351.0
 offset_bottom = 914.0
 scale = Vector2(0.15, 0.15)
 fill_mode = 5
-radial_fill_degrees = 340.0
+radial_fill_degrees = 350.0
 texture_under = ExtResource("9_5vvyt")
 texture_progress = ExtResource("10_c6i3y")
 script = ExtResource("8_trn2v")
