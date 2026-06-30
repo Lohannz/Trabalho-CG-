@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://rfoxxk1repa8"]
+
+[ext_resource type="Material" uid="uid://dur6mi5fu8v50" path="res://models/import/materials/miasma.tres" id="1_fouok"]
+[ext_resource type="Shader" uid="uid://cie74eyupmcx7" path="res://shaders/miasma.tres" id="2_fouok"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_adl4b"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sx7nb"]
+size = Vector3(20, 19.299316, 20)
+
+[sub_resource type="Gradient" id="Gradient_x3ukm"]
+offsets = PackedFloat32Array(0, 0.04117647, 0.15294118, 0.30588236, 1)
+colors = PackedColorArray(0.22114186, 0.05895077, 2.4065375e-08, 0.0627451, 0.02745098, 0.02745098, 0.02745098, 0.7058824, 0.03789779, 0.044087023, 0.054144256, 0.751024, 0.09460906, 0.13439697, 0.1990506, 0.99607843, 0.011198454, 0.008328813, 0.060531594, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hb0rr"]
+gradient = SubResource("Gradient_x3ukm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx7nb"]
+render_priority = 0
+shader = ExtResource("2_fouok")
+shader_parameter/cloud_size = 0.250000011875
+shader_parameter/translation_speed = Vector3(0.35, 0.5, 0.25)
+shader_parameter/grad_ramp = SubResource("GradientTexture1D_hb0rr")
+shader_parameter/opacity = 0.6000000285
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5
+
+[node name="Miasma" type="Area3D" unique_id=394741060]
+transform = Transform3D(1.5508842, 0, 0, 0, 0.7034511, 0, 0, 0, 1.4466984, 0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="MismaMesh" type="MeshInstance3D" parent="." unique_id=1359019515]
+transform = Transform3D(2.19, 0, 0, 0, 8.282001, 0, 0, 0, 2.4000003, 0, 0, 0)
+material_override = ExtResource("1_fouok")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_adl4b")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1087465202]
+transform = Transform3D(0.4414992, 0, 0, 0, 0.8543567, 0, 0, 0, 0.47899467, 0, 0.028808907, 0)
+visible = false
+shape = SubResource("BoxShape3D_sx7nb")
+
+[node name="MiasmaFog" type="FogVolume" parent="." unique_id=2003875644]
+transform = Transform3D(4.673128, 0, 0, 0, 9.047351, 0, 0, 0, 5.04242, 0, 0, 0)
+visible = false
+material = SubResource("ShaderMaterial_sx7nb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

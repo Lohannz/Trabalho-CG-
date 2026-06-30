@@ -372,11 +372,24 @@ func _update_state(delta):
 			finish_dash(STATE.AIRBORNE)	
 		
 	elif input.climb.is_down and _can_climb():
-		if state != STATE.CLIMBING: velocity = Vector3.ZERO
-		state = STATE.CLIMBING if input.has_movement() else STATE.STEADY
+		if state != STATE.CLIMBING:
+			velocity = Vector3.ZERO
+			$AnimationPlayer.play(&"climb")
+			$AnimationPlayer.pause()
+			$AnimationPlayer.seek(0.0, true)
+			
+		if input.has_movement():
+			state = STATE.CLIMBING
+			$AnimationPlayer.play(&"climb")
+			$AnimationPlayer.speed_scale = 1.5
+		else:
+			state = STATE.STEADY
+			$AnimationPlayer.pause()
+			$AnimationPlayer.seek(0.0, true)
 		fatigue = CLIMB_FATIGUE
 		
 	elif is_pushing_wall() and _can_slide():
+		$AnimationPlayer.play(&"slide")
 		state = STATE.SLIDING
 		fatigue = SLIDE_FATIGUE
 		
@@ -403,7 +416,7 @@ func _update_state(delta):
 				$AnimationPlayer.speed_scale = 1.5 	
 		else: 
 			$AnimationPlayer.play(&"idle") 
-			$AnimationPlayer.speed_scale = 1.0
+			$AnimationPlayer.speed_scale = 0.5
 			
 	else:
 		state = STATE.AIRBORNE

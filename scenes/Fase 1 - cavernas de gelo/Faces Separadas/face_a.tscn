@@ -1305,6 +1305,9 @@ collision_layer = 2
 [node name="StaticBody3D" parent="plataforma_frente_001_002" index="1" unique_id=818531598]
 collision_layer = 4
 
+[node name="Miasma" parent="." index="42" unique_id=394741060 instance=ExtResource("20_acge8")]
+transform = Transform3D(6.7376637, 0, 0, 0, 0.7034511, 0, 0, 0, 6.5273757, 0, 5.2654433, 166.73225)
+
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]
 
