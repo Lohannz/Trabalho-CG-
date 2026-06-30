@@ -1,0 +1,35 @@
+[gd_resource type="VisualShader" format=3 uid="uid://8uchp1ue5ula"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_t0vfk"]
+parameter_name = "wind_base"
+texture_type = 1
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_py8rt"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_gbxh4"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_t0vfk"]
+constant = Color(0.20713684, 0.6508775, 0.8567235, 0.8745098)
+
+[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_py8rt"]
+operator = 7
+
+[resource]
+modes/cull = 2
+flags/unshaded = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_t0vfk")
+nodes/fragment/2/position = Vector2(-540, 560)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_py8rt")
+nodes/fragment/3/position = Vector2(-140, 460)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_gbxh4")
+nodes/fragment/4/position = Vector2(40, 980)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_t0vfk")
+nodes/fragment/5/position = Vector2(-140, 300)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorOp_py8rt")
+nodes/fragment/6/position = Vector2(80, 220)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 1, 0, 1, 4, 0, 0, 19, 6, 0, 0, 0, 5, 0, 6, 0, 3, 0, 6, 1)

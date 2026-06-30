@@ -13,9 +13,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("restore_dash"):
 		body.restore_dash()
-		_coletar_cristal()
+		collect_crytal()
 
-func _coletar_cristal() -> void:
+func collect_crytal() -> void:
 	# Esconde o visual do cristal
 	mesh.visible = false
 	
@@ -26,7 +26,7 @@ func _coletar_cristal() -> void:
 	# Inicia o tempo de recarga
 	respawn_timer.start()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Roda o cubo horizontalmente independente da orientação atual
 	rotate(camera._orientation.y, deg_to_rad(1))
 

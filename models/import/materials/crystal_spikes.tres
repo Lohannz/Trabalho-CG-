@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvj5qayqhfdem"]
+
+[resource]
+transparency = 4
+depth_draw_mode = 1
+albedo_color = Color(0.78766865, 0.64114034, 1.3528494, 0.54901963)
+metallic = 0.7
+metallic_specular = 0.3
+roughness = 0.35
+rim_enabled = true
+rim = 0.45
+clearcoat_enabled = true
+clearcoat = 0.25
+clearcoat_roughness = 0.7
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.4076962, 0.0019315833, 0.88060784, 1)
+refraction_enabled = true
+refraction_scale = 0.2
+uv1_scale = Vector3(-0.28, -0.28, -0.28)
+uv1_offset = Vector3(-0.63, -0.555, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+uv1_world_triplanar = true

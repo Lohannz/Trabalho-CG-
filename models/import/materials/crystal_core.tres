@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://042e88k1v6ly"]
+
+[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="1_b8xxs"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_b8xxs")
+shader_parameter/emission_color = Color(0, 0.54, 0.7, 1)

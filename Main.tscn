@@ -15,54 +15,31 @@
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://bfnbu6f6hsy2v" path="res://scripts/contador.gd" id="14_c2ibq"]
 
-[sub_resource type="GDScript" id="GDScript_3dxm6"]
-script/source = "extends Node3D
-@export var Face := 1
-@onready var player := $player
-@export var level_scene: PackedScene
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
+render_priority = 0
+shader = ExtResource("11_20pc6")
+shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
+shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/sensitivity = 0.5
+shader_parameter/normal_sensitivity = 1.0
+shader_parameter/max_distance = 1000.0000474525
+shader_parameter/distance_fade_range = 20.0000009025
 
-var spawnpoints
-var current_level
+[sub_resource type="QuadMesh" id="QuadMesh_c6i3y"]
+material = SubResource("ShaderMaterial_c6i3y")
+size = Vector2(7, 4)
 
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX, TESTE}
-
-# Ao iniciar cena, faz com que o player spawne no spawnpoint da current_face que ele está 
-# Player tem propriedade current_face que diz qual lado do cubo ele está
-func _ready() -> void:
-	if level_scene:
-		current_level = level_scene.instantiate()
-		$Fase.add_child(current_level)
-		spawnpoints = current_level.get_node(\"Spawnpoints\").get_children()
-
-	# os spawnpoints tem os nomes da face(ex. ONE, TWO...)
-	var player_current_face = FACE.keys()[player.current_face] 
-	var current_spawn_position = _get_spawnpoint_position(player_current_face)
-	
-	player.position = current_spawn_position
-
-func _get_spawnpoint_position(name) -> Vector3:
-	for child in spawnpoints:
-		print(child.name)
-		print(name)
-		if child.name == str(name):
-			return child.global_position
-	return Vector3.ZERO
-		
-func _process(delta: float) -> void:
-	pass
-"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
+shader = ExtResource("4_3dxm6")
+shader_parameter/noise_texture = ExtResource("5_lgr22")
+shader_parameter/wind = 7.0
+shader_parameter/fog_density = 0.4
+shader_parameter/fog_color = Color(0.6243741, 0.9378328, 1.105, 0.784)
+shader_parameter/direction = Vector2(0, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4qnp"]
 shader = ExtResource("12_c2ibq")
 shader_parameter/pixel_size = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgr22"]
-shader = ExtResource("4_3dxm6")
-shader_parameter/flake_texture = ExtResource("5_lgr22")
-shader_parameter/speed = 10.00000047174012
-shader_parameter/density = 30.0000013775
-shader_parameter/size = 0.07000000262648
-shader_parameter/wind = -1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_c2ibq"]
 font_size = 40
@@ -77,44 +54,104 @@ ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
 fog_light_color = Color(0.014731812, 0.3201193, 0.52595764, 1)
 fog_light_energy = 0.15
 fog_depth_end = 3175.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 volumetric_fog_detail_spread = 1.9318736
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
 level_scene = ExtResource("2_c2ibq")
 
-[node name="Fase" type="Node" parent="." unique_id=1912548303]
+[node name="Fase" type="Node" parent="." unique_id=1637720731]
 
 [node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.55735, 3.1935701, -3.9353638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55735016, 3.1935701, 1.0646362)
+
+[node name="Skeleton3D" parent="player/cat_obj/armature_cat" parent_id_path=PackedInt32Array(455683885, 1591027206) index="0" unique_id=672315071]
+bones/0/position = Vector3(2.9545987e-08, 0, 1.2732926e-10)
+bones/0/rotation = Quaternion(-3.2386396e-08, 4.9441578e-08, 0.03767449, 0.99929005)
+bones/1/rotation = Quaternion(5.2517026e-09, -5.102154e-08, -0.11235191, 0.9936685)
+bones/2/rotation = Quaternion(-6.8442616e-09, 5.601867e-08, 0.110139735, 0.99391615)
+bones/4/rotation = Quaternion(3.832671e-15, 1.1920839e-07, -3.7252903e-09, 1)
+bones/5/rotation = Quaternion(0.71891445, -0.12322481, -0.022075633, 0.6837326)
+bones/6/rotation = Quaternion(-0.053718258, -0.022775725, -0.13287131, 0.9894144)
+bones/7/rotation = Quaternion(-0.7118548, 0.06848708, 0.01633631, 0.6987886)
+bones/8/rotation = Quaternion(0.017852118, -0.0019714707, -0.11475992, 0.9932309)
+bones/9/rotation = Quaternion(0.99996126, 0.00879233, -0.0003966695, 3.4877833e-06)
+bones/10/rotation = Quaternion(0.00045316023, -0.007527888, 0.05438299, 0.99849164)
+bones/11/rotation = Quaternion(0.00030987352, 0.0078030406, 0.03843162, 0.99923074)
+bones/12/rotation = Quaternion(0.9999524, 0.008790567, -0.00035961196, 0.004222193)
+bones/13/rotation = Quaternion(0.0046656323, -0.007757203, 0.054347362, 0.9984811)
+bones/14/rotation = Quaternion(0.00030499944, 0.007929734, 0.038431656, 0.9992297)
+bones/15/position = Vector3(-0.08671206, -3.0979154, -0.83090675)
+bones/15/rotation = Quaternion(-0.70710677, 0.70710677, -1.5453026e-08, -1.5455598e-08)
+bones/16/position = Vector3(-0.0012009499, -0.027485345, -0.027114533)
+bones/16/rotation = Quaternion(0.015119911, -0.015739756, -0.80000895, 0.59959096)
+bones/17/rotation = Quaternion(-0.012387242, 0.001972028, -0.41797394, 0.90837246)
+bones/18/position = Vector3(-1.4564872, -1.7133515, -0.027114565)
+bones/18/rotation = Quaternion(1.776357e-15, 9.094948e-13, 1, 8.1315176e-20)
+bones/19/position = Vector3(-0.08671201, -3.0793881, 0.7766777)
+bones/19/rotation = Quaternion(0.7068577, -0.7068577, -0.01876767, -0.01876767)
+bones/20/position = Vector3(-0.0026381435, -0.027485397, -0.027012635)
+bones/20/rotation = Quaternion(-0.00635888, -8.074188e-08, -0.8001266, 0.5997975)
+bones/21/rotation = Quaternion(-0.013545347, 1.4353677e-08, -0.41793787, 0.90837467)
+bones/22/position = Vector3(-1.4558742, -1.713351, 0.05021111)
+bones/23/position = Vector3(0.13537578, 2.1828437, 4.3320165)
+bones/24/position = Vector3(-1.0176518e-07, -5.1120878e-08, 0)
+bones/24/rotation = Quaternion(0.7070261, -0.7070262, -0.010679514, 0.010678988)
+bones/25/position = Vector3(1.6878195, -1.6583133, -0.035290718)
+bones/26/position = Vector3(0.13537578, 2.1659217, -4.3235555)
+bones/26/rotation = Quaternion(-0.5122483, 0.5122484, 0.487444, 0.48744395)
+bones/27/position = Vector3(-1.160879e-08, 7.757626e-08, -4.893989e-07)
+bones/27/rotation = Quaternion(0.035564493, -0.035564143, -0.70621175, 0.7062119)
+bones/28/position = Vector3(-1.8635426, -1.683696, -0.0832607)
+bones/28/rotation = Quaternion(-0.053137075, 5.6923846e-14, 0.99858725, 9.107814e-13)
+
+[node name="Skeleton3D" parent="player/cat_obj/cat_tail/armature_tail" parent_id_path=PackedInt32Array(455683885, 1673467853) index="0" unique_id=1495902340]
+bones/0/position = Vector3(1.02772, -0.0019242764, -0.0003172333)
+bones/0/rotation = Quaternion(0.7097724, -0.70432216, -0.009591486, 0.007837964)
+bones/1/rotation = Quaternion(0.012831215, 0.043621834, 0.025797438, 0.99863255)
+bones/2/rotation = Quaternion(-0.0035771728, -0.042527363, -0.03725671, 0.998394)
+bones/3/rotation = Quaternion(0.019806584, -8.29312e-06, 0.018644586, 0.99963)
+bones/4/rotation = Quaternion(-0.024479546, 0.00038503148, -0.021582132, 0.9994673)
+bones/5/rotation = Quaternion(0.0056791063, -0.00044580715, 0.012422016, 0.9999066)
+bones/6/position = Vector3(-0.71053684, -0.009918451, 0.0023982206)
+bones/6/rotation = Quaternion(-0.7065336, 0.70765084, 0.0044855755, -0.004511023)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=22637776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)
 fov = 80.0
+far = 1000.0
 script = ExtResource("4_fos0i")
 offset_Z = 50.0
 offset_Y = 20.0
 tilt_degrees = 0.0
+
+[node name="Outline" type="MeshInstance3D" parent="Camera3D" unique_id=346215192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4461937)
+layers = 512
+mesh = SubResource("QuadMesh_c6i3y")
 
 [node name="Pos-processamento" type="CanvasLayer" parent="Camera3D" unique_id=1013627635]
 
 [node name="Nevasca" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1143947683]
 
 [node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento/Nevasca" unique_id=1092781589]
-light_mask = 15
-visibility_layer = 15
+light_mask = 31
+visibility_layer = 31
 material = SubResource("ShaderMaterial_lgr22")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_c2ibq")
 
 [node name="Pixelização" type="CanvasLayer" parent="Camera3D/Pos-processamento" unique_id=1111142703]
 
 [node name="pixelação" type="ColorRect" parent="Camera3D/Pos-processamento/Pixelização" unique_id=447402171]
-light_mask = 15
-visibility_layer = 15
+light_mask = 31
+visibility_layer = 31
 material = SubResource("ShaderMaterial_j4qnp")
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,11 +161,6 @@ offset_top = -8.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="nevasca" type="ColorRect" parent="Camera3D/Pos-processamento" unique_id=1092781589]
-material = SubResource("ShaderMaterial_lgr22")
-offset_right = 1158.0
-offset_bottom = 644.0
 
 [node name="UI" type="CanvasLayer" parent="Camera3D" unique_id=52951886]
 
@@ -157,28 +189,35 @@ grow_vertical = 0
 text = "Aperte 'F'"
 label_settings = SubResource("LabelSettings_c2ibq")
 
-[node name="GatoAvatar" type="TextureRect" parent="Camera3D/UI/Control" unique_id=879241400]
+[node name="TextureRect" type="TextureRect" parent="Camera3D/UI/Control" unique_id=690208351]
 layout_mode = 0
 offset_left = 19.0
 offset_top = -308.0
 offset_right = 115.0
 offset_bottom = -220.0
-texture = ExtResource("7_20pc6")
+texture = ExtResource("8_20pc6")
 expand_mode = 1
 
-[node name="BarraStamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=1312120479]
+[node name="Barra_estamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=2032986935]
 layout_mode = 0
-offset_left = 55.0
-offset_top = -275.0
-offset_right = 1367.0
-offset_bottom = 924.0
+offset_left = 39.0
+offset_top = -285.0
+offset_right = 1351.0
+offset_bottom = 914.0
 scale = Vector2(0.15, 0.15)
-value = 100.0
 fill_mode = 5
-radial_fill_degrees = 340.8
-texture_under = ExtResource("7_03owx")
-texture_progress = ExtResource("9_20pc6")
-script = ExtResource("8_wkp8b")
+radial_fill_degrees = 350.0
+texture_under = ExtResource("9_5vvyt")
+texture_progress = ExtResource("10_c6i3y")
+script = ExtResource("8_trn2v")
+
+[node name="Contador" type="Label" parent="Camera3D/UI/Control" unique_id=95852991]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = -315.0
+offset_right = 1145.0
+offset_bottom = -245.0
+script = ExtResource("14_c2ibq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
 environment = SubResource("Environment_cm0pq")
@@ -189,9 +228,4 @@ transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.859
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
 
-[node name="Obstaculos" type="Node3D" parent="." unique_id=1882873431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -249, -22, -190)
-visible = false
-
-[node name="espinho de gelo" parent="Obstaculos" unique_id=1354857526 instance=ExtResource("11_fpfj3")]
-transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 7.511383, -17.026283, -1.0923004)
+[editable path="player"]

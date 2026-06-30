@@ -26,6 +26,10 @@ GameManager="*uid://c0vkm4hi7rptx"
 
 window/stretch/mode="canvas_items"
 
+[editor]
+
+version_control/main_scene="uid://mjwsijkcjeis"
+
 [global_group]
 
 light_sensitive=""

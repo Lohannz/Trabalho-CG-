@@ -1,18 +1,10 @@
 [gd_scene format=4 uid="uid://durxqdqtosm88"]
 
-[ext_resource type="Script" uid="uid://bdqmleiiw6ngl" path="res://scripts/dash_crystal.gd" id="1_r4dwi"]
-[ext_resource type="Texture2D" uid="uid://hhpwu0is8wjn" path="res://models/import/textures/cristal do meio_1468.jpg" id="2_01ofj"]
+[ext_resource type="Script" uid="uid://3gnjkl8ejp82" path="res://scripts/dash_crystal.gd" id="1_r4dwi"]
+[ext_resource type="Material" uid="uid://042e88k1v6ly" path="res://models/import/materials/crystal_core.tres" id="2_gmnvp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wkp8b"]
 radius = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46g78"]
-resource_name = "Material.001"
-transparency = 4
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.77272725)
-albedo_texture = ExtResource("2_01ofj")
-roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ra76l"]
 _surfaces = [{
@@ -36,7 +28,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABgAHAAQACAAJAAoACwAJAAgADAANAA4ADQAPAA4AEAARABIAEwARABAAFAAVABYAFwAVABQA"),
-"material": SubResource("StandardMaterial3D_46g78"),
+"material": ExtResource("2_gmnvp"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(1.9999999, 2, 0, 0),

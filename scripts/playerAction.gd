@@ -25,9 +25,13 @@ func update(delta: float, just_pressed: bool):
 
 	buffer.update(delta)
 	cooldown.update(delta)
+	
+func is_ready() -> bool: return cooldown.timer <= 0.0
+func is_buffered() -> bool: return buffer.timer > 0.0
+func reset() -> void: cooldown.timer = buffer.lifetime
 
 func is_triggered() -> bool:
-	return buffer.is_buffered() and cooldown.is_ready()
+	return is_buffered() and is_ready()
 
 func consume():
 	buffer.consume()

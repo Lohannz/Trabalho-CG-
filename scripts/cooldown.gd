@@ -9,7 +9,7 @@ func _init(cool_duration: float):
 func start():
 	if  timer <= 0.0:
 		timer = duration
-func is_ready() -> bool: return timer <= 0.0
+
 func update(delta: float):
 	if timer > 0.0:
 		timer = max(timer - delta, 0.0)

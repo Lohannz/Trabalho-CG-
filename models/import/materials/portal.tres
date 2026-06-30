@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bamnp0no8kxuf"]
+
+[ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="1_1ls8y"]
+[ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="2_o2ppc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1ls8y")
+shader_parameter/alpha_spread = 0.4
+shader_parameter/vortex_distortion = 3.50000016625
+shader_parameter/spiral_rotation = 0.45
+shader_parameter/spiral_texture = ExtResource("2_o2ppc")
+shader_parameter/portal_base = Color(1, 1, 1, 1)

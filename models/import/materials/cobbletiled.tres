@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yx4xypp67noi"]
+
+[ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="1_gj1jq"]
+[ext_resource type="Texture2D" uid="uid://nmrhldkx36fn" path="res://models/import/textures/Platform_AO.png" id="2_soany"]
+[ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="3_o7fuu"]
+[ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="4_4teum"]
+
+[resource]
+albedo_color = Color(0.17933989, 0.874006, 0.8018216, 1)
+albedo_texture = ExtResource("1_gj1jq")
+metallic_specular = 0.09
+metallic_texture = ExtResource("4_4teum")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("4_4teum")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("3_o7fuu")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("3_o7fuu")
+clearcoat = 0.65
+ao_enabled = true
+ao_light_affect = 0.48
+ao_texture = ExtResource("2_soany")
+uv1_scale = Vector3(53.61, 40.714, 49.795)
+uv1_offset = Vector3(0.425, 3.696, -0.17)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
