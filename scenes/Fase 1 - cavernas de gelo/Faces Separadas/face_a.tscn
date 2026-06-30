@@ -13,12 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="6_j4gax"]
 [ext_resource type="Material" uid="uid://cfwdhyca7wdgv" path="res://models/import/materials/platform.tres" id="7_7usmn"]
 [ext_resource type="Texture2D" uid="uid://bbhb5c6m0uoeo" path="res://models/import/textures/Cobble_spec.png" id="7_j4gax"]
-[ext_resource type="Shader" uid="uid://qmutbcv17g6y" path="res://shaders/icy.gdshader" id="11_y74fa"]
+[ext_resource type="Shader" uid="uid://cvvtkjv1wxp7e" path="res://shaders/icy.gdshader" id="11_y74fa"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="12_4kj6e"]
-[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="12_bvd0m"]
 [ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="13_2qpa8"]
 [ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="13_bqhkd"]
-[ext_resource type="Script" uid="uid://bav76wytsjqoh" path="res://scripts/ice.gd" id="15_bqhkd"]
+[ext_resource type="Script" uid="uid://3m4q865s7ist" path="res://scripts/ice.gd" id="15_bqhkd"]
 [ext_resource type="Material" uid="uid://cpwd3y5t7rrxs" path="res://models/import/materials/ice.tres" id="18_4kj6e"]
 [ext_resource type="PackedScene" uid="uid://8a05axkc4nat" path="res://scenes/ObjetosBackground/general_crystal.tscn" id="19_bqhkd"]
 [ext_resource type="Material" uid="uid://dkcldr7w2406t" path="res://models/import/materials/crystal_spikes_blue.tres" id="20_24te2"]
@@ -895,7 +894,6 @@ collision_layer = 17
 
 [node name="plataforma_frente_001" parent="." index="2" unique_id=915716442]
 material_override = ExtResource("7_7usmn")
-script = ExtResource("12_bvd0m")
 
 [node name="plataforma_frente_027" parent="plataforma_frente_001" index="0" unique_id=931922280]
 material_override = SubResource("StandardMaterial3D_or2es")
@@ -1588,72 +1586,6 @@ script = ExtResource("15_bqhkd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plataforma_frente_009/StaticBody3D/Area3D" index="0" unique_id=135427741]
 transform = Transform3D(0.2, 0, 0, 0, 4, 0, 0, 0, 0.206, 0, 0, 0)
 shape = SubResource("BoxShape3D_acge8")
-
-[node name="generalCrystal2" parent="." index="42" unique_id=371514144 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(18.610315, 11.7327, 0, -11.7327, 18.610315, 0, 0, 0, 22, -188.776, -216.01236, 35.56746)
-
-[node name="generalCrystal3" parent="." index="43" unique_id=352952812 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(-7.061849, -18.352224, 0, 20.835794, -6.220096, 0, 0, 0, 22, 437.3931, 311.18625, 30.24347)
-
-[node name="generalCrystal4" parent="." index="44" unique_id=1144871146 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(20.553719, -11.029631, -2.0111413, 6.570651, 19.721037, 16.031263, -4.2861595, -22.658947, 14.931641, 266.69717, -184.10175, 57.020355)
-
-[node name="generalCrystal5" parent="." index="45" unique_id=1060397890 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(20.553722, -13.787026, -2.011142, -7.5971727, -37.537544, 0.20037466, -1.9563974, 0.92235935, -21.906965, 266.69717, 459.16837, -364.63043)
-
-[node name="generalPilar" parent="." index="46" unique_id=1403941570 instance=ExtResource("20_acge8")]
-transform = Transform3D(-0.032635115, -12.005167, 0, 9.999947, -0.03917921, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
-
-[node name="livro colecionavel" parent="." index="47" unique_id=650180534 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 9.359427, 36.70868, 192.17305)
-
-[node name="livro colecionavel2" parent="." index="48" unique_id=2056938595 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -17.207766, 14.409826, 182.63403)
-
-[node name="livro colecionavel3" parent="." index="49" unique_id=2112633956 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -10.282173, 4.4071846, 188.32141)
-
-[node name="livro colecionavel4" parent="." index="50" unique_id=914948105 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 13.607292, 4.4071846, 187.92612)
-
-[node name="livro colecionavel5" parent="." index="51" unique_id=1643191676 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 25.369781, 4.4071884, 173.82664)
-
-[node name="livro colecionavel6" parent="." index="52" unique_id=2056920144 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 42.556793, 4.407181, 158.36655)
-
-[node name="generalCrystal2" parent="." index="42" unique_id=371514144 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(18.610315, 11.7327, 0, -11.7327, 18.610315, 0, 0, 0, 22, -188.776, -216.01236, 35.56746)
-
-[node name="generalCrystal3" parent="." index="43" unique_id=352952812 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(-7.061849, -18.352224, 0, 20.835794, -6.220096, 0, 0, 0, 22, 437.3931, 311.18625, 30.24347)
-
-[node name="generalCrystal4" parent="." index="44" unique_id=1144871146 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(20.553719, -11.029631, -2.0111413, 6.570651, 19.721037, 16.031263, -4.2861595, -22.658947, 14.931641, 266.69717, -184.10175, 57.020355)
-
-[node name="generalCrystal5" parent="." index="45" unique_id=1060397890 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(20.553722, -13.787026, -2.011142, -7.5971727, -37.537544, 0.20037466, -1.9563974, 0.92235935, -21.906965, 266.69717, 459.16837, -364.63043)
-
-[node name="generalPilar" parent="." index="46" unique_id=1403941570 instance=ExtResource("20_acge8")]
-transform = Transform3D(-0.032635115, -12.005167, 0, 9.999947, -0.03917921, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
-
-[node name="livro colecionavel" parent="." index="47" unique_id=650180534 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 9.359427, 36.70868, 192.17305)
-
-[node name="livro colecionavel2" parent="." index="48" unique_id=2056938595 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -17.207766, 14.409826, 182.63403)
-
-[node name="livro colecionavel3" parent="." index="49" unique_id=2112633956 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -10.282173, 4.4071846, 188.32141)
-
-[node name="livro colecionavel4" parent="." index="50" unique_id=914948105 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 13.607292, 4.4071846, 187.92612)
-
-[node name="livro colecionavel5" parent="." index="51" unique_id=1643191676 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 25.369781, 4.4071884, 173.82664)
-
-[node name="livro colecionavel6" parent="." index="52" unique_id=2056920144 instance=ExtResource("23_bvd0m")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 42.556793, 4.407181, 158.36655)
 
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]
