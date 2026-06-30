@@ -557,7 +557,6 @@ script = ExtResource("8_o8l6r")
 [node name="Nevoa" type="MeshInstance3D" parent="FaceB/Nevasca" unique_id=345620152]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, -196.51347, 117.20001, 27.164167)
 material_override = SubResource("StandardMaterial3D_8ldnf")
-transparency = 0.05
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
@@ -682,7 +681,6 @@ script = ExtResource("8_o8l6r")
 [node name="Nevoa" type="MeshInstance3D" parent="FaceC/Nevasca" unique_id=1453932595]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 134.11917, 431.30002, 20.237827)
 material_override = SubResource("StandardMaterial3D_8ldnf")
-transparency = 0.05
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
