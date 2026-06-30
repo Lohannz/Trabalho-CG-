@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://v760vd7s164x"]
 
-[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://LOHAN/tema.tres" id="1_m7fwm"]
+[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://sprites/tema.tres" id="1_m7fwm"]
 [ext_resource type="Script" uid="uid://domxiq0feudbd" path="res://scripts/menu_inicial.gd" id="2_37lmg"]
 [ext_resource type="PackedScene" uid="uid://b0fcbeyblrouj" path="res://scenes/cena_menu_casa.tscn" id="2_djenv"]
 [ext_resource type="Script" uid="uid://s6s31xobxywc" path="res://scripts/cameraMenu.gd" id="2_ibyq2"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="4_0kx3q"]
-[ext_resource type="Texture2D" uid="uid://bn87ejraknqkr" path="res://LOHAN/LOGO2.png" id="4_djenv"]
+[ext_resource type="Texture2D" uid="uid://bn87ejraknqkr" path="res://sprites/LOGO2.png" id="4_djenv"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="5_37lmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37lmg"]

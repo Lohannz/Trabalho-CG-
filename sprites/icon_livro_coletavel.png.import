@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wm0cacfwtai"
-path="res://.godot/imported/LOGO.png-83d29442292119ecb5b84482e1edbdab.ctex"
+uid="uid://n5em2w1mea6p"
+path="res://.godot/imported/icon_livro_coletavel.png-eb38ee25379d9f9a8a81bf030df47d01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LOHAN/LOGO.png"
-dest_files=["res://.godot/imported/LOGO.png-83d29442292119ecb5b84482e1edbdab.ctex"]
+source_file="res://sprites/icon_livro_coletavel.png"
+dest_files=["res://.godot/imported/icon_livro_coletavel.png-eb38ee25379d9f9a8a81bf030df47d01.ctex"]
 
 [params]
 

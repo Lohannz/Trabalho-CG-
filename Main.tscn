@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://byi4hukksjvww" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
+[ext_resource type="PackedScene" uid="uid://c35dk6ys8neb6" path="res://fase_2.tscn" id="2_fpfj3"]
 [ext_resource type="Shader" uid="uid://c702d8yuqy4by" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://bjiyjx1erymtc" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
@@ -11,10 +11,11 @@
 [ext_resource type="Script" uid="uid://bxtwy6o157l7b" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
-[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://LOHAN/tema.tres" id="10_j4qnp"]
+[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://sprites/tema.tres" id="10_j4qnp"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://bfnbu6f6hsy2v" path="res://scripts/contador.gd" id="14_c2ibq"]
+[ext_resource type="FontFile" uid="uid://dli0ekpbnxrwb" path="res://data/fonts/KiwiSoda.ttf" id="16_fpfj3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
 render_priority = 0
@@ -69,7 +70,7 @@ volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_scene = ExtResource("2_20pc6")
+level_scene = ExtResource("2_fpfj3")
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -175,10 +176,9 @@ grow_vertical = 2
 
 [node name="Control" type="Control" parent="Camera3D/UI" unique_id=1412590820]
 layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -189,10 +189,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -83.5
-offset_top = 194.0
-offset_right = 98.5
-offset_bottom = 263.0
+offset_left = -91.0
+offset_top = -69.0
+offset_right = 91.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("10_j4qnp")
@@ -201,19 +200,19 @@ label_settings = SubResource("LabelSettings_c2ibq")
 
 [node name="TextureRect" type="TextureRect" parent="Camera3D/UI/Control" unique_id=690208351]
 layout_mode = 0
-offset_left = 19.0
-offset_top = -308.0
-offset_right = 115.0
-offset_bottom = -220.0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 110.0
+offset_bottom = 103.0
 texture = ExtResource("8_20pc6")
 expand_mode = 1
 
 [node name="Barra_estamina" type="TextureProgressBar" parent="Camera3D/UI/Control" unique_id=2032986935]
 layout_mode = 0
-offset_left = 39.0
-offset_top = -285.0
-offset_right = 1351.0
-offset_bottom = 914.0
+offset_left = 34.0
+offset_top = 38.0
+offset_right = 1346.0
+offset_bottom = 1237.0
 scale = Vector2(0.15, 0.15)
 fill_mode = 5
 radial_fill_degrees = 350.0
@@ -221,13 +220,23 @@ texture_under = ExtResource("9_5vvyt")
 texture_progress = ExtResource("10_c6i3y")
 script = ExtResource("8_trn2v")
 
-[node name="Contador" type="Label" parent="Camera3D/UI/Control" unique_id=1171058497]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/UI/Control" unique_id=398351368]
 layout_mode = 0
-offset_left = 995.0
-offset_top = -316.0
-offset_right = 1149.0
-offset_bottom = -247.0
+offset_left = 1047.0
+offset_top = 2.0
+offset_right = 1145.0
+offset_bottom = 51.0
+theme_override_constants/separation = 1
 script = ExtResource("14_c2ibq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/UI/Control/HBoxContainer" unique_id=1368208011]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Contador" type="Label" parent="Camera3D/UI/Control/HBoxContainer" unique_id=1171058497]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_fpfj3")
+theme_override_font_sizes/font_size = 40
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
 environment = SubResource("Environment_cm0pq")

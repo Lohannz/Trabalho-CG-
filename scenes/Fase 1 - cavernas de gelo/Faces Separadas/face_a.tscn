@@ -22,7 +22,7 @@
 [ext_resource type="Material" uid="uid://cpwd3y5t7rrxs" path="res://models/import/materials/ice.tres" id="18_4kj6e"]
 [ext_resource type="PackedScene" uid="uid://8a05axkc4nat" path="res://scenes/ObjetosBackground/general_crystal.tscn" id="19_bqhkd"]
 [ext_resource type="PackedScene" uid="uid://br6koytykvgso" path="res://scenes/ObjetosBackground/general_pilar.tscn" id="20_acge8"]
-[ext_resource type="PackedScene" uid="uid://08aoxd3qog4s" path="res://scenes/colecionavel.tscn" id="22_24te2"]
+[ext_resource type="PackedScene" uid="uid://sfvxckedojm0" path="res://scenes/livro_coletavel.tscn" id="23_bvd0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6anf"]
 albedo_color = Color(0.14847258, 0.22256717, 0.3733754, 0.7372549)
@@ -1260,11 +1260,23 @@ transform = Transform3D(20.553722, -13.787026, -2.011142, -7.5971727, -37.537544
 [node name="generalPilar" parent="." index="46" unique_id=1403941570 instance=ExtResource("20_acge8")]
 transform = Transform3D(-0.032635115, -12.005167, 0, 9.999947, -0.03917921, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
 
-[node name="Colecionavel" parent="." index="47" unique_id=650180534 instance=ExtResource("22_24te2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -38.328033, 11.75397, 185.96959)
+[node name="livro colecionavel" parent="." index="47" unique_id=650180534 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 9.359427, 36.70868, 192.17305)
 
-[node name="Colecionavel2" parent="." index="48" unique_id=890110868 instance=ExtResource("22_24te2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.611064, 34.052814, 190.3736)
+[node name="livro colecionavel2" parent="." index="48" unique_id=2056938595 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -17.207766, 14.409826, 182.63403)
+
+[node name="livro colecionavel3" parent="." index="49" unique_id=2112633956 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, -10.282173, 4.4071846, 188.32141)
+
+[node name="livro colecionavel4" parent="." index="50" unique_id=914948105 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 13.607292, 4.4071846, 187.92612)
+
+[node name="livro colecionavel5" parent="." index="51" unique_id=1643191676 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 25.369781, 4.4071884, 173.82664)
+
+[node name="livro colecionavel6" parent="." index="52" unique_id=2056920144 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 42.556793, 4.407181, 158.36655)
 
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]
