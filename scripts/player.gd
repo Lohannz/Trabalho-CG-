@@ -156,19 +156,19 @@ func _ready() -> void:
 	camera.orientation_changed.connect(_change_gravity)
 
 ## PROCESSOS
-func _physics_process(delta : float) -> void:
+func _physics_process(delta: float) -> void:
 	if state != STATE.DYING:
 		for body in areaDetection.get_overlapping_bodies():
-			if body.is_in_group("killObj"): die()
+			if body.is_in_group("killObj"):
+				die()
+				break
 			
 	if not FREEZE:	
 		_update_orientation()
-
 		_update_movement_direction(delta)
-
 		_handle_actions()
 		_handle_movement(delta)
-
+		
 		move_and_slide()
 
 		_update_state(delta)
@@ -181,25 +181,29 @@ func _physics_process(delta : float) -> void:
 	else:
 		velocity = Vector3.ZERO
 
-## Função que gerencia o que acontece quando o player morre
-# Crie uma variável no topo do seu script (fora de qualquer função)
+
+## MORTE DO PLAYER
 func die() -> void:
-	velocity = Vector3.ZERO
-	FREEZE = true
 	state = STATE.DYING
+	FREEZE = true
+	velocity = Vector3.ZERO
+	
 	set_collision_layer_value(1, false)
-	# BUG: REPETINDO A MORTE DUAS VEZES
-	$AnimationPlayer.play(&"dAJWAead")
-	$AnimationPlayer.speed_scale = 0.8
+	areaDetection.set_deferred("monitoring", false) 
+	
+	if $AnimationPlayer.current_animation != &"dead": 
+		$AnimationPlayer.play(&"dead")
+		$AnimationPlayer.speed_scale = 0.8
 	await $AnimationPlayer.animation_finished
-	# TODO: EM ALGUM LUGAR AQUI TERIA UMA TRANSIÇÃO.
-	set_collision_layer_value(1, true)
+
+	global_position = spawnpoint
 	state = STATE.GROUNDED
 	FREEZE = false
-	# TODO: CAMERA IR PARA O PLAYER NO MOMENTO DO RESPAWN
-	global_position = spawnpoint
+	
+	set_collision_layer_value(1, true)
+	areaDetection.set_deferred("monitoring", true)
 	$AnimationPlayer.play(&"idle")
-
+	
 ## MOVIMENTO DO PLAYER
 # Funções Auxiliares
 func mult(x : PackedVector3Array, lambda : float) -> void:
