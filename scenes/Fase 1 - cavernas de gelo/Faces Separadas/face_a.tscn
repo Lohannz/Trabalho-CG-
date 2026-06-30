@@ -854,7 +854,7 @@ collision_layer = 2
 material_override = ExtResource("2_4bmlv")
 
 [node name="Cylinder" parent="." index="9" unique_id=1508330732]
-transform = Transform3D(0, -5.285009, 0, 5.285009, 0, 0, 0, 0, 5.285009, 199.37909, 142.19164, 41.486324)
+transform = Transform3D(0, -5.285009, 0, 5.285009, 0, 0, 0, 0, 5.285009, 199.37909, 134.66203, 41.486324)
 material_override = ExtResource("18_4kj6e")
 
 [node name="StaticBody3D" parent="Cylinder" index="0" unique_id=2088392705 groups=["pilar"]]
@@ -1243,10 +1243,10 @@ collision_layer = 2
 collision_layer = 4
 
 [node name="generalCrystal2" parent="." index="42" unique_id=371514144 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(21.294434, 5.526945, 0, -5.526945, 21.294434, 0, 0, 0, 22, -102.70363, -225.90372, 30.24347)
+transform = Transform3D(18.610315, 11.7327, 0, -11.7327, 18.610315, 0, 0, 0, 22, -209.23755, -182.9018, 51.31526)
 
 [node name="generalCrystal3" parent="." index="43" unique_id=352952812 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(-0.7447622, -21.98739, 0, 21.98739, -0.7447622, 0, 0, 0, 22, 488.86798, 238.50806, 30.24347)
+transform = Transform3D(-7.061849, -18.352224, 0, 20.835794, -6.220096, 0, 0, 0, 22, 437.3931, 311.18625, 30.24347)
 
 [node name="generalCrystal4" parent="." index="44" unique_id=1144871146 instance=ExtResource("19_bqhkd")]
 transform = Transform3D(20.553719, -11.029631, -2.0111413, 6.570651, 19.721037, 16.031263, -4.2861595, -22.658947, 14.931641, 266.69717, -184.10175, 57.020355)
@@ -1255,10 +1255,7 @@ transform = Transform3D(20.553719, -11.029631, -2.0111413, 6.570651, 19.721037, 
 transform = Transform3D(20.553722, -13.787026, -2.011142, -7.5971727, -37.537544, 0.20037466, -1.9563974, 0.92235935, -21.906965, 266.69717, 459.16837, -364.63043)
 
 [node name="generalPilar" parent="." index="46" unique_id=1403941570 instance=ExtResource("20_acge8")]
-transform = Transform3D(-0.032634974, -14.99992, 0, 9.999947, -0.048955917, 0, 0, 0, 10, 276.94507, 10.643341, -8.777985)
-
-[node name="Miasma" parent="." index="47" unique_id=394741060 instance=ExtResource("20_acge8")]
-transform = Transform3D(14.483191, 0, 0, 0, 13.486281, 0, 0, 0, 9.348581, -23.94651, -95.57846, -387.0347)
+transform = Transform3D(-0.032634974, -12.005167, 0, 9.999947, -0.039181806, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
 
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]

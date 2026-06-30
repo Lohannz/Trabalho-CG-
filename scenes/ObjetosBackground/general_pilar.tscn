@@ -1,9 +1,31 @@
 [gd_scene format=3 uid="uid://br6koytykvgso"]
 
 [ext_resource type="PackedScene" uid="uid://bke4v10n2auhy" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalPilar.glb" id="1_2hrme"]
-[ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="2_oi67x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rudmc"]
+transparency = 4
+depth_draw_mode = 1
+albedo_color = Color(0.5310167, 0.4298522, 0.92724454, 0.54901963)
+metallic = 0.7
+metallic_specular = 0.3
+roughness = 0.35
+rim_enabled = true
+rim = 0.45
+clearcoat_enabled = true
+clearcoat = 0.25
+clearcoat_roughness = 0.7
+ao_light_affect = 0.15
+backlight_enabled = true
+backlight = Color(0.4076962, 0.0019315833, 0.88060784, 1)
+refraction_enabled = true
+refraction_scale = 0.2
+uv1_scale = Vector3(-0.28, -0.28, -0.28)
+uv1_offset = Vector3(-0.63, -0.555, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+uv1_world_triplanar = true
 
 [node name="generalPilar" unique_id=1403941570 instance=ExtResource("1_2hrme")]
 
-[node name="Cylinder" parent="." index="0" unique_id=1991281503]
-material_override = ExtResource("2_oi67x")
+[node name="Cylinder" parent="." index="0" unique_id=1711729313]
+material_override = SubResource("StandardMaterial3D_rudmc")

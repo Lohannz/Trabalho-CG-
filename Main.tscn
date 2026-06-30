@@ -18,7 +18,7 @@
 render_priority = 0
 shader = ExtResource("11_20pc6")
 shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
-shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/shadow_thickness = 1.10000005225
 shader_parameter/sensitivity = 0.5
 shader_parameter/normal_sensitivity = 1.0
 shader_parameter/max_distance = 1000.0000474525
