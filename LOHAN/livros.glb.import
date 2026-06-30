@@ -3,6 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<< HEAD
 <<<<<<<< HEAD:scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalPilar.glb.import
 uid="uid://bke4v10n2auhy"
 path="res://.godot/imported/generalPilar.glb-026a765d33ea9487e8a3126ce8019efd.scn"
@@ -11,6 +12,16 @@ path="res://.godot/imported/generalPilar.glb-026a765d33ea9487e8a3126ce8019efd.sc
 
 source_file="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalPilar.glb"
 dest_files=["res://.godot/imported/generalPilar.glb-026a765d33ea9487e8a3126ce8019efd.scn"]
+=======
+<<<<<<<< HEAD:models/import/FaceA2.glb.import
+uid="uid://celm5smcss0o5"
+path="res://.godot/imported/FaceA2.glb-61b3963f0b4553ee56dcb73ab9612941.scn"
+
+[deps]
+
+source_file="res://models/import/FaceA2.glb"
+dest_files=["res://.godot/imported/FaceA2.glb-61b3963f0b4553ee56dcb73ab9612941.scn"]
+>>>>>>> origin/main
 ========
 uid="uid://b0kxeohtstl4k"
 path="res://.godot/imported/livros.glb-e812766fef416e8f638b6c02e123d66c.scn"

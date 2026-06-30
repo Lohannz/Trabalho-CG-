@@ -3,23 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-<<<<<<<< HEAD:models/import/FaceA2.glb.import
-uid="uid://celm5smcss0o5"
-path="res://.godot/imported/FaceA2.glb-61b3963f0b4553ee56dcb73ab9612941.scn"
+uid="uid://dgdboggpgokrs"
+path="res://.godot/imported/FaceB2.glb-8963aa62e5d72835788f2f6ae2a0ce8f.scn"
 
 [deps]
 
-source_file="res://models/import/FaceA2.glb"
-dest_files=["res://.godot/imported/FaceA2.glb-61b3963f0b4553ee56dcb73ab9612941.scn"]
-========
-uid="uid://b0kxeohtstl4k"
-path="res://.godot/imported/livros.glb-e812766fef416e8f638b6c02e123d66c.scn"
-
-[deps]
-
-source_file="res://LOHAN/livros.glb"
-dest_files=["res://.godot/imported/livros.glb-e812766fef416e8f638b6c02e123d66c.scn"]
->>>>>>>> origin/main:LOHAN/livros.glb.import
+source_file="res://models/import/fase2glbs/FaceB2.glb"
+dest_files=["res://.godot/imported/FaceB2.glb-8963aa62e5d72835788f2f6ae2a0ce8f.scn"]
 
 [params]
 
