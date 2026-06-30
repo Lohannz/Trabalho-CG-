@@ -406,7 +406,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 159.
 [node name="Spawn5" type="Marker3D" parent="Spawnpoints" unique_id=424982517]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 354.097, 463.039, -91.4728)
 
-[node name="FaceA" parent="." unique_id=1591384302 instance=ExtResource("1_62cav")]
+[node name="FaceA" parent="." unique_id=839437474 instance=ExtResource("1_62cav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.166521, -2, 164.16415)
 
 [node name="Nevasca" type="Node3D" parent="FaceA" unique_id=504961007]
@@ -506,47 +506,47 @@ material_override = SubResource("StandardMaterial3D_f5vkj")
 [node name="PortalArea" parent="FaceA/Portais/PortalFinal" index="1" unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 
-[node name="PortalCol" parent="FaceA/Portais/PortalFinal/PortalArea" index="0" unique_id=1665133991]
-visible = false
-
 [node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.33348, 102.5, 201.03586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.63348, 102.5, 201.03586)
 
 [node name="dash_crystal2" parent="FaceA" unique_id=25332783 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.76698, 165.77138, 200.77164)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.76698, 186.77138, 200.77164)
 
-[node name="luzinha" type="Node3D" parent="FaceA" unique_id=149965231]
+[node name="Luz" type="Node3D" parent="FaceA" unique_id=149965231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 251.79999, 128.9)
 
-[node name="Area3D" type="Area3D" parent="FaceA/luzinha" unique_id=1818610342]
+[node name="Area3D" type="Area3D" parent="FaceA/Luz" unique_id=1818610342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5.600006, -0.2000122)
 script = ExtResource("7_8ldnf")
 
-[node name="crystal_core" type="MeshInstance3D" parent="FaceA/luzinha/Area3D" unique_id=208677122]
+[node name="crystal_core" type="MeshInstance3D" parent="FaceA/Luz/Area3D" unique_id=208677122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7.558777, 0)
 mesh = SubResource("SphereMesh_bcrg8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/luzinha/Area3D" unique_id=1754960467]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/Luz/Area3D" unique_id=1754960467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 shape = SubResource("BoxShape3D_dc6vk")
 
-[node name="Cube" type="MeshInstance3D" parent="FaceA/luzinha/Area3D" unique_id=110097445]
+[node name="Cube" type="MeshInstance3D" parent="FaceA/Luz/Area3D" unique_id=110097445]
 transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 4.699997, 7, -0.6999817)
 material_override = SubResource("ShaderMaterial_f5vkj")
 mesh = SubResource("ArrayMesh_u3f4b")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FaceA" unique_id=2013399105]
+[node name="InvWall" type="StaticBody3D" parent="FaceA" unique_id=2013399105 groups=["invWall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30000305)
 collision_layer = 258
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/StaticBody3D" unique_id=656552327]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=656552327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
 shape = SubResource("BoxShape3D_bcrg8")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceA/StaticBody3D" unique_id=338152826]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=338152826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
+
+[node name="dash_crystal3" parent="FaceA" unique_id=1553940458 instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.76698, 214.77138, 200.77164)
 
 [node name="FaceB" parent="." unique_id=123047431 instance=ExtResource("2_qugii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.880005, 38.399994, 139)
@@ -620,7 +620,7 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn5")]
 [node name="Ventos" type="Node3D" parent="FaceB" unique_id=920830732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.619995, 68.39993, -114.499985)
 
-[node name="wind 1" parent="FaceB/Ventos" unique_id=394741060 instance=ExtResource("7_k3scg")]
+[node name="wind 1" parent="FaceB/Ventos" unique_id=1858835934 instance=ExtResource("7_k3scg")]
 transform = Transform3D(-1.7, -2.2739968e-07, 1.12204015e-14, 0, -6.5829354e-08, -1.7, 2.5669289e-07, -1.506, 7.430936e-08, -43.03731, 416.8208, 19.613647)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
@@ -660,15 +660,15 @@ transform = Transform3D(1.0004023, 0, 0, 0, -4.3728974e-08, -1.0004023, 0, 1.000
 shape = SubResource("BoxShape3D_8ldnf")
 disabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FaceB" unique_id=1773208561]
+[node name="InvWall" type="StaticBody3D" parent="FaceB" unique_id=1773208561 groups=["invWall"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 13.900002, 610.1, -280.1)
 collision_layer = 258
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/StaticBody3D" unique_id=373345006]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceB/InvWall" unique_id=373345006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
 shape = SubResource("BoxShape3D_bcrg8")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceB/StaticBody3D" unique_id=1801030353]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceB/InvWall" unique_id=1801030353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
 
@@ -752,15 +752,15 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2"), NodePath("../../../..
 [node name="dash_crystal" parent="FaceC" unique_id=1783694374 instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256.34735, 98.799995, -153.82631)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FaceC" unique_id=1207291402]
+[node name="InvWall" type="StaticBody3D" parent="FaceC" unique_id=1207291402 groups=["invWall"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -382.90002, 73.19996, -88.100006)
 collision_layer = 258
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/StaticBody3D" unique_id=671165144]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceC/InvWall" unique_id=671165144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 211.99997)
 shape = SubResource("BoxShape3D_bcrg8")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceC/StaticBody3D" unique_id=478380535]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceC/InvWall" unique_id=478380535]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.89989, 108.899994)
 shape = SubResource("BoxShape3D_bcrg8")
 
@@ -770,8 +770,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.34735, 194.79999, -30.82
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659)
 
-[connection signal="body_entered" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="FaceA/Luz/Area3D" to="FaceA/Luz/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="FaceA/Luz/Area3D" to="FaceA/Luz/Area3D" method="_on_body_exited"]
 
 [editable path="FaceA/Portais/PortalVerde"]
 [editable path="FaceA/Portais/PortalRosa"]

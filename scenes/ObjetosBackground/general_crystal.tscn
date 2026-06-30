@@ -5,8 +5,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wq1t"]
 resource_name = "Material"
 transparency = 4
+blend_mode = 4
 depth_draw_mode = 1
-albedo_color = Color(0.13333334, 0.5529412, 0.90588236, 0.60784316)
+albedo_color = Color(0.22256814, 0.8350241, 1.353256, 0.5882353)
 metallic = 0.7
 metallic_specular = 0.2
 roughness = 0.3

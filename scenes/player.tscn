@@ -2715,6 +2715,7 @@ transform = Transform3D(3.5, 0, 0, 0, 6.935786, 0, 0, 0, 3.3240716, 0, -0.098249
 shape = SubResource("BoxShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
 transform = Transform3D(3.65, 0, 0, 0, 7.538468, 0, 0, 0, 3.5046957, 0, -0.09776749, 0.028350944)

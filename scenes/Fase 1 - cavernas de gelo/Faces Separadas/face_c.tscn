@@ -530,16 +530,13 @@ material_override = ExtResource("10_1ni7m")
 [node name="Plano_004" parent="Plano_003" index="0" unique_id=1695511559]
 material_override = ExtResource("10_1ni7m")
 
-[node name="generalCrystal" parent="." index="18" unique_id=371514144 instance=ExtResource("10_4hjms")]
-transform = Transform3D(10, 0, 0, 0, 14.050724, -3.500929, 0, 5.251394, 9.367149, 153.07391, -41.04979, -252.1677)
+[node name="generalCrystal2" parent="." index="18" unique_id=1111905106 instance=ExtResource("10_4hjms")]
+transform = Transform3D(15, 0, 0, 0, 13.391505, -8.924658, 0, 9.913174, 12.05614, -146.56332, -48.689972, -183.0449)
 
-[node name="generalCrystal2" parent="." index="19" unique_id=1111905106 instance=ExtResource("10_4hjms")]
-transform = Transform3D(15, 0, 0, 0, -7.661134, 4.319436, 0, -2.3036993, -14.364626, -101.346985, 330.44073, -6.297058)
+[node name="generalPilar" parent="." index="19" unique_id=1403941570 instance=ExtResource("11_c1qx3")]
+transform = Transform3D(8.396435, 0.07919938, -0.015809644, 0.034514185, -4.507838, 7.936142, 0.04483321, -11.362289, -3.1486685, -88.94987, 328.92545, 44.243507)
 
-[node name="generalPilar" parent="." index="20" unique_id=1403941570 instance=ExtResource("11_c1qx3")]
-transform = Transform3D(6.999841, 0.074508, -0.012961824, -0.032894704, 9.975897, 3.482281, 0.033805527, -5.72066, 6.07236, -88.94987, -10.4392395, -51.82715)
-
-[node name="espinhos6" type="MeshInstance3D" parent="." index="21" unique_id=395831260]
+[node name="espinhos6" type="MeshInstance3D" parent="." index="20" unique_id=395831260]
 transform = Transform3D(8.598084e-15, 1.7484555e-07, -5, 4.5, -1.7484555e-07, -1.237073e-21, -1.9670125e-07, -4, -2.1855695e-07, -199.98747, 209.43094, -8.312969)
 material_override = ExtResource("2_xmwy0")
 mesh = SubResource("ArrayMesh_oyqs1")
@@ -552,7 +549,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_1ni7m")
 
-[node name="espinhos7" type="MeshInstance3D" parent="." index="22" unique_id=1780947907]
+[node name="espinhos7" type="MeshInstance3D" parent="." index="21" unique_id=1780947907]
 transform = Transform3D(8.598084e-15, 1.7484555e-07, -5, 4.5, -1.7484555e-07, -1.237073e-21, -1.9670125e-07, -4, -2.1855695e-07, -243.22903, 209.43094, -8.312969)
 material_override = ExtResource("2_xmwy0")
 mesh = SubResource("ArrayMesh_oyqs1")
@@ -565,7 +562,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_1ni7m")
 
-[node name="espinhos8" type="MeshInstance3D" parent="." index="23" unique_id=1323464761]
+[node name="espinhos8" type="MeshInstance3D" parent="." index="22" unique_id=1323464761]
 transform = Transform3D(8.598084e-15, 1.7484555e-07, -5, 4.5, -1.7484555e-07, -1.237073e-21, -1.9670125e-07, -4, -2.1855695e-07, -199.98747, 177.76143, -8.312969)
 material_override = ExtResource("2_xmwy0")
 mesh = SubResource("ArrayMesh_oyqs1")
@@ -578,7 +575,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_1ni7m")
 
-[node name="espinhos9" type="MeshInstance3D" parent="." index="24" unique_id=2069029690]
+[node name="espinhos9" type="MeshInstance3D" parent="." index="23" unique_id=2069029690]
 transform = Transform3D(8.598084e-15, 1.7484555e-07, -5, 4.5, -1.7484555e-07, -1.237073e-21, -1.9670125e-07, -4, -2.1855695e-07, -243.22903, 177.76143, -8.312969)
 material_override = ExtResource("2_xmwy0")
 mesh = SubResource("ArrayMesh_oyqs1")
@@ -591,7 +588,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_1ni7m")
 
-[node name="espinhos10" type="MeshInstance3D" parent="." index="25" unique_id=1219040084]
+[node name="espinhos10" type="MeshInstance3D" parent="." index="24" unique_id=1219040084]
 transform = Transform3D(5, 0, 0, 0, 4, 0, 0, 0, 4.65, -193.22049, 83.733734, -31.800163)
 material_override = ExtResource("2_xmwy0")
 mesh = SubResource("ArrayMesh_oyqs1")

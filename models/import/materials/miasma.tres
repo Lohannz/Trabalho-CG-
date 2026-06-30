@@ -13,7 +13,7 @@ gradient = SubResource("Gradient_x3ukm")
 [resource]
 render_priority = 0
 shader = ExtResource("1_0elay")
-shader_parameter/cloud_size = 0.394000018715
+shader_parameter/cloud_size = 0.10000000475
 shader_parameter/translation_speed = Vector3(1, -1, -1.5)
 shader_parameter/cloud_base = ExtResource("2_0elay")
 shader_parameter/grad_ramp = SubResource("GradientTexture1D_hb0rr")

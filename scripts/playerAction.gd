@@ -28,7 +28,7 @@ func update(delta: float, just_pressed: bool):
 	
 func is_ready() -> bool: return cooldown.timer <= 0.0
 func is_buffered() -> bool: return buffer.timer > 0.0
-func reset() -> void: cooldown.timer = buffer.lifetime
+func reset() -> void: cooldown.timer = 0.0
 
 func is_triggered() -> bool:
 	return is_buffered() and is_ready()
