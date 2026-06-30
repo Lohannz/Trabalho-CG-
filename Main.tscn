@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://byi4hukksjvww" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://c35dk6ys8neb6" path="res://fase_2.tscn" id="2_fpfj3"]
 [ext_resource type="Shader" uid="uid://c702d8yuqy4by" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://bjiyjx1erymtc" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
@@ -16,6 +15,7 @@
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://bfnbu6f6hsy2v" path="res://scripts/contador.gd" id="14_c2ibq"]
 [ext_resource type="FontFile" uid="uid://dli0ekpbnxrwb" path="res://data/fonts/KiwiSoda.ttf" id="16_fpfj3"]
+[ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="16_sc1dx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
 render_priority = 0
@@ -68,9 +68,11 @@ volumetric_fog_density = 0.0
 volumetric_fog_detail_spread = 1.9318736
 volumetric_fog_sky_affect = 0.2
 
+[sub_resource type="Theme" id="Theme_j4qnp"]
+
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_scene = ExtResource("2_fpfj3")
+level_path = "uid://n1wudfyde562"
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -246,5 +248,25 @@ transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.859
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)
+
+[node name="telaLoading" type="CanvasLayer" parent="." unique_id=1723938437]
+
+[node name="FundoPreto" type="TextureRect" parent="telaLoading" unique_id=1867319213]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_sc1dx")
+
+[node name="LabelPorcentagem" type="Label" parent="telaLoading/FundoPreto" unique_id=1482126830]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 571.0
+offset_right = 599.0
+offset_bottom = 626.0
+theme = SubResource("Theme_j4qnp")
+theme_override_fonts/font = ExtResource("16_fpfj3")
+theme_override_font_sizes/font_size = 40
 
 [editable path="player"]
