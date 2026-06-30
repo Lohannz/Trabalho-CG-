@@ -501,7 +501,9 @@ func _can_slide():
 
 ## AÇÕES DO PLAYER
 func _handle_actions():
-	if input.reset.is_triggered(): die()
+	if input.reset.is_triggered(): 
+		input.reset.consume()
+		die()
 
 	elif input.dash.is_triggered() and _can_dash():
 		_execute_dash()

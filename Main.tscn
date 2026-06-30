@@ -13,7 +13,7 @@
 [ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://sprites/tema.tres" id="10_j4qnp"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
-[ext_resource type="Script" uid="uid://bfnbu6f6hsy2v" path="res://scripts/contador.gd" id="14_c2ibq"]
+[ext_resource type="Script" uid="uid://cx3onnwbds71k" path="res://scripts/contador.gd" id="14_c2ibq"]
 [ext_resource type="FontFile" uid="uid://dli0ekpbnxrwb" path="res://data/fonts/KiwiSoda.ttf" id="16_fpfj3"]
 [ext_resource type="Texture2D" uid="uid://c8tk38fhhrvuf" path="res://models/import/textures/leonan sky.png" id="16_sc1dx"]
 
@@ -72,7 +72,7 @@ volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_path = "uid://n1wudfyde562"
+level_path = "uid://c35dk6ys8neb6"
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
