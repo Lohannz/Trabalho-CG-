@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0fcbeyblrouj"]
+
+[ext_resource type="PackedScene" uid="uid://b4hjec3yn6838" path="res://models/import/LOHAN/CASA-MENU.glb" id="1_kg7xj"]
+[ext_resource type="PackedScene" uid="uid://bcg6vn7x8ii55" path="res://scenes/estante_com_livros.tscn" id="2_2dj84"]
+
+[sub_resource type="Environment" id="Environment_kj0ey"]
+
+[node name="CASA-MENU" unique_id=504099331 instance=ExtResource("1_kg7xj")]
+
+[node name="Cube_001" parent="." index="2" unique_id=2012632453]
+transform = Transform3D(-1.5880992, 0, 0, 0, 3.3600962, 0, 0, 0, 0.13466829, -5.499913, 3.2247488, 32.050064)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6" unique_id=508413338]
+environment = SubResource("Environment_kj0ey")
+
+[node name="estante_com_livros" parent="." index="8" unique_id=70223803 instance=ExtResource("2_2dj84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4583063, 0.90012455, -7.4935565)
+
+[node name="estante_com_livros2" parent="." index="9" unique_id=190062645 instance=ExtResource("2_2dj84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48896313, 0.90012455, -7.4935565)
+
+[node name="estante_com_livros2" parent="estante_com_livros2" index="80" unique_id=865445640 instance=ExtResource("2_2dj84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0170078, 0.037866116, 0.078825474)

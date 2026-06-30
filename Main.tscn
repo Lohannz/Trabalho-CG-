@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
 [ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
-[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://c702d8yuqy4by" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://b06rd4qf0iyug" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
-[ext_resource type="Script" uid="uid://dhbri6d2bhotl" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
+[ext_resource type="Script" uid="uid://cdjc2saxjdm2o" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://7xs2114na8it" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
-[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Script" uid="uid://bx46x50oshjtt" path="res://scripts/contador.gd" id="14_c2ibq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
 render_priority = 0
@@ -59,7 +59,6 @@ volumetric_fog_detail_spread = 1.9318736
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_scene = ExtResource("2_20pc6")
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -209,6 +208,14 @@ radial_fill_degrees = 350.0
 texture_under = ExtResource("9_5vvyt")
 texture_progress = ExtResource("10_c6i3y")
 script = ExtResource("8_trn2v")
+
+[node name="Contador" type="Label" parent="Camera3D/UI/Control" unique_id=95852991]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = -315.0
+offset_right = 1145.0
+offset_bottom = -245.0
+script = ExtResource("14_c2ibq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]
 environment = SubResource("Environment_cm0pq")
