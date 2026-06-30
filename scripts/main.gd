@@ -1,35 +1,22 @@
 extends Node3D
-
 @onready var player := $player
-@onready var fase_container := $Fase
+@export var level_scene: PackedScene
 
 var spawnpoints : Array[Vector3]
-var current_level: Node3D
+var current_level
 
+# Ao iniciar cena, faz com que o player surja no MainSpawn da fase atual.
+# Cada fase tem um node Spawnpoints contendo o MainSpawn e os outros pontos.
 func _ready() -> void:
-	load_level()
-
-func load_level() -> void:
-	# Verifica se há um caminho de fase válido no SGameManager
-	if GameManager.next_level_path != "":
-		# Carrega a fase escolhida na memória
-		var level_resource = load(GameManager.next_level_path)
+	if level_scene:
+		current_level = level_scene.instantiate()
+		$Fase.add_child(current_level)
 		
-		# Instancia a fase
-		current_level = level_resource.instantiate()
-		fase_container.add_child(current_level)
-
-		# Configura os spawnpoints do jogador
-		setup_player_spawn()
-
-func setup_player_spawn() -> void:
-	# Sempre bom verificar se os nós existem para evitar crashes
-	if current_level.has_node("Spawnpoints"):
+		# Extrai os Spawnpoints como posições vetoriais e distribui em um Array.
 		var markers = current_level.get_node("Spawnpoints").get_children()
 		for spawnpoint in markers:
 			spawnpoints.append(spawnpoint.global_position)
-			
-		if spawnpoints.size() > 0:
-			player.global_position = spawnpoints[0]
-			# Assumindo que seu player tem essa variável
-			player.spawnpoint = spawnpoints[0]
+
+		# Cada índice é o Spawnpoint, o MainSpawn = 0.
+		player.position = spawnpoints[0]
+		player.spawnpoint = spawnpoints[0]

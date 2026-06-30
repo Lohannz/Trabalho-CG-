@@ -15,12 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="teste jogo cg"
-run/main_scene="uid://b6aarjgb5xhia"
+run/main_scene="uid://v760vd7s164x"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-GameManager="*uid://u2pd277vu4v7"
+GameManager="*uid://c0vkm4hi7rptx"
 
 [display]
 
@@ -32,6 +32,7 @@ version_control/main_scene="uid://mjwsijkcjeis"
 
 [global_group]
 
+light_sensitive=""
 Moveble=""
 lightSensitive=""
 pilar=""
