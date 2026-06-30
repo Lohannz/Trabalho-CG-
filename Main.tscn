@@ -47,15 +47,23 @@ outline_size = 20
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
-background_color = Color(0.021913113, 0.38595343, 0.6061241, 1)
+background_color = Color(0.023529412, 0.38431373, 0.60784316, 1)
 background_energy_multiplier = 0.34
 ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
-fog_light_color = Color(0.014731812, 0.3201193, 0.52595764, 1)
-fog_light_energy = 0.15
-fog_depth_end = 3175.3
-volumetric_fog_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.2641298, 0.3559028, 1.0070543, 1)
+fog_light_energy = 0.12
+fog_density = 0.8
+fog_sky_affect = 0.4
+fog_height = -250.0
+fog_height_density = 0.8
+fog_depth_curve = 2.6390085
+fog_depth_begin = 0.0
+fog_depth_end = 300.0
 volumetric_fog_density = 0.0
 volumetric_fog_detail_spread = 1.9318736
+volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")

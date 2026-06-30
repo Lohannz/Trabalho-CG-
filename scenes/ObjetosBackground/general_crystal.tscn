@@ -5,18 +5,22 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wq1t"]
 resource_name = "Material"
 transparency = 4
-albedo_color = Color(0.13438095, 0.5544582, 0.90633965, 0.78)
-metallic = 0.5
+depth_draw_mode = 1
+albedo_color = Color(0.13333334, 0.5529412, 0.90588236, 0.60784316)
+metallic = 0.7
 metallic_specular = 0.2
 roughness = 0.3
 rim_enabled = true
 rim = 0.3
-rim_tint = 0.3
 clearcoat_enabled = true
 clearcoat = 0.5
-clearcoat_roughness = 0.3
+clearcoat_roughness = 0.75
+backlight_enabled = true
+backlight = Color(0.078814946, 0, 0.92113733, 1)
 refraction_enabled = true
-refraction_scale = 0.12
+refraction_scale = 0.16
+uv1_scale = Vector3(-0.12, -0.12, -0.12)
+uv1_triplanar = true
 
 [node name="generalCrystal" unique_id=371514144 instance=ExtResource("1_8wq1t")]
 

@@ -65,7 +65,7 @@ var ICE_INERTIA: float = 80.0
 
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
-enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
+enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING, DYING}
 var state : STATE = STATE.GROUNDED
 
 # Variáveis: Partículas de Movimentação
@@ -157,10 +157,11 @@ func _ready() -> void:
 
 ## PROCESSOS
 func _physics_process(delta : float) -> void:
-	for body in areaDetection.get_overlapping_bodies():
-		if body.is_in_group("killObj"): die()
-		
-	if not FREEZE:
+	if state != STATE.DYING:
+		for body in areaDetection.get_overlapping_bodies():
+			if body.is_in_group("killObj"): die()
+			
+	if not FREEZE:	
 		_update_orientation()
 
 		_update_movement_direction(delta)
@@ -181,10 +182,23 @@ func _physics_process(delta : float) -> void:
 		velocity = Vector3.ZERO
 
 ## Função que gerencia o que acontece quando o player morre
+# Crie uma variável no topo do seu script (fora de qualquer função)
 func die() -> void:
 	velocity = Vector3.ZERO
+	FREEZE = true
+	state = STATE.DYING
+	set_collision_layer_value(1, false)
+	# BUG: REPETINDO A MORTE DUAS VEZES
+	$AnimationPlayer.play(&"dAJWAead")
+	$AnimationPlayer.speed_scale = 0.8
+	await $AnimationPlayer.animation_finished
+	# TODO: EM ALGUM LUGAR AQUI TERIA UMA TRANSIÇÃO.
+	set_collision_layer_value(1, true)
+	state = STATE.GROUNDED
+	FREEZE = false
+	# TODO: CAMERA IR PARA O PLAYER NO MOMENTO DO RESPAWN
 	global_position = spawnpoint
-	
+	$AnimationPlayer.play(&"idle")
 
 ## MOVIMENTO DO PLAYER
 # Funções Auxiliares
@@ -420,6 +434,12 @@ func _update_state(delta):
 			
 	else:
 		state = STATE.AIRBORNE
+		if $AnimationPlayer.current_animation == &"fall": 
+			$AnimationPlayer.seek(0.4, true)
+			
+		elif $AnimationPlayer.current_animation != &"jump": 
+			$AnimationPlayer.play(&"fall")
+			
 
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5

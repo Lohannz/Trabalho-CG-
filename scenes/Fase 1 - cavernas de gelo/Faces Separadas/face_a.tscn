@@ -1243,7 +1243,7 @@ collision_layer = 2
 collision_layer = 4
 
 [node name="generalCrystal2" parent="." index="42" unique_id=371514144 instance=ExtResource("19_bqhkd")]
-transform = Transform3D(18.610315, 11.7327, 0, -11.7327, 18.610315, 0, 0, 0, 22, -209.23755, -182.9018, 51.31526)
+transform = Transform3D(18.610315, 11.7327, 0, -11.7327, 18.610315, 0, 0, 0, 22, -188.776, -216.01236, 35.56746)
 
 [node name="generalCrystal3" parent="." index="43" unique_id=352952812 instance=ExtResource("19_bqhkd")]
 transform = Transform3D(-7.061849, -18.352224, 0, 20.835794, -6.220096, 0, 0, 0, 22, 437.3931, 311.18625, 30.24347)
@@ -1255,7 +1255,7 @@ transform = Transform3D(20.553719, -11.029631, -2.0111413, 6.570651, 19.721037, 
 transform = Transform3D(20.553722, -13.787026, -2.011142, -7.5971727, -37.537544, 0.20037466, -1.9563974, 0.92235935, -21.906965, 266.69717, 459.16837, -364.63043)
 
 [node name="generalPilar" parent="." index="46" unique_id=1403941570 instance=ExtResource("20_acge8")]
-transform = Transform3D(-0.032634974, -12.005167, 0, 9.999947, -0.039181806, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
+transform = Transform3D(-0.032635115, -12.005167, 0, 9.999947, -0.03917921, 0, 0, 0, 10, 244.32968, 5.9827986, -14.57259)
 
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]
