@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://v760vd7s164x"]
+
+[ext_resource type="Theme" uid="uid://dk1jxpvjuntcq" path="res://tema.tres" id="1_m7fwm"]
+[ext_resource type="Script" uid="uid://dfwthgtjle8lx" path="res://scripts/menu_inicial.gd" id="2_37lmg"]
+[ext_resource type="PackedScene" uid="uid://b0fcbeyblrouj" path="res://scenes/cena_menu_casa.tscn" id="2_djenv"]
+[ext_resource type="Script" uid="uid://yslf5wrcf2xn" path="res://cameraMenu.gd" id="2_ibyq2"]
+[ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="4_0kx3q"]
+[ext_resource type="Texture2D" uid="uid://c30vo57cil420" path="res://models/LOGO2.png" id="4_djenv"]
+[ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="5_37lmg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37lmg"]
+shader = ExtResource("4_0kx3q")
+shader_parameter/pixel_size = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
+render_priority = 0
+shader = ExtResource("5_37lmg")
+shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
+shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/sensitivity = 0.5
+shader_parameter/normal_sensitivity = 1.0
+shader_parameter/max_distance = 1000.0000474525
+shader_parameter/distance_fade_range = 20.0000009025
+
+[sub_resource type="QuadMesh" id="QuadMesh_g080d"]
+material = SubResource("ShaderMaterial_c6i3y")
+size = Vector2(7, 4)
+
+[node name="MenuInicial" type="Control" unique_id=1672511951]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m7fwm")
+script = ExtResource("2_37lmg")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1944770385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1242103542]
+handle_input_locally = false
+size = Vector2i(1200, 800)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=235122353]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=7194083]
+transform = Transform3D(0.9909612, -0.026554946, 0.13149402, 0.026675649, 0.9996438, 0.0008437746, -0.13146958, 0.0026715402, 0.9913167, 71.48611, 163.26971, 621.786)
+light_energy = 5.657
+omni_range = 12.247449
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=1015937879]
+transform = Transform3D(1, 0, 0, 0, 0.9187361, 0.39487216, 0, -0.39487216, 0.9187361, 63.267548, 165.1196, 641.084)
+script = ExtResource("2_ibyq2")
+
+[node name="pixelação" type="ColorRect" parent="SubViewportContainer/SubViewport/Node3D/Camera3D" unique_id=1183262877]
+light_mask = 31
+visibility_layer = 31
+material = SubResource("ShaderMaterial_37lmg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Outline" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Camera3D" unique_id=1033429227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4445953, -6.133911)
+layers = 512
+mesh = SubResource("QuadMesh_g080d")
+
+[node name="CASA-MENU" parent="SubViewportContainer/SubViewport/Node3D" unique_id=504099331 instance=ExtResource("2_djenv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.547554, 155.06528, 630.40375)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=2136280587]
+transform = Transform3D(-0.99764496, 0.026675608, -0.06319, 0, 0.9212737, 0.38891494, 0.06858982, 0.38799906, -0.91910404, 57.38078, 164.06694, 622.13226)
+light_energy = 12.224
+light_indirect_energy = 15.495
+omni_range = 12.247449
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1445928561]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -22.0
+offset_right = 182.0
+offset_bottom = 108.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="VBoxContainer2" unique_id=1307409168]
+layout_mode = 2
+theme = ExtResource("1_m7fwm")
+text = "Jogar"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer2" unique_id=1036938366]
+layout_mode = 2
+theme = ExtResource("1_m7fwm")
+text = "Sair
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=593981651]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = -319.0
+offset_right = 1349.0
+offset_bottom = 761.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_djenv")
+
+[connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/ExitButton" to="." method="_on_exit_button_pressed"]

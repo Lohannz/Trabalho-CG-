@@ -1,26 +1,22 @@
 extends Node3D
-@export var Face := 1
 @onready var player := $player
-@onready var spawnpoints := $Spawnpoints.get_children()
+@export var level_scene: PackedScene
 
-enum FACE {ONE, TWO, THREE, FOUR, FIVE, SIX}
+var spawnpoints : Array[Vector3]
+var current_level
 
-# Ao iniciar cena, faz com que o player spawne no spawnpoint da current_face que ele está 
-# Player tem propriedade current_face que diz qual lado do cubo ele está
+# Ao iniciar cena, faz com que o player surja no MainSpawn da fase atual.
+# Cada fase tem um node Spawnpoints contendo o MainSpawn e os outros pontos.
 func _ready() -> void:
-	# os spawnpoints tem os nomes da face(ex. ONE, TWO...)
-	var player_current_face = FACE.keys()[player.current_face] 
-	var current_spawn_position = _get_spawnpoint_position(player_current_face)
-	
-	player.position = current_spawn_position
-
-func _get_spawnpoint_position(name) -> Vector3:
-	for child in spawnpoints:
-		print(child.name)
-		print(name)
-		if child.name == str(name):
-			return child.global_position
-	return Vector3.ZERO
+	if level_scene:
+		current_level = level_scene.instantiate()
+		$Fase.add_child(current_level)
 		
-func _process(delta: float) -> void:
-	pass
+		# Extrai os Spawnpoints como posições vetoriais e distribui em um Array.
+		var markers = current_level.get_node("Spawnpoints").get_children()
+		for spawnpoint in markers:
+			spawnpoints.append(spawnpoint.global_position)
+
+		# Cada índice é o Spawnpoint, o MainSpawn = 0.
+		player.position = spawnpoints[0]
+		player.spawnpoint = spawnpoints[0]
