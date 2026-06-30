@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_c2ibq"]
+[ext_resource type="Script" uid="uid://byi4hukksjvww" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="PackedScene" uid="uid://n1wudfyde562" path="res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn" id="2_20pc6"]
 [ext_resource type="Shader" uid="uid://c702d8yuqy4by" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://b06rd4qf0iyug" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://bjiyjx1erymtc" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
 [ext_resource type="Script" uid="uid://b56wiq1p6wjv2" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bxtwy6o157l7b" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
+[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://LOHAN/tema.tres" id="10_j4qnp"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://bfnbu6f6hsy2v" path="res://scripts/contador.gd" id="14_c2ibq"]
@@ -19,7 +20,7 @@
 render_priority = 0
 shader = ExtResource("11_20pc6")
 shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
-shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/shadow_thickness = 1.10000005225
 shader_parameter/sensitivity = 0.5
 shader_parameter/normal_sensitivity = 1.0
 shader_parameter/max_distance = 1000.0000474525
@@ -48,19 +49,27 @@ outline_size = 20
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
-background_color = Color(0.021913113, 0.38595343, 0.6061241, 1)
+background_color = Color(0.023529412, 0.38431373, 0.60784316, 1)
 background_energy_multiplier = 0.34
 ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
-fog_light_color = Color(0.014731812, 0.3201193, 0.52595764, 1)
-fog_light_energy = 0.15
-fog_depth_end = 3175.3
-volumetric_fog_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.2641298, 0.3559028, 1.0070543, 1)
+fog_light_energy = 0.12
+fog_density = 0.8
+fog_sky_affect = 0.4
+fog_height = -250.0
+fog_height_density = 0.8
+fog_depth_curve = 2.6390085
+fog_depth_begin = 0.0
+fog_depth_end = 300.0
 volumetric_fog_density = 0.0
 volumetric_fog_detail_spread = 1.9318736
+volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_scene = ExtResource("2_c2ibq")
+level_scene = ExtResource("2_20pc6")
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -186,7 +195,8 @@ offset_right = 98.5
 offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Aperte 'F'"
+theme = ExtResource("10_j4qnp")
+text = "Aperte F"
 label_settings = SubResource("LabelSettings_c2ibq")
 
 [node name="TextureRect" type="TextureRect" parent="Camera3D/UI/Control" unique_id=690208351]
@@ -211,12 +221,12 @@ texture_under = ExtResource("9_5vvyt")
 texture_progress = ExtResource("10_c6i3y")
 script = ExtResource("8_trn2v")
 
-[node name="Contador" type="Label" parent="Camera3D/UI/Control" unique_id=95852991]
+[node name="Contador" type="Label" parent="Camera3D/UI/Control" unique_id=1171058497]
 layout_mode = 0
-offset_left = 1045.0
-offset_top = -315.0
-offset_right = 1145.0
-offset_bottom = -245.0
+offset_left = 995.0
+offset_top = -316.0
+offset_right = 1149.0
+offset_bottom = -247.0
 script = ExtResource("14_c2ibq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059588838]

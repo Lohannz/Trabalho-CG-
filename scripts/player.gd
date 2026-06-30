@@ -65,7 +65,7 @@ var ICE_INERTIA: float = 80.0
 
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
-enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
+enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING, DYING}
 var state : STATE = STATE.GROUNDED
 
 # Variáveis: Partículas de Movimentação
@@ -156,18 +156,19 @@ func _ready() -> void:
 	camera.orientation_changed.connect(_change_gravity)
 
 ## PROCESSOS
-func _physics_process(delta : float) -> void:
-	for body in areaDetection.get_overlapping_bodies():
-		if body.is_in_group("killObj"): die()
-		
-	if not FREEZE:
+func _physics_process(delta: float) -> void:
+	if state != STATE.DYING:
+		for body in areaDetection.get_overlapping_bodies():
+			if body.is_in_group("killObj"):
+				die()
+				break
+			
+	if not FREEZE:	
 		_update_orientation()
-
 		_update_movement_direction(delta)
-
 		_handle_actions()
 		_handle_movement(delta)
-
+		
 		move_and_slide()
 
 		_update_state(delta)
@@ -180,12 +181,29 @@ func _physics_process(delta : float) -> void:
 	else:
 		velocity = Vector3.ZERO
 
-## Função que gerencia o que acontece quando o player morre
-func die() -> void:
-	velocity = Vector3.ZERO
-	global_position = spawnpoint
-	
 
+## MORTE DO PLAYER
+func die() -> void:
+	state = STATE.DYING
+	FREEZE = true
+	velocity = Vector3.ZERO
+	
+	set_collision_layer_value(1, false)
+	areaDetection.set_deferred("monitoring", false) 
+	
+	if $AnimationPlayer.current_animation != &"dead": 
+		$AnimationPlayer.play(&"dead")
+		$AnimationPlayer.speed_scale = 0.8
+	await $AnimationPlayer.animation_finished
+
+	global_position = spawnpoint
+	state = STATE.GROUNDED
+	FREEZE = false
+	
+	set_collision_layer_value(1, true)
+	areaDetection.set_deferred("monitoring", true)
+	$AnimationPlayer.play(&"idle")
+	
 ## MOVIMENTO DO PLAYER
 # Funções Auxiliares
 func mult(x : PackedVector3Array, lambda : float) -> void:
@@ -213,7 +231,7 @@ func _apply_external_forces(vel : PackedVector3Array, delta : float):
 	if Globals.EFFECTS.ICE in ext_effects:
 		var ice_factor = pow(ICE_INERTIA, delta)
 		vel[0] = vel[0] * ice_factor
-		vel[0] = vel[0].limit_length(MOMENTUM + 50.0)
+		vel[0] = vel[0].limit_length(MOMENTUM + 100.0)
 
 
 # Lógica da Física: GROUNDED
@@ -372,11 +390,24 @@ func _update_state(delta):
 			finish_dash(STATE.AIRBORNE)	
 		
 	elif input.climb.is_down and _can_climb():
-		if state != STATE.CLIMBING: velocity = Vector3.ZERO
-		state = STATE.CLIMBING if input.has_movement() else STATE.STEADY
+		if state != STATE.CLIMBING:
+			velocity = Vector3.ZERO
+			$AnimationPlayer.play(&"climb")
+			$AnimationPlayer.pause()
+			$AnimationPlayer.seek(0.0, true)
+			
+		if input.has_movement():
+			state = STATE.CLIMBING
+			$AnimationPlayer.play(&"climb")
+			$AnimationPlayer.speed_scale = 1.5
+		else:
+			state = STATE.STEADY
+			$AnimationPlayer.pause()
+			$AnimationPlayer.seek(0.0, true)
 		fatigue = CLIMB_FATIGUE
 		
 	elif is_pushing_wall() and _can_slide():
+		$AnimationPlayer.play(&"slide")
 		state = STATE.SLIDING
 		fatigue = SLIDE_FATIGUE
 		
@@ -403,10 +434,16 @@ func _update_state(delta):
 				$AnimationPlayer.speed_scale = 1.5 	
 		else: 
 			$AnimationPlayer.play(&"idle") 
-			$AnimationPlayer.speed_scale = 1.0
+			$AnimationPlayer.speed_scale = 0.5
 			
 	else:
 		state = STATE.AIRBORNE
+		if $AnimationPlayer.current_animation == &"fall": 
+			$AnimationPlayer.seek(0.4, true)
+			
+		elif $AnimationPlayer.current_animation != &"jump": 
+			$AnimationPlayer.play(&"fall")
+			
 
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5

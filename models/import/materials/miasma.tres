@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dur6mi5fu8v50"]
+
+[ext_resource type="Shader" uid="uid://cie74eyupmcx7" path="res://shaders/miasma.tres" id="1_0elay"]
+[ext_resource type="Texture2D" uid="uid://dexpa1hg2730o" path="res://models/import/textures/noise1.png" id="2_0elay"]
+
+[sub_resource type="Gradient" id="Gradient_x3ukm"]
+offsets = PackedFloat32Array(0, 0.04117647, 0.15294118, 0.30588236, 1)
+colors = PackedColorArray(0.22114186, 0.05895077, 2.4065375e-08, 0.0627451, 0.02745098, 0.02745098, 0.02745098, 0.7058824, 0.03789779, 0.044087023, 0.054144256, 0.751024, 0.09460906, 0.13439697, 0.1990506, 0.99607843, 0.011198454, 0.008328813, 0.060531594, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hb0rr"]
+gradient = SubResource("Gradient_x3ukm")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0elay")
+shader_parameter/cloud_size = 0.394000018715
+shader_parameter/translation_speed = Vector3(1, -1, -1.5)
+shader_parameter/cloud_base = ExtResource("2_0elay")
+shader_parameter/grad_ramp = SubResource("GradientTexture1D_hb0rr")
+shader_parameter/opacity = 0.302000014345
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5

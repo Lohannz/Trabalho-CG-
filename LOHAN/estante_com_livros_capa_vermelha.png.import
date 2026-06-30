@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba05r1jwqegw1"
-path.s3tc="res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"
+uid="uid://buaiutlcicukw"
+path.s3tc="res://.godot/imported/estante_com_livros_capa_vermelha.png-68aafd55ac8a65af0a92008d3f877821.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4968972112b5d94d266260d49cd02e89"
+"md5": "0635f98b521aa1c8547702c6264fb5af"
 }
 
 [deps]
 
-source_file="res://models/import/catobj_cat_3.png"
-dest_files=["res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"]
+source_file="res://LOHAN/estante_com_livros_capa_vermelha.png"
+dest_files=["res://.godot/imported/estante_com_livros_capa_vermelha.png-68aafd55ac8a65af0a92008d3f877821.s3tc.ctex"]
 
 [params]
 

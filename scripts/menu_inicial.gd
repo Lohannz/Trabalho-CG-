@@ -6,4 +6,3 @@ func _on_play_button_pressed():
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
-"res://scenes/Fase 1 - cavernas de gelo/fase_1.tscn"

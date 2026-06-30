@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://v760vd7s164x"]
 
-[ext_resource type="Theme" uid="uid://dk1jxpvjuntcq" path="res://tema.tres" id="1_m7fwm"]
-[ext_resource type="Script" uid="uid://dfwthgtjle8lx" path="res://scripts/menu_inicial.gd" id="2_37lmg"]
+[ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://LOHAN/tema.tres" id="1_m7fwm"]
+[ext_resource type="Script" uid="uid://domxiq0feudbd" path="res://scripts/menu_inicial.gd" id="2_37lmg"]
 [ext_resource type="PackedScene" uid="uid://b0fcbeyblrouj" path="res://scenes/cena_menu_casa.tscn" id="2_djenv"]
-[ext_resource type="Script" uid="uid://yslf5wrcf2xn" path="res://cameraMenu.gd" id="2_ibyq2"]
+[ext_resource type="Script" uid="uid://s6s31xobxywc" path="res://scripts/cameraMenu.gd" id="2_ibyq2"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="4_0kx3q"]
-[ext_resource type="Texture2D" uid="uid://c30vo57cil420" path="res://models/LOGO2.png" id="4_djenv"]
+[ext_resource type="Texture2D" uid="uid://bn87ejraknqkr" path="res://LOHAN/LOGO2.png" id="4_djenv"]
 [ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="5_37lmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37lmg"]
@@ -41,10 +41,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = 1.0
-offset_right = -5.0
-offset_bottom = 1.0
+offset_left = -30.0
+offset_top = -75.0
+offset_right = 18.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 

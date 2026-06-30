@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://8a05axkc4nat"]
+
+[ext_resource type="PackedScene" uid="uid://cce8ne261el2h" path="res://scenes/Fase 1 - cavernas de gelo/Faces Separadas/generalCrystal.glb" id="1_8wq1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wq1t"]
+resource_name = "Material"
+transparency = 4
+depth_draw_mode = 1
+albedo_color = Color(0.13333334, 0.5529412, 0.90588236, 0.60784316)
+metallic = 0.7
+metallic_specular = 0.2
+roughness = 0.3
+rim_enabled = true
+rim = 0.3
+clearcoat_enabled = true
+clearcoat = 0.5
+clearcoat_roughness = 0.75
+backlight_enabled = true
+backlight = Color(0.078814946, 0, 0.92113733, 1)
+refraction_enabled = true
+refraction_scale = 0.16
+uv1_scale = Vector3(-0.12, -0.12, -0.12)
+uv1_triplanar = true
+
+[node name="generalCrystal" unique_id=371514144 instance=ExtResource("1_8wq1t")]
+
+[node name="Cube" parent="." index="0" unique_id=1281709829]
+material_override = SubResource("StandardMaterial3D_8wq1t")

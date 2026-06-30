@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba05r1jwqegw1"
-path.s3tc="res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"
+uid="uid://ll15watueemv"
+path.s3tc="res://.godot/imported/estante_com_livros_armario_uv.png-afa660daddaadbb4a17ea17fa0e66856.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4968972112b5d94d266260d49cd02e89"
+"md5": "433ad898a721c565d7b8ed166262e1ad"
 }
 
 [deps]
 
-source_file="res://models/import/catobj_cat_3.png"
-dest_files=["res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"]
+source_file="res://LOHAN/estante_com_livros_armario_uv.png"
+dest_files=["res://.godot/imported/estante_com_livros_armario_uv.png-afa660daddaadbb4a17ea17fa0e66856.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba05r1jwqegw1"
-path.s3tc="res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"
+uid="uid://6t3t6jdst20w"
+path.s3tc="res://.godot/imported/livros_capa_branca.png-9441903333eff31c282a98db1445e9b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4968972112b5d94d266260d49cd02e89"
+"md5": "609cb11450d5d8fca200e2bdc43d3b1d"
 }
 
 [deps]
 
-source_file="res://models/import/catobj_cat_3.png"
-dest_files=["res://.godot/imported/catobj_cat_3.png-d65691b26d7270439ef5a8bcb7da892b.s3tc.ctex"]
+source_file="res://LOHAN/livros_capa_branca.png"
+dest_files=["res://.godot/imported/livros_capa_branca.png-9441903333eff31c282a98db1445e9b7.s3tc.ctex"]
 
 [params]
 

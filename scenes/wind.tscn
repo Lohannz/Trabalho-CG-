@@ -4,7 +4,6 @@
 [ext_resource type="Material" uid="uid://bcmmedcouqcxu" path="res://models/import/materials/wind.tres" id="2_2kodj"]
 [ext_resource type="Shader" uid="uid://8uchp1ue5ula" path="res://shaders/wind_particles.tres" id="4_2kodj"]
 [ext_resource type="Texture2D" uid="uid://dgerokf4n1l0l" path="res://models/import/textures/fire_panning_noise.png" id="5_4pwos"]
-[ext_resource type="PackedScene" uid="uid://b6aarjgb5xhia" path="res://scenes/MenuInicial.tscn" id="5_5ly3m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2r4l"]
 transparency = 1
@@ -144,12 +143,6 @@ fixed_fps = 60
 visibility_aabb = AABB(-4, -4, -4, 8, 49.93, 8)
 process_material = SubResource("ParticleProcessMaterial_yawee")
 draw_pass_1 = SubResource("CylinderMesh_2kodj")
-
-[node name="MenuInicial" parent="." unique_id=1672511951 instance=ExtResource("5_5ly3m")]
-offset_left = 436.0
-offset_top = 106.0
-offset_right = 436.0
-offset_bottom = 106.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

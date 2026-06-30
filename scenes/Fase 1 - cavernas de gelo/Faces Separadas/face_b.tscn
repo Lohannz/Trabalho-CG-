@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="6_sg7oa"]
 [ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="7_bfdpn"]
 [ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="7_mwj7t"]
+[ext_resource type="PackedScene" uid="uid://br6koytykvgso" path="res://scenes/ObjetosBackground/general_pilar.tscn" id="12_78hdn"]
+[ext_resource type="PackedScene" uid="uid://8a05axkc4nat" path="res://scenes/ObjetosBackground/general_crystal.tscn" id="13_64sia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6q7ss"]
 render_priority = 0
@@ -540,6 +542,12 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos9/StaticBody3D2" index="0" unique_id=2090025431]
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_uc5lc")
+
+[node name="generalPilar" parent="." index="28" unique_id=1403941570 instance=ExtResource("12_78hdn")]
+transform = Transform3D(8.171315, 6.5147667, -0.8947815, -2.511818, 12.228435, 5.2323117, 2.8143167, -8.00145, 7.267894, -46.31166, -50.0148, -115.63095)
+
+[node name="generalCrystal" parent="." index="29" unique_id=371514144 instance=ExtResource("13_64sia")]
+transform = Transform3D(10.393877, -7.4766273, -0.43745553, -1.2608243, -3.7938237, 11.541176, -5.863246, -12.438126, -3.2572832, 230.56635, 339.44324, 150.31982)
 
 [connection signal="body_entered" from="plataforma_frente_013/StaticBody3D/Area3D" to="plataforma_frente_013/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_013/StaticBody3D/Area3D" to="plataforma_frente_013/StaticBody3D/Area3D" method="_on_body_exited"]

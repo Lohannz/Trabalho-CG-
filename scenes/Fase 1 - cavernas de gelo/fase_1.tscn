@@ -7,13 +7,14 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="4_k3scg"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="5_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
-[ext_resource type="Script" uid="uid://cytsi28pohkg8" path="res://scripts/descongelar.gd" id="7_8ldnf"]
+[ext_resource type="Script" uid="uid://dcfc0cfadrlei" path="res://scripts/descongelar.gd" id="7_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="7_k3scg"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
-[ext_resource type="Shader" uid="uid://3m5qtl3hyo2d" path="res://shaders/emission.gdshader" id="8_dc6vk"]
-[ext_resource type="Script" uid="uid://di4w8gunisebp" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
+[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="8_dc6vk"]
+[ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
+transparency = 4
 depth_draw_mode = 1
 albedo_color = Color(0.32941177, 0.77254903, 1, 0.88235295)
 
@@ -413,7 +414,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.166521, 0, -165.16415)
 script = ExtResource("8_o8l6r")
 
 [node name="Nevoa" type="MeshInstance3D" parent="FaceA/Nevasca" unique_id=363879107]
-transform = Transform3D(1.0002404, -0.017915275, -0.0016706011, 0.017912151, 1.0002402, -0.0018656434, 0.001703746, 0.0018354246, 1.0003991, 94.30001, 135.7, 267.507)
+transform = Transform3D(1.0004023, 0, 0, 0, 1.0004023, 0, 0, 0, 1.0004023, 94.30001, 135.7, 267.507)
 material_override = SubResource("StandardMaterial3D_8ldnf")
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
@@ -557,7 +558,6 @@ script = ExtResource("8_o8l6r")
 [node name="Nevoa" type="MeshInstance3D" parent="FaceB/Nevasca" unique_id=345620152]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, -196.51347, 117.20001, 27.164167)
 material_override = SubResource("StandardMaterial3D_8ldnf")
-transparency = 0.05
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
@@ -682,7 +682,6 @@ script = ExtResource("8_o8l6r")
 [node name="Nevoa" type="MeshInstance3D" parent="FaceC/Nevasca" unique_id=1453932595]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 134.11917, 431.30002, 20.237827)
 material_override = SubResource("StandardMaterial3D_8ldnf")
-transparency = 0.05
 mesh = SubResource("BoxMesh_k3scg")
 skeleton = NodePath("")
 
@@ -770,9 +769,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.34735, 194.79999, -30.82
 
 [node name="Core" parent="." unique_id=1417270398 instance=ExtResource("5_g2wj8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659)
-
-[node name="FaceA2" parent="." unique_id=190387829 instance=ExtResource("1_62cav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 295.58038, 499.62946, 272.71588)
 
 [connection signal="body_entered" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="FaceA/luzinha/Area3D" to="FaceA/luzinha/Area3D" method="_on_body_exited"]

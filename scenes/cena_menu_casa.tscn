@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://b0fcbeyblrouj"]
 
-[ext_resource type="PackedScene" uid="uid://b4hjec3yn6838" path="res://models/import/LOHAN/CASA-MENU.glb" id="1_kg7xj"]
+[ext_resource type="PackedScene" uid="uid://b4hjec3yn6838" path="res://LOHAN/CASA-MENU.glb" id="1_kg7xj"]
 [ext_resource type="PackedScene" uid="uid://bcg6vn7x8ii55" path="res://scenes/estante_com_livros.tscn" id="2_2dj84"]
-[ext_resource type="PackedScene" uid="uid://cqvigk8vnut4s" path="res://3livros.tscn" id="3_8avdq"]
-[ext_resource type="Texture2D" uid="uid://o5g5id1l0f1x" path="res://livros_capa_branca.png" id="4_t5bci"]
-[ext_resource type="Texture2D" uid="uid://b2nd5wtmme1k6" path="res://livros_capa_preta.png" id="5_71m35"]
+[ext_resource type="PackedScene" path="res://LOHAN/3livros.tscn" id="3_8avdq"]
+[ext_resource type="Texture2D" uid="uid://cy4ey7hy6n4qa" path="res://LOHAN/estante_com_livros_capa_branca.png" id="4_t5bci"]
+[ext_resource type="Texture2D" uid="uid://px1boaihumf7" path="res://LOHAN/estante_com_livros_capa_preta.png" id="5_71m35"]
+[ext_resource type="PackedScene" uid="uid://dqktn1kr43gmk" path="res://scenes/menu_outside_light.tscn" id="6_t5bci"]
 
 [sub_resource type="Environment" id="Environment_kj0ey"]
-background_energy_multiplier = 5.14
+background_energy_multiplier = 3.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyk0g"]
 resource_name = "material-livro-branco"
@@ -87,10 +88,10 @@ shadow_mesh = SubResource("ArrayMesh_sjsjr")
 
 [node name="CASA-MENU" unique_id=504099331 instance=ExtResource("1_kg7xj")]
 
-[node name="Cube" parent="." index="1" unique_id=131112198]
+[node name="Cube" parent="." index="1" unique_id=1073081970]
 transform = Transform3D(4.926169, 0, 0, 0, 4.926169, 0, 0, 0, 4.926169, 0.011524423, 4.887566, 0.0032186508)
 
-[node name="Cube_001" parent="." index="2" unique_id=2012632453]
+[node name="Cube_001" parent="." index="2" unique_id=1179994790]
 transform = Transform3D(-1.5880992, 0, 0, 0, 3.3600962, 0, 0, 0, 0.13466829, -5.499913, 3.2247488, 32.050064)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6" unique_id=508413338]
@@ -140,3 +141,7 @@ skeleton = NodePath("")
 transform = Transform3D(-0.10889518, 0.6099785, 0.65227246, 0.9906356, 0.30269396, 0.059501108, -0.082362354, 2.83425, -0.14673454, -4.7062078, 0.9770092, -7.3905644)
 mesh = SubResource("ArrayMesh_p2ypw")
 skeleton = NodePath("")
+
+[node name="menu_outside_light" parent="." index="15" unique_id=1742338956 instance=ExtResource("6_t5bci")]
+transform = Transform3D(0.96951085, -0.003103433, 0.24502835, 0.0060812053, 0.9999165, -0.011397103, -0.24497248, 0.0125396885, 0.969449, -11.498678, -12.752405, -22.546543)
+visible = false
