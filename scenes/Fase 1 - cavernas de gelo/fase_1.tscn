@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="4_k3scg"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="5_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
+[ext_resource type="Script" uid="uid://wo04qujk3acq" path="res://scripts/endportals.gd" id="6_bcrg8"]
 [ext_resource type="Script" uid="uid://dcfc0cfadrlei" path="res://scripts/descongelar.gd" id="7_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="7_k3scg"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
@@ -512,6 +513,8 @@ material_override = SubResource("StandardMaterial3D_f5vkj")
 
 [node name="PortalArea" parent="FaceA/Portais/PortalFinal" index="1" unique_id=1967604049]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
+script = ExtResource("6_bcrg8")
+next_level_path = "uid://c35dk6ys8neb6"
 
 [node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.63348, 102.5, 201.03586)

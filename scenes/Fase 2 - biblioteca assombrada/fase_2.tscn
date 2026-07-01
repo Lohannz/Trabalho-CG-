@@ -280,7 +280,7 @@ particles_anim_loop = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
 [node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 132.40874, -122.472916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 133.74593, -122.472916)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=2142052467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.46399, 188.88054, -390.45886)

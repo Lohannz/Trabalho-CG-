@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = get_tree().current_scene.get_node("Camera3D/UI/Control/Label")
+signal change_level(next_level_path: String)
 
 ## ATRIBUTOS DE MOVIMENTAÇÃO
 const SPEED = 30.0
@@ -50,7 +51,6 @@ const JUMP_HORIZONTAL_BOOST = GRAVITY * JUMP_DURATION * 0.2
 const WALL_JUMP_PUSHWAY = 30.0
 const COYOTE_MAX = 0.25
 var COYOTE_TIMER : float = COYOTE_MAX
-var IS_FALLING : bool = false
 
 
 # Parâmetros de Atrito
@@ -92,15 +92,31 @@ var spawnpoint : Vector3 = Vector3.ZERO
 # INTERAÇÃO COM PORTAL #
 func use_portal(portal):
 	velocity = Vector3.ZERO
-	global_position = portal.destination.global_position
-	
-	FREEZE = true
-	PORTAL_UI.visible = false
-	camera._change_orientation(portal.get_normal())
-	_update_orientation()
-	spawnpoint = portal.destination.get_spawn()
-	await get_tree().create_timer(0.9).timeout
-	FREEZE = false
+	if portal.get_parent().name == "PortalFinal":
+		FREEZE = true
+		PORTAL_UI.visible = false
+
+		change_level.emit(portal.next_level_path)
+		await get_parent().level_ready 
+
+		global_transform.basis = Basis.IDENTITY
+		camera._orientation = Basis.IDENTITY
+		up_direction = Vector3.UP
+		
+		await get_tree().physics_frame
+		_update_orientation()
+		
+		FREEZE = false
+	else:
+		global_position = portal.destination.global_position
+		
+		FREEZE = true
+		PORTAL_UI.visible = false
+		camera._change_orientation(portal.get_normal())
+		_update_orientation()
+		spawnpoint = portal.destination.get_spawn()
+		await get_tree().create_timer(0.9).timeout
+		FREEZE = false
 
 
 ## FUNÇÕES AUXILIARES

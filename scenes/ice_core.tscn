@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bd6elpegl8ewl"]
 
-[ext_resource type="Script" uid="uid://c1qbsrerf1ov8" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
+[ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="1_hlf4f"]
 [ext_resource type="Material" uid="uid://042e88k1v6ly" path="res://models/import/materials/crystal_core.tres" id="2_sjmgp"]
-[ext_resource type="Script" uid="uid://b4p8jsrnk08ta" path="res://scripts/light_detection.gd" id="3_c8oal"]
+[ext_resource type="Script" uid="uid://cxb5j6glgtibo" path="res://scripts/light_detection.gd" id="3_c8oal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvavo"]
 transparency = 4
@@ -113,10 +113,6 @@ shadow_enabled = true
 spot_range = 511.0
 spot_attenuation = -0.77
 script = ExtResource("3_c8oal")
-ICE_LIT_BASE = Color(0.5356168, 0.001748518, 0.099920444, 0.14901961)
-ICE_LIT_FRES = Color(0.61230755, 0.067791104, 0.3172768, 0.3019608)
-ICE_DARK_BASE = Color(0.28366432, 0.0063541587, 0.024956612, 1)
-ICE_DARK_FRES = Color(0.46148184, 0, 0.041989133, 1)
 
 [node name="Area3D" type="Area3D" parent="Lights/SpotLight3D" unique_id=656646044]
 collision_layer = 0

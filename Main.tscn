@@ -62,7 +62,7 @@ volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_path = "uid://c35dk6ys8neb6"
+level_path = "uid://n1wudfyde562"
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -258,5 +258,7 @@ offset_bottom = 626.0
 theme = SubResource("Theme_j4qnp")
 theme_override_fonts/font = ExtResource("16_fpfj3")
 theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="player"]
