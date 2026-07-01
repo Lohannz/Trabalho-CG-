@@ -1,7 +1,7 @@
-extends SpotLight3D
+extends Light3D
 
-@onready var area: Area3D = $Area3D
 @onready var main : Node3D = get_tree().current_scene
+@export var area: Area3D
 var exceptions: Array
 
 var active_rays: Dictionary = {}
@@ -22,6 +22,9 @@ func _ready() -> void:
 		_register_body(body)
 
 func _physics_process(_delta: float) -> void:
+	for body in area.get_overlapping_bodies():
+		_register_body(body)
+
 	for body in active_rays.keys():
 		var ray = active_rays.get(body)
 		if not is_instance_valid(ray): 
@@ -29,9 +32,8 @@ func _physics_process(_delta: float) -> void:
 		else:
 			ray.global_position = global_position
 			ray.target_position = ray.to_local(body.global_position)
-			
 			_handle_light(body, ray)
-			
+	
 func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 	if body.get_collision_layer_value(4):
 		ray.force_raycast_update()
@@ -41,13 +43,13 @@ func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 			ray.debug_shape_custom_color = Color(0.095, 1.054, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
-				"FASE 2": _irradiate_body(body, true)
+				"FASE 2": if not body.get_meta("irradiated"): _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
-				"FASE 2": _irradiate_body(body, false)
-
+				"FASE 2": if body.get_meta("irradiated"): _irradiate_body(body, false)
+		
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
 		
@@ -70,7 +72,7 @@ func _register_body(body: Node3D) -> void:
 		for exception in exceptions:
 			ray.add_exception(exception)
 			
-		for i in range(1, 5):
+		for i in range(1,5):
 			ray.set_collision_mask_value(i, true)
 
 		active_rays[body] = ray
@@ -95,7 +97,8 @@ func _restore_body(body: Node3D) -> void:
 	if body.get_collision_layer_value(4):
 		match main.current_level.name:
 			"FASE 1": _freeze_body(body)
-			"FASE 2":_irradiate_body(body, false)
+			"FASE 2": _irradiate_body(body, false)
+	
 	active_rays.erase(body)
 
 func _freeze_body(body: Node3D) -> void:
@@ -113,33 +116,25 @@ func _melt_body(body: Node3D) -> void:
 		body.set_collision_layer_value(2, false)
 
 func _irradiate_body(body: Node3D, has_light: bool) -> void:
+	
+	body.set_meta("irradiated", has_light)
+	
 	var mesh = body.get_parent() as MeshInstance3D
 	if not mesh: return
 	
-	var target_transparency : float
-	var target_time : float
-	if has_light:
-		target_transparency = 1.0
-		target_time = 1.0
-	else:
-		target_transparency = 0.0
-		target_time = 2.5
-	
-	if is_equal_approx(mesh.transparency, target_transparency):
-		return
-		
 	if body.has_meta("transparency_tween"):
 		var old_tween = body.get_meta("transparency_tween")
 		if is_instance_valid(old_tween):
 			old_tween.kill()
+	
+	var target_transparency : float = 0.0 if has_light else 1.0
+	var target_time : float = 12.0 if has_light else 4.5
 			
 	var tween = create_tween()
 	body.set_meta("transparency_tween", tween)
-	
-	tween.tween_property(mesh, "transparency", target_transparency, 1.5)\
+	tween.tween_property(mesh, "transparency", target_transparency, target_time)\
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)
-
 
 func _get_shader_material(body: Node3D) -> ShaderMaterial:
 	var material = null

@@ -1253,9 +1253,9 @@ size_flags_horizontal = 4
 [node name="ExitButton" type="Button" parent="botões/Control" unique_id=1036938366]
 layout_mode = 0
 offset_left = -20.5
-offset_top = 8.005001
-offset_right = 78.5
-offset_bottom = 68.005005
+offset_top = 20.005001
+offset_right = 73.5
+offset_bottom = 80.005005
 size_flags_vertical = 4
 text = "
 "
@@ -1279,10 +1279,10 @@ stretch_mode = 5
 
 [node name="PlayButton" type="Button" parent="botões/Control" unique_id=1670501790]
 layout_mode = 0
-offset_left = -28.5
-offset_top = -43.994995
-offset_right = 94.5
-offset_bottom = 16.005005
+offset_left = -20.5
+offset_top = -43.995
+offset_right = 73.5
+offset_bottom = 16.005001
 size_flags_vertical = 4
 text = "
 "

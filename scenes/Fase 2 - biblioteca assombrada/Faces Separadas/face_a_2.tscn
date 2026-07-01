@@ -145,10 +145,14 @@ distancia = 45.0
 velocidade = 15.0
 
 [node name="livros_078_001" parent="." index="19" unique_id=974897166]
+transparency = 1.0
 script = ExtResource("2_8155l")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 16.0
+
+[node name="StaticBody3D" parent="livros_078_001" index="0" unique_id=1008540541 groups=["lightSensitive"]]
+collision_layer = 9
 
 [node name="livros_079_001" parent="." index="20" unique_id=1149702373]
 script = ExtResource("2_8155l")

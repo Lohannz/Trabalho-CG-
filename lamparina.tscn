@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://1vb8rpptgo5l"]
 
 [ext_resource type="PackedScene" uid="uid://b6j45bqx3uw6p" path="res://models/import/lamparina.glb" id="1_cvr5j"]
+[ext_resource type="Script" uid="uid://cxb5j6glgtibo" path="res://scripts/light_detection.gd" id="2_ikl36"]
 
-[node name="lamparina" unique_id=120889469 instance=ExtResource("1_cvr5j")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+[node name="lamparina" unique_id=494706554 instance=ExtResource("1_cvr5j")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Plane" parent="." index="1" unique_id=1882088581]
+[node name="Plane" parent="." index="0" unique_id=2143512971]
 layers = 524288
 
-[node name="BézierCurve" parent="." index="2" unique_id=549556114]
+[node name="BézierCurve" parent="." index="1" unique_id=2134544437]
 layers = 524288
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="3" unique_id=178910372]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2" unique_id=178910372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 light_color = Color(0.28397825, 0.8848981, 0.5390199, 1)
 light_energy = 15.0
@@ -19,3 +20,4 @@ light_indirect_energy = 10.0
 light_volumetric_fog_energy = 10.0
 light_size = 10.0
 omni_range = 51.080444
+script = ExtResource("2_ikl36")

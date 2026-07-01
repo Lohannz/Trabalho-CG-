@@ -62,12 +62,14 @@ func _process(_delta: float) -> void:
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
 					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.1, 0.0, 0.618)
 					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
+					$WorldEnvironment/DirectionalLight3D.show()
 					
 				"FASE 2":
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
 					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.129, 0.008, 0.09)
 					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
+					$WorldEnvironment/DirectionalLight3D.hide()
 					
 			spawn_setting()
 			level_ready.emit()

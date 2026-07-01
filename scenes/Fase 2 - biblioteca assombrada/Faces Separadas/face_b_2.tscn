@@ -88,6 +88,7 @@ material_override = ExtResource("2_oaq2m")
 material_override = ExtResource("2_oaq2m")
 
 [node name="livros_078_002" parent="." index="3" unique_id=81676562]
+transparency = 1.0
 script = ExtResource("2_11p4c")
 distancia = 150.0
 direcao = Vector3(0, 0, -1)
