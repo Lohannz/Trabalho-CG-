@@ -1,5 +1,6 @@
 extends CharacterBody3D
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
+@onready var transition = get_tree().current_scene.get_node("Camera3D/Pos-processamento/Transição/transição/AnimationPlayer")
 @onready var areaDetection = $areaDetection
 @onready var PORTAL_UI = get_tree().current_scene.get_node("Camera3D/UI/Control/Label")
 signal change_level(next_level_path: String)
@@ -209,11 +210,15 @@ func die() -> void:
 	
 	if $AnimationPlayer.current_animation != &"dead": 
 		$AnimationPlayer.play(&"dead")
-		$AnimationPlayer.speed_scale = 0.8
+		$AnimationPlayer.speed_scale = 1.2
 	await $AnimationPlayer.animation_finished
-
+	
+	transition.play(&"fade")
+	await transition.animation_finished
 	global_position = spawnpoint
 	state = STATE.GROUNDED
+	transition.play_backwards(&"fade")
+	
 	FREEZE = false
 	
 	set_collision_layer_value(1, true)
@@ -460,7 +465,7 @@ func _update_state(delta):
 		elif $AnimationPlayer.current_animation != &"jump": 
 			$AnimationPlayer.play(&"fall")
 			
-
+	print(state)
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5
 

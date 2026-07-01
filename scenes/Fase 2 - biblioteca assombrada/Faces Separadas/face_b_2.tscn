@@ -93,6 +93,12 @@ distancia = 150.0
 direcao = Vector3(0, 0, -1)
 velocidade = 20.0
 
+[node name="StaticBody3D" parent="livros_078_002" index="0" unique_id=90512712 groups=["lightSensitive"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" parent="livros_078_002/StaticBody3D" index="0" unique_id=173565110]
+transform = Transform3D(1.0000125, -1.7136335e-07, -4.957146e-13, -2.7939677e-09, 1, 5.5067062e-14, -5.55056e-13, 0, 1, 0, 0, 0)
+
 [node name="livros_079_002" parent="." index="5" unique_id=1312962209]
 script = ExtResource("2_11p4c")
 distancia = 60.0

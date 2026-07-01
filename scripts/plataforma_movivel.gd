@@ -22,6 +22,6 @@ func _physics_process(delta: float) -> void:
 	elif _progresso <= 0.0:
 		_progresso = 0.0
 		_sentido = 1.0
-
+		
 	global_position = _origem + direcao.normalized() * _progresso
 	_body.constant_linear_velocity = direcao.normalized() * velocidade * _sentido

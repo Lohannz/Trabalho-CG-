@@ -1,6 +1,7 @@
 extends SpotLight3D
 
 @onready var area: Area3D = $Area3D
+@onready var main : Node3D = get_tree().current_scene
 var exceptions: Array
 
 var active_rays: Dictionary = {}
@@ -14,6 +15,8 @@ const ICE_DARK_FRES = Color(0.0, 0.7, 1.6, 1.0)
 
 func _ready() -> void:
 	exceptions = get_tree().get_nodes_in_group("invWall")
+	exceptions.append(get_tree().current_scene.get_node("player"))
+	
 	await get_tree().physics_frame
 	for body in area.get_overlapping_bodies():
 		_register_body(body)
@@ -28,24 +31,26 @@ func _physics_process(_delta: float) -> void:
 			ray.target_position = ray.to_local(body.global_position)
 			
 			_handle_light(body, ray)
-
+			
 func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 	if body.get_collision_layer_value(4):
 		ray.force_raycast_update()
 		var collider = ray.get_collider()
+		
 		if collider == body:
 			ray.debug_shape_custom_color = Color(0.095, 1.054, 0.0, 1.0)
-			if body.get_collision_layer_value(1):
-				_melt_body(body)
+			match main.current_level.name:
+				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
+				"FASE 2": _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
-			if not body.get_collision_layer_value(1):
-				_freeze_body(body)
+			match main.current_level.name:
+				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
+				"FASE 2": _irradiate_body(body, false)
 
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
 		
-		# Duplicação para evitar conflito.
 		if body.get_collision_layer_value(4):
 			var mesh = body.get_parent() as MeshInstance3D
 			if mesh and mesh.material_override is ShaderMaterial:
@@ -74,33 +79,67 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	_register_body(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
+	if "FASE 2" == main.current_level.name:
+		_irradiate_body(body, false)
 	_remove_ray(body)
 
 func _remove_ray(body: Node3D) -> void:
 	if active_rays.has(body):
 		var ray = active_rays[body]
+		active_rays.erase(body)
 		await get_tree().physics_frame
 		if is_instance_valid(ray):
 			ray.queue_free()
 
-func _restore_body(body: Node3D):
+func _restore_body(body: Node3D) -> void:
 	if body.get_collision_layer_value(4):
-		_freeze_body(body)
+		match main.current_level.name:
+			"FASE 1": _freeze_body(body)
+			"FASE 2":_irradiate_body(body, false)
 	active_rays.erase(body)
 
-func _freeze_body(body: Node3D):
+func _freeze_body(body: Node3D) -> void:
 	var material : ShaderMaterial = _get_shader_material(body)
 	if material:
 		_apply_material_colors(material, ICE_DARK_BASE, ICE_DARK_FRES)
 		body.set_collision_layer_value(1, true)
 		body.set_collision_layer_value(2, true)
 	
-func _melt_body(body: Node3D):
+func _melt_body(body: Node3D) -> void:
 	var material : ShaderMaterial = _get_shader_material(body)
 	if material:
 		_apply_material_colors(material, ICE_LIT_BASE, ICE_LIT_FRES)
 		body.set_collision_layer_value(1, false)
 		body.set_collision_layer_value(2, false)
+
+func _irradiate_body(body: Node3D, has_light: bool) -> void:
+	var mesh = body.get_parent() as MeshInstance3D
+	if not mesh: return
+	
+	var target_transparency : float
+	var target_time : float
+	if has_light:
+		target_transparency = 1.0
+		target_time = 1.0
+	else:
+		target_transparency = 0.0
+		target_time = 2.5
+	
+	if is_equal_approx(mesh.transparency, target_transparency):
+		return
+		
+	if body.has_meta("transparency_tween"):
+		var old_tween = body.get_meta("transparency_tween")
+		if is_instance_valid(old_tween):
+			old_tween.kill()
+			
+	var tween = create_tween()
+	body.set_meta("transparency_tween", tween)
+	
+	tween.tween_property(mesh, "transparency", target_transparency, 1.5)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+
 
 func _get_shader_material(body: Node3D) -> ShaderMaterial:
 	var material = null

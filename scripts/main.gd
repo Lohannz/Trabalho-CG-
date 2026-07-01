@@ -18,10 +18,10 @@ func _ready() -> void:
 	player.change_level.connect(start_loading)
 	start_loading(level_path)
 
-func start_loading(novo_path: String) -> void:
+func start_loading(new_path: String) -> void:
 	if loading: return
 	
-	level_path = novo_path
+	level_path = new_path
 	loading = true
 	
 	# Preparação da UI de carregamento.
@@ -54,18 +54,20 @@ func _process(_delta: float) -> void:
 			var scene_resource = ResourceLoader.load_threaded_get(level_path)
 			current_level = scene_resource.instantiate()
 			$Fase.add_child(current_level)
-			
+
 			# Configurações estéticas baseadas nas fases.
 			match current_level.name:
 				"FASE 1":
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
-					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
 					$"Camera3D/Pos-processamento/Nevasca".show()
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
+					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.1, 0.0, 0.618)
+					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
 					
 				"FASE 2":
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
-					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.173)
+					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.129, 0.008, 0.09)
+					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
 					
 			spawn_setting()
 			level_ready.emit()
