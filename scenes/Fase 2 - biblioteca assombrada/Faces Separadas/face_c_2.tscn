@@ -21,7 +21,7 @@ size = Vector3(1.8713379, 1.125, 0.5858154)
 size = Vector3(1.8713379, 0.5527344, 0.578125)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pt37i"]
-size = Vector3(1.8713379, 0.5645752, 1.1501465)
+size = Vector3(1.8713379, 0.56744385, 1.1501465)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwo7t"]
 size = Vector3(1.8713379, 0.5414429, 1.1501465)
@@ -36,10 +36,10 @@ size = Vector3(1.8713379, 0.53271484, 0.57421875)
 size = Vector3(0.37667847, 0.828125, 1.6549759)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dsuxg"]
-size = Vector3(0.39019775, 0.54937744, 0.8354225)
+size = Vector3(0.37667847, 0.5517578, 0.83565617)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ynobo"]
-size = Vector3(0.36608887, 0.2765379, 0.7225859)
+size = Vector3(0.37667847, 0.2800293, 0.7206703)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmy2r"]
 size = Vector3(0.36040497, 0.8330078, 1.6552467)
@@ -82,7 +82,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_os87b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h8e5d"]
-size = Vector3(7.896862, 0.3480835, 4.509903)
+size = Vector3(7.896862, 0.3480835, 4.509346)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
 load_path = "res://.godot/imported/wrecked_woodmap_spec.png-d4d5f2250c2167b1c608465abe052fd8.s3tc.ctex"
@@ -359,7 +359,7 @@ visible = false
 disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="livros_003_001/StaticBody3D" parent_id_path=PackedInt32Array(253569813) index="0" unique_id=174543739]
-transform = Transform3D(3.3080359, 0, 0, 0, 3.739, 0, 0, 0, 2.725, -0.005001068, 0.07505226, 0.003616333)
+transform = Transform3D(3.3080485, 0, 0, 0, 3.8282745, 0, 0, 0, 2.725, -0.005001068, 0.08054352, 0.003616333)
 shape = SubResource("BoxShape3D_pt37i")
 
 [node name="CollisionShape3D" parent="livros_006/StaticBody3D" parent_id_path=PackedInt32Array(455032617) index="0" unique_id=1400406500]
@@ -397,12 +397,12 @@ collision_layer = 4
 transform = Transform3D(0.369, 5.5879354e-09, -3.5527137e-15, -7.858034e-10, 1.002, -7.0984885e-15, 4.440892e-16, 6.8833828e-15, 1.01, -0.11500168, -0.06099367, 0.30928612)
 shape = SubResource("BoxShape3D_mndj4")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="1" unique_id=557360826]
-transform = Transform3D(0.38046053, -3.7252903e-09, -3.5527137e-15, 1.4551915e-10, 1.0024726, -6.661338e-16, 1.7763568e-15, 2.8310687e-15, 1.0097381, -0.115, 0.07594204, -0.9477978)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="1" unique_id=117051726]
+transform = Transform3D(0.369, 5.5879354e-09, -3.5527137e-15, -6.7811925e-09, 1.002, -7.0984885e-15, 4.440892e-16, 6.8833828e-15, 1.01, -0.11500549, 0.07746792, -0.94768906)
 shape = SubResource("BoxShape3D_dsuxg")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="2" unique_id=960677124]
-transform = Transform3D(0.4029996, 5.5879354e-09, -7.1054274e-15, 4.0745363e-10, 1.002, -1.0200174e-15, 1.3322676e-14, 8.881784e-16, 1.01, -0.115, 0.21200609, -1.7350473)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="2" unique_id=944974470]
+transform = Transform3D(0.369, 5.5879354e-09, -3.5527137e-15, -1.2834789e-08, 1.002, -7.0984885e-15, 4.440892e-16, 6.8833828e-15, 1.01, -0.11500549, 0.21360493, -1.7315245)
 shape = SubResource("BoxShape3D_ynobo")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="livrosSTACK_005" index="1" unique_id=1540192060]
@@ -426,7 +426,7 @@ material_override = ExtResource("3_2jsck")
 mesh = SubResource("ArrayMesh_dsw21")
 
 [node name="CollisionShape3D" parent="Cubo/StaticBody3D" parent_id_path=PackedInt32Array(2146760734) index="0" unique_id=946255082]
-transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1, -0.013355255, 0.004547119, 0.00800705)
+transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1, -0.013355255, 0.004547119, 0.0077285767)
 shape = SubResource("BoxShape3D_h8e5d")
 
 [node name="livros_078_004" parent="." index="13" unique_id=1871132588]
