@@ -2,72 +2,93 @@ extends Node3D
 
 @onready var player := $player
 
-# REFERÊNCIAS DA SUA NOVA TELA DE CARREGAMENTO
+# REFERÊNCIAS DA TELA DE CARREGAMENTO	
 @onready var loading_screen := $telaLoading
-@onready var label_porcentagem := $telaLoading/FundoPreto/LabelPorcentagem
+@onready var label_percent := $telaLoading/FundoPreto/LabelPorcentagem
 @onready var UI := $Camera3D/UI
 
 @export_file("*.tscn") var level_path: String
-
 var spawnpoints : Array[Vector3]
 var current_level: Node3D
-var carregando := false
+var loading := false
+
+signal level_ready
 
 func _ready() -> void:
+	player.change_level.connect(start_loading)
+	start_loading(level_path)
+
+func start_loading(novo_path: String) -> void:
+	if loading: return
+	
+	level_path = novo_path
+	loading = true
+	
+	# Preparação da UI de carregamento.
 	player.visible = false
 	UI.visible = false
-	if level_path != "":
-		loading_screen.visible = true
-		label_porcentagem.text = "0%"
-		
-		ResourceLoader.load_threaded_request(level_path)
-		carregando = true
+	loading_screen.visible = true
+	label_percent.text = "0%"
+	
+	# Descarregamento da fase anterior.
+	if is_instance_valid(current_level):
+		current_level.queue_free() 
+		current_level = null
+		spawnpoints.clear() # Limpa os spawns da fase anterior
+	
+	# Carregamento em background
+	ResourceLoader.load_threaded_request(level_path)
 
 func _process(_delta: float) -> void:
-	# verifica o carregamento
-	if carregando:
-		var progresso = []
-		var status = ResourceLoader.load_threaded_get_status(level_path, progresso)
+	if loading:
+		var progress = []
+		var status = ResourceLoader.load_threaded_get_status(level_path, progress)
 		
-		# Pega o estado e coloca na labelPorcentagem
 		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			# Transforma o progresso (0.0 a 1.0) em número inteiro (0 a 100)
-			var porcentagem = int(progresso[0] * 100)
-			
-			label_porcentagem.text = str(porcentagem) + "%"
+			var percent = int(progress[0] * 100)
+			label_percent.text = str(percent) + "%"
 			
 		elif status == ResourceLoader.THREAD_LOAD_LOADED:
-			carregando = false
+			loading = false
 			
-			# Se tiver carregada, instancia ela e troca para ela
 			var scene_resource = ResourceLoader.load_threaded_get(level_path)
 			current_level = scene_resource.instantiate()
 			$Fase.add_child(current_level)
 			
+			# Configurações estéticas baseadas nas fases.
 			match current_level.name:
 				"FASE 1":
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.0, 0.008, 0.196))
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
 					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
+					$"Camera3D/Pos-processamento/Nevasca".show()
+					
 				"FASE 2":
 					$"Camera3D/Pos-processamento/Nevasca".hide()
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.168, 0.009, 0.048, 1.0))
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
 					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.173)
 					
-			configurar_spawn()
+			spawn_setting()
+			level_ready.emit()
 			
+			# Reativação do jogo.
 			loading_screen.visible = false
 			player.visible = true
 			UI.visible = true
 						
 		elif status == ResourceLoader.THREAD_LOAD_FAILED:
-			carregando = false
-			label_porcentagem.text = "Erro ao carregar fase!"
+			loading = false
+			label_percent.text = "Erro ao carregar fase!"
 
-func configurar_spawn() -> void:
+func spawn_setting() -> void:
+	# Evita carregamento caso não hajam Spawnpoints.
+	if not current_level.has_node("Spawnpoints"):
+		push_error("Nenhum Spawnpoint na fase!")
+		return
+		
 	var markers = current_level.get_node("Spawnpoints").get_children()
 	for spawnpoint in markers:
 		spawnpoints.append(spawnpoint.global_position)
 
 	if spawnpoints.size() > 0:
-		player.position = spawnpoints[0]
+		player.global_position = spawnpoints[0]
 		player.spawnpoint = spawnpoints[0]

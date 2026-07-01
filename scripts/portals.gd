@@ -1,7 +1,6 @@
-extends Node3D
+extends Area3D
 @export var destination : Area3D
 @export var spawnpoints : Array[Marker3D]
-
 @onready var player : CharacterBody3D = get_tree().current_scene.get_node("player")
 
 func _on_body_entered(body: Node3D) -> void:

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://sfvxckedojm0"]
 
-[ext_resource type="Script" uid="uid://dc4uftrlpixvy" path="res://scripts/colecionavel.gd" id="1_ewe5g"]
-[ext_resource type="Texture2D" uid="uid://dtqth30scj0rl" path="res://LOHAN/livro coletavel_livro-coletavel-uv.png" id="2_2wb1x"]
+[ext_resource type="Script" uid="uid://dq18cdjld41m0" path="res://scripts/colecionavel.gd" id="1_ewe5g"]
+[ext_resource type="Texture2D" uid="uid://dtqth30scj0rl" path="res://models/livro coletavel_livro-coletavel-uv.png" id="2_2wb1x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_516pw"]
 resource_name = "material livro coletavel"

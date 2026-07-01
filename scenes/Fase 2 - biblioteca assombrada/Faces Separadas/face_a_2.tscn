@@ -3,6 +3,41 @@
 [ext_resource type="PackedScene" uid="uid://celm5smcss0o5" path="res://models/import/fase2glbs/FaceA2.glb" id="1_283rp"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_713sx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_8155l"]
+[ext_resource type="Material" uid="uid://im0asndm7qki" path="res://models/import/materials/wrecked.tres" id="2_iqh20"]
+[ext_resource type="Texture2D" uid="uid://whi5qy8eme4w" path="res://models/import/textures/wrecked_woodmap.png" id="2_peuny"]
+[ext_resource type="Texture2D" uid="uid://qhlykxvdprmk" path="res://models/import/textures/wrecked_woodmap_ao.png" id="3_rbhbk"]
+[ext_resource type="Texture2D" uid="uid://cqwxsb8xv0h7q" path="res://models/import/textures/wrecked_woodmap_normal.png" id="4_srpy1"]
+[ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="6_nq8om"]
+[ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="6_srpy1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
+load_path = "res://.godot/imported/wrecked_woodmap_spec.png-d4d5f2250c2167b1c608465abe052fd8.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7pyv"]
+albedo_color = Color(0.60470825, 0.22395682, 0.31382182, 1)
+albedo_texture = ExtResource("2_peuny")
+metallic = 0.5
+metallic_specular = 0.03
+metallic_texture = SubResource("CompressedTexture2D_shbnp")
+roughness = 0.9
+roughness_texture = ExtResource("3_rbhbk")
+normal_enabled = true
+normal_scale = -0.35
+normal_texture = ExtResource("4_srpy1")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("4_srpy1")
+rim_enabled = true
+rim = 0.2
+rim_texture = ExtResource("6_nq8om")
+ao_enabled = true
+ao_light_affect = 0.6
+ao_texture = ExtResource("3_rbhbk")
+refraction_texture = ExtResource("6_srpy1")
+uv1_scale = Vector3(0.07, 0.04, 0.041)
+uv1_offset = Vector3(0.07, 0.205, -0.218)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.6643542
+uv1_world_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_713sx"]
 size = Vector3(500, 500, 10)
@@ -79,6 +114,24 @@ section_segments = 7
 curve = SubResource("Curve_kjq6w")
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
+
+[node name="plataformadvdd" parent="." index="10" unique_id=1258248717]
+material_override = SubResource("StandardMaterial3D_b7pyv")
+
+[node name="plataformadvdd_001" parent="." index="11" unique_id=1730476116]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataformadvdd_002" parent="." index="12" unique_id=1726497044]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataformadvdd_003" parent="." index="13" unique_id=570600301]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataforma" parent="." index="14" unique_id=160311592]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataforma_001" parent="." index="15" unique_id=1478230543]
+material_override = ExtResource("2_iqh20")
 
 [node name="PlanoTrue_001" parent="." index="16" unique_id=634118364]
 material_override = ExtResource("2_713sx")

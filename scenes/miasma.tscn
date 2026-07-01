@@ -106,7 +106,7 @@ shader_parameter/triplanar_sharpness = 0.5
 size = Vector3(4, 2, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sx7nb"]
-size = Vector3(20, 19.299316, 20)
+size = Vector3(20.535583, 19.419678, 21.033447)
 
 [sub_resource type="Gradient" id="Gradient_5ytoy"]
 offsets = PackedFloat32Array(0, 0.23163842, 0.33898306, 0.5423729, 0.78531075, 1)
@@ -152,7 +152,7 @@ metadata/_edit_group_ = true
 transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1087465202]
-transform = Transform3D(0.19563264, 0, 0, 0, 0.103620365, 0, 0, 0, 0.18985231, 0, 0.0034940785, 0)
+transform = Transform3D(0.19563264, 0, 0, 0, 0.1036188, 0, 0, 0, 0.18985228, -0.001594052, -0.0027417906, 0.008598039)
 shape = SubResource("BoxShape3D_sx7nb")
 
 [node name="MiasmaFog" type="FogVolume" parent="." unique_id=2003875644]

@@ -252,13 +252,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bc26n")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axr8r"]
+transparency = 1
+albedo_color = Color(1.4162054, 0, 0.3789278, 1)
+emission_enabled = true
+emission = Color(1.1811731, 0.07286352, 0.2932453, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc26n"]
+transparency = 1
+albedo_color = Color(1.4162054, 0, 0.3789278, 1)
+emission_enabled = true
+emission = Color(1.1811731, 0.07286352, 0.2932453, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="FASE 2" type="Node3D" unique_id=1906521657]
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1579083494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
 [node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 132.40874, -122.472916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 133.74593, -122.472916)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=2142052467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.46399, 188.88054, -390.45886)
@@ -344,7 +366,7 @@ material_override = SubResource("ShaderMaterial_4dhkl")
 mesh = SubResource("ArrayMesh_giy1v")
 
 [node name="GPUParticles3D" parent="FaceA2/Portais/PortalVermelho" index="0" unique_id=2074984000]
-material_override = SubResource("StandardMaterial3D_gxdkb")
+material_override = SubResource("StandardMaterial3D_axr8r")
 
 [node name="PortalArea" parent="FaceA2/Portais/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
@@ -413,7 +435,7 @@ material_override = SubResource("ShaderMaterial_4dhkl")
 mesh = SubResource("ArrayMesh_giy1v")
 
 [node name="GPUParticles3D" parent="FaceC2/Portais/PortalVermelho" index="0" unique_id=2074984000]
-material_override = SubResource("StandardMaterial3D_gxdkb")
+material_override = SubResource("StandardMaterial3D_bc26n")
 
 [node name="PortalArea" parent="FaceC2/Portais/PortalVermelho" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
