@@ -1,42 +1,182 @@
 [gd_scene format=3 uid="uid://c8hb54lfjk3dj"]
 
 [ext_resource type="PackedScene" uid="uid://c8c2pphdcf5pj" path="res://models/import/fase2glbs/FaceC2.glb" id="1_nx58n"]
+[ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_brcho"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yclsm"]
+[ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="4_brcho"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brcho"]
+size = Vector3(500, 500, 10)
+
+[sub_resource type="Curve" id="Curve_brcho"]
+_data = [Vector2(0, 0.6526315), 0.0, 0.7754962, 0, 0, Vector2(0.34136546, 0.631579), 0.0, 0.0, 0, 0, Vector2(0.56224895, 0.9157895), 0.0, 0.0, 0, 0, Vector2(0.73895574, 1), 0.0, 0.0, 0, 0, Vector2(0.8313253, 0.6526316), 0.0, 0.0, 0, 0, Vector2(1, 0.6842105), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_7qw8h"]
+curve = SubResource("Curve_brcho")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2jsck"]
+lifetime_randomness = 0.12
+emission_shape_offset = Vector3(100, 160, 100)
+emission_shape_scale = Vector3(16, 15, 15)
+emission_shape = 3
+emission_box_extents = Vector3(10, 7, 8)
+angle_min = -59.99999
+angle_max = 160.00002
+velocity_pivot = Vector3(1, -5, 5)
+direction = Vector3(1, -5, 5)
+spread = 60.0
+initial_velocity_max = 10.0
+gravity = Vector3(2, -6.5, 2)
+linear_accel_min = -4.0000024
+linear_accel_max = 9.999997
+radial_accel_min = -4.0000024
+radial_accel_max = 7.9999976
+tangential_accel_min = -8.000002
+tangential_accel_max = 7.9999976
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_7qw8h")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 6.0
+color = Color(0.5394895, 0.062035993, 4.813075e-08, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 10.0
+turbulence_noise_scale = 7.769
+turbulence_noise_speed = Vector3(2, 5.305, 2)
+turbulence_noise_speed_random = 2.0
+turbulence_influence_min = 0.071
+turbulence_influence_max = 0.25100002
+turbulence_initial_displacement_min = -7.4999986
+turbulence_initial_displacement_max = 47.600002
+collision_mode = 2
+
+[sub_resource type="Curve" id="Curve_7qw8h"]
+_data = [Vector2(0, 0.04765296), 0.0, 0.0, 0, 0, Vector2(0.12455517, 0.28805125), 0.0, 6.7709374, 0, 0, Vector2(0.22064057, 0.6209104), -1.0648159, -1.0648159, 0, 0, Vector2(0.2241993, 1), 0.0, 0.0, 0, 0, Vector2(0.5088968, 0.9722617), 3.4642015, 3.4642015, 0, 0, Vector2(0.61209965, 0.7596017), 0.0, 0.0, 0, 0, Vector2(0.7295374, 0.7780939), 0.0, 0.0, 0, 0, Vector2(0.8078292, 0.472973), 0.0, 0.0, 0, 0, Vector2(0.8790036, 0.56543386), 0.0, 0.0, 0, 0, Vector2(0.9217082, 0.18634427), -6.3098016, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04kg0"]
+resource_name = "nucleoTextF2"
+depth_draw_mode = 1
+albedo_color = Color(0.38265935, 0.026737543, 0, 1)
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.6756675, 0.021580277, 2.8878452e-07, 1)
+emission_energy_multiplier = 9.0
+backlight_enabled = true
+backlight = Color(0.35054138, 0, 0.040834576, 1)
+billboard_mode = 1
+grow_amount = -4.02
+proximity_fade_enabled = true
+proximity_fade_distance = 25.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_dsw21"]
+material = SubResource("StandardMaterial3D_04kg0")
+shape = 0
+size = 0.8
+sections = 4
+section_length = 0.22
+section_segments = 7
+curve = SubResource("Curve_7qw8h")
 
 [node name="FaceC2" unique_id=1552770144 instance=ExtResource("1_nx58n")]
 
-[node name="StaticBody3D" parent="livrosSTACK_005" parent_id_path=PackedInt32Array(613420376) index="0" unique_id=1857170463]
+[node name="PlanoTrue_003" parent="." index="0" unique_id=1910743639]
+material_override = ExtResource("2_brcho")
+
+[node name="paredeTRUETRUE_004" parent="." index="1" unique_id=1360556023]
+material_override = ExtResource("2_brcho")
+
+[node name="StaticBody3D" parent="livrosSTACK_005" parent_id_path=PackedInt32Array(1362084726) index="0" unique_id=1175140646]
 collision_layer = 4
 
-[node name="livros_078_004" parent="." index="13" unique_id=1393970287]
+[node name="livros_078_004" parent="." index="13" unique_id=483986987]
 script = ExtResource("2_yclsm")
 distancia = 130.0
 direcao = Vector3(0, 1, 0)
 velocidade = 25.0
 
-[node name="livros_079_003" parent="." index="14" unique_id=63319373]
+[node name="livros_079_003" parent="." index="14" unique_id=1005024040]
 script = ExtResource("2_yclsm")
 distancia = 130.0
 direcao = Vector3(0, -1, 0)
 velocidade = 25.0
 
-[node name="StaticBody3D" parent="livros_025_002" parent_id_path=PackedInt32Array(406070580) index="0" unique_id=1734657447]
+[node name="StaticBody3D" parent="livros_025_002" parent_id_path=PackedInt32Array(945020713) index="0" unique_id=1053922243]
 collision_layer = 4
 
-[node name="livros_079_004" parent="." index="21" unique_id=577596385]
+[node name="livros_079_004" parent="." index="21" unique_id=1003071827]
 script = ExtResource("2_yclsm")
-distancia = 50.0
+distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 18.0
 
-[node name="livros_078_005" parent="." index="29" unique_id=756839043]
+[node name="livros_078_005" parent="." index="29" unique_id=505817777]
 script = ExtResource("2_yclsm")
 distancia = 220.0
 direcao = Vector3(0, 1, 0)
 velocidade = 35.0
 
-[node name="livros_078_006" parent="." index="30" unique_id=1297302529]
+[node name="livros_078_006" parent="." index="30" unique_id=1781213088]
 script = ExtResource("2_yclsm")
 distancia = 220.0
 direcao = Vector3(0, 1, 0)
 velocidade = 35.0
+
+[node name="InvWall" type="StaticBody3D" parent="." index="35" unique_id=1014571620 groups=["invWall"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 427.46906, 365.27252, -373.70148)
+collision_layer = 258
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=550145446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 213.223)
+shape = SubResource("BoxShape3D_brcho")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=1817001258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.399994, 72.899994, 110.38266)
+shape = SubResource("BoxShape3D_brcho")
+
+[node name="Miasma" parent="." index="36" unique_id=803802425 instance=ExtResource("4_brcho")]
+transform = Transform3D(23.825, 0, 0, 0, 56.847, 0, 0, 0, 12.277, 590.569, 241.54237, -406.733)
+
+[node name="MiasmaFog" parent="Miasma" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[node name="Miasma2" parent="." index="37" unique_id=1783079479 instance=ExtResource("4_brcho")]
+transform = Transform3D(23.825, 0, 0, 0, 56.232, 0, 0, 0, 7.6965733, 590.569, 242.33672, -540.8241)
+
+[node name="MiasmaFog" parent="Miasma2" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[node name="Miasma3" parent="." index="38" unique_id=930098513 instance=ExtResource("4_brcho")]
+transform = Transform3D(23.825, 0, 0, 0, 45.77647, 0, 0, 0, 4.654139, 590.1309, 422.99997, -441.42377)
+
+[node name="MiasmaFog" parent="Miasma3" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[node name="Miasma4" parent="." index="39" unique_id=2048610234 instance=ExtResource("4_brcho")]
+transform = Transform3D(11.194873, 0, 0, 0, -1.0431147e-06, -2.5463927, 0, 23.863684, -1.11306356e-07, 565.25934, 515.4048, -488.37515)
+
+[node name="MiasmaFog" parent="Miasma4" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[node name="AlmasC" type="GPUParticles3D" parent="." index="40" unique_id=1727615397]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 504.64697, 323.10803, -323.31024)
+amount = 600
+lifetime = 35.0
+preprocess = 8.0
+speed_scale = 1.25
+explosiveness = 0.05
+randomness = 0.6
+collision_base_size = 1.0
+visibility_aabb = AABB(-103.94, -80, 0, 400, 400, 200)
+process_material = SubResource("ParticleProcessMaterial_2jsck")
+draw_pass_1 = SubResource("RibbonTrailMesh_dsw21")
+
+[editable path="Miasma"]
+[editable path="Miasma2"]
+[editable path="Miasma3"]
+[editable path="Miasma4"]

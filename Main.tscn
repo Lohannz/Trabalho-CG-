@@ -39,12 +39,12 @@ outline_size = 20
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 background_mode = 1
-background_color = Color(0.023529412, 0.38431373, 0.60784316, 1)
+background_color = Color(0.022383085, 0.2094464, 0.4780128, 1)
 background_energy_multiplier = 0.34
-ambient_light_color = Color(0.14951771, 0.6403298, 0.9418111, 1)
+ambient_light_color = Color(0.014191599, 0.10441295, 0.16672188, 1)
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.2641298, 0.3559028, 1.0070543, 1)
+fog_light_color = Color(0.264, 0.356, 1.007, 1)
 fog_light_energy = 0.12
 fog_density = 0.8
 fog_sky_affect = 0.4

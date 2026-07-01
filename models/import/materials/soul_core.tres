@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://g56r0vn1ux5"]
+
+[ext_resource type="Texture2D" uid="uid://cb4kg88tvn0j4" path="res://models/import/textures/soul_core.png" id="1_fdcou"]
+
+[resource]
+resource_name = "nucleoTextF2"
+depth_draw_mode = 1
+albedo_color = Color(1.01, 1.01, 1.01, 1)
+albedo_texture = ExtResource("1_fdcou")
+metallic = 1.0
+metallic_specular = 0.15
+metallic_texture = ExtResource("1_fdcou")
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.6487768, 0.02111223, 1.4439226e-07, 1)
+emission_energy_multiplier = 8.0
+backlight_enabled = true
+backlight = Color(0.35054138, 0, 0.040834576, 1)
