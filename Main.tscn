@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://mjwsijkcjeis"]
 
-[ext_resource type="Script" uid="uid://cn74dv2nd80v0" path="res://scripts/main.gd" id="1_lgr22"]
-[ext_resource type="Shader" uid="uid://c702d8yuqy4by" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
-[ext_resource type="Script" uid="uid://bjiyjx1erymtc" path="res://scripts/playerCamera.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://dg6b5jnajs1ha" path="res://scripts/main.gd" id="1_lgr22"]
+[ext_resource type="Shader" uid="uid://lb1dshthw8qf" path="res://shaders/blizzard.gdshader" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://vf3hk0yknuah" path="res://scripts/playerCamera.gd" id="4_fos0i"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://di6lcajl4kxov" path="res://models/gatocortado.png" id="8_20pc6"]
-[ext_resource type="Script" uid="uid://crne3hagi88oc" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
+[ext_resource type="Script" uid="uid://dhbri6d2bhotl" path="res://scripts/blizzardOrientation.gd" id="8_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
-[ext_resource type="Script" uid="uid://bxtwy6o157l7b" path="res://scripts/staminaUI.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://vr4jrlfdn5cn" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
 [ext_resource type="Shader" uid="uid://dnbx3li2ms3ts" path="res://shaders/transition.gdshader" id="9_fpfj3"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
 [ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://sprites/tema.tres" id="10_j4qnp"]
 [ext_resource type="Material" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
-[ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
+[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://cx3onnwbds71k" path="res://scripts/contador.gd" id="14_c2ibq"]
 [ext_resource type="FontFile" uid="uid://dli0ekpbnxrwb" path="res://data/fonts/KiwiSoda.ttf" id="16_fpfj3"]
 
@@ -137,55 +137,6 @@ level_path = "uid://c35dk6ys8neb6"
 
 [node name="player" parent="." unique_id=455683885 instance=ExtResource("8_c6i3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55735016, 3.1935701, 1.0646362)
-
-[node name="Skeleton3D" parent="player/cat_obj/armature_cat" parent_id_path=PackedInt32Array(455683885, 1591027206) index="0" unique_id=672315071]
-bones/0/position = Vector3(-1.8626451e-09, -0.2861416, -1.1324275e-14)
-bones/0/rotation = Quaternion(-3.2386456e-08, 4.944008e-08, 0.037674494, 0.99929005)
-bones/1/rotation = Quaternion(5.251772e-09, -5.1019626e-08, -0.112351924, 0.9936685)
-bones/2/rotation = Quaternion(-6.8444916e-09, 5.6018628e-08, 0.11013975, 0.99391615)
-bones/4/rotation = Quaternion(0.02353207, 0.0040182425, -0.008015955, 0.9996829)
-bones/5/rotation = Quaternion(0.77866775, 0.11913276, -0.25160047, 0.5622998)
-bones/6/rotation = Quaternion(-0.22904319, -0.018216588, -0.5665348, 0.7913569)
-bones/7/rotation = Quaternion(-0.73047507, -0.100035444, -0.22375219, 0.6374435)
-bones/8/rotation = Quaternion(0.09465304, -0.0015639234, -0.6084642, 0.7879149)
-bones/9/rotation = Quaternion(0.946914, 0.30487302, -0.07704439, -0.06686279)
-bones/10/rotation = Quaternion(5.69451e-05, -0.007538866, 0.00683463, 0.9999483)
-bones/11/rotation = Quaternion(-2.600748e-05, 0.0078087724, -0.003225844, 0.9999643)
-bones/12/rotation = Quaternion(0.9391221, 0.31759933, 0.109342225, 0.0722822)
-bones/13/rotation = Quaternion(0.0008173432, -0.00782259, 0.0074699945, 0.99994123)
-bones/14/rotation = Quaternion(-0.00047350454, 0.00789803, -0.0033300358, 0.99996316)
-bones/15/position = Vector3(2.4006388, -2.8214476, -1.4723803)
-bones/16/position = Vector3(-0.25839648, 0.20929855, -0.058322378)
-bones/16/rotation = Quaternion(-0.021394765, -0.059081655, -0.91953856, 0.3879441)
-bones/17/rotation = Quaternion(-0.021751408, -0.026484856, -0.64247394, 0.7655407)
-bones/18/position = Vector3(-1.4848933, -1.6023545, 0.21531369)
-bones/19/position = Vector3(2.4005823, -2.6795409, 1.5664029)
-bones/20/position = Vector3(-0.19396973, 0.16654038, 0.06387392)
-bones/20/rotation = Quaternion(-0.04606874, -0.04888104, -0.918633, 0.38936085)
-bones/21/rotation = Quaternion(-0.023531534, -0.028146718, -0.64241105, 0.7654817)
-bones/22/position = Vector3(-1.4206487, -1.8958489, -0.3575188)
-bones/23/position = Vector3(2.52288, 1.7969532, 2.0822854)
-bones/23/rotation = Quaternion(0.59483117, -0.5948395, -0.3823189, -0.38232738)
-bones/24/position = Vector3(-1.2369129e-05, -5.953761e-05, -4.5137394e-06)
-bones/24/rotation = Quaternion(0.7367873, -0.0983624, 0.47115427, 0.47485062)
-bones/25/position = Vector3(1.763643, -1.7966318, 0.966869)
-bones/26/position = Vector3(2.573144, 1.7736636, -1.9776103)
-bones/26/rotation = Quaternion(-0.379572, 0.41391003, 0.6338862, 0.53178185)
-bones/27/position = Vector3(-3.1219954e-06, -0.00012293457, -1.1023872e-05)
-bones/27/rotation = Quaternion(-0.34929624, -0.455609, -0.8064411, 0.14165272)
-bones/28/position = Vector3(-1.5365089, -1.6433576, 0.3554744)
-bones/28/rotation = Quaternion(-0.05313707, 3.403487e-09, 0.99858725, -2.6168137e-09)
-
-[node name="Skeleton3D" parent="player/cat_obj/cat_tail/armature_tail" parent_id_path=PackedInt32Array(455683885, 1673467853) index="0" unique_id=1495902340]
-bones/0/position = Vector3(1.2261428, -0.0553025, 0.009096575)
-bones/0/rotation = Quaternion(0.8937649, -0.44695616, -0.037121523, 0.006043119)
-bones/1/rotation = Quaternion(0.020058557, 0.05603517, -0.17990129, 0.9818826)
-bones/2/rotation = Quaternion(0.017392136, -0.0297532, -0.006251606, 0.9993865)
-bones/3/rotation = Quaternion(0.056122888, 0.023199067, 0.5251708, 0.84882724)
-bones/4/rotation = Quaternion(-0.089681484, 0.029643616, 0.25948408, 0.9611174)
-bones/5/rotation = Quaternion(0.031432744, 0.01719883, -0.30076566, 0.95302486)
-bones/6/position = Vector3(0.063869536, -0.47703367, -0.012613314)
-bones/6/rotation = Quaternion(-0.70653373, 0.70765084, 0.0044855764, -0.004511024)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=22637776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.108468, 44.216797)

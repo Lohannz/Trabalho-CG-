@@ -465,7 +465,6 @@ func _update_state(delta):
 		elif $AnimationPlayer.current_animation != &"jump": 
 			$AnimationPlayer.play(&"fall")
 			
-	print(state)
 	if Globals.EFFECTS.WIND in ext_effects:
 		fatigue = REST_FATIGUE * 0.5
 
