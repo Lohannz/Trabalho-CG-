@@ -37,7 +37,7 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Fase 2" type="Node3D" unique_id=1906521657]
+[node name="FASE 2" type="Node3D" unique_id=1906521657]
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1579083494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)

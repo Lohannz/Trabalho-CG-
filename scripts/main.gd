@@ -44,6 +44,13 @@ func _process(_delta: float) -> void:
 			current_level = scene_resource.instantiate()
 			$Fase.add_child(current_level)
 			
+			match current_level.name:
+				"FASE 1":
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.0, 0.008, 0.196))
+				"FASE 2":
+					$"Camera3D/Pos-processamento/Nevasca".hide()
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.168, 0.009, 0.048, 1.0))
+				
 			configurar_spawn()
 			
 			loading_screen.visible = false

@@ -1,104 +1,11 @@
-[gd_resource type="Shader" format=3 uid="uid://1qcwxof15obi"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://1qcwxof15obi"]
+
+[ext_resource type="Shader" uid="uid://cnmu1annvf3oq" path="res://shaders/outline.gdshader" id="1_4vk50"]
 
 [resource]
-code = "shader_type spatial;
-render_mode unshaded, cull_disabled, blend_mix, depth_draw_always;
-
-uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
-
-uniform float shadow_thickness : hint_range(0.0, 5.0) = 2.0;
-uniform float sensitivity : hint_range(0.001, 0.5) = 0.01;
-uniform float normal_sensitivity : hint_range(0.001, 1.0) = 0.15;
-
-// NOVO: Distância máxima da câmera para desenhar o outline (em metros)
-uniform float max_distance : hint_range(1.0, 2000.0) = 100.0;
-// NOVO: Suavização do sumiço do outline na distância máxima
-uniform float distance_fade_range : hint_range(1.0, 200.0) = 10.0;
-
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear;
-uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_linear;
-
-float get_linear_depth(vec2 uv, mat4 proj_matrix) {
-	float depth = texture(DEPTH_TEXTURE, uv).r;
-
-	vec3 ndc = vec3(
-		uv * 2.0 - 1.0,
-		depth
-	);
-
-	vec4 view = proj_matrix * vec4(ndc, 1.0);
-	view.xyz /= view.w;
-
-	return -view.z;
-}
-
-void vertex() {
-	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
-}
-
-void fragment() {
-	vec2 screen_size = vec2(textureSize(DEPTH_TEXTURE, 0));
-	vec2 uv = SCREEN_UV;
-
-	vec2 offset = shadow_thickness / screen_size;
-
-	float depth_center = get_linear_depth(uv, INV_PROJECTION_MATRIX);
-
-	// --- CORTAR O OUTLINE POR DISTÂNCIA DA CÂMERA ---
-	// Se o pixel estiver além da distância máxima ou for o fundo/skybox, descarta o outline aqui
-	if (depth_center > max_distance) {
-		ALPHA = 0.0;
-		discard; 
-	}
-
-	float x = 0.0;
-	float y = 0.0;
-
-	// Sobel X
-	x += get_linear_depth(uv + vec2(-offset.x, -offset.y), INV_PROJECTION_MATRIX) * -1.0;
-	x += get_linear_depth(uv + vec2(-offset.x, 0.0),        INV_PROJECTION_MATRIX) * -2.0;
-	x += get_linear_depth(uv + vec2(-offset.x, offset.y),  INV_PROJECTION_MATRIX) * -1.0;
-	x += get_linear_depth(uv + vec2(offset.x, -offset.y),  INV_PROJECTION_MATRIX) * 1.0;
-	x += get_linear_depth(uv + vec2(offset.x, 0.0),         INV_PROJECTION_MATRIX) * 2.0;
-	x += get_linear_depth(uv + vec2(offset.x, offset.y),   INV_PROJECTION_MATRIX) * 1.0;
-
-	// Sobel Y
-	y += get_linear_depth(uv + vec2(-offset.x, -offset.y), INV_PROJECTION_MATRIX) * -1.0;
-	y += get_linear_depth(uv + vec2(0.0, -offset.y),        INV_PROJECTION_MATRIX) * -2.0;
-	y += get_linear_depth(uv + vec2(offset.x, -offset.y),  INV_PROJECTION_MATRIX) * -1.0;
-	y += get_linear_depth(uv + vec2(-offset.x, offset.y),  INV_PROJECTION_MATRIX) * 1.0;
-	y += get_linear_depth(uv + vec2(0.0, offset.y),         INV_PROJECTION_MATRIX) * 2.0;
-	y += get_linear_depth(uv + vec2(offset.x, offset.y),   INV_PROJECTION_MATRIX) * 1.0;
-
-	float depth_edge = sqrt(x * x + y * y);
-	depth_edge /= max(depth_center, 0.001);
-
-	// =====================
-	// Detecção por Normais
-	// =====================
-	vec3 normal_center = texture(NORMAL_TEXTURE, uv).xyz;
-	vec3 normal_left   = texture(NORMAL_TEXTURE, uv + vec2(-offset.x, 0.0)).xyz;
-	vec3 normal_right  = texture(NORMAL_TEXTURE, uv + vec2(offset.x, 0.0)).xyz;
-	vec3 normal_up     = texture(NORMAL_TEXTURE, uv + vec2(0.0, offset.y)).xyz;
-	vec3 normal_down   = texture(NORMAL_TEXTURE, uv + vec2(0.0, -offset.y)).xyz;
-
-	float normal_edge = 0.0;
-	normal_edge += length(normal_center - normal_left);
-	normal_edge += length(normal_center - normal_right);
-	normal_edge += length(normal_center - normal_up);
-	normal_edge += length(normal_center - normal_down);
-
-	ALBEDO = outline_color.rgb;
-
-	// Calcula um fade suave para o outline não sumir de forma brusca na distância limite
-	float fade_start = max_distance - distance_fade_range;
-	float distance_fade = clamp((max_distance - depth_center) / distance_fade_range, 0.0, 1.0);
-
-	if (depth_edge > sensitivity || normal_edge > normal_sensitivity) {
-		// Multiplica a opacidade do contorno pelo fade de distância
-		ALPHA = outline_color.a * distance_fade;
-	}
-	else {
-		ALPHA = 0.0;
-	}
-}"
+render_priority = 10
+shader = ExtResource("1_4vk50")
+shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
+shader_parameter/shadow_thickness = 1.10000005225
+shader_parameter/sensitivity = 0.5
+shader_parameter/normal_sensitivity = 1.0

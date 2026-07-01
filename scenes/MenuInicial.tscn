@@ -4,26 +4,23 @@
 [ext_resource type="Script" uid="uid://b042pvv7lns61" path="res://scripts/menu_inicial.gd" id="2_37lmg"]
 [ext_resource type="PackedScene" uid="uid://b0fcbeyblrouj" path="res://scenes/cena_menu_casa.tscn" id="2_djenv"]
 [ext_resource type="Script" uid="uid://s6s31xobxywc" path="res://scripts/cameraMenu.gd" id="2_ibyq2"]
-[ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="4_0kx3q"]
+[ext_resource type="Shader" uid="uid://dalpu3pt2mvb6" path="res://shaders/pixelization.gdshader" id="4_0kx3q"]
 [ext_resource type="Texture2D" uid="uid://bn87ejraknqkr" path="res://sprites/LOGO2.png" id="4_djenv"]
-[ext_resource type="Shader" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="5_37lmg"]
+[ext_resource type="Shader" uid="uid://cnmu1annvf3oq" path="res://shaders/outline.gdshader" id="5_37lmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37lmg"]
 shader = ExtResource("4_0kx3q")
 shader_parameter/pixel_size = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6i3y"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g080d"]
+render_priority = 10
 shader = ExtResource("5_37lmg")
-shader_parameter/outline_color = Color(0, 0.007843138, 0.19607843, 1)
-shader_parameter/shadow_thickness = 1.0000000475
+shader_parameter/outline_color = Color(0.26981783, 0.022379981, 0.09450076, 1)
+shader_parameter/shadow_thickness = 1.10000005225
 shader_parameter/sensitivity = 0.5
 shader_parameter/normal_sensitivity = 1.0
-shader_parameter/max_distance = 1000.0000474525
-shader_parameter/distance_fade_range = 20.0000009025
 
 [sub_resource type="QuadMesh" id="QuadMesh_g080d"]
-material = SubResource("ShaderMaterial_c6i3y")
 size = Vector2(7, 4)
 
 [node name="MenuInicial" type="Control" unique_id=1672511951]
@@ -80,6 +77,7 @@ grow_vertical = 2
 [node name="Outline" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Camera3D" unique_id=1033429227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4445953, -6.133911)
 layers = 512
+material_override = SubResource("ShaderMaterial_g080d")
 mesh = SubResource("QuadMesh_g080d")
 
 [node name="CASA-MENU" parent="SubViewportContainer/SubViewport/Node3D" unique_id=504099331 instance=ExtResource("2_djenv")]
@@ -98,7 +96,7 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 32.0
 offset_top = -22.0
-offset_right = 182.0
+offset_right = 215.0
 offset_bottom = 108.0
 grow_vertical = 2
 theme_override_constants/separation = 10

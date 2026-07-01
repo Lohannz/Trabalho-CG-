@@ -1,0 +1,35 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dggg5n8j4v1x2"]
+
+[ext_resource type="Texture2D" uid="uid://cr2p67x1k8ud4" path="res://models/import/textures/woodmap.jpg" id="1_4xl55"]
+[ext_resource type="Texture2D" uid="uid://nwrfh4xxq371" path="res://models/import/textures/woodmap_ao.png" id="2_4xl55"]
+[ext_resource type="Texture2D" uid="uid://c8jgl7x5u2lok" path="res://models/import/textures/woodmap_normal.png" id="3_nckuv"]
+[ext_resource type="Texture2D" uid="uid://drllachxvgm5e" path="res://models/import/textures/woodmap_disp.png" id="4_as3k2"]
+[ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="5_ek0c5"]
+
+[resource]
+albedo_color = Color(0.37430802, 0.43860197, 0.5456782, 1)
+albedo_texture = ExtResource("1_4xl55")
+metallic = 0.1
+metallic_specular = 0.0
+metallic_texture = ExtResource("5_ek0c5")
+roughness_texture = ExtResource("5_ek0c5")
+normal_enabled = true
+normal_scale = 1.25
+normal_texture = ExtResource("3_nckuv")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("3_nckuv")
+rim = 0.0
+rim_tint = 0.2
+rim_texture = ExtResource("4_as3k2")
+clearcoat = 0.0
+clearcoat_roughness = 1.0
+clearcoat_texture = ExtResource("4_as3k2")
+ao_enabled = true
+ao_light_affect = 0.4
+ao_texture = ExtResource("2_4xl55")
+refraction_texture = ExtResource("5_ek0c5")
+uv1_scale = Vector3(0.103, 0.06, -0.051)
+uv1_offset = Vector3(-0.12, -0.02, -0.26)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.6643542
+uv1_world_triplanar = true

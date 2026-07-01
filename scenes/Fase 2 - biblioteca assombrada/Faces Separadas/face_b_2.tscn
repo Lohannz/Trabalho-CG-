@@ -1,25 +1,54 @@
 [gd_scene format=3 uid="uid://b5c8ubcl6kpaa"]
 
-[ext_resource type="PackedScene" uid="uid://dgdboggpgokrs" path="res://models/import/fase2glbs/FaceB2.glb" id="1_k4sp1"]
+[ext_resource type="PackedScene" uid="uid://dgdboggpgokrs" path="res://models/import/FaceB2.glb" id="1_k4sp1"]
+[ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_8hcbl"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_11p4c"]
+[ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="3_oaq2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hcbl"]
+size = Vector3(500, 500, 10)
 
 [node name="FaceB2" unique_id=625877568 instance=ExtResource("1_k4sp1")]
 
-[node name="livros_078_002" parent="." index="3" unique_id=140342935]
+[node name="paredeTRUETRUE_002" parent="." index="0" unique_id=129016495]
+material_override = ExtResource("2_8hcbl")
+
+[node name="planoTrue" parent="." index="1" unique_id=1580137670]
+material_override = ExtResource("2_8hcbl")
+
+[node name="StaticBody3D" parent="planoTrue" index="0" unique_id=1500086908]
+visible = false
+
+[node name="livros_078_002" parent="." index="3" unique_id=81676562]
 script = ExtResource("2_11p4c")
 distancia = 150.0
 direcao = Vector3(0, 0, -1)
 velocidade = 20.0
 
-[node name="livros_079_002" parent="." index="5" unique_id=890591468]
+[node name="livros_079_002" parent="." index="5" unique_id=1312962209]
 script = ExtResource("2_11p4c")
 distancia = 60.0
 direcao = Vector3(0, 1, 0)
 velocidade = 18.0
 
-[node name="livros_078_003" parent="." index="18" unique_id=202894422]
+[node name="livros_078_003" parent="." index="18" unique_id=305992937]
 transform = Transform3D(1.4901271e-06, 7.962804e-06, 25.160845, 24.999819, -0.47920424, -1.4875778e-06, 0.13451451, 89.061165, -2.2575916e-06, -532.155, 505.0413, -382.15045)
 script = ExtResource("2_11p4c")
 distancia = 85.0
 direcao = Vector3(0, 0, -1)
 velocidade = 20.0
+
+[node name="Miasma" parent="." index="24" unique_id=803802425 instance=ExtResource("3_oaq2m")]
+transform = Transform3D(23.982563, 0, 0, 0, 70.69879, 0, 0, 0, 65.1347, -503.75534, 257.97302, -455.44568)
+
+[node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=421119467 groups=["invWall"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -665.558, 368.5061, -401.31717)
+collision_layer = 258
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=1219033153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 214.14)
+shape = SubResource("BoxShape3D_8hcbl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=965111534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 109.141)
+shape = SubResource("BoxShape3D_8hcbl")

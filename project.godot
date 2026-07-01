@@ -28,6 +28,7 @@ Moveble=""
 lightSensitive=""
 invWall=""
 barrier=""
+killObj=""
 
 [input]
 
