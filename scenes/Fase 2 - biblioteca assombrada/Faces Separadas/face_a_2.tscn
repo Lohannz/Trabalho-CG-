@@ -4,16 +4,13 @@
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_713sx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_8155l"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_04kg0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_713sx"]
 size = Vector3(500, 500, 10)
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
 
 [node name="PlanoTrue_001" parent="." index="16" unique_id=634118364]
 material_override = ExtResource("2_713sx")
-
-[node name="StaticBody3D" parent="PlanoTrue_001" index="0" unique_id=1188575174]
-visible = false
 
 [node name="paredeTRUETRUE_001" parent="." index="17" unique_id=1341812519]
 material_override = ExtResource("2_713sx")
@@ -23,14 +20,26 @@ script = ExtResource("2_8155l")
 distancia = 45.0
 velocidade = 15.0
 
-[node name="livros_078_001" parent="." index="19" unique_id=1716517778]
+[node name="livros_078_001" parent="." index="19" unique_id=974897166]
 script = ExtResource("2_8155l")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 16.0
 
-[node name="livros_079_001" parent="." index="20" unique_id=63050766]
+[node name="livros_079_001" parent="." index="20" unique_id=1149702373]
 script = ExtResource("2_8155l")
 distancia = 45.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 15.0
+
+[node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=1607314316 groups=["invWall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.029572, 373.02094, -310.91406)
+collision_layer = 258
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=1822851044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 213.223)
+shape = SubResource("BoxShape3D_713sx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=1073274804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 107.855)
+shape = SubResource("BoxShape3D_713sx")
