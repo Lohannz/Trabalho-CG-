@@ -32,6 +32,9 @@ size = Vector3(1.8713379, 0.5710449, 0.5858154)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sapla"]
 size = Vector3(1.8713379, 0.53271484, 0.57421875)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmy2r"]
+size = Vector3(6.1896286, 0.828125, 0.108849525)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mndj4"]
 size = Vector3(0.37667847, 0.828125, 1.6549759)
 
@@ -41,14 +44,14 @@ size = Vector3(0.37667847, 0.5517578, 0.83565617)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ynobo"]
 size = Vector3(0.37667847, 0.2800293, 0.7206703)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xmy2r"]
-size = Vector3(0.36040497, 0.8330078, 1.6552467)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_0kqls"]
-size = Vector3(0.35979462, 0.54937744, 0.84080696)
+size = Vector3(0.37667847, 0.828125, 1.6549759)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc45q"]
-size = Vector3(0.3600769, 0.2765379, 0.7200835)
+size = Vector3(0.37667847, 0.5517578, 0.83565617)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nq3wa"]
+size = Vector3(0.37667847, 0.2800293, 0.7206703)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_os87b"]
 _surfaces = [{
@@ -386,6 +389,10 @@ shape = SubResource("BoxShape3D_2e7m3")
 transform = Transform3D(3.3080304, 0, 0, 0, -3.739, -2.3822709e-07, 0, 3.268738e-07, -2.725, -0.06399536, -3.0049992, 1.7649994)
 shape = SubResource("BoxShape3D_sapla")
 
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="livros_008/StaticBody3D" parent_id_path=PackedInt32Array(1634915300) index="1" unique_id=1696738219]
+transform = Transform3D(-0.003229343, -7.4957657, 4.0543746e-10, -1.2819948e-08, -2.6792606e-14, -1.8119154, -0.80748475, 0.05425954, 1.0136462e-07, -0.022972107, -3.483469, -6.921879)
+shape = SubResource("BoxShape3D_xmy2r")
+
 [node name="livrosSTACK_005" parent="." index="11" unique_id=1596615350]
 transform = Transform3D(-0.13448133, -114.95343, 6.1676384e-09, 7.449004e-07, 3.06302e-13, 38.464035, -24.994343, 0.6185036, 1.1463011e-06, 583.3217, 387.14005, -504.6325)
 
@@ -408,26 +415,31 @@ shape = SubResource("BoxShape3D_ynobo")
 [node name="StaticBody3D2" type="StaticBody3D" parent="livrosSTACK_005" index="1" unique_id=1540192060]
 transform = Transform3D(0.9999999, -3.7252903e-09, 0, 0, 0.9999999, 6.938894e-18, 0, 5.551115e-17, 1, -0.016487122, 1.9550323e-05, 0.010122299)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="0" unique_id=1284909028]
-transform = Transform3D(1.2390641, 3.7252903e-09, 1.0658141e-14, 3.4924597e-10, 0.9987881, 1.2455315e-15, 7.1054274e-15, -2.6645353e-15, 1.009738, 0.17871284, -0.061395645, 0.29902935)
-shape = SubResource("BoxShape3D_xmy2r")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="1" unique_id=496769148]
-transform = Transform3D(1.2390641, 5.5879354e-09, 1.0658141e-14, 3.4924597e-10, 0.9987874, 1.3253287e-15, 7.1054274e-15, -2.7200464e-15, 1.009738, 0.17793274, 0.07559967, -0.95749855)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="0" unique_id=31264533]
+transform = Transform3D(1.2087086, 1.3038516e-08, 4.6185278e-14, -4.4237822e-09, 0.9905547, -7.032569e-15, -8.881784e-15, 6.4948047e-15, 1.0099999, 0.17465591, -0.0613389, 0.29916382)
 shape = SubResource("BoxShape3D_0kqls")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="2" unique_id=653165536]
-transform = Transform3D(1.2390622, -3.7252903e-09, 1.0658141e-14, -1.7113052e-08, 0.9987891, 9.332812e-16, -1.7763568e-15, -1.5543122e-15, 1.009738, 0.17694664, 0.21213388, -1.7431383)
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="1" unique_id=1955913303]
+transform = Transform3D(1.2087086, 5.5879354e-09, 4.6185278e-14, -2.4214387e-08, 0.9905548, -7.032569e-15, -8.881784e-15, 6.605827e-15, 1.0099999, 0.17454147, 0.07713318, -0.95781136)
 shape = SubResource("BoxShape3D_pc45q")
 
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D2" index="2" unique_id=472825184]
+transform = Transform3D(1.2087086, 5.5879354e-09, 4.6185278e-14, -4.400499e-08, 0.99055487, -7.032569e-15, -8.881784e-15, 6.550316e-15, 1.0099999, 0.17443848, 0.21327639, -1.7416468)
+shape = SubResource("BoxShape3D_nq3wa")
+
 [node name="Cubo" parent="." index="12" unique_id=1387790030]
-transform = Transform3D(12.071104, 0, 0, 0, 12.627065, 0, 0, 0, 12.627065, 590.54297, 433.1847, -527.96155)
+transform = Transform3D(12.071104, 0, 0, 0, 12.627065, 0, 0, 0, 12.525222, 590.54297, 433.1847, -528.1138)
 material_override = ExtResource("3_2jsck")
 mesh = SubResource("ArrayMesh_dsw21")
 
-[node name="CollisionShape3D" parent="Cubo/StaticBody3D" parent_id_path=PackedInt32Array(2146760734) index="0" unique_id=946255082]
+[node name="StaticBody3D" parent="Cubo" index="0" unique_id=2146760734]
+transform = Transform3D(12.071104, 0, 0, 0, 12.627065, 0, 0, 0, 12.627065, 590.54297, 433.1847, -527.96155)
+top_level = true
+
+[node name="CollisionShape3D" parent="Cubo/StaticBody3D" index="0" unique_id=946255082]
 transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1, -0.013355255, 0.004547119, 0.0077285767)
 shape = SubResource("BoxShape3D_h8e5d")
+disabled = true
 
 [node name="livros_078_004" parent="." index="13" unique_id=1871132588]
 script = ExtResource("2_yclsm")
@@ -520,26 +532,11 @@ velocidade = 18.0
 [node name="StaticBody3D" parent="livros_079_004" index="0" unique_id=1493696662]
 collision_layer = 3
 
-[node name="StaticBody3D" parent="PilhaDeLivros_018" parent_id_path=PackedInt32Array(1146497584) index="0" unique_id=1018875939]
-collision_layer = 3
-
-[node name="StaticBody3D" parent="PilhaDeLivros_025" parent_id_path=PackedInt32Array(717412944) index="0" unique_id=1041781343]
-collision_layer = 3
-
 [node name="StaticBody3D" parent="PilhaDeLivros_028" parent_id_path=PackedInt32Array(1667423706) index="0" unique_id=173156156]
-collision_layer = 3
-
-[node name="StaticBody3D" parent="PilhaDeLivros_029" parent_id_path=PackedInt32Array(155714763) index="0" unique_id=932608245]
 collision_layer = 3
 
 [node name="PilhaDeLivros_031" parent="." index="26" unique_id=1536733740]
 transform = Transform3D(-0.055092447, -29.843828, -8.465497, 0.06785953, 36.762794, -6.872243, 16.244587, -0.2547849, -2.3271946e-06, 626.95624, 422.70453, -546.7751)
-
-[node name="StaticBody3D" parent="PilhaDeLivros_031" index="0" unique_id=2135561102]
-collision_layer = 3
-
-[node name="StaticBody3D" parent="PilhaDeLivros_032" parent_id_path=PackedInt32Array(583224978) index="0" unique_id=2045704305]
-collision_layer = 3
 
 [node name="Cubo_005" parent="." index="28" unique_id=296096032]
 transform = Transform3D(12.088, 0, 0, 0, 12.627, 0, 0, 0, 12.627, 590.486, 300.472, -323.997)
@@ -571,21 +568,15 @@ transform = Transform3D(-0.055092447, -29.843828, -8.465497, 0.06785953, 36.7627
 [node name="PilhaDeLivros_016" parent="." index="33" unique_id=685863425]
 transform = Transform3D(-0.055092447, -29.843828, -8.465497, 0.06785953, 36.762794, -6.872243, 16.244587, -0.2547849, -2.3271946e-06, 626.95624, 350.41983, -536.3028)
 
-[node name="StaticBody3D" parent="PilhaDeLivros_016" index="0" unique_id=882279276]
-collision_layer = 3
-
 [node name="PilhaDeLivros_017" parent="." index="34" unique_id=442637746]
 transform = Transform3D(-0.055092447, -29.843828, -8.465497, 0.06785953, 36.762794, -6.872243, 16.244587, -0.2547849, -2.3271946e-06, 626.95624, 367.57288, -546.7751)
-
-[node name="StaticBody3D" parent="PilhaDeLivros_017" index="0" unique_id=1564793473]
-collision_layer = 3
 
 [node name="InvWall" type="StaticBody3D" parent="." index="35" unique_id=1014571620 groups=["invWall"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 427.46906, 365.27252, -373.70148)
 collision_layer = 258
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=550145446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 213.223)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 214.948)
 shape = SubResource("BoxShape3D_brcho")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=1817001258]
@@ -632,9 +623,6 @@ collision_base_size = 1.0
 visibility_aabb = AABB(-103.94, -80, 0, 400, 400, 200)
 process_material = SubResource("ParticleProcessMaterial_2jsck")
 draw_pass_1 = SubResource("RibbonTrailMesh_dsw21")
-
-[node name="StaticBody3D" parent="PilhaDeLivros_038" parent_id_path=PackedInt32Array(606756368) index="0" unique_id=220336063]
-collision_layer = 3
 
 [node name="Miasma5" parent="." index="42" unique_id=1831279612 instance=ExtResource("4_brcho")]
 transform = Transform3D(23.825, 0, 0, 0, -2.8504196e-06, -9.126, 0, 65.21, -3.9891015e-07, 590.569, 321.613, -619.0985)
