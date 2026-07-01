@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="5_qrikk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
-load_path = "res://.godot/imported/wrecked_woodmap_spec.png-d4d5f2250c2167b1c608465abe052fd8.s3tc.ctex"
 
 [resource]
 albedo_color = Color(0.84313726, 0.28235295, 0.3137255, 1)
