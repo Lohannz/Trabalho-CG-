@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="3_giy1v"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="4_e2jij"]
 [ext_resource type="PackedScene" uid="uid://c8hb54lfjk3dj" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_c_2.tscn" id="6_giy1v"]
+[ext_resource type="PackedScene" uid="uid://5ajlrxhks307" path="res://scenes/soul_core.tscn" id="7_e2jij"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_1ffj6"]
 parameter_name = "vortex_distortion"
@@ -250,7 +251,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bc26n")
 
-[node name="Fase 2" type="Node3D" unique_id=1906521657]
+[node name="FASE 2" type="Node3D" unique_id=1906521657]
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1579083494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
@@ -400,6 +401,9 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn4")]
 
 [node name="PortalCol" parent="FaceC2/Portais/PortalRosa/PortalArea" index="0" unique_id=1665133991]
 transform = Transform3D(-1.1980065e-08, -1.1641472e-09, -10.618902, 0, 1, -1.2361966e-08, 0.27407193, -5.088649e-17, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
+
+[node name="Nucleo_de_Almas" parent="." unique_id=300099459 instance=ExtResource("7_e2jij")]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 81.69571, 251.28043, -503.41504)
 
 [editable path="FaceA2/Portais/PortalVerde"]
 [editable path="FaceA2/Portais/PortalRosa"]

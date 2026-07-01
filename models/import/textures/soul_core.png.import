@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baq2e8r4r5a7j"
-path.s3tc="res://.godot/imported/soul_core.jpeg-b04b5bc393ec2af319d3bfe386a39ea1.s3tc.ctex"
+uid="uid://cb4kg88tvn0j4"
+path.s3tc="res://.godot/imported/soul_core.png-ac72dc47d4768bffa207442c9df86d84.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/import/textures/soul_core.jpeg"
-dest_files=["res://.godot/imported/soul_core.jpeg-b04b5bc393ec2af319d3bfe386a39ea1.s3tc.ctex"]
+source_file="res://models/import/textures/soul_core.png"
+dest_files=["res://.godot/imported/soul_core.png-ac72dc47d4768bffa207442c9df86d84.s3tc.ctex"]
 
 [params]
 
