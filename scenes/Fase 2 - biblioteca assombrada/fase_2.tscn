@@ -412,3 +412,4 @@ transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 81.69571, 251.28043, -503.
 [editable path="FaceB2/Portais/PortalRosa"]
 [editable path="FaceC2/Portais/PortalVermelho"]
 [editable path="FaceC2/Portais/PortalRosa"]
+[editable path="Nucleo_de_Almas"]

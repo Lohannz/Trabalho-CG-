@@ -36,7 +36,6 @@ operator = 2
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_j8duv"]
 parameter_name = "cloud_size"
 hint = 1
-max = 5.0
 default_value_enabled = true
 default_value = 0.4
 
@@ -50,8 +49,6 @@ input_name = "time"
 operator = 2
 
 [sub_resource type="VisualShader" id="VisualShader_76vrw"]
-modes/blend = 3
-modes/depth_draw = 2
 modes/cull = 2
 flags/unshaded = true
 flags/world_vertex_coords = true

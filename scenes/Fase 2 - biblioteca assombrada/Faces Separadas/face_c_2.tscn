@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c8c2pphdcf5pj" path="res://models/import/fase2glbs/FaceC2.glb" id="1_nx58n"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_brcho"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yclsm"]
-[ext_resource type="Material" uid="uid://1vqu101oqae4" path="res://models/import/materials/cobblemap.tres" id="3_2jsck"]
+[ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="4_brcho"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_brcho"]
 size = Vector3(500, 500, 10)
@@ -14,7 +14,7 @@ size = Vector3(500, 500, 10)
 material_override = ExtResource("2_brcho")
 
 [node name="paredeTRUETRUE_004" parent="." index="1" unique_id=759945533]
-material_override = ExtResource("3_2jsck")
+material_override = ExtResource("2_brcho")
 
 [node name="StaticBody3D" parent="livrosSTACK_005" parent_id_path=PackedInt32Array(1834874436) index="0" unique_id=1854953841]
 collision_layer = 4
@@ -63,3 +63,20 @@ shape = SubResource("BoxShape3D_brcho")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=1817001258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.399994, 72.899994, 110.38266)
 shape = SubResource("BoxShape3D_brcho")
+
+[node name="Miasma" parent="." index="36" unique_id=803802425 instance=ExtResource("4_brcho")]
+transform = Transform3D(23.825, 0, 0, 0, 56.847, 0, 0, 0, 12.277, 590.569, 241.54237, -406.733)
+
+[node name="MiasmaFog" parent="Miasma" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[node name="Miasma2" parent="." index="37" unique_id=1783079479 instance=ExtResource("4_brcho")]
+transform = Transform3D(23.825, 0, 0, 0, 56.232, 0, 0, 0, 7.6965733, 590.569, 242.33672, -540.8241)
+
+[node name="MiasmaFog" parent="Miasma2" index="1" unique_id=2003875644]
+transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
+size = Vector3(0.92357445, 1.4455566, 1.6458855)
+
+[editable path="Miasma"]
+[editable path="Miasma2"]

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://5ajlrxhks307"]
 
 [ext_resource type="PackedScene" uid="uid://dhitd46y5iumr" path="res://models/import/fase2glbs/Nucleo_de_Almas.glb" id="1_mkcw6"]
+[ext_resource type="Texture2D" uid="uid://cb4kg88tvn0j4" path="res://models/import/textures/soul_core.png" id="2_3d7i6"]
 [ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="2_v670c"]
 [ext_resource type="Material" uid="uid://g56r0vn1ux5" path="res://models/import/materials/soul_core.tres" id="3_k682t"]
 [ext_resource type="Texture2D" uid="uid://dexpa1hg2730o" path="res://models/import/textures/noise1.png" id="4_772jv"]
@@ -52,7 +53,6 @@ input_name = "time"
 operator = 2
 
 [sub_resource type="VisualShader" id="VisualShader_76vrw"]
-modes/depth_draw = 1
 modes/cull = 2
 flags/unshaded = true
 flags/world_vertex_coords = true
@@ -97,8 +97,8 @@ gradient = SubResource("Gradient_x3ukm")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m31bh"]
 render_priority = 0
 shader = SubResource("VisualShader_76vrw")
-shader_parameter/cloud_size = 0.03200000152
-shader_parameter/translation_speed = Vector3(1, -1, -1.5)
+shader_parameter/cloud_size = 0.0150000007125
+shader_parameter/translation_speed = Vector3(0.2, 0.5, 0.75)
 shader_parameter/cloud_base = ExtResource("4_772jv")
 shader_parameter/grad_ramp = SubResource("GradientTexture1D_hb0rr")
 shader_parameter/opacity = 0.70000003325
@@ -148,6 +148,71 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ifd04")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_772jv"]
+resource_name = "nucleoTextF2"
+transparency = 1
+blend_mode = 1
+disable_fog = true
+albedo_color = Color(1, 0.70980394, 0.6431373, 0.8352941)
+albedo_texture = ExtResource("2_3d7i6")
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.7533114, 0, 0.013197741, 1)
+emission_energy_multiplier = 10.0
+backlight = Color(0.35054138, 0, 0.040834576, 1)
+grow = true
+grow_amount = -3.834
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7nb4"]
+resource_name = "nucleoTextF2"
+depth_draw_mode = 1
+albedo_color = Color(1.01, 1.01, 1.01, 1)
+albedo_texture = ExtResource("2_3d7i6")
+metallic = 1.0
+metallic_specular = 0.15
+metallic_texture = ExtResource("2_3d7i6")
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.6487768, 0.02111223, 1.4439226e-07, 1)
+emission_energy_multiplier = 8.0
+backlight_enabled = true
+backlight = Color(0.35054138, 0, 0.040834576, 1)
+
+[sub_resource type="Gradient" id="Gradient_772jv"]
+offsets = PackedFloat32Array(0, 0.13833992, 0.256917, 0.33898306, 0.486166, 0.62450594, 0.78531075, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12871625, 0.12871625, 0.12871625, 1, 0.9340804, 0.9340805, 0.93408036, 1, 0.18079096, 0.18079096, 0.18079096, 1, 0.45254222, 0.45254248, 0.45254225, 1, 0.70796615, 0.7079667, 0.7079662, 1, 0.14044705, 0.14044768, 0.14044714, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g7nb4"]
+noise_type = 4
+seed = 4
+frequency = 0.2409
+offset = Vector3(0, 0, 65.57)
+fractal_lacunarity = 2.37
+fractal_gain = -0.23
+fractal_weighted_strength = 0.12
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 30.11
+domain_warp_frequency = 0.035
+domain_warp_fractal_lacunarity = 6.23
+domain_warp_fractal_gain = -0.115
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_fouok"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_g7nb4")
+color_ramp = SubResource("Gradient_772jv")
+seamless = true
+
+[sub_resource type="FogMaterial" id="FogMaterial_b2uy6"]
+density = 0.05
+albedo = Color(0.016697844, 0.08487547, 0.26231152, 1)
+emission = Color(0.12316287, 0.00516405, 9.024516e-09, 1)
+height_falloff = 0.2871746
+edge_fade = 1.7753127
+density_texture = SubResource("NoiseTexture3D_fouok")
+
 [node name="Nucleo_de_Almas" unique_id=300099459 instance=ExtResource("1_mkcw6")]
 script = ExtResource("2_v670c")
 
@@ -158,30 +223,41 @@ material_override = ExtResource("3_k682t")
 [node name="Icosphere2" type="MeshInstance3D" parent="." index="1" unique_id=1196085904]
 transform = Transform3D(1, 0, 0, 0, 0.98118764, -0.19305643, 0, 0.19305643, 0.98118764, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_m31bh")
-transparency = 0.66
 mesh = SubResource("ArrayMesh_kcqol")
 skeleton = NodePath("")
 
-[node name="Circle" parent="." index="2" unique_id=955299074]
-material_override = ExtResource("3_k682t")
+[node name="Icosphere3" type="MeshInstance3D" parent="." index="2" unique_id=757015980]
+transform = Transform3D(0.4, 0, 0, 0, 0.37018338, -0.15153968, 0, 0.15153968, 0.37018338, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_772jv")
+mesh = SubResource("ArrayMesh_kcqol")
+skeleton = NodePath("")
 
-[node name="Circle_001" parent="." index="3" unique_id=1845384081]
-material_override = ExtResource("3_k682t")
+[node name="Circle" parent="." index="3" unique_id=955299074]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_002" parent="." index="4" unique_id=1034533427]
-material_override = ExtResource("3_k682t")
+[node name="Circle_001" parent="." index="4" unique_id=1845384081]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_004" parent="." index="5" unique_id=2072973746]
-material_override = ExtResource("3_k682t")
+[node name="Circle_002" parent="." index="5" unique_id=1034533427]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_005" parent="." index="6" unique_id=1285983597]
-material_override = ExtResource("3_k682t")
+[node name="Circle_004" parent="." index="6" unique_id=2072973746]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_006" parent="." index="7" unique_id=481471485]
-material_override = ExtResource("3_k682t")
+[node name="Circle_005" parent="." index="7" unique_id=1285983597]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_007" parent="." index="8" unique_id=85464947]
-material_override = ExtResource("3_k682t")
+[node name="Circle_006" parent="." index="8" unique_id=481471485]
+material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Circle_008" parent="." index="9" unique_id=1852350171]
-material_override = ExtResource("3_k682t")
+[node name="Circle_007" parent="." index="9" unique_id=85464947]
+material_override = SubResource("StandardMaterial3D_g7nb4")
+
+[node name="Circle_008" parent="." index="10" unique_id=1852350171]
+material_override = SubResource("StandardMaterial3D_g7nb4")
+
+[node name="Fog" type="FogVolume" parent="." index="11" unique_id=1387267289]
+transform = Transform3D(4.650338, 0, 0, 0, 1.0311005, 0, 0, 0, 2.5325825, 0.019904105, 0.018975861, -0.0015805376)
+visible = false
+size = Vector3(8, 30, 14)
+material = SubResource("FogMaterial_b2uy6")

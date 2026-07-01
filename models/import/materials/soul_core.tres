@@ -4,9 +4,8 @@
 
 [resource]
 resource_name = "nucleoTextF2"
-transparency = 4
 depth_draw_mode = 1
-albedo_color = Color(2.642101, 1.7398092, 1.669631, 1)
+albedo_color = Color(1.01, 1.01, 1.01, 1)
 albedo_texture = ExtResource("1_fdcou")
 metallic = 1.0
 metallic_specular = 0.15
@@ -15,3 +14,5 @@ roughness = 0.3
 emission_enabled = true
 emission = Color(0.6487768, 0.02111223, 1.4439226e-07, 1)
 emission_energy_multiplier = 8.0
+backlight_enabled = true
+backlight = Color(0.35054138, 0, 0.040834576, 1)
