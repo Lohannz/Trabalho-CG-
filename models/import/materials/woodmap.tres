@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="5_ek0c5"]
 
 [resource]
-albedo_color = Color(0.37430802, 0.43860197, 0.5456782, 1)
+albedo_color = Color(0.3168513, 0.37765294, 0.47484386, 1)
 albedo_texture = ExtResource("1_4xl55")
 metallic = 0.1
 metallic_specular = 0.0

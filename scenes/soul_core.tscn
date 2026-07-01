@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://5ajlrxhks307"]
+
+[ext_resource type="PackedScene" uid="uid://dhitd46y5iumr" path="res://models/import/fase2glbs/Nucleo_de_Almas.glb" id="1_mkcw6"]
+[ext_resource type="Texture2D" uid="uid://baq2e8r4r5a7j" path="res://models/import/textures/soul_core.jpeg" id="2_3d7i6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v670c"]
+resource_name = "nucleoTextF2"
+transparency = 4
+depth_draw_mode = 1
+albedo_color = Color(0.8778096, 0.056819364, 0, 1)
+albedo_texture = ExtResource("2_3d7i6")
+metallic = 1.0
+metallic_specular = 0.2
+metallic_texture = ExtResource("2_3d7i6")
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.6509804, 0, 0.02745098, 1)
+emission_energy_multiplier = 5.86
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k682t"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.67279756, 0.03998426, 0, 1)
+roughness = 0.5
+
+[node name="Nucleo_de_Almas" unique_id=300099459 instance=ExtResource("1_mkcw6")]
+
+[node name="Icosphere" parent="." index="0" unique_id=1097184014]
+material_override = SubResource("StandardMaterial3D_v670c")
+
+[node name="Circle" parent="." index="1" unique_id=955299074]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_001" parent="." index="2" unique_id=1845384081]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_002" parent="." index="3" unique_id=1034533427]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_004" parent="." index="4" unique_id=2072973746]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_005" parent="." index="5" unique_id=1285983597]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_006" parent="." index="6" unique_id=481471485]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_007" parent="." index="7" unique_id=85464947]
+material_override = SubResource("StandardMaterial3D_k682t")
+
+[node name="Circle_008" parent="." index="8" unique_id=1852350171]
+material_override = SubResource("StandardMaterial3D_k682t")
