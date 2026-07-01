@@ -3,6 +3,37 @@
 [ext_resource type="PackedScene" uid="uid://celm5smcss0o5" path="res://models/import/fase2glbs/FaceA2.glb" id="1_283rp"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_713sx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_8155l"]
+[ext_resource type="Material" uid="uid://im0asndm7qki" path="res://models/import/materials/wrecked.tres" id="2_iqh20"]
+[ext_resource type="Texture2D" uid="uid://b8hrew6bxx7db" path="res://models/import/textures/wrecked_woodmap.jpg" id="2_pqs7e"]
+[ext_resource type="Texture2D" uid="uid://nwrfh4xxq371" path="res://models/import/textures/woodmap_ao.png" id="3_iqh20"]
+[ext_resource type="Texture2D" uid="uid://c8jgl7x5u2lok" path="res://models/import/textures/woodmap_normal.png" id="4_peuny"]
+[ext_resource type="Texture2D" uid="uid://drllachxvgm5e" path="res://models/import/textures/woodmap_disp.png" id="5_rbhbk"]
+[ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="6_srpy1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq8om"]
+albedo_color = Color(0.3168513, 0.37765294, 0.47484386, 1)
+albedo_texture = ExtResource("2_pqs7e")
+metallic = 0.1
+metallic_specular = 0.0
+metallic_texture = ExtResource("6_srpy1")
+roughness_texture = ExtResource("6_srpy1")
+normal_scale = 1.25
+normal_texture = ExtResource("4_peuny")
+bent_normal_texture = ExtResource("4_peuny")
+rim = 0.0
+rim_tint = 0.2
+rim_texture = ExtResource("5_rbhbk")
+clearcoat = 0.0
+clearcoat_roughness = 1.0
+clearcoat_texture = ExtResource("5_rbhbk")
+ao_light_affect = 0.4
+ao_texture = ExtResource("3_iqh20")
+refraction_texture = ExtResource("6_srpy1")
+uv1_scale = Vector3(0.103, 0.06, -0.051)
+uv1_offset = Vector3(-0.12, -0.02, -0.26)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.6643542
+uv1_world_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_713sx"]
 size = Vector3(500, 500, 10)
@@ -79,6 +110,24 @@ section_segments = 7
 curve = SubResource("Curve_kjq6w")
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
+
+[node name="plataformadvdd" parent="." index="10" unique_id=1258248717]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataformadvdd_001" parent="." index="11" unique_id=1730476116]
+material_override = SubResource("StandardMaterial3D_nq8om")
+
+[node name="plataformadvdd_002" parent="." index="12" unique_id=1726497044]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataformadvdd_003" parent="." index="13" unique_id=570600301]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataforma" parent="." index="14" unique_id=160311592]
+material_override = ExtResource("2_iqh20")
+
+[node name="plataforma_001" parent="." index="15" unique_id=1478230543]
+material_override = ExtResource("2_iqh20")
 
 [node name="PlanoTrue_001" parent="." index="16" unique_id=634118364]
 material_override = ExtResource("2_713sx")

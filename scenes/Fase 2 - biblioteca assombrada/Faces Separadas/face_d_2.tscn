@@ -1,29 +1,36 @@
 [gd_scene format=3 uid="uid://clhakl1ls67ym"]
 
 [ext_resource type="PackedScene" uid="uid://rs5rsaabet4g" path="res://models/import/fase2glbs/FaceD2.glb" id="1_hu0hx"]
+[ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_qhfwx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_sy8d3"]
 
 [node name="FaceD2" unique_id=446147911 instance=ExtResource("1_hu0hx")]
 
-[node name="livros_078_007" parent="." index="8" unique_id=1932572360]
+[node name="PlanoTrue_004" parent="." index="0" unique_id=1084833050]
+material_override = ExtResource("2_qhfwx")
+
+[node name="paredeTRUETRUE_005" parent="." index="1" unique_id=289106825]
+material_override = ExtResource("2_qhfwx")
+
+[node name="livros_078_007" parent="." index="8" unique_id=26990772]
 script = ExtResource("2_sy8d3")
 distancia = 60.0
 direcao = Vector3(0, 0, -1)
 velocidade = 15.0
 
-[node name="livros_078_008" parent="." index="28" unique_id=1546245735]
+[node name="livros_078_008" parent="." index="28" unique_id=51376516]
 script = ExtResource("2_sy8d3")
 distancia = 60.0
 direcao = Vector3(0, 0, 1)
 velocidade = 15.0
 
-[node name="livros_078_009" parent="." index="40" unique_id=1409253290]
+[node name="livros_078_009" parent="." index="40" unique_id=1159430231]
 script = ExtResource("2_sy8d3")
 distancia = 55.0
 direcao = Vector3(-1, -0.5, 1)
 velocidade = 12.0
 
-[node name="livros_078_010" parent="." index="45" unique_id=1640889508]
+[node name="livros_078_010" parent="." index="45" unique_id=1688992158]
 script = ExtResource("2_sy8d3")
 distancia = 55.0
 direcao = Vector3(1, -0.5, 1)
