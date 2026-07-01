@@ -4,6 +4,9 @@
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_qhfwx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_sy8d3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhfwx"]
+size = Vector3(500, 500, 10)
+
 [node name="FaceD2" unique_id=446147911 instance=ExtResource("1_hu0hx")]
 
 [node name="PlanoTrue_004" parent="." index="0" unique_id=1084833050]
@@ -35,3 +38,15 @@ script = ExtResource("2_sy8d3")
 distancia = 55.0
 direcao = Vector3(1, -0.5, 1)
 velocidade = 12.0
+
+[node name="InvWall" type="StaticBody3D" parent="." index="48" unique_id=838557724 groups=["invWall"]]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 6.634445, 1141.4774, -375.21954)
+collision_layer = 258
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=940539858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 213.223)
+shape = SubResource("BoxShape3D_qhfwx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=2099500656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.399994, 72.899994, 110.38266)
+shape = SubResource("BoxShape3D_qhfwx")
