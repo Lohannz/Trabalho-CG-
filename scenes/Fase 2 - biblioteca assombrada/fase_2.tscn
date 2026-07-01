@@ -279,7 +279,10 @@ particles_anim_loop = false
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1579083494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
-[node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
+[node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1799652415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.68115, 341.86163, -624.3372)
+
+[node name="Mainspawn3" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 133.74593, -122.472916)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=2142052467]
@@ -310,10 +313,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -172
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 329.45135, 342.66855, -116.601585)
 
 [node name="Spawn10" type="Marker3D" parent="Spawnpoints" unique_id=1158504873]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 335.06207, 697.86066, -502.66544)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 335.06207, 697.86066, -510.80942)
 
 [node name="Spawn11" type="Marker3D" parent="Spawnpoints" unique_id=333395661]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 568.70703, 701.97955, -499.20145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 568.70703, 656.22766, -507.6234)
 
 [node name="Spawn12" type="Marker3D" parent="Spawnpoints" unique_id=785792941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.7442, 335.7271, -527.3476)
@@ -480,7 +483,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.398544, -300.07172, -73.4
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -53.234276, 1046.1674, -297.76172)
 
 [node name="PortalAmarelo" parent="FaceD2/Portais" unique_id=1773084922 instance=ExtResource("2_ls452")]
-transform = Transform3D(3.5527137e-15, 4.3711367e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 0.9999999, -4.371139e-08, 131.6536, 15.563965, 46.361206)
+transform = Transform3D(3.5527137e-15, 4.3711363e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 0.9999999, -4.371139e-08, 140.3617, 15.563965, 46.361206)
 material_override = SubResource("ShaderMaterial_4dhkl")
 mesh = SubResource("ArrayMesh_giy1v")
 
@@ -496,7 +499,7 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn10")]
 transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-08, 1, -1.2361966e-08, 0.27407193, 3.546314e-07, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
 [node name="PortalLaranja" parent="FaceD2/Portais" unique_id=361816947 instance=ExtResource("2_ls452")]
-transform = Transform3D(-8.742277e-08, 4.3711392e-08, -1, -1, 4.371139e-08, 8.742277e-08, 4.3711392e-08, 1, 4.371139e-08, 124.73584, 273.89645, 45.746643)
+transform = Transform3D(-8.742277e-08, 4.3711392e-08, -1, -1, 4.371139e-08, 8.742277e-08, 4.3711392e-08, 1, 4.371139e-08, 135.5788, 273.89645, 92.06329)
 material_override = SubResource("ShaderMaterial_axr8r")
 
 [node name="GPUParticles3D" parent="FaceD2/Portais/PortalLaranja" index="0" unique_id=2074984000]
