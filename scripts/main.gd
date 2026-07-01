@@ -47,10 +47,12 @@ func _process(_delta: float) -> void:
 			match current_level.name:
 				"FASE 1":
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.0, 0.008, 0.196))
+					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
 				"FASE 2":
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color",Color(0.168, 0.009, 0.048, 1.0))
-				
+					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.173)
+					
 			configurar_spawn()
 			
 			loading_screen.visible = false

@@ -405,6 +405,9 @@ transform = Transform3D(-1.1980065e-08, -1.1641472e-09, -10.618902, 0, 1, -1.236
 [node name="Nucleo_de_Almas" parent="." unique_id=300099459 instance=ExtResource("7_e2jij")]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 81.69571, 251.28043, -503.41504)
 
+[node name="Fog" parent="Nucleo_de_Almas" index="11" unique_id=1387267289]
+visible = true
+
 [editable path="FaceA2/Portais/PortalVerde"]
 [editable path="FaceA2/Portais/PortalRosa"]
 [editable path="FaceA2/Portais/PortalVermelho"]

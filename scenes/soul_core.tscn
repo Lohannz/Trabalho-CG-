@@ -89,7 +89,7 @@ nodes/fragment/connections = PackedInt32Array(40, 1, 13, 2, 14, 0, 0, 19, 42, 0,
 
 [sub_resource type="Gradient" id="Gradient_x3ukm"]
 offsets = PackedFloat32Array(0, 0.04117647, 0.15294118, 0.30588236, 1)
-colors = PackedColorArray(0.22114186, 0.05895077, 2.4065375e-08, 0.0627451, 0.02745098, 0.02745098, 0.02745098, 0.7058824, 0.03789779, 0.044087023, 0.054144256, 0.751024, 0.09460906, 0.13439697, 0.1990506, 0.99607843, 0.011198454, 0.008328813, 0.060531594, 1)
+colors = PackedColorArray(0.5854474, 0, 0.019771246, 0.0627451, 0.02745098, 0.02745098, 0.02745098, 0.7058824, 0.03789779, 0.044087023, 0.054144256, 0.751024, 0.09460906, 0.13439697, 0.1990506, 0.99607843, 0.011198454, 0.008328813, 0.060531594, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hb0rr"]
 gradient = SubResource("Gradient_x3ukm")
@@ -178,40 +178,83 @@ emission_energy_multiplier = 8.0
 backlight_enabled = true
 backlight = Color(0.35054138, 0, 0.040834576, 1)
 
-[sub_resource type="Gradient" id="Gradient_772jv"]
-offsets = PackedFloat32Array(0, 0.13833992, 0.256917, 0.33898306, 0.486166, 0.62450594, 0.78531075, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.12871625, 0.12871625, 0.12871625, 1, 0.9340804, 0.9340805, 0.93408036, 1, 0.18079096, 0.18079096, 0.18079096, 1, 0.45254222, 0.45254248, 0.45254225, 1, 0.70796615, 0.7079667, 0.7079662, 1, 0.14044705, 0.14044768, 0.14044714, 1, 1, 1, 1, 1)
+[sub_resource type="Curve" id="Curve_772jv"]
+_data = [Vector2(0, 0.6526315), 0.0, 0.7754962, 0, 0, Vector2(0.34136546, 0.631579), 0.0, 0.0, 0, 0, Vector2(0.56224895, 0.9157895), 0.0, 0.0, 0, 0, Vector2(0.73895574, 1), 0.0, 0.0, 0, 0, Vector2(0.8313253, 0.6526316), 0.0, 0.0, 0, 0, Vector2(1, 0.6842105), 0.0, 0.0, 0, 0]
+point_count = 6
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_g7nb4"]
-noise_type = 4
-seed = 4
-frequency = 0.2409
-offset = Vector3(0, 0, 65.57)
-fractal_lacunarity = 2.37
-fractal_gain = -0.23
-fractal_weighted_strength = 0.12
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 30.11
-domain_warp_frequency = 0.035
-domain_warp_fractal_lacunarity = 6.23
-domain_warp_fractal_gain = -0.115
+[sub_resource type="CurveTexture" id="CurveTexture_713sx"]
+curve = SubResource("Curve_772jv")
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_fouok"]
-width = 128
-height = 128
-depth = 128
-noise = SubResource("FastNoiseLite_g7nb4")
-color_ramp = SubResource("Gradient_772jv")
-seamless = true
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7nb4"]
+lifetime_randomness = 0.12
+emission_shape_offset = Vector3(15, 15, 15)
+emission_shape_scale = Vector3(5, 5, 5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -59.99999
+angle_max = 160.00002
+velocity_pivot = Vector3(1, -5, 5)
+direction = Vector3(1, -5, 5)
+spread = 60.0
+initial_velocity_max = 10.0
+gravity = Vector3(2, -6.5, 2)
+linear_accel_min = -4.0000024
+linear_accel_max = 9.999997
+radial_accel_min = -4.0000024
+radial_accel_max = 7.9999976
+tangential_accel_min = -8.000002
+tangential_accel_max = 7.9999976
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_713sx")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 6.0
+color = Color(0.5394895, 0.062035993, 4.813075e-08, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 10.0
+turbulence_noise_scale = 7.769
+turbulence_noise_speed = Vector3(2, 5.305, 2)
+turbulence_noise_speed_random = 2.0
+turbulence_influence_min = 0.071
+turbulence_influence_max = 0.25100002
+turbulence_initial_displacement_min = -7.4999986
+turbulence_initial_displacement_max = 47.600002
+collision_mode = 2
+
+[sub_resource type="Curve" id="Curve_kjq6w"]
+_data = [Vector2(0, 0.04765296), 0.0, 0.0, 0, 0, Vector2(0.12455517, 0.28805125), 0.0, 6.7709374, 0, 0, Vector2(0.22064057, 0.6209104), -1.0648159, -1.0648159, 0, 0, Vector2(0.2241993, 1), 0.0, 0.0, 0, 0, Vector2(0.5088968, 0.9722617), 3.4642015, 3.4642015, 0, 0, Vector2(0.61209965, 0.7596017), 0.0, 0.0, 0, 0, Vector2(0.7295374, 0.7780939), 0.0, 0.0, 0, 0, Vector2(0.8078292, 0.472973), 0.0, 0.0, 0, 0, Vector2(0.8790036, 0.56543386), 0.0, 0.0, 0, 0, Vector2(0.9217082, 0.18634427), -6.3098016, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsqoa"]
+resource_name = "nucleoTextF2"
+depth_draw_mode = 1
+albedo_color = Color(0.38265935, 0.026737543, 0, 1)
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.6756675, 0.021580277, 2.8878452e-07, 1)
+emission_energy_multiplier = 9.0
+backlight_enabled = true
+backlight = Color(0.35054138, 0, 0.040834576, 1)
+billboard_mode = 1
+grow_amount = -4.02
+proximity_fade_enabled = true
+proximity_fade_distance = 25.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_b2uy6"]
+material = SubResource("StandardMaterial3D_gsqoa")
+shape = 0
+size = 0.8
+sections = 4
+section_length = 0.22
+section_segments = 7
+curve = SubResource("Curve_kjq6w")
 
 [sub_resource type="FogMaterial" id="FogMaterial_b2uy6"]
-density = 0.05
-albedo = Color(0.016697844, 0.08487547, 0.26231152, 1)
+density = 0.025
+albedo = Color(0.015686275, 0.105882354, 0.1764706, 1)
 emission = Color(0.12316287, 0.00516405, 9.024516e-09, 1)
-height_falloff = 0.2871746
-edge_fade = 1.7753127
-density_texture = SubResource("NoiseTexture3D_fouok")
+height_falloff = 0.45947933
+edge_fade = 1.0
 
 [node name="Nucleo_de_Almas" unique_id=300099459 instance=ExtResource("1_mkcw6")]
 script = ExtResource("2_v670c")
@@ -256,8 +299,20 @@ material_override = SubResource("StandardMaterial3D_g7nb4")
 [node name="Circle_008" parent="." index="10" unique_id=1852350171]
 material_override = SubResource("StandardMaterial3D_g7nb4")
 
-[node name="Fog" type="FogVolume" parent="." index="11" unique_id=1387267289]
+[node name="AlmasCore" type="GPUParticles3D" parent="." index="11" unique_id=1572160973]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.14119, -15.24906, 14.561119)
+amount = 600
+lifetime = 35.0
+preprocess = 8.0
+speed_scale = 1.25
+explosiveness = 0.05
+randomness = 0.6
+collision_base_size = 1.0
+visibility_aabb = AABB(0, 0, 0, 30, 30, 30)
+process_material = SubResource("ParticleProcessMaterial_g7nb4")
+draw_pass_1 = SubResource("RibbonTrailMesh_b2uy6")
+
+[node name="Fog" type="FogVolume" parent="." index="12" unique_id=1387267289]
 transform = Transform3D(4.650338, 0, 0, 0, 1.0311005, 0, 0, 0, 2.5325825, 0.019904105, 0.018975861, -0.0015805376)
-visible = false
 size = Vector3(8, 30, 14)
 material = SubResource("FogMaterial_b2uy6")
