@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="6_srpy1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
-load_path = "res://.godot/imported/wrecked_woodmap_spec.png-d4d5f2250c2167b1c608465abe052fd8.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7pyv"]
 albedo_color = Color(0.60470825, 0.22395682, 0.31382182, 1)
@@ -115,46 +114,46 @@ curve = SubResource("Curve_kjq6w")
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
 
-[node name="plataformadvdd" parent="." index="10" unique_id=1258248717]
+[node name="plataformadvdd" parent="." index="10" unique_id=82842709]
 material_override = SubResource("StandardMaterial3D_b7pyv")
 
-[node name="plataformadvdd_001" parent="." index="11" unique_id=1730476116]
+[node name="plataformadvdd_001" parent="." index="11" unique_id=1907417022]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataformadvdd_002" parent="." index="12" unique_id=1726497044]
+[node name="plataformadvdd_002" parent="." index="12" unique_id=215858187]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataformadvdd_003" parent="." index="13" unique_id=570600301]
+[node name="plataformadvdd_003" parent="." index="13" unique_id=610504236]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataforma" parent="." index="14" unique_id=160311592]
+[node name="plataforma" parent="." index="14" unique_id=1257461288]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataforma_001" parent="." index="15" unique_id=1478230543]
+[node name="plataforma_001" parent="." index="15" unique_id=1200400441]
 material_override = ExtResource("2_iqh20")
 
-[node name="PlanoTrue_001" parent="." index="16" unique_id=634118364]
+[node name="PlanoTrue_001" parent="." index="16" unique_id=1759567526]
 material_override = ExtResource("2_713sx")
 
-[node name="paredeTRUETRUE_001" parent="." index="17" unique_id=1341812519]
+[node name="paredeTRUETRUE_001" parent="." index="17" unique_id=2081269244]
 material_override = ExtResource("2_713sx")
 
-[node name="livros_025_001" parent="." index="18" unique_id=86264646]
+[node name="livros_025_001" parent="." index="18" unique_id=243679986]
 script = ExtResource("2_8155l")
 distancia = 45.0
 velocidade = 15.0
 
-[node name="livros_078_001" parent="." index="19" unique_id=974897166]
+[node name="livros_078_001" parent="." index="19" unique_id=2077349041]
 transparency = 1.0
 script = ExtResource("2_8155l")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 16.0
 
-[node name="StaticBody3D" parent="livros_078_001" index="0" unique_id=1008540541 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="livros_078_001" index="0" unique_id=1415439093 groups=["lightSensitive"]]
 collision_layer = 9
 
-[node name="livros_079_001" parent="." index="20" unique_id=1149702373]
+[node name="livros_079_001" parent="." index="20" unique_id=1754320913]
 script = ExtResource("2_8155l")
 distancia = 45.0
 direcao = Vector3(-1, 0, 0)
@@ -184,3 +183,9 @@ collision_base_size = 1.0
 visibility_aabb = AABB(-103.94, -80, 0, 400, 400, 200)
 process_material = SubResource("ParticleProcessMaterial_04kg0")
 draw_pass_1 = SubResource("RibbonTrailMesh_pqs7e")
+
+[node name="livros_025_003" parent="." index="28" unique_id=1219784705]
+script = ExtResource("2_8155l")
+distancia = 80.0
+direcao = Vector3(0, -1, 0)
+velocidade = 20.0
