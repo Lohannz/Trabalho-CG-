@@ -23,26 +23,14 @@ script = ExtResource("2_8155l")
 distancia = 45.0
 velocidade = 15.0
 
-[node name="livros_078_001" parent="." index="19" unique_id=974897166]
+[node name="livros_078_001" parent="." index="19" unique_id=1716517778]
 script = ExtResource("2_8155l")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 16.0
 
-[node name="livros_079_001" parent="." index="20" unique_id=1149702373]
+[node name="livros_079_001" parent="." index="20" unique_id=63050766]
 script = ExtResource("2_8155l")
 distancia = 45.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 15.0
-
-[node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=372279600 groups=["invWall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.245682, 366.4453, -312.14877)
-collision_layer = 258
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=1245276079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 214.14)
-shape = SubResource("BoxShape3D_04kg0")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=854060090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 109.141)
-shape = SubResource("BoxShape3D_04kg0")
