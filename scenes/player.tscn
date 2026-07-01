@@ -2707,6 +2707,7 @@ _data = {
 [node name="player" type="CharacterBody3D" unique_id=455683885]
 collision_mask = 263
 floor_max_angle = 0.2617994
+floor_snap_length = 0.5
 safe_margin = 0.01
 script = ExtResource("1_i3pqv")
 

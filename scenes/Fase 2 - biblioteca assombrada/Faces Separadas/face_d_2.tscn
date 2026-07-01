@@ -7,37 +7,48 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhfwx"]
 size = Vector3(500, 500, 10)
 
-[node name="FaceD2" unique_id=446147911 instance=ExtResource("1_hu0hx")]
+[node name="FaceD2" unique_id=1713845578 instance=ExtResource("1_hu0hx")]
 
-[node name="PlanoTrue_004" parent="." index="0" unique_id=1084833050]
+[node name="PlanoTrue_004" parent="." index="0" unique_id=907466137]
 material_override = ExtResource("2_qhfwx")
 
-[node name="paredeTRUETRUE_005" parent="." index="1" unique_id=289106825]
+[node name="paredeTRUETRUE_005" parent="." index="1" unique_id=810928155]
 material_override = ExtResource("2_qhfwx")
 
-[node name="livros_078_007" parent="." index="8" unique_id=26990772]
+[node name="livros_078_008" parent="." index="5" unique_id=1513034327]
 script = ExtResource("2_sy8d3")
-distancia = 60.0
+distancia = 75.0
 direcao = Vector3(0, 0, -1)
 velocidade = 15.0
 
-[node name="livros_078_008" parent="." index="28" unique_id=51376516]
+[node name="livros_078_010" parent="." index="13" unique_id=1376061275]
+script = ExtResource("2_sy8d3")
+distancia = 70.0
+velocidade = 18.0
+
+[node name="livros_078_009" parent="." index="17" unique_id=484730553]
 script = ExtResource("2_sy8d3")
 distancia = 60.0
 direcao = Vector3(0, 0, 1)
 velocidade = 15.0
 
-[node name="livros_078_009" parent="." index="40" unique_id=1159430231]
+[node name="livros_078_011" parent="." index="28" unique_id=1806119399]
 script = ExtResource("2_sy8d3")
-distancia = 55.0
-direcao = Vector3(-1, -0.5, 1)
-velocidade = 12.0
+distancia = 70.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 18.0
 
-[node name="livros_078_010" parent="." index="45" unique_id=1688992158]
+[node name="livros_078_012" parent="." index="29" unique_id=610231739]
 script = ExtResource("2_sy8d3")
-distancia = 55.0
-direcao = Vector3(1, -0.5, 1)
-velocidade = 12.0
+distancia = 60.0
+direcao = Vector3(0, 0, 1)
+velocidade = 15.0
+
+[node name="livros_078_013" parent="." index="30" unique_id=873846041]
+script = ExtResource("2_sy8d3")
+distancia = 75.0
+direcao = Vector3(0, 0, -1)
+velocidade = 15.0
 
 [node name="InvWall" type="StaticBody3D" parent="." index="48" unique_id=838557724 groups=["invWall"]]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 6.634445, 1141.4774, -375.21954)
