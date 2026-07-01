@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://whi5qy8eme4w"
-path.s3tc="res://.godot/imported/wrecked_woodmap.png-3e52d703f0e46b77a9b6eaae7654b582.s3tc.ctex"
+uid="uid://cqwxsb8xv0h7q"
+path.s3tc="res://.godot/imported/wrecked_woodmap_normal.png-e202503cf16aa7a8fd7144d692c3fdbf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/import/textures/wrecked_woodmap.png"
-dest_files=["res://.godot/imported/wrecked_woodmap.png-3e52d703f0e46b77a9b6eaae7654b582.s3tc.ctex"]
+source_file="res://models/import/textures/wrecked_woodmap_normal.png"
+dest_files=["res://.godot/imported/wrecked_woodmap_normal.png-e202503cf16aa7a8fd7144d692c3fdbf.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

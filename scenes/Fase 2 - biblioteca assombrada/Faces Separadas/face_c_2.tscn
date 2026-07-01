@@ -5,6 +5,11 @@
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yclsm"]
 [ext_resource type="Material" uid="uid://im0asndm7qki" path="res://models/import/materials/wrecked.tres" id="3_2jsck"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="4_brcho"]
+[ext_resource type="Texture2D" uid="uid://whi5qy8eme4w" path="res://models/import/textures/wrecked_woodmap.png" id="5_mndj4"]
+[ext_resource type="Texture2D" uid="uid://qhlykxvdprmk" path="res://models/import/textures/wrecked_woodmap_ao.png" id="6_dsuxg"]
+[ext_resource type="Texture2D" uid="uid://cqwxsb8xv0h7q" path="res://models/import/textures/wrecked_woodmap_normal.png" id="7_ynobo"]
+[ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="8_a27h5"]
+[ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="9_maprp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_os87b"]
 _surfaces = [{
@@ -36,6 +41,35 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_os87b")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
+load_path = "res://.godot/imported/wrecked_woodmap_spec.png-d4d5f2250c2167b1c608465abe052fd8.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oixp"]
+albedo_color = Color(0.84480196, 0.28317, 0.3147151, 1)
+albedo_texture = ExtResource("5_mndj4")
+metallic = 0.8
+metallic_specular = 0.1
+metallic_texture = SubResource("CompressedTexture2D_shbnp")
+roughness = 0.9
+roughness_texture = ExtResource("6_dsuxg")
+normal_enabled = true
+normal_scale = -0.35
+normal_texture = ExtResource("7_ynobo")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("7_ynobo")
+rim_enabled = true
+rim = 0.4
+rim_texture = ExtResource("9_maprp")
+ao_enabled = true
+ao_light_affect = 0.79
+ao_texture = ExtResource("6_dsuxg")
+refraction_texture = ExtResource("8_a27h5")
+uv1_scale = Vector3(0.08, -0.059, 0.058)
+uv1_offset = Vector3(0.635, 0.265, -0.23)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.6643542
+uv1_world_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bc1ip"]
 _surfaces = [{
@@ -250,13 +284,16 @@ distancia = 130.0
 direcao = Vector3(0, -1, 0)
 velocidade = 25.0
 
+[node name="Cubo_001" parent="." index="15" unique_id=1826431080]
+material_override = SubResource("StandardMaterial3D_2oixp")
+
 [node name="Cubo_002" parent="." index="16" unique_id=1195505412]
-material_override = ExtResource("3_2jsck")
+material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_bst2h")
 
 [node name="Cubo_003" parent="." index="17" unique_id=1175682598]
 transform = Transform3D(11.933609, 0, 0, 0, 12.627065, 0, 0, 0, 12.627065, 591.0759, 302.2194, -476.6535)
-material_override = ExtResource("3_2jsck")
+material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_r1vvy")
 
 [node name="livros_025_002" parent="." index="18" unique_id=1459906062]
@@ -266,7 +303,7 @@ transform = Transform3D(0, -68.870605, -7.3349435e-07, -25.000004, 1.3159008e-13
 collision_layer = 4
 
 [node name="Cubo_004" parent="." index="19" unique_id=1575969730]
-material_override = ExtResource("3_2jsck")
+material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_pcb5q")
 
 [node name="livros_079_004" parent="." index="21" unique_id=1715110912]
@@ -276,7 +313,7 @@ direcao = Vector3(0, 1, 0)
 velocidade = 18.0
 
 [node name="Cubo_005" parent="." index="28" unique_id=296096032]
-material_override = ExtResource("3_2jsck")
+material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_mndj4")
 
 [node name="livros_078_005" parent="." index="29" unique_id=214877979]
