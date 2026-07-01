@@ -505,7 +505,7 @@ destination = NodePath("../../../../FaceB/Portais/PortalRosa/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 
 [node name="PortalFinal" parent="FaceA/Portais" unique_id=1728206204 instance=ExtResource("3_alpyq")]
-transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 8.7456665)
+transform = Transform3D(-4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 0, 0, 1, 437.58813, 281.76712, 10.360504)
 material_override = SubResource("ShaderMaterial_k3scg")
 
 [node name="GPUParticles3D" parent="FaceA/Portais/PortalFinal" index="0" unique_id=2074984000]
@@ -651,7 +651,7 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 5" parent="FaceB/Ventos" unique_id=1307451334 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -86.15529, 345.32086, -133.22807)
+transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -86.15529, 345.32086, -129.82808)
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 

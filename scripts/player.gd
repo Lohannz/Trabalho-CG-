@@ -262,7 +262,7 @@ func _movement_grounded(vel : PackedVector3Array, delta : float):
 	
 	if vel[0].length_squared() > 0.0 and move_direction.dot(vel[0]) < 0.0: accel *= 2.0
 	vel[0] = vel[0].move_toward(speed, accel * delta)
-	vel[1] = -up * 4.0
+	vel[1] = -up * 2.5
 	
 func _movement_airborne(vel : PackedVector3Array, delta : float):
 	var speed_h = move_direction * AIR_SPEED
