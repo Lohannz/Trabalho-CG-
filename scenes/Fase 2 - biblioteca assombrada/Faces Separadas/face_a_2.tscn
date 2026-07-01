@@ -1,76 +1,23 @@
 [gd_scene format=3 uid="uid://umuhroyb2lp6"]
 
 [ext_resource type="PackedScene" uid="uid://celm5smcss0o5" path="res://models/import/fase2glbs/FaceA2.glb" id="1_283rp"]
-[ext_resource type="Texture2D" uid="uid://dnbm25rgc5v0o" path="res://models/import/textures/Platform.png" id="2_04kg0"]
-[ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_713sx"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_8155l"]
-[ext_resource type="Texture2D" uid="uid://nmrhldkx36fn" path="res://models/import/textures/Platform_AO.png" id="3_pqs7e"]
-[ext_resource type="Texture2D" uid="uid://dd7kl3l67rel" path="res://models/import/textures/Platform_normal.png" id="4_iqh20"]
-[ext_resource type="Texture2D" uid="uid://4ekj2hs3xtye" path="res://models/import/textures/Platform_spec.png" id="5_peuny"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbhbk"]
-albedo_color = Color(0.89181685, 0.6025679, 0.32609096, 1)
-albedo_texture = ExtResource("2_04kg0")
-metallic_specular = 0.09
-metallic_texture = ExtResource("5_peuny")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("5_peuny")
-normal_enabled = true
-normal_scale = -0.6
-normal_texture = ExtResource("4_iqh20")
-bent_normal_enabled = true
-bent_normal_texture = ExtResource("4_iqh20")
-clearcoat = 0.65
-ao_enabled = true
-ao_light_affect = 0.25
-ao_texture = ExtResource("3_pqs7e")
-uv1_scale = Vector3(1.9, 0.215, 0.11)
-uv1_offset = Vector3(0.506, 0.515, 0.495)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 2.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_04kg0"]
-size = Vector3(500, 500, 10)
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
 
-[node name="plataformadvdd_001" parent="." index="11" unique_id=1730476116]
-material_override = SubResource("StandardMaterial3D_rbhbk")
-
-[node name="PlanoTrue_001" parent="." index="16" unique_id=634118364]
-material_override = ExtResource("2_713sx")
-
-[node name="StaticBody3D" parent="PlanoTrue_001" index="0" unique_id=1188575174]
-visible = false
-
-[node name="paredeTRUETRUE_001" parent="." index="17" unique_id=1341812519]
-material_override = ExtResource("2_713sx")
-
-[node name="livros_025_001" parent="." index="18" unique_id=86264646]
+[node name="livros_025_001" parent="." index="18" unique_id=1301559154]
 script = ExtResource("2_8155l")
 distancia = 45.0
 velocidade = 15.0
 
-[node name="livros_078_001" parent="." index="19" unique_id=974897166]
+[node name="livros_078_001" parent="." index="19" unique_id=1716517778]
 script = ExtResource("2_8155l")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
 velocidade = 16.0
 
-[node name="livros_079_001" parent="." index="20" unique_id=1149702373]
+[node name="livros_079_001" parent="." index="20" unique_id=63050766]
 script = ExtResource("2_8155l")
 distancia = 45.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 15.0
-
-[node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=372279600 groups=["invWall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.245682, 366.4453, -312.14877)
-collision_layer = 258
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InvWall" index="0" unique_id=1245276079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 214.14)
-shape = SubResource("BoxShape3D_04kg0")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvWall" index="1" unique_id=854060090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 109.141)
-shape = SubResource("BoxShape3D_04kg0")
