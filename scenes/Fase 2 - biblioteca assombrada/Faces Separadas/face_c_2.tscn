@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="9_maprp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mndj4"]
-size = Vector3(0.36608887, 0.85232544, 1.6742096)
+size = Vector3(0.36608887, 0.828125, 1.6742096)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dsuxg"]
 size = Vector3(0.36608887, 0.54937744, 0.8300247)
@@ -144,6 +144,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uoyt7")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2oixp"]
+size = Vector3(5.157959, 1.7279053, 4.378562)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mb3hr"]
+size = Vector3(0.137146, 0.83032227, 2.8310547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a27h5"]
+size = Vector3(0.12866211, 1.3674316, 2.8029785)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maprp"]
+size = Vector3(0.12866211, 0.53515625, 2.8310547)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_pcb5q"]
 resource_name = "FaceC2_Cubo_010"
 _surfaces = [{
@@ -160,6 +172,12 @@ _surfaces = [{
 "vertex_data": PackedByteArray("0L9MwETeK76VnaBA0L9MwETeKz7LaJrA0L9MwEzeKz6VnaBA0L9MwEzeK77LaJrA0L9MwEzeK77LaJrA6FeVQETeKz7LaJrA0L9MwETeKz7LaJrA6FeVQEzeK77LaJrA0L9MwETeK76VnaBAfzwgv0TeK76VnaBAfzwgv0TeK74uxDBA0L9MwEzeK77LaJrAwpL+P0jeK77cDXo+wpL+P0TeK74uxDBA6FeVQEjeK77sDXo+6FeVQEzeK77LaJrAwpL+P0jeK77cDXo+wpL+P0zeKz4uxDBAwpL+P0jeKz7cDXo+wpL+P0TeK74uxDBAwpL+P0jeK77cDXo+6FeVQEjeKz7cDXo+6FeVQEjeK77sDXo+wpL+P0jeKz7cDXo+6FeVQETeKz7LaJrAwpL+P0jeKz7cDXo+0L9MwETeKz7LaJrA6FeVQEjeKz7cDXo+fzwgv0zeKz4uxDBAwpL+P0zeKz4uxDBA0L9MwEzeKz6VnaBAfzwgv0zeKz6VnaBA6FeVQEzeK77LaJrA6FeVQEjeKz7cDXo+6FeVQETeKz7LaJrA6FeVQEjeK77sDXo+wpL+P0TeK74uxDBAfzwgv0zeKz4uxDBAwpL+P0zeKz4uxDBAfzwgv0TeK74uxDBAfzwgv0TeK76VnaBA0L9MwEzeKz6VnaBAfzwgv0zeKz6VnaBA0L9MwETeK76VnaBAfzwgv0TeK74uxDBAfzwgv0zeKz6VnaBAfzwgv0zeKz4uxDBAfzwgv0TeK76VnaBA0L9MwEjeK77cDXo+0L9MwEjeKz7sDXo+0L9MwETeK74uxDBA0L9MwEzeKz4uxDBAwpL+P0zeK77LaJrAwpL+P0TeKz7LaJrAfzwgv0zeK77LaJrAfzwgv0TeKz7LaJrA0L9MwETeK74uxDBA0L9MwEjeK77cDXo+fzwgv0jeK77cDXo+fzwgv0zeK77LaJrAwpL+P0zeK77LaJrAfzwgv0jeKz7kDXo+0L9MwEzeKz4uxDBA0L9MwEjeKz7sDXo+fzwgv0TeKz7LaJrAwpL+P0TeKz7LaJrAAAD/f////78AAP9//3///wAA/3////+/AAD/f/9//////////3//////////f/////////9//////////3////9/AAD///+//38AAP///7//fwAA/v//v/9/AAD+//+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7////9/oYr//////3/x6f//////f/9///////9/wPL///9//3////8//3//f////z//f/9/////P/9//3////8//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///////7//f///////v////3//f///////f/9///////9//3///////3//f////3//f/9//v//f/9//3/+//9//3//f////3//f/9//v//f/9//3/+//9//3//f/7//3//f/9//v//f/9//3///////3////+/////f////7////9/////v////3////+/AAD/f/9//v8AAP9//3/+/wAA/3//f///AAD/f/9//////////3//////////f/////////9//////////3////9/AAD///+//38AAP7//7//fwAA////v/9/AAD///+//38AAP///7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
 }]
 blend_shape_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xatc4"]
+size = Vector3(0.77734375, 0.55859375, 1.7324219)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8av2u"]
+size = Vector3(0.37402344, 0.55859375, 1.8447266)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ptnfq"]
 _surfaces = [{
@@ -191,6 +209,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ptnfq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_352q7"]
+size = Vector3(0.39746094, 0.6347656, 0.8691406)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_brcho"]
 size = Vector3(500, 500, 10)
@@ -281,15 +302,15 @@ transform = Transform3D(-0.13448133, -114.95343, 6.1676384e-09, 7.449004e-07, 3.
 collision_layer = 4
 
 [node name="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="0" unique_id=1930507749]
-transform = Transform3D(0.9999998, -9.313226e-09, 0, 1.1641532e-10, 0.9999997, 1.7347235e-17, 0, 2.220446e-16, 1, -0.027515411, -0.07383776, 0.30191708)
+transform = Transform3D(1.0764422, -1.8626451e-09, 0, 2.3283064e-10, 0.99959487, -2.1857516e-16, 0, 2.220446e-16, 1, -0.0063495636, -0.061184406, 0.30191708)
 shape = SubResource("BoxShape3D_mndj4")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="1" unique_id=557360826]
-transform = Transform3D(0.9999998, -9.313226e-09, 0, 1.1641532e-10, 0.9999997, 1.7347235e-17, 0, 2.220446e-16, 1, -0.027513504, 0.07583618, -0.93613815)
+transform = Transform3D(1.0764422, -1.8626451e-09, 0, 2.3283064e-10, 0.99959487, -2.1857516e-16, 0, 2.220446e-16, 1, -0.0069389343, 0.07581091, -0.93613815)
 shape = SubResource("BoxShape3D_dsuxg")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="livrosSTACK_005/StaticBody3D" index="2" unique_id=960677124]
-transform = Transform3D(0.9999998, -9.313226e-09, 0, 1.1641532e-10, 0.9999997, 1.7347235e-17, 0, 2.220446e-16, 1, -0.027513504, 0.21130419, -1.7161255)
+transform = Transform3D(1.0764422, -1.8626451e-09, 0, 2.3283064e-10, 0.99959487, -2.1857516e-16, 0, 2.220446e-16, 1, -0.0071964264, 0.21127987, -1.7161255)
 shape = SubResource("BoxShape3D_ynobo")
 
 [node name="Cubo" parent="." index="12" unique_id=1387790030]
@@ -330,16 +351,40 @@ transform = Transform3D(11.933609, 0, 0, 0, 12.627065, 0, 0, 0, 12.627065, 591.0
 material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_r1vvy")
 
+[node name="CollisionShape3D" parent="Cubo_003/StaticBody3D" parent_id_path=PackedInt32Array(2070750946) index="0" unique_id=496613337]
+transform = Transform3D(1.5316846, 0, 0, 0, 0.24217571, 0, 0, 0, 1.7025573, 0.0005569458, -0.09576988, -0.14711723)
+shape = SubResource("BoxShape3D_2oixp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cubo_003/StaticBody3D" parent_id_path=PackedInt32Array(2070750946) index="1" unique_id=789597001]
+transform = Transform3D(4.839036e-19, -5.771143, -6.146459e-08, -1.9798363, 1.04212674e-14, -5.8087913e-08, 8.654304e-08, 2.3840644e-07, -1.3289212, 1.5316849, 0.23378563, 1.7025642)
+shape = SubResource("BoxShape3D_mb3hr")
+
 [node name="livros_025_002" parent="." index="18" unique_id=1459906062]
 transform = Transform3D(0, -68.870605, -7.3349435e-07, -25.000004, 1.3159008e-13, -7.3349435e-07, 1.0927849e-06, 3.01043e-06, -16.780394, 588.9437, 305.16147, -498.68457)
 
 [node name="StaticBody3D" parent="livros_025_002" index="0" unique_id=1883144272]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="livros_025_002/StaticBody3D" index="0" unique_id=1286772186]
+transform = Transform3D(0.9999996, 0, 1.0658141e-14, -5.998052e-20, 0.99999976, 1.15463195e-14, -1.4210855e-14, -4.2632564e-14, 0.99999905, -0.0046396255, -0.029395103, 0.21941948)
+shape = SubResource("BoxShape3D_a27h5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="livros_025_002/StaticBody3D" index="1" unique_id=1434456658]
+transform = Transform3D(0.9999996, 0, 1.0658141e-14, -8.369744e-20, 0.99999976, 1.15463195e-14, -1.4210855e-14, -4.2632564e-14, 0.99999905, -0.0046396255, 0.38462162, -2.5940628)
+shape = SubResource("BoxShape3D_maprp")
+
 [node name="Cubo_004" parent="." index="19" unique_id=1575969730]
 transform = Transform3D(12.071104, 0, 0, 0, 0, -12.627065, 0, 12.627065, 0, 581.68414, 370.13605, -511.60837)
 material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_pcb5q")
+
+[node name="CollisionShape3D" parent="livrosSTACK_004/StaticBody3D" parent_id_path=PackedInt32Array(1185267537) index="0" unique_id=1851308749]
+transform = Transform3D(1.0000116, 4.3027103e-07, 0, -3.8999133e-08, 1.0020148, 0, 0, 0, 1, -0.05975151, -0.0011415482, -0.7964039)
+shape = SubResource("BoxShape3D_xatc4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_004/StaticBody3D" parent_id_path=PackedInt32Array(1185267537) index="1" unique_id=135876754]
+transform = Transform3D(1.0000116, 8.6799264e-07, 0, -8.4750354e-08, 1.0020148, 0, 0, 0, 1, 0.14153862, -0.0014791489, 0.9918022)
+shape = SubResource("BoxShape3D_8av2u")
 
 [node name="livros_079_004" parent="." index="21" unique_id=1715110912]
 script = ExtResource("2_yclsm")
@@ -369,6 +414,10 @@ velocidade = 35.0
 [node name="livrosSTACK_002" parent="." index="31" unique_id=1877754647]
 transform = Transform3D(-0.09833836, -73.55988, 0, 18.276505, -0.39579546, 0, 0, 0, 18.750736, 627.7893, 370.50708, -488.43063)
 
+[node name="CollisionShape3D" parent="livrosSTACK_002/StaticBody3D" parent_id_path=PackedInt32Array(1755855194) index="0" unique_id=494442838]
+transform = Transform3D(0.9985784, -3.7252903e-09, 0, 0, 0.6862772, 0, 0, 0, 0.9999999, 0.0044555664, 0.07830143, -0.21264648)
+shape = SubResource("BoxShape3D_352q7")
+
 [node name="PilhaDeLivros_015" parent="." index="32" unique_id=1025190315]
 transform = Transform3D(-0.055092447, -29.843828, -8.465497, 0.06785953, 36.762794, -6.872243, 16.244587, -0.2547849, -2.3271946e-06, 626.95624, 351.759, -546.7751)
 
@@ -391,7 +440,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.399994, 72.899994, 110.382
 shape = SubResource("BoxShape3D_brcho")
 
 [node name="Miasma" parent="." index="36" unique_id=803802425 instance=ExtResource("4_brcho")]
-transform = Transform3D(23.825, 0, 0, 0, 59.774105, 0, 0, 0, 12.277, 590.569, 243.8669, -406.733)
+transform = Transform3D(23.825, 0, 0, 0, 59.774105, 0, 0, 0, 12.0789175, 590.569, 243.8669, -407.29257)
 
 [node name="MiasmaFog" parent="Miasma" index="1" unique_id=2003875644]
 transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
