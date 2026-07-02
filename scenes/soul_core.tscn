@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dhitd46y5iumr" path="res://models/import/fase2glbs/Nucleo_de_Almas.glb" id="1_mkcw6"]
 [ext_resource type="Texture2D" uid="uid://cb4kg88tvn0j4" path="res://models/import/textures/soul_core.png" id="2_3d7i6"]
-[ext_resource type="Script" uid="uid://dodm4ero1ybc7" path="res://scripts/rotate_core.gd" id="2_v670c"]
 [ext_resource type="Material" uid="uid://g56r0vn1ux5" path="res://models/import/materials/soul_core.tres" id="3_k682t"]
 [ext_resource type="Texture2D" uid="uid://dexpa1hg2730o" path="res://models/import/textures/noise1.png" id="4_772jv"]
+[ext_resource type="Script" uid="uid://chbpqd670ah4a" path="res://scripts/componentAxisRotator.gd" id="4_g7nb4"]
+[ext_resource type="Script" uid="uid://bxdpd0mb6pm51" path="res://scripts/componentTranslator.gd" id="6_g7nb4"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_g7nb4"]
 expanded_output_ports = [0]
@@ -257,9 +258,9 @@ height_falloff = 0.45947933
 edge_fade = 1.0
 
 [node name="Nucleo_de_Almas" unique_id=300099459 instance=ExtResource("1_mkcw6")]
-script = ExtResource("2_v670c")
+script = ExtResource("4_g7nb4")
 
-[node name="Icosphere" parent="." index="0" unique_id=1097184014]
+[node name="Icosphere" parent="." index="0" unique_id=1336227505]
 transform = Transform3D(0.85, 0, 0, 0, 0.8340095, -0.16409798, 0, 0.16409798, 0.8340095, 0, 0, 0)
 material_override = ExtResource("3_k682t")
 
@@ -275,29 +276,37 @@ material_override = SubResource("StandardMaterial3D_772jv")
 mesh = SubResource("ArrayMesh_kcqol")
 skeleton = NodePath("")
 
-[node name="Circle" parent="." index="3" unique_id=955299074]
+[node name="Circle" parent="." index="3" unique_id=1299289816]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_001" parent="." index="4" unique_id=1845384081]
+[node name="Circle_001" parent="." index="4" unique_id=372261738]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_002" parent="." index="5" unique_id=1034533427]
+[node name="Circle_002" parent="." index="5" unique_id=70131412]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_004" parent="." index="6" unique_id=2072973746]
+[node name="Circle_004" parent="." index="6" unique_id=1208170231]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_005" parent="." index="7" unique_id=1285983597]
+[node name="Circle_005" parent="." index="7" unique_id=362738243]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_006" parent="." index="8" unique_id=481471485]
+[node name="Circle_006" parent="." index="8" unique_id=836650905]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_007" parent="." index="9" unique_id=85464947]
+[node name="Circle_007" parent="." index="9" unique_id=1513167730]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
-[node name="Circle_008" parent="." index="10" unique_id=1852350171]
+[node name="Circle_008" parent="." index="10" unique_id=699519895]
 material_override = SubResource("StandardMaterial3D_g7nb4")
+script = ExtResource("6_g7nb4")
 
 [node name="AlmasCore" type="GPUParticles3D" parent="." index="11" unique_id=1572160973]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.14119, -15.24906, 14.561119)
