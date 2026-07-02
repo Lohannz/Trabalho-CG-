@@ -289,7 +289,6 @@
 [ext_resource type="Texture2D" uid="uid://bnh2m66klxsjj" path="res://sprites/animação cubo ui/0202.png" id="287_o8k4n"]
 [ext_resource type="Texture2D" uid="uid://dgjhv6f0367rw" path="res://sprites/animação cubo ui/0203.png" id="288_1pxcg"]
 [ext_resource type="Texture2D" uid="uid://degnlwr7gns7g" path="res://sprites/animação cubo ui/0204.png" id="289_gdcvw"]
-[ext_resource type="PackedScene" uid="uid://c0xotrnoytsl8" path="res://scenes/musicas.tscn" id="290_5qdw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37lmg"]
 shader = ExtResource("4_0kx3q")
@@ -1305,17 +1304,6 @@ texture = ExtResource("7_vm1j5")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="logo" type="TextureRect" parent="." unique_id=593981651]
-layout_mode = 0
-offset_left = 372.0
-offset_top = -6.0
-offset_right = 2118.6665
-offset_bottom = 1004.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("9_h44gn")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="teclas-ajuda" type="Control" parent="." unique_id=1592903007]
 layout_mode = 1
 anchors_preset = 3
@@ -1573,7 +1561,16 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_oh0h3")
 animation = &"cubo-girando"
 
-[node name="musicaMenu" parent="." unique_id=1670641493 instance=ExtResource("290_5qdw3")]
+[node name="logo" type="TextureRect" parent="." unique_id=593981651]
+layout_mode = 0
+offset_left = 372.0
+offset_top = -6.0
+offset_right = 2118.6665
+offset_bottom = 1004.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_h44gn")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="botões/Control/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="botões/Control/PlayButton" to="." method="_on_play_button_pressed"]

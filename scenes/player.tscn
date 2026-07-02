@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://dthroltbx82l7"]
 
-[ext_resource type="Script" uid="uid://csxt71euc5hwp" path="res://scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://donadwsve32qs" path="res://scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c0w63fev44q1h" path="res://models/import/cat_cat_1.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://b0apmtf75pnsj" path="res://models/import/cat_cat_2.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
-[ext_resource type="PackedScene" uid="uid://1vb8rpptgo5l" path="res://lamparina.tscn" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://1vb8rpptgo5l" path="res://scenes/lamparina.tscn" id="6_tuyoq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tuyoq"]
 radius = 13.955905
