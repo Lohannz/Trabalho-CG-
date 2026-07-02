@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://dthroltbx82l7"]
 
-[ext_resource type="Script" uid="uid://donadwsve32qs" path="res://scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://csxt71euc5hwp" path="res://scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c0w63fev44q1h" path="res://models/import/cat_cat_1.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://b0apmtf75pnsj" path="res://models/import/cat_cat_2.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
-[ext_resource type="PackedScene" uid="uid://1vb8rpptgo5l" path="res://scenes/lamparina.tscn" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://b6j45bqx3uw6p" path="res://models/import/lamparina.glb" id="6_tuyoq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tuyoq"]
 radius = 13.955905
@@ -2724,14 +2724,14 @@ collision_mask = 24
 transform = Transform3D(1.6, 0, 0, 0, 0.75, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("SphereShape3D_tuyoq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=585099411]
+[node name="PlayerCol" type="CollisionShape3D" parent="." unique_id=585099411]
 transform = Transform3D(3.5, 0, 0, 0, 6.935786, 0, 0, 0, 3.3240716, 0, -0.09824994, 0.035)
 shape = SubResource("BoxShape3D_qlg0r")
 
 [node name="areaDetection" type="Area3D" parent="." unique_id=1777296467]
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
+[node name="DetectionCol" type="CollisionShape3D" parent="areaDetection" unique_id=1058216142]
 transform = Transform3D(3.65, 0, 0, 0, 7.538468, 0, 0, 0, 3.5046957, 0, -0.09776749, 0.028350944)
 shape = SubResource("BoxShape3D_tuyoq")
 
@@ -3084,14 +3084,6 @@ bone_idx = 27
 [node name="lamparina" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D" unique_id=120889469 instance=ExtResource("6_tuyoq")]
 transform = Transform3D(0.06559752, 0.08561996, 0.5902253, 0.0832608, -0.5892846, 0.07622992, 0.5905628, 0.07357023, -0.07630733, -0.3040319, 3.2174647, -0.44342995)
 
-[node name="OmniLight3D" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina" index="2" unique_id=178910372 node_paths=PackedStringArray("area")]
-transform = Transform3D(1.6233766, 0, 0, 0, 1.6233766, 0, 0, 0, 1.6233765, 0, 1.9999998, 0)
-light_color = Color(0.24881773, 0.9950748, 0.6306237, 1)
-light_indirect_energy = 12.0
-light_volumetric_fog_energy = 12.0
-omni_range = 120.0
-area = NodePath("../../../../../../AreaLamp")
-
 [node name="cat_tail" type="Node3D" parent="cat_obj" unique_id=1133340532]
 transform = Transform3D(3.85, 0, 0, 0, 3.85, 0, 0, 0, 3.85, 0, -2.280501, -0.9534335)
 
@@ -3156,7 +3148,6 @@ skin = SubResource("Skin_3v2ag")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=652971838]
 libraries/ = SubResource("AnimationLibrary_qlg0r")
 
-[connection signal="body_entered" from="AreaLamp" to="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D" method="_on_area_lamp_body_entered"]
-[connection signal="body_exited" from="AreaLamp" to="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="areaDetection" to="." method="_on_obstacle_entered"]
 
 [editable path="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina"]

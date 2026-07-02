@@ -12,18 +12,17 @@ func _melt_barrier():
 	_melt_scenario()
 
 func _melt_scenario():
-	var parent = get_parent().get_parent()
-	var nodes = parent.find_children("*", "StaticBody3D", true, false)
-	for node in nodes:
-		if node.get_collision_layer_value(5):
-			if not node.is_in_group("killObj"):
-				node.set_collision_layer_value(1, false)	
-				node.set_collision_layer_value(3, true)	
-			node.set_collision_layer_value(5, false)
-			
-			var mesh = node.get_parent() as MeshInstance3D
-			if mesh: mesh.material_override = CRYSTAL
+	var nodes = get_tree().get_nodes_in_group("meltable")
 	
+	for node in nodes:
+		if node is MeshInstance3D:
+			if not node.is_in_group("killObj"):
+				node.get_node("StaticBody3D").set_collision_layer_value(3, true)	
+			node.material_override = CRYSTAL
+		elif node is Area3D:
+			node.get_node("CollisionShape3D").disabled = false 
+			node.show()
+
 func _on_body_entered(body: Node3D) -> void:
 	if body == player:
 		player.PORTAL_UI.visible = true

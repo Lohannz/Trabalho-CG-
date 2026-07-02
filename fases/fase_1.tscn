@@ -175,6 +175,9 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcrg8"]
+size = Vector3(500, 500, 10)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bcrg8"]
 render_priority = 0
 shader = ExtResource("8_dc6vk")
@@ -238,9 +241,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nnhtl")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bcrg8"]
-size = Vector3(500, 500, 10)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ldnf"]
 lifetime_randomness = 0.12
@@ -516,11 +516,38 @@ transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e
 script = ExtResource("6_bcrg8")
 next_level_path = "uid://c35dk6ys8neb6"
 
-[node name="dash_crystal" parent="FaceA" unique_id=1371341528 instance=ExtResource("7_whobl")]
+[node name="dash_crystal" parent="FaceA" unique_id=1371341528 groups=["meltable"] instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.63348, 102.5, 201.03586)
+visible = false
 
-[node name="dash_crystal2" parent="FaceA" unique_id=25332783 instance=ExtResource("7_whobl")]
+[node name="CollisionShape3D" parent="FaceA/dash_crystal" index="0" unique_id=2054807693]
+disabled = true
+
+[node name="dash_crystal2" parent="FaceA" unique_id=25332783 groups=["meltable"] instance=ExtResource("7_whobl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.76698, 186.77138, 200.77164)
+visible = false
+
+[node name="CollisionShape3D" parent="FaceA/dash_crystal2" index="0" unique_id=2054807693]
+disabled = true
+
+[node name="dash_crystal3" parent="FaceA" unique_id=1553940458 groups=["meltable"] instance=ExtResource("7_whobl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.76698, 214.77138, 200.77164)
+visible = false
+
+[node name="CollisionShape3D" parent="FaceA/dash_crystal3" index="0" unique_id=2054807693]
+disabled = true
+
+[node name="InvWall" type="StaticBody3D" parent="FaceA" unique_id=2013399105 groups=["invWall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30000305)
+collision_layer = 258
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=656552327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
+shape = SubResource("BoxShape3D_bcrg8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=338152826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
+shape = SubResource("BoxShape3D_bcrg8")
 
 [node name="Luz" type="Node3D" parent="FaceA" unique_id=149965231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 251.79999, 128.9)
@@ -542,21 +569,6 @@ transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0
 material_override = SubResource("ShaderMaterial_f5vkj")
 mesh = SubResource("ArrayMesh_u3f4b")
 skeleton = NodePath("")
-
-[node name="InvWall" type="StaticBody3D" parent="FaceA" unique_id=2013399105 groups=["invWall"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30000305)
-collision_layer = 258
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=656552327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 214.59998)
-shape = SubResource("BoxShape3D_bcrg8")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="FaceA/InvWall" unique_id=338152826]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4, 138.7, 108.899994)
-shape = SubResource("BoxShape3D_bcrg8")
-
-[node name="dash_crystal3" parent="FaceA" unique_id=1553940458 instance=ExtResource("7_whobl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.76698, 214.77138, 200.77164)
 
 [node name="FaceB" parent="." unique_id=123047431 instance=ExtResource("2_qugii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.880005, 38.399994, 139)
@@ -646,12 +658,12 @@ WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 4" parent="FaceB/Ventos" unique_id=2076798834 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-1.7, 2.0565807e-07, -1.12204015e-14, 0, -5.9535427e-08, -1.7, -2.5669289e-07, -1.3620119, 7.430936e-08, -16.437311, 345.32086, -91.795364)
+transform = Transform3D(-1.6999999, 1.6462079e-07, -1.12204015e-14, 0, -4.765565e-08, -1.7, -2.5669286e-07, -1.0902343, 7.430936e-08, -16.43731, 345.32086, -91.795364)
 WIND_DIRECTION = Vector3(0, 0, -1)
 WIND_POWER = 500.0
 
 [node name="wind 5" parent="FaceB/Ventos" unique_id=1307451334 instance=ExtResource("7_k3scg")]
-transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -86.15529, 345.32086, -129.82808)
+transform = Transform3D(-7.430936e-08, -1.3851571, 0, 1.7, -6.0547144e-08, 0, 0, 0, 1.7, -88.227844, 345.32086, -123.75628)
 WIND_DIRECTION = Vector3(-1, 0, 0)
 WIND_POWER = 500.0
 
@@ -786,6 +798,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659
 [editable path="FaceA/Portais/PortalVerde"]
 [editable path="FaceA/Portais/PortalRosa"]
 [editable path="FaceA/Portais/PortalFinal"]
+[editable path="FaceA/dash_crystal"]
+[editable path="FaceA/dash_crystal2"]
+[editable path="FaceA/dash_crystal3"]
 [editable path="FaceB/Portais/PortalRosa"]
 [editable path="FaceB/Portais/PortalVermelho"]
 [editable path="FaceC/Portais/PortalVerde"]

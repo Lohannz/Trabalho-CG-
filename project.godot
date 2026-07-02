@@ -34,6 +34,7 @@ invWall=""
 barrier=""
 killObj=""
 illusion=""
+meltable=""
 
 [input]
 

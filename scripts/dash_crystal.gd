@@ -20,7 +20,6 @@ func collect_crytal() -> void:
 	mesh.visible = false
 	
 	# Desativa a área de colisão para o player não pegar repetidas vezes
-	# O set_deferred é obrigatório no Godot para desativar colisões com segurança durante a física
 	collision_shape.set_deferred("disabled", true)
 	
 	# Inicia o tempo de recarga

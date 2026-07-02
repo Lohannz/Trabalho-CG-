@@ -66,9 +66,10 @@ var ICE_INERTIA: float = 80.0
 
 ## ATRIBUTOS GERAIS
 # Constantes: Estados/Ações do Player
-enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING, DYING}
+enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING}
 var state : STATE = STATE.GROUNDED
-var USING_PORTAL := false
+var USING_PORTAL : bool = false
+var DYING: bool = false
 # Variáveis: Partículas de Movimentação
 @onready var running_particles: CPUParticles3D = $cat_obj/RunParticles
 @onready var sliding_particles: CPUParticles3D = $cat_obj/SlidingParticles
@@ -91,7 +92,9 @@ var FREEZE : bool = false
 var spawnpoint : Vector3 = Vector3.ZERO
 
 # INTERAÇÃO COM PORTAL #
-func use_portal(portal):
+func use_portal(portal) -> void:
+	if DYING: return
+	USING_PORTAL = true
 	velocity = Vector3.ZERO
 	if portal.get_parent().name == "PortalFinal":
 		FREEZE = true
@@ -117,7 +120,7 @@ func use_portal(portal):
 		spawnpoint = portal.destination.get_spawn()
 		await get_tree().create_timer(0.9).timeout
 		FREEZE = false
-	USING_PORTAL = true
+	USING_PORTAL = false
 			
 
 
@@ -175,13 +178,7 @@ func _ready() -> void:
 
 ## PROCESSOS
 func _physics_process(delta: float) -> void:
-	if state != STATE.DYING:
-		for body in areaDetection.get_overlapping_bodies():
-			if body.is_in_group("killObj"):
-				die()
-				break
-			
-	if not FREEZE:	
+	if not FREEZE and not DYING:	
 		_update_orientation()
 		_update_movement_direction(delta)
 		_handle_actions()
@@ -196,19 +193,22 @@ func _physics_process(delta: float) -> void:
 			COYOTE_TIMER = COYOTE_MAX
 		else:
 			COYOTE_TIMER -= delta
-	else:
-		move_direction = Vector3.ZERO
-		velocity = Vector3.ZERO
+	#else:
+		#move_direction = Vector3.ZERO
+		#velocity = Vector3.ZERO
 
 
 ## MORTE DO PLAYER
+func _on_obstacle_entered(body: Node3D) -> void:
+	if not DYING and body.is_in_group("killObj"): die()
+
 func die() -> void:
-	state = STATE.DYING
+	DYING = true
+	areaDetection.monitoring = false
 	FREEZE = true
-	velocity = Vector3.ZERO
 	
-	set_collision_layer_value(1, false)
-	areaDetection.set_deferred("monitoring", false) 
+	input.move = Vector2.ZERO
+	velocity = Vector3.ZERO
 	
 	if $AnimationPlayer.current_animation != &"dead": 
 		$AnimationPlayer.play(&"dead")
@@ -220,10 +220,12 @@ func die() -> void:
 	global_position = spawnpoint
 	state = STATE.GROUNDED
 	transition.play_backwards(&"fade")
+	restore_dash()
 	
+	DYING = false
+	areaDetection.monitoring = true
 	FREEZE = false
 	
-	set_collision_layer_value(1, true)
 	areaDetection.set_deferred("monitoring", true)
 	$AnimationPlayer.play(&"idle")
 	

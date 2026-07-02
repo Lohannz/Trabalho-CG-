@@ -43,8 +43,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8y64h")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjqt3"]
-size = Vector3(2.02063, 0.3647461, 3.0999756)
+[sub_resource type="SphereShape3D" id="SphereShape3D_nw7ag"]
+radius = 2.8911307
 
 [node name="livro colecionavel" type="Area3D" unique_id=650180534]
 transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 0, 3.6558647, 0)
@@ -56,5 +56,5 @@ mesh = SubResource("ArrayMesh_slc5v")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=920317323]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014038086, 0.3447258, -0.011657715)
-shape = SubResource("BoxShape3D_hjqt3")
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, -0.0014038082, 0.29116476, -0.026009083)
+shape = SubResource("SphereShape3D_nw7ag")
