@@ -98,7 +98,6 @@ func _process(_delta: float) -> void:
 					$WorldEnvironment.environment.fog_light_color = Color(0.221, 0.516, 0.701, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
-					$player/AreaLamp/CollisionShape3D.disabled = true
 
 					
 			spawn_setting()
