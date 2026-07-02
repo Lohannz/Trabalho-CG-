@@ -186,6 +186,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_pqs7e")
 
 [node name="livros_025_003" parent="." index="28" unique_id=1219784705]
 script = ExtResource("2_8155l")
-distancia = 80.0
+distancia = 115.0
 direcao = Vector3(0, -1, 0)
 velocidade = 20.0
