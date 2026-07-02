@@ -131,7 +131,7 @@ volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_path = "uid://bwa28k51vrqxk"
+level_path = "uid://1n3o3dky2tam"
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
@@ -272,6 +272,7 @@ environment = SubResource("Environment_cm0pq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=622832747]
 transform = Transform3D(0.9306413, -0.31455675, -0.1869782, 0, 0.5109632, -0.8596026, 0.3659328, 0.79998165, 0.47552347, -23.687435, 40.916084, 108.833755)
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment/DirectionalLight3D" unique_id=1273369021]
 transform = Transform3D(1, 0, 0, 0, -0.89243627, -0.4511735, 0, 0.4511735, -0.89243627, 0, -40.352608, -17.033615)

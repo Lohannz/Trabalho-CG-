@@ -83,6 +83,17 @@ func _process(_delta: float) -> void:
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
 					$player/AreaLamp/CollisionShape3D.disabled = false
 					
+				"PARTE FINAL":
+					print("TO NA PARTE DO FINAL")
+					$"Camera3D/Pos-processamento/Nevasca".hide()
+					$Camera3D/Outline.hide(	)
+					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.114, 0.641, 0.792, 1.0)
+					$WorldEnvironment.environment.fog_light_color = Color(0.221, 0.516, 0.701, 1.0)
+					$WorldEnvironment/DirectionalLight3D.hide()
+					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
+					$player/AreaLamp/CollisionShape3D.disabled = true
+
+					
 			spawn_setting()
 			level_ready.emit()
 			
