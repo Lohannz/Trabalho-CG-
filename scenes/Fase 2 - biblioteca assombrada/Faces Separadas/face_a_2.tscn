@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="6_nq8om"]
 [ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="6_srpy1"]
 [ext_resource type="Texture2D" uid="uid://bvook5itlejon" path="res://models/import/fase2glbs/FaceA2_livropng.png" id="10_peuny"]
+[ext_resource type="PackedScene" uid="uid://sfvxckedojm0" path="res://scenes/livro_coletavel.tscn" id="11_rbhbk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_shbnp"]
 
@@ -212,6 +213,9 @@ velocidade = 15.0
 collision_layer = 11
 metadata/irradiated = false
 
+[node name="estante_006" parent="." index="24" unique_id=626553885]
+transform = Transform3D(2.5353525e-06, 0, -9.569922, 0, 20.664812, 0, 7.089359, 0, 3.4224713e-06, 191.76901, 427.23767, -174.39108)
+
 [node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=1607314316 groups=["invWall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.029572, 373.02094, -310.91406)
 collision_layer = 258
@@ -262,3 +266,6 @@ metadata/irradiated = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="livros_079_002/StaticBody3D" index="0" unique_id=1034798487]
 shape = SubResource("ConcavePolygonShape3D_fu7oh")
+
+[node name="livro colecionavel" parent="." index="30" unique_id=650180534 instance=ExtResource("11_rbhbk")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 190.4041, 478.4095, -173.33351)

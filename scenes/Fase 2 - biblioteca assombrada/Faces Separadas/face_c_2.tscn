@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqwxsb8xv0h7q" path="res://models/import/textures/wrecked_woodmap_normal.png" id="7_ynobo"]
 [ext_resource type="Texture2D" uid="uid://badgf1icmieh5" path="res://models/import/textures/woodmap_spec.png" id="8_a27h5"]
 [ext_resource type="Texture2D" uid="uid://ckb82k1fbggbp" path="res://models/import/textures/wrecked_woodmap_disp.png" id="9_maprp"]
+[ext_resource type="PackedScene" uid="uid://sfvxckedojm0" path="res://scenes/livro_coletavel.tscn" id="11_dsuxg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2e7m3"]
 size = Vector3(1.8713379, 0.55908203, 1.1501465)
@@ -323,6 +324,9 @@ section_length = 0.22
 section_segments = 7
 curve = SubResource("Curve_7qw8h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwtal"]
+size = Vector3(2.02063, 0.3647461, 3.0999756)
+
 [node name="FaceC2" unique_id=1552770144 instance=ExtResource("1_nx58n")]
 
 [node name="PlanoTrue_003" parent="." index="0" unique_id=954307633]
@@ -558,7 +562,7 @@ velocidade = 35.0
 metadata/irradiated = false
 
 [node name="StaticBody3D" parent="livros_078_005" index="0" unique_id=1011258926 groups=["lightSensitive"]]
-collision_layer = 15
+collision_layer = 11
 metadata/irradiated = false
 
 [node name="livros_078_006" parent="." index="30" unique_id=1166077944]
@@ -570,7 +574,7 @@ direcao = Vector3(0, 1, 0)
 velocidade = 35.0
 
 [node name="StaticBody3D" parent="livros_078_006" index="0" unique_id=1734144042 groups=["lightSensitive"]]
-collision_layer = 15
+collision_layer = 11
 metadata/irradiated = false
 
 [node name="livrosSTACK_002" parent="." index="31" unique_id=1877754647]
@@ -657,8 +661,28 @@ transform = Transform3D(0.19563264, 0, 0, 0, 0.103620365, 0, 0, -8.526513e-14, 0
 transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.019908905, 0.014713764, -0.0015792847)
 size = Vector3(0.92357445, 1.4455566, 1.6458855)
 
+[node name="livro colecionavel" parent="." index="43" unique_id=650180534 instance=ExtResource("11_dsuxg")]
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 624.3349, 391.10156, -375.16232)
+
+[node name="livro colecionavel2" parent="." index="44" unique_id=1779904269 instance=ExtResource("11_dsuxg")]
+transform = Transform3D(-1.194818, -0.020244762, -1.00488265e-07, -0.020144986, 1.1203032, 0.30799466, -0.0053977286, 0.3001843, -1.1494517, 591.2752, 418.45013, -428.2506)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" parent="livro colecionavel2" index="1" unique_id=920317323]
+shape = SubResource("BoxShape3D_pwtal")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="livro colecionavel2" index="2" unique_id=199378157 groups=["illusion", "lightSensitive"]]
+collision_layer = 8
+metadata/irradiated = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="livro colecionavel2/StaticBody3D" index="0" unique_id=2098380003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014038086, 0.3447258, -0.011657715)
+shape = SubResource("BoxShape3D_pwtal")
+
 [editable path="Miasma"]
 [editable path="Miasma2"]
 [editable path="Miasma3"]
 [editable path="Miasma4"]
 [editable path="Miasma5"]
+[editable path="livro colecionavel2"]
