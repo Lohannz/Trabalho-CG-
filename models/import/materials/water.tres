@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cii74bnn0uvi7"]
+
+[ext_resource type="Shader" uid="uid://byk0pysb3bb5l" path="res://shaders/water.gdshader" id="1_p0goa"]
+[ext_resource type="Texture2D" uid="uid://dexpa1hg2730o" path="res://models/import/textures/noise1.png" id="2_h4r3r"]
+
+[resource]
+render_priority = -16
+shader = ExtResource("1_p0goa")
+shader_parameter/albedo = Color(0.15248573, 0.65786546, 0.9651839, 1)
+shader_parameter/shallow_color = Color(0, 0.80634964, 0.89671373, 1)
+shader_parameter/caustic_color = Color(0.9, 0.95, 1, 1)
+shader_parameter/texture_caustics = ExtResource("2_h4r3r")
+shader_parameter/wave_height = 0.2790000132525
+shader_parameter/wave_frequency = 0.75000003236512
+shader_parameter/wave_speed = 1.7500000798651199
+shader_parameter/caustics_scale = Vector2(0.93, 1.305)
+shader_parameter/caustics_speed = 1.55900007079262
+shader_parameter/caustics_cutoff = 0.40800001938

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://djd77jjm0jnh"]
+
+[ext_resource type="Shader" uid="uid://b0cmgm08robjo" path="res://shaders/fog.gdshader" id="1_e072f"]
+[ext_resource type="Texture2D" uid="uid://dexpa1hg2730o" path="res://models/import/textures/noise1.png" id="1_ntoob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fuky"]
+shader = ExtResource("1_e072f")
+shader_parameter/fog_color = Color(0.16153014, 0.2345343, 0.27716112, 1)
+shader_parameter/texture_noise = ExtResource("1_ntoob")
+shader_parameter/base_density = 45.9870021843825
+shader_parameter/height_falloff = 20.00000094674012
+shader_parameter/texture_cutoff = 0.30000001425
+shader_parameter/fog_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/fog_speed = Vector3(0.03, 0.01, 0.02)
+
+[node name="Fog" type="Node3D" unique_id=420831480]
+transform = Transform3D(3.5, 0, 0, 0, 5.8, 0, 0, 0, 3.65, 0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="FogCloud" type="FogVolume" parent="." unique_id=2003875644]
+transform = Transform3D(4.650338, 0, 0, 0, 1.0311005, 0, 0, 0, 2.5325823, 0.0199041, 0.018975861, -0.0015805373)
+size = Vector3(0.92357445, 2.0224571, 1.6458855)
+material = SubResource("ShaderMaterial_8fuky")
