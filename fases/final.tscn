@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ctjhfe7pgn7ix" path="res://scenes/pedras_final.tscn" id="1_7e2tp"]
 [ext_resource type="Shader" path="res://shaders/lago.gdshader" id="2_0led5"]
 [ext_resource type="Texture2D" uid="uid://kfr1xfif21ln" path="res://models/import/pedras-parte-final_textura_pedras.png" id="3_8b31y"]
-[ext_resource type="Shader" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Shader" uid="uid://fkhleywmjcqs" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Texture2D" uid="uid://d0co30fxqs605" path="res://estrelas_final.png" id="5_0led5"]
 [ext_resource type="PackedScene" uid="uid://cjero18thjkjc" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
 [ext_resource type="Texture2D" uid="uid://dcx0shanuaetr" path="res://models/import/cruz-parte-final_textura-cruz.png" id="6_rdm36"]
 
@@ -48,6 +49,12 @@ shader_parameter/cloud_density1 = 0.55
 shader_parameter/cloud_density2 = 0.65
 shader_parameter/cloud_strength1 = 0.58
 shader_parameter/cloud_strength2 = 0.415
+shader_parameter/cloud_texture = ExtResource("5_0led5")
+shader_parameter/png_cloud_scale = 2.03
+shader_parameter/png_cloud_speed_x = 0.005
+shader_parameter/png_cloud_speed_y = 0.01
+shader_parameter/png_cloud_strength = 1.0
+shader_parameter/png_cloud_tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Sky" id="Sky_7678y"]
 sky_material = SubResource("ShaderMaterial_6gx7d")
@@ -304,4 +311,64 @@ skeleton = NodePath("")
 [node name="Circle5" type="MeshInstance3D" parent="cruzes/cruz-parte-final3/Circle5" unique_id=552069939]
 transform = Transform3D(0.444, 0, 0, 0, 0.444, 0, 0, 0, 0.444, 48.69675, 6.587988, 36.19001)
 mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="cruzes" unique_id=489638012]
+transform = Transform3D(0.764, 0, 0, 0, 0.764, 0, 0, 0, 0.764, -30.600342, 6.58799, -305.95245)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="cruzes/Circle5" unique_id=1725003048]
+transform = Transform3D(0.444, 0, 0, 0, 0.444, 0, 0, 0, 0.444, 48.69675, 6.587988, 36.19001)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle2" type="MeshInstance3D" parent="cruzes" unique_id=1868463804]
+transform = Transform3D(0.6199491, 0, -0.44649655, 0, 0.764, 0, 0.44649655, 0, 0.6199491, 135.52061, 18.716614, -227.07175)
+mesh = SubResource("ArrayMesh_bhfh8")
+skeleton = NodePath("")
+
+[node name="Circle6" type="MeshInstance3D" parent="cruzes" unique_id=2102209706]
+transform = Transform3D(0.72451925, 0, 0.24242075, 0, 0.764, 0, -0.24242075, 0, 0.72451925, -138.14012, 6.8802032, -149.9159)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="cruzes/Circle6" unique_id=1299844919]
+transform = Transform3D(0.444, 0, 0, 0, 0.444, 0, 0, 0, 0.444, 48.69675, 6.587988, 36.19001)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle3" type="MeshInstance3D" parent="cruzes" unique_id=64412462]
+transform = Transform3D(1.0801407, 0, 0.36141, 0, 1.139, 0, -0.36141, 0, 1.0801407, 80.98822, 19.008827, -71.0352)
+mesh = SubResource("ArrayMesh_bhfh8")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="cruzes/Circle3" unique_id=1557839379]
+transform = Transform3D(0.764, 0, 0, 0, 0.7639998, 0, 0, 0, 0.764, -43.147648, 6.587986, -39.400543)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="cruzes/Circle3/Circle5" unique_id=669507810]
+transform = Transform3D(0.444, 0, 0, 0, 0.444, 0, 0, 0, 0.444, 48.69675, 6.587988, 36.19001)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle2" type="MeshInstance3D" parent="cruzes/Circle3" unique_id=802823138]
+transform = Transform3D(0.619949, 0, -0.4464965, 0, 0.7639998, 0, 0.4464965, 0, 0.619949, 122.973305, 18.716606, 39.480167)
+mesh = SubResource("ArrayMesh_bhfh8")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="." unique_id=1596440724]
+transform = Transform3D(0.299, 0, 0, 0, 0.299, 0, 0, 0, 0.299, -30.600342, 6.58799, -167.80716)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle5" type="MeshInstance3D" parent="Circle5" unique_id=373193047]
+transform = Transform3D(0.44399998, 0, 0, 0, 0.44399998, 0, 0, 0, 0.44399998, 168.01466, 6.587982, 36.190033)
+mesh = SubResource("ArrayMesh_7678y")
+skeleton = NodePath("")
+
+[node name="Circle2" type="MeshInstance3D" parent="." unique_id=740506598]
+transform = Transform3D(0.4901168, 0, -0.3529894, 0, 0.604, 0, 0.3529894, 0, 0.4901168, 135.52061, 18.716614, -88.92645)
+mesh = SubResource("ArrayMesh_bhfh8")
 skeleton = NodePath("")

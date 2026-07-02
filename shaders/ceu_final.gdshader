@@ -18,7 +18,14 @@ uniform float cloud_density2 = 0.65;
 uniform float cloud_strength1 = 0.40;
 uniform float cloud_strength2 = 0.20;
 
-// Totalmente  amigo
+uniform sampler2D cloud_texture : filter_linear, repeat_enable;
+uniform float png_cloud_scale = 1.0;
+uniform float png_cloud_speed_x = 0.005;
+uniform float png_cloud_speed_y = 0.0;
+uniform float png_cloud_strength : hint_range(0.0, 1.0) = 1.0;
+uniform vec4 png_cloud_tint : source_color = vec4(1.0, 1.0, 1.0, 1.0); 
+
+// Totalmente amigo
 float hash(vec2 p)
 {
     p = fract(p * vec2(123.34, 456.21));
@@ -68,6 +75,21 @@ void sky()
         pow(h,1.7)
     );
 
+   
+    vec2 png_uv = EYEDIR.xz / max(EYEDIR.y, 0.01); 
+    png_uv *= png_cloud_scale;
+    png_uv.x += TIME * png_cloud_speed_x;
+    png_uv.y += TIME * png_cloud_speed_y;
+    
+    vec4 png_tex = texture(cloud_texture, png_uv * 0.5 + 0.5);
+    
+  
+    float png_alpha = png_tex.a * png_cloud_strength * step(0.0, EYEDIR.y);
+    vec3 png_final_color = png_tex.rgb * png_cloud_tint.rgb;
+    
+    col = mix(col, png_final_color, png_alpha);
+
+
     vec2 uv1 = EYEDIR.xz;
 
     uv1 *= cloud_scale1;
@@ -108,7 +130,7 @@ void sky()
         c2 * cloud_strength2
     );
 
-    //  no horizonte
+    // no horizonte
 
     float glow = pow(1.0-h,4.0);
 

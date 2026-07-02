@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dthroltbx82l7" path="res://scenes/player.tscn" id="8_c6i3y"]
 [ext_resource type="Script" uid="uid://bxtwy6o157l7b" path="res://scripts/staminaUI.gd" id="8_trn2v"]
 [ext_resource type="Texture2D" uid="uid://eijmfudtm6v8" path="res://models/barracinzacortada.png" id="9_5vvyt"]
-[ext_resource type="Shader" uid="uid://boi5x65f5id5b" path="res://shaders/start_transition.gdshader" id="9_fpfj3"]
+[ext_resource type="Shader" uid="uid://cblshwn7wpsqp" path="res://shaders/start_transition.gdshader" id="9_fpfj3"]
 [ext_resource type="Texture2D" uid="uid://1kjv6vjeameo" path="res://models/barrabranca.png" id="10_c6i3y"]
 [ext_resource type="Theme" uid="uid://cmavkyebdpb8" path="res://sprites/tema.tres" id="10_j4qnp"]
-[ext_resource type="Script" uid="uid://cusut7mjs3uu6" path="res://scripts/shader_reset.gd" id="10_sc1dx"]
+[ext_resource type="Script" uid="uid://jfo871rmak1c" path="res://scripts/shader_reset.gd" id="10_sc1dx"]
 [ext_resource type="Material" uid="uid://1qcwxof15obi" path="res://models/import/materials/outline.tres" id="11_20pc6"]
 [ext_resource type="Shader" uid="uid://ctadbnwxqwwwd" path="res://shaders/pixelization.gdshader" id="12_c2ibq"]
 [ext_resource type="Script" uid="uid://cx3onnwbds71k" path="res://scripts/contador.gd" id="14_c2ibq"]
@@ -145,7 +145,7 @@ volumetric_fog_sky_affect = 0.2
 
 [node name="Principal" type="Node3D" unique_id=1052521187]
 script = ExtResource("1_lgr22")
-level_path = "uid://c35dk6ys8neb6"
+level_path = "uid://1n3o3dky2tam"
 
 [node name="Fase" type="Node" parent="." unique_id=1637720731]
 
