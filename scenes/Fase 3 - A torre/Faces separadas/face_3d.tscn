@@ -1,5 +1,30 @@
 [gd_scene format=3 uid="uid://dono5t2cnnw5n"]
 
 [ext_resource type="PackedScene" uid="uid://c11kvdfhqqnun" path="res://models/import/fase3glbs/face3D.glb" id="1_div2v"]
+[ext_resource type="Script" uid="uid://dpujchi800spf" path="res://scripts/plataforma_movivel.gd" id="2_oqpbm"]
 
-[node name="face3D" unique_id=13524460 instance=ExtResource("1_div2v")]
+[node name="face3D" unique_id=1681553239 instance=ExtResource("1_div2v")]
+
+[node name="livros_079_003" parent="." index="3" unique_id=1383389663]
+script = ExtResource("2_oqpbm")
+distancia = 70.0
+direcao = Vector3(0, 1, 0)
+velocidade = 20.0
+
+[node name="livros_079_007" parent="." index="4" unique_id=720416825]
+script = ExtResource("2_oqpbm")
+distancia = 70.0
+direcao = Vector3(0, -1, 0)
+velocidade = 20.0
+
+[node name="livros_079_008" parent="." index="5" unique_id=445083674]
+script = ExtResource("2_oqpbm")
+distancia = 70.0
+direcao = Vector3(0, 1, 0)
+velocidade = 20.0
+
+[node name="livros_079_009" parent="." index="6" unique_id=1606377222]
+script = ExtResource("2_oqpbm")
+distancia = 155.0
+direcao = Vector3(0, 0, 1)
+velocidade = 22.0

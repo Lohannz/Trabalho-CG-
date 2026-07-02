@@ -75,18 +75,6 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 [node name="PortalCol" parent="face3A/Portais/PortalVerde/PortalArea" index="0" unique_id=1665133991]
 transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-08, 1, -1.2361966e-08, 0.27407193, 3.546314e-07, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
-[node name="PortalFinal" parent="face3A/Portais" unique_id=1913452851 instance=ExtResource("2_b20e3")]
-transform = Transform3D(4.371138e-08, -3.8213705e-15, 1, -8.742278e-08, -0.9999999, 0, 1, -8.742277e-08, -4.371138e-08, 251.28809, 566.1671, 73.360306)
-material_override = SubResource("ShaderMaterial_dqy20")
-
-[node name="GPUParticles3D" parent="face3A/Portais/PortalFinal" index="0" unique_id=2074984000]
-material_override = SubResource("StandardMaterial3D_xfm3j")
-
-[node name="PortalArea" parent="face3A/Portais/PortalFinal" index="1" unique_id=1967604049]
-transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
-script = ExtResource("5_nfqym")
-next_level_path = "uid://n1wudfyde562"
-
 [node name="Ventos" type="Node3D" parent="face3A" unique_id=1705781598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.39998, 127.5, 52.700073)
 
@@ -103,6 +91,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.07384, 318.72055, 219.26
 
 [node name="Portais" type="Node3D" parent="face3B" unique_id=519393604]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -190.60005, 786, -252.30002)
+
+[node name="PortalFinal" parent="face3B/Portais" unique_id=1913452851 instance=ExtResource("2_b20e3")]
+transform = Transform3D(-1, 8.742277e-08, 1.7484555e-07, -8.742278e-08, -0.9999999, 0, 1.7484555e-07, -1.5285482e-14, 1, 223.22614, 27.242554, 3.71875)
+material_override = SubResource("ShaderMaterial_dqy20")
+
+[node name="GPUParticles3D" parent="face3B/Portais/PortalFinal" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_xfm3j")
+
+[node name="PortalArea" parent="face3B/Portais/PortalFinal" index="1" unique_id=1967604049]
+transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
+script = ExtResource("5_nfqym")
+next_level_path = "uid://dj8350iuv1xgm"
 
 [node name="PortalVerde" parent="face3B/Portais" unique_id=338149047 instance=ExtResource("2_b20e3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.9999999, 0, 8.742278e-08, 0, -1, 221.96576, -128.52893, 71.26654)
@@ -158,7 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.8665, 819.5, -84.06415)
 disabled = true
 
 [editable path="face3A/Portais/PortalVerde"]
-[editable path="face3A/Portais/PortalFinal"]
+[editable path="face3B/Portais/PortalFinal"]
 [editable path="face3B/Portais/PortalVerde"]
 [editable path="face3B/Cristais de dash/dash_crystal3"]
 [editable path="face3B/Cristais de dash/dash_crystal2"]
