@@ -68,7 +68,7 @@ var ICE_INERTIA: float = 80.0
 # Constantes: Estados/Ações do Player
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING, DYING}
 var state : STATE = STATE.GROUNDED
-var using_portal := false
+var USING_PORTAL := false
 # Variáveis: Partículas de Movimentação
 @onready var running_particles: CPUParticles3D = $cat_obj/RunParticles
 @onready var sliding_particles: CPUParticles3D = $cat_obj/SlidingParticles
@@ -86,7 +86,6 @@ var forward : Vector3 = Vector3.ZERO
 # Variáveis: Input do Player
 var input: PlayerInput
 var move_direction : Vector3 = Vector3.ZERO
-var controle_bloqueado := false
 
 var FREEZE : bool = false
 var spawnpoint : Vector3 = Vector3.ZERO
@@ -118,7 +117,7 @@ func use_portal(portal):
 		spawnpoint = portal.destination.get_spawn()
 		await get_tree().create_timer(0.9).timeout
 		FREEZE = false
-	using_portal = true
+	USING_PORTAL = true
 			
 
 
@@ -176,11 +175,6 @@ func _ready() -> void:
 
 ## PROCESSOS
 func _physics_process(delta: float) -> void:
-	if controle_bloqueado:
-		move_direction = Vector3.ZERO
-		velocity = Vector3.ZERO
-		return
-	
 	if state != STATE.DYING:
 		for body in areaDetection.get_overlapping_bodies():
 			if body.is_in_group("killObj"):
@@ -203,6 +197,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			COYOTE_TIMER -= delta
 	else:
+		move_direction = Vector3.ZERO
 		velocity = Vector3.ZERO
 
 
@@ -269,7 +264,7 @@ func _movement_grounded(vel : PackedVector3Array, delta : float):
 	
 	if vel[0].length_squared() > 0.0 and move_direction.dot(vel[0]) < 0.0: accel *= 2.0
 	vel[0] = vel[0].move_toward(speed, accel * delta)
-	vel[1] = -up * 2.5
+	vel[1] = -up * 1.25
 	
 func _movement_airborne(vel : PackedVector3Array, delta : float):
 	var speed_h = move_direction * AIR_SPEED

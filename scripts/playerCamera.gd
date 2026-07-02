@@ -9,13 +9,13 @@ extends Camera3D
 
 # camera livre
 @export var velocidade_camera := 40.0
-@export var sensibilidade_mouse := 0.003
+@export var mouse_sensibility := 0.003
 var _saved_position : Vector3
 var _saved_basis : Basis
 
 var yaw := 0.0
 var pitch := 0.0
-var camera_livre := false
+var free_cam := false
 
 signal orientation_changed(newOrientation)
 
@@ -78,20 +78,19 @@ func _tween_look_at(basis: Basis) -> void:
 	global_transform.basis = basis
 
 func _input(event):
-	if not camera_livre:
-		return
+	if not free_cam: return
 	if event is InputEventMouseMotion:
-		yaw -= event.relative.x * sensibilidade_mouse
-		pitch -= event.relative.y * sensibilidade_mouse
+		yaw -= event.relative.x * mouse_sensibility
+		pitch -= event.relative.y * mouse_sensibility
 		pitch = clamp(pitch, -PI/2, PI/2)
 		global_transform.basis = Basis(Vector3.UP, yaw) * Basis(Vector3.RIGHT, pitch)
 		get_viewport().set_input_as_handled()
 		
 func _process(delta: float) -> void:
 	# Verifica se o player soltou a camera 'q'
-	if Input.is_action_just_pressed("camera_livre") and not player.using_portal:
-		camera_livre = !camera_livre
-		if camera_livre :
+	if Input.is_action_just_pressed("free_cam") and not player.USING_PORTAL:
+		free_cam = !free_cam
+		if free_cam :
 			_saved_position = global_position
 			_saved_basis = global_transform.basis
 			yaw = global_rotation.y
@@ -108,7 +107,7 @@ func _process(delta: float) -> void:
 			tween.parallel().tween_method(_tween_look_at, global_transform.basis, _saved_basis, 0.5)
 
 	# Camera fixada no player				
-	if !camera_livre:
+	if !free_cam:
 		var up = _orientation.y
 		var right = _orientation.x
 		if Input.is_action_just_pressed("ui_right"):
@@ -130,7 +129,7 @@ func _process(delta: float) -> void:
 			var look = Transform3D().looking_at(player.global_position - global_position, _orientation.y)
 			global_transform.basis = _get_visual_basis(look.basis)
 			
-	elif camera_livre:
+	elif free_cam:
 		var dir := Vector3.ZERO
 		var basis = global_transform.basis
 		
