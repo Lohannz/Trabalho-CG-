@@ -252,20 +252,21 @@ velocidade = 20.0
 collision_layer = 9
 
 [node name="livros_079_002" type="MeshInstance3D" parent="." index="29" unique_id=53476146]
-transform = Transform3D(-1.092788e-06, -79.838356, 0, 25.000076, -3.4898453e-06, 0, 0, 0, 25.60367, 135.05173, 505.7779, -111.726135)
+transform = Transform3D(-1.092788e-06, -79.838356, 0, 25.000076, -3.4898453e-06, 0, 0, 0, 25.60367, 141.24696, 505.7779, -111.726135)
 mesh = SubResource("ArrayMesh_wjvlm")
 skeleton = NodePath("")
 script = ExtResource("2_8155l")
 distancia = 35.0
 direcao = Vector3(-1, 0, 0)
-velocidade = 18.0
+velocidade = 20.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="livros_079_002" index="0" unique_id=991191295 groups=["illusion", "lightSensitive"]]
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 metadata/irradiated = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="livros_079_002/StaticBody3D" index="0" unique_id=1034798487]
 shape = SubResource("ConcavePolygonShape3D_fu7oh")
 
 [node name="livro colecionavel" parent="." index="30" unique_id=650180534 instance=ExtResource("11_rbhbk")]
-transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 190.4041, 478.4095, -173.33351)
+transform = Transform3D(1.2, 0, 0, 0, 0.5117121, -1.0854266, 0, 1.0854266, 0.5117121, 191.40103, 478.4095, -175.62189)
