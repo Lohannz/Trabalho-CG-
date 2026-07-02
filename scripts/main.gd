@@ -6,6 +6,8 @@ extends Node3D
 @onready var loading_screen := $telaLoading
 @onready var label_percent := $telaLoading/FundoPreto/LabelPorcentagem
 @onready var UI := $Camera3D/UI
+@onready var lamp := $player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina
+@onready var lampCol:= $player/AreaLamp/CollisionShape3D
 
 @export_file("*.tscn") var level_path: String
 var spawnpoints : Array[Vector3]
@@ -50,7 +52,9 @@ func _process(_delta: float) -> void:
 			
 		elif status == ResourceLoader.THREAD_LOAD_LOADED:
 			loading = false
-			
+			# Para a musica do menu
+			MusicaGlobal.musicaMenu.stop()
+
 			var scene_resource = ResourceLoader.load_threaded_get(level_path)
 			current_level = scene_resource.instantiate()
 			$Fase.add_child(current_level)
@@ -58,6 +62,9 @@ func _process(_delta: float) -> void:
 			# Configurações estéticas baseadas nas fases.
 			match current_level.name:
 				"FASE 1":
+					lamp.hide()
+					lampCol.disabled = true
+					MusicaGlobal.play("fase1")
 					$"Camera3D/Pos-processamento/Nevasca".show()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
 					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.1, 0.0, 0.618)
@@ -65,6 +72,7 @@ func _process(_delta: float) -> void:
 					$WorldEnvironment/DirectionalLight3D.show()
 					
 				"FASE 2":
+					MusicaGlobal.play("fase2")
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
 					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.129, 0.008, 0.09)

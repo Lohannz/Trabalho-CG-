@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://8a05axkc4nat" path="res://scenes/ObjetosBackground/general_crystal.tscn" id="19_bqhkd"]
 [ext_resource type="Material" uid="uid://dkcldr7w2406t" path="res://models/import/materials/crystal_spikes_blue.tres" id="20_24te2"]
 [ext_resource type="PackedScene" uid="uid://br6koytykvgso" path="res://scenes/ObjetosBackground/general_pilar.tscn" id="20_acge8"]
+[ext_resource type="PackedScene" uid="uid://sfvxckedojm0" path="res://scenes/livro_coletavel.tscn" id="23_bvd0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6anf"]
 albedo_color = Color(0.14847258, 0.22256717, 0.3733754, 0.7372549)
@@ -1586,6 +1587,12 @@ script = ExtResource("15_bqhkd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plataforma_frente_009/StaticBody3D/Area3D" index="0" unique_id=135427741]
 transform = Transform3D(0.2, 0, 0, 0, 4, 0, 0, 0, 0.206, 0, 0, 0)
 shape = SubResource("BoxShape3D_acge8")
+
+[node name="livro colecionavel" parent="." index="47" unique_id=650180534 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(-0.13125804, -0.28148365, 1.159111, 0.48986152, 1.0505114, 0.31058288, -1.0875694, 0.50714195, -5.0666355e-08, 124.33505, 110.83707, 126.901886)
+
+[node name="livro colecionavel2" parent="." index="48" unique_id=1956807418 instance=ExtResource("23_bvd0m")]
+transform = Transform3D(-0.13125804, -0.28148365, 1.159111, 0.48986152, 1.0505114, 0.31058288, -1.0875694, 0.50714195, -5.0666355e-08, 188.45432, 7.6611214, 162.19228)
 
 [connection signal="body_entered" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="plataforma_frente_006/StaticBody3D/Area3D" to="plataforma_frente_006/StaticBody3D/Area3D" method="_on_body_exited"]

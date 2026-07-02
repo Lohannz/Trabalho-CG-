@@ -1,9 +1,9 @@
 extends Light3D
 
-@onready var main : Node3D = get_tree().current_scene
 @export var area: Area3D
-var exceptions: Array
+var main : Node3D
 
+var exceptions: Array
 var active_rays: Dictionary = {}
 
 # Cores de objetos iluminados/obscurecidos
@@ -13,7 +13,8 @@ const ICE_LIT_FRES = Color(0.0, 0.35, 0.6, 0.3)
 const ICE_DARK_BASE = Color(0.0, 0.75, 0.95, 1.0)
 const ICE_DARK_FRES = Color(0.0, 0.7, 1.6, 1.0)
 
-func _ready() -> void:
+func _ready() -> void: 
+	main = get_tree().current_scene
 	exceptions = get_tree().get_nodes_in_group("invWall")
 	exceptions.append(get_tree().current_scene.get_node("player"))
 	
@@ -22,6 +23,9 @@ func _ready() -> void:
 		_register_body(body)
 
 func _physics_process(_delta: float) -> void:
+	if not is_instance_valid(main)\
+	 or not is_instance_valid(main.current_level): return
+	
 	for body in area.get_overlapping_bodies():
 		_register_body(body)
 
@@ -35,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 			_handle_light(body, ray)
 	
 func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
+	if not is_instance_valid(main.current_level): return
 	if body.get_collision_layer_value(4):
 		ray.force_raycast_update()
 		var collider = ray.get_collider()
@@ -43,12 +48,12 @@ func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 			ray.debug_shape_custom_color = Color(0.095, 1.054, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
-				"FASE 2": if not body.get_meta("irradiated"): _irradiate_body(body, true)
+				"FASE 2": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
-				"FASE 2": if body.get_meta("irradiated"): _irradiate_body(body, false)
+				"FASE 2": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
 		
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
@@ -78,9 +83,11 @@ func _register_body(body: Node3D) -> void:
 		active_rays[body] = ray
 		
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	if not is_instance_valid(main.current_level): return
 	_register_body(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
+	if not is_instance_valid(main.current_level): return
 	if "FASE 2" == main.current_level.name:
 		_irradiate_body(body, false)
 	_remove_ray(body)
@@ -127,8 +134,21 @@ func _irradiate_body(body: Node3D, has_light: bool) -> void:
 		if is_instance_valid(old_tween):
 			old_tween.kill()
 	
-	var target_transparency : float = 0.0 if has_light else 1.0
-	var target_time : float = 12.0 if has_light else 4.5
+	var target_transparency : float
+	var target_time : float
+	if has_light:
+		target_time = 4.5
+		if body.is_in_group("illusion"):
+			target_transparency = 1.0
+		else:
+			target_transparency = 0.0
+	else:
+		target_time = 12.0
+		if body.is_in_group("illusion"):
+			target_transparency = 0.0
+		else:
+			target_transparency = 1.0
+
 			
 	var tween = create_tween()
 	body.set_meta("transparency_tween", tween)

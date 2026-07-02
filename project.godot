@@ -18,6 +18,10 @@ config/name="teste jogo cg"
 run/main_scene="uid://v760vd7s164x"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+MusicaGlobal="*uid://c0xotrnoytsl8"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -29,6 +33,7 @@ lightSensitive=""
 invWall=""
 barrier=""
 killObj=""
+illusion=""
 
 [input]
 

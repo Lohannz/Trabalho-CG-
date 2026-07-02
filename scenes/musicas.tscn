@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0xotrnoytsl8"]
+
+[ext_resource type="Script" uid="uid://bmme7em6xligu" path="res://scripts/musicaGlobal.gd" id="1_ufktt"]
+[ext_resource type="AudioStream" uid="uid://bm0vt1gk4ndxt" path="res://sounds/cavesoundtrack.wav" id="2_5x133"]
+[ext_resource type="AudioStream" uid="uid://df66b88vj8eb4" path="res://sounds/musica_menu.wav" id="3_13qwt"]
+
+[node name="MusicaGlobal" type="Node2D" unique_id=1380642482]
+script = ExtResource("1_ufktt")
+
+[node name="musica_Fase1" type="AudioStreamPlayer2D" parent="." unique_id=1496585490]
+stream = ExtResource("2_5x133")
+volume_db = -9.0
+
+[node name="musica_Fase2" type="AudioStreamPlayer2D" parent="." unique_id=213827632]
+volume_db = -9.0
+
+[node name="musica_Menu" type="AudioStreamPlayer2D" parent="." unique_id=653635836]
+stream = ExtResource("3_13qwt")
+volume_db = -9.0
+autoplay = true

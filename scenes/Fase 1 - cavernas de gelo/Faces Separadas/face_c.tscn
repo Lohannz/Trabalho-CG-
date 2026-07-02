@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://brmgvfdd1a5dy" path="res://models/import/materials/snowmap.tres" id="10_1ni7m"]
 [ext_resource type="PackedScene" uid="uid://8a05axkc4nat" path="res://scenes/ObjetosBackground/general_crystal.tscn" id="10_4hjms"]
 [ext_resource type="PackedScene" uid="uid://br6koytykvgso" path="res://scenes/ObjetosBackground/general_pilar.tscn" id="11_c1qx3"]
+[ext_resource type="PackedScene" uid="uid://sfvxckedojm0" path="res://scenes/livro_coletavel.tscn" id="12_c1qx3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ue856"]
 size = Vector3(93.62793, 4.82312, 135.92053)
@@ -600,3 +601,9 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.053440
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos10/StaticBody3D2" index="0" unique_id=1991362704]
 transform = Transform3D(0.3214266, 0, 0, 0, 0.3214266, 0, 0, 0, 0.42091352, -0.06179619, 0.07830906, -0.058380127)
 shape = SubResource("BoxShape3D_1ni7m")
+
+[node name="livro colecionavel2" parent="." index="25" unique_id=650180534 instance=ExtResource("12_c1qx3")]
+transform = Transform3D(1.0875694, -0.50714195, 0, 0.48986152, 1.0505114, 0.31058288, -0.131258, -0.28148368, 1.159111, -179.2086, 90.50945, -22.058922)
+
+[node name="livro colecionavel3" parent="." index="26" unique_id=758310461 instance=ExtResource("12_c1qx3")]
+transform = Transform3D(1.0875694, -0.50714195, 0, 0.13125801, 0.28148368, -1.159111, 0.48986152, 1.0505114, 0.3105829, -180.27606, 90.87261, -262.89008)
