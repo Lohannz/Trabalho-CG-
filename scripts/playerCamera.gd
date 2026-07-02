@@ -97,11 +97,11 @@ func _process(delta: float) -> void:
 			pitch = global_rotation.x
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 			player.FREEZE = true
-			player.input.DISABLED = false
+			player.input.DISABLED = true
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
 			player.FREEZE = false
-			player.input.DISABLED = true
+			player.input.DISABLED = false
 			var tween = create_tween()
 			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)

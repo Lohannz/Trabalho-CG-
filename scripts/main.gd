@@ -90,14 +90,18 @@ func _process(_delta: float) -> void:
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
 					$player/AreaLamp/LampCol.disabled = false
 					
-				"PARTE FINAL":
-					print("TO NA PARTE DO FINAL")
+				"FASE 3A":
+					#MusicaGlobal.play("fase2")
 					$"Camera3D/Pos-processamento/Nevasca".hide()
-					$Camera3D/Outline.hide(	)
-					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.114, 0.641, 0.792, 1.0)
-					$WorldEnvironment.environment.fog_light_color = Color(0.221, 0.516, 0.701, 1.0)
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.591, 0.439, 0.064, 1.0))
+					
+					transition_layer.color = Color(0.0, 0.704, 0.937, 1.0)
+					$WorldEnvironment.environment.background_color = Color(0.158, 0.571, 0.978, 1.0)
+					$WorldEnvironment.environment.fog_light_color = Color(0.336, 0.76, 0.965, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
+					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
+					$player/AreaLamp/LampCol.disabled = true
 
 					
 			spawn_setting()
