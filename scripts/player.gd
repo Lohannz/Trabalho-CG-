@@ -33,7 +33,7 @@ var dash_start : Vector3
 # Desgaste de Energia
 const REST_FATIGUE = 100.0
 const SLIDE_FATIGUE = -10.0
-const CLIMB_FATIGUE = -25.0
+const CLIMB_FATIGUE = -18.0
 var stamina: float = 100.0
 
 # Multiplicadores de Movimento

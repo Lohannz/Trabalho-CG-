@@ -29,6 +29,7 @@ lightSensitive=""
 invWall=""
 barrier=""
 killObj=""
+illusion=""
 
 [input]
 
