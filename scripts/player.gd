@@ -68,7 +68,7 @@ var ICE_INERTIA: float = 80.0
 # Constantes: Estados/Ações do Player
 enum STATE {GROUNDED, AIRBORNE, CLIMBING, STEADY, DASHING, SLIDING, DYING}
 var state : STATE = STATE.GROUNDED
-
+var using_portal := false
 # Variáveis: Partículas de Movimentação
 @onready var running_particles: CPUParticles3D = $cat_obj/RunParticles
 @onready var sliding_particles: CPUParticles3D = $cat_obj/SlidingParticles
@@ -86,6 +86,7 @@ var forward : Vector3 = Vector3.ZERO
 # Variáveis: Input do Player
 var input: PlayerInput
 var move_direction : Vector3 = Vector3.ZERO
+var controle_bloqueado := false
 
 var FREEZE : bool = false
 var spawnpoint : Vector3 = Vector3.ZERO
@@ -110,7 +111,6 @@ func use_portal(portal):
 		FREEZE = false
 	else:
 		global_position = portal.destination.global_position
-		
 		FREEZE = true
 		PORTAL_UI.visible = false
 		camera._change_orientation(portal.get_normal())
@@ -118,6 +118,8 @@ func use_portal(portal):
 		spawnpoint = portal.destination.get_spawn()
 		await get_tree().create_timer(0.9).timeout
 		FREEZE = false
+	using_portal = true
+			
 
 
 ## FUNÇÕES AUXILIARES
@@ -174,6 +176,11 @@ func _ready() -> void:
 
 ## PROCESSOS
 func _physics_process(delta: float) -> void:
+	if controle_bloqueado:
+		move_direction = Vector3.ZERO
+		velocity = Vector3.ZERO
+		return
+	
 	if state != STATE.DYING:
 		for body in areaDetection.get_overlapping_bodies():
 			if body.is_in_group("killObj"):
