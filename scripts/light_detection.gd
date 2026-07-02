@@ -48,12 +48,12 @@ func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 			ray.debug_shape_custom_color = Color(0.095, 1.054, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
-				"FASE 2": if not body.get_meta("irradiated"): _irradiate_body(body, true)
+				"FASE 2": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
-				"FASE 2": if body.get_meta("irradiated"): _irradiate_body(body, false)
+				"FASE 2": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
 		
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
@@ -134,8 +134,21 @@ func _irradiate_body(body: Node3D, has_light: bool) -> void:
 		if is_instance_valid(old_tween):
 			old_tween.kill()
 	
-	var target_transparency : float = 0.1 if has_light else 1.0
-	var target_time : float = 4.5 if has_light else 12.0
+	var target_transparency : float
+	var target_time : float
+	if has_light:
+		target_time = 4.5
+		if body.is_in_group("illusion"):
+			target_transparency = 1.0
+		else:
+			target_transparency = 0.0
+	else:
+		target_time = 12.0
+		if body.is_in_group("illusion"):
+			target_transparency = 0.0
+		else:
+			target_transparency = 1.0
+
 			
 	var tween = create_tween()
 	body.set_meta("transparency_tween", tween)

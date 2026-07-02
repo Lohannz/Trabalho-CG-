@@ -442,6 +442,7 @@ shape = SubResource("BoxShape3D_h8e5d")
 disabled = true
 
 [node name="livros_078_004" parent="." index="13" unique_id=1871132588]
+transform = Transform3D(1.0927927e-06, 89.06247, 2.1996314e-06, 25.000181, -3.8930443e-06, 0, 9.553496e-14, 7.786089e-06, -25.16085, 616.5869, 308.54535, -336.39325)
 script = ExtResource("2_yclsm")
 distancia = 130.0
 direcao = Vector3(0, 1, 0)
@@ -451,13 +452,16 @@ velocidade = 25.0
 collision_layer = 3
 
 [node name="livros_079_003" parent="." index="14" unique_id=1223476837]
+transform = Transform3D(-1.0927927e-06, -91.20272, 0, 25.000181, -3.9865977e-06, 0, 0, 0, 25.60367, 567.421, 519.21985, -326.53882)
+transparency = 1.0
 script = ExtResource("2_yclsm")
 distancia = 130.0
 direcao = Vector3(0, -1, 0)
 velocidade = 25.0
+metadata/irradiated = false
 
-[node name="StaticBody3D" parent="livros_079_003" index="0" unique_id=362992550]
-collision_layer = 3
+[node name="StaticBody3D" parent="livros_079_003" index="0" unique_id=362992550 groups=["lightSensitive"]]
+collision_layer = 11
 
 [node name="Cubo_001" parent="." index="15" unique_id=1826431080]
 transform = Transform3D(5.518514, 0, 0, 0, 12.627065, 0, 0, 0, 12.627065, 592.64624, 433.1847, -527.96155)
@@ -520,10 +524,11 @@ transform = Transform3D(1.0000116, 4.3027103e-07, 0, -3.8999133e-08, 1.0020148, 
 shape = SubResource("BoxShape3D_xatc4")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="livrosSTACK_004/StaticBody3D" parent_id_path=PackedInt32Array(1185267537) index="1" unique_id=135876754]
-transform = Transform3D(1.0000116, 8.6799264e-07, 0, -8.4750354e-08, 1.0020148, 0, 0, 0, 1, 0.14153862, -0.0014791489, 0.9918022)
+transform = Transform3D(1.0000116, 8.791685e-07, 0, -8.8475645e-08, 1.0020148, 0, 0, 0, 1, 0.14153862, -0.0014791489, 0.9918022)
 shape = SubResource("BoxShape3D_8av2u")
 
 [node name="livros_079_004" parent="." index="21" unique_id=1715110912]
+transform = Transform3D(-1.0927927e-06, -91.20272, 0, 25.000181, -3.9865977e-06, 0, 0, 0, 25.60367, 625.3771, 440.47073, -535.8296)
 script = ExtResource("2_yclsm")
 distancia = 85.0
 direcao = Vector3(0, 1, 0)
@@ -544,21 +549,39 @@ material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_mndj4")
 
 [node name="livros_078_005" parent="." index="29" unique_id=214877979]
+transform = Transform3D(1.0928117e-06, 132.04465, 3.1677394e-06, 25.000616, -5.771855e-06, 0, 9.553663e-14, 1.154371e-05, -36.234715, 613.82007, 308.54535, -412.51328)
+transparency = 1.0
+script = ExtResource("2_yclsm")
+distancia = 220.0
+direcao = Vector3(0, 1, 0)
+velocidade = 35.0
+metadata/irradiated = false
+
+[node name="StaticBody3D" parent="livros_078_005" index="0" unique_id=1011258926 groups=["lightSensitive"]]
+collision_layer = 15
+metadata/irradiated = false
+
+[node name="livros_078_006" parent="." index="30" unique_id=1166077944]
+transform = Transform3D(1.0928117e-06, 132.04465, 3.1677394e-06, 25.000616, -5.771855e-06, 0, 9.553663e-14, 1.154371e-05, -36.234715, 567.57794, 308.54535, -412.51328)
+transparency = 1.0
 script = ExtResource("2_yclsm")
 distancia = 220.0
 direcao = Vector3(0, 1, 0)
 velocidade = 35.0
 
-[node name="livros_078_006" parent="." index="30" unique_id=1166077944]
-script = ExtResource("2_yclsm")
-distancia = 220.0
-direcao = Vector3(0, 1, 0)
-velocidade = 35.0
+[node name="StaticBody3D" parent="livros_078_006" index="0" unique_id=1734144042 groups=["lightSensitive"]]
+collision_layer = 15
+metadata/irradiated = false
 
 [node name="livrosSTACK_002" parent="." index="31" unique_id=1877754647]
 transform = Transform3D(-0.09833836, -73.55988, 0, 18.276505, -0.39579546, 0, 0, 0, 18.750736, 627.7893, 370.50708, -488.43063)
+transparency = 1.0
 
-[node name="CollisionShape3D" parent="livrosSTACK_002/StaticBody3D" parent_id_path=PackedInt32Array(1755855194) index="0" unique_id=494442838]
+[node name="StaticBody3D" parent="livrosSTACK_002" index="0" unique_id=1755855194 groups=["lightSensitive"]]
+collision_layer = 9
+metadata/irradiated = false
+
+[node name="CollisionShape3D" parent="livrosSTACK_002/StaticBody3D" index="0" unique_id=494442838]
 transform = Transform3D(0.9985784, -3.7252903e-09, 0, 0, 0.6862772, 0, 0, 0, 0.9999999, 0.0044555664, 0.07830143, -0.21264648)
 shape = SubResource("BoxShape3D_352q7")
 
