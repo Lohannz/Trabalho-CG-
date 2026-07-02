@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ctjhfe7pgn7ix" path="res://scenes/pedras_final.tscn" id="1_7e2tp"]
 [ext_resource type="Shader" path="res://shaders/lago.gdshader" id="2_0led5"]
 [ext_resource type="Texture2D" uid="uid://kfr1xfif21ln" path="res://models/import/pedras-parte-final_textura_pedras.png" id="3_8b31y"]
-[ext_resource type="Shader" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Shader" uid="uid://fkhleywmjcqs" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Texture2D" uid="uid://d0co30fxqs605" path="res://estrelas_final.png" id="5_0led5"]
 [ext_resource type="PackedScene" uid="uid://cjero18thjkjc" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
 [ext_resource type="Texture2D" uid="uid://dcx0shanuaetr" path="res://models/import/cruz-parte-final_textura-cruz.png" id="6_rdm36"]
 
@@ -48,6 +49,12 @@ shader_parameter/cloud_density1 = 0.55
 shader_parameter/cloud_density2 = 0.65
 shader_parameter/cloud_strength1 = 0.58
 shader_parameter/cloud_strength2 = 0.415
+shader_parameter/cloud_texture = ExtResource("5_0led5")
+shader_parameter/png_cloud_scale = 2.03
+shader_parameter/png_cloud_speed_x = 0.005
+shader_parameter/png_cloud_speed_y = 0.01
+shader_parameter/png_cloud_strength = 1.0
+shader_parameter/png_cloud_tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Sky" id="Sky_7678y"]
 sky_material = SubResource("ShaderMaterial_6gx7d")
