@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ctjhfe7pgn7ix"]
+
+[ext_resource type="PackedScene" uid="uid://3ndnyh4p0vuy" path="res://models/import/pedras-parte-final.glb" id="1_d5h3s"]
+
+[node name="pedras_final" type="Node3D" unique_id=1307349631]
+
+[node name="pedras-parte-final" parent="." unique_id=2106642372 instance=ExtResource("1_d5h3s")]

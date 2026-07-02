@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhitd46y5iumr"
-path="res://.godot/imported/Nucleo_de_Almas.glb-a2fdb24c4c3f55426544053d20a72cc8.scn"
+uid="uid://cl5op35uh7nnc"
+path="res://.godot/imported/face3B.glb-072ae9ed82c5f6fe5f0d98c217b9abeb.scn"
 
 [deps]
 
-source_file="res://models/import/fase2glbs/Nucleo_de_Almas.glb"
-dest_files=["res://.godot/imported/Nucleo_de_Almas.glb-a2fdb24c4c3f55426544053d20a72cc8.scn"]
+source_file="res://models/import/fase3glbs/face3B.glb"
+dest_files=["res://.godot/imported/face3B.glb-072ae9ed82c5f6fe5f0d98c217b9abeb.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true

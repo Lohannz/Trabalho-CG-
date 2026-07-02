@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bpwqpv0oc5wg3"]
+
+[ext_resource type="PackedScene" uid="uid://cta46ekxer02y" path="res://models/import/fase3glbs/face3C.glb" id="1_415qy"]
+
+[node name="face3C" unique_id=2115910475 instance=ExtResource("1_415qy")]

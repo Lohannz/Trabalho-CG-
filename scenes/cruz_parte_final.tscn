@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cjero18thjkjc"]
+
+[ext_resource type="PackedScene" uid="uid://de8y2pvupm2qj" path="res://models/import/cruz-parte-final.glb" id="1_ppf8f"]
+
+[node name="cruz-parte-final" unique_id=852090698 instance=ExtResource("1_ppf8f")]
