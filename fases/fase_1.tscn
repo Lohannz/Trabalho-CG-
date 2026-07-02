@@ -7,12 +7,12 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="4_k3scg"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="5_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://bd6elpegl8ewl" path="res://scenes/ice_core.tscn" id="5_g2wj8"]
-[ext_resource type="Script" uid="uid://wo04qujk3acq" path="res://scripts/endportals.gd" id="6_bcrg8"]
-[ext_resource type="Script" uid="uid://dcfc0cfadrlei" path="res://scripts/melt.gd" id="7_8ldnf"]
+[ext_resource type="Script" uid="uid://103kwdcttqn7" path="res://scripts/endportals.gd" id="6_bcrg8"]
+[ext_resource type="Script" uid="uid://cphijfjne26kp" path="res://scripts/melt.gd" id="7_8ldnf"]
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="7_k3scg"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="7_whobl"]
-[ext_resource type="Shader" uid="uid://binncvxcl2tj6" path="res://shaders/emission.gdshader" id="8_dc6vk"]
-[ext_resource type="Script" uid="uid://dy6qrc448k4j6" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
+[ext_resource type="Shader" uid="uid://4b8aiwinswtc" path="res://shaders/emission.gdshader" id="8_dc6vk"]
+[ext_resource type="Script" uid="uid://dcg43bdf43jf4" path="res://scripts/blizzardEvent.gd" id="8_o8l6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ldnf"]
 transparency = 4

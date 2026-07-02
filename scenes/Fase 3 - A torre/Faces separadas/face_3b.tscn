@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dpqx8i1i1yoth"]
+
+[ext_resource type="PackedScene" uid="uid://cl5op35uh7nnc" path="res://models/import/fase3glbs/face3B.glb" id="1_33xfs"]
+
+[node name="face3B" unique_id=19581994 instance=ExtResource("1_33xfs")]
+
+[node name="Cubo_016" parent="." index="8" unique_id=93197381]
+layers = 4
+
+[node name="StaticBody3D" parent="Cubo_017" parent_id_path=PackedInt32Array(2007033091) index="0" unique_id=1325599515]
+collision_layer = 4
