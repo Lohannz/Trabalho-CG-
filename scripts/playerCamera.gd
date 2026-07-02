@@ -8,7 +8,7 @@ extends Camera3D
 @onready var player : CharacterBody3D = get_tree().current_scene.get_node("player")
 
 # camera livre
-@export var velocidade_camera := 40.0
+@export var camera_speed := 40.0
 @export var mouse_sensibility := 0.003
 var _saved_position : Vector3
 var _saved_basis : Basis
@@ -97,9 +97,11 @@ func _process(delta: float) -> void:
 			pitch = global_rotation.x
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 			player.FREEZE = true
+			player.input.DISABLED = false
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
 			player.FREEZE = false
+			player.input.DISABLED = true
 			var tween = create_tween()
 			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)
@@ -147,4 +149,9 @@ func _process(delta: float) -> void:
 			dir -= basis.y	
 		
 		if dir != Vector3.ZERO:
-			global_position += dir.normalized() * velocidade_camera * delta
+			global_position += dir.normalized() * camera_speed * delta
+
+func wait_camera_arrives() -> void:
+	var target = player.global_position + _orientation.z * offset_Z + _orientation.y * offset_Y
+	while global_position.distance_to(target) < 0.05:
+		await get_tree().process_frame

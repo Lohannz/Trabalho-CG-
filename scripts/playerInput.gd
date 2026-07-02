@@ -1,6 +1,7 @@
 class_name PlayerInput
 extends Node
 const DEADZONE := 0.001
+var  DISABLED : bool = false
 
 var move := Vector2.ZERO
 var jump  : PlayerAction

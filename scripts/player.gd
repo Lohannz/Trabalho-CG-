@@ -96,10 +96,12 @@ func use_portal(portal) -> void:
 	if DYING: return
 	USING_PORTAL = true
 	velocity = Vector3.ZERO
+	
 	if portal.get_parent().name == "PortalFinal":
 		FREEZE = true
 		PORTAL_UI.visible = false
-
+		while Collectable._following_counter > 0:
+			await get_tree().process_frame
 		change_level.emit(portal.next_level_path)
 		await get_parent().level_ready 
 
@@ -138,9 +140,10 @@ func _update_orientation() -> void:
 	
 # Função Auxiliar: Direção do Movimento
 func _update_movement_direction(delta : float):
-	input.update(delta)
-	move_direction = right * input.move.x + forward * input.move.y
-	move_direction = move_direction.normalized()
+	if not input.DISABLED:
+		input.update(delta)
+		move_direction = right * input.move.x + forward * input.move.y
+		move_direction = move_direction.normalized()
 	
 func _get_visual_direction() -> Vector3:
 	var vel = velocity - up * velocity.dot(up)
@@ -193,19 +196,16 @@ func _physics_process(delta: float) -> void:
 			COYOTE_TIMER = COYOTE_MAX
 		else:
 			COYOTE_TIMER -= delta
-	#else:
-		#move_direction = Vector3.ZERO
-		#velocity = Vector3.ZERO
-
-
+			
 ## MORTE DO PLAYER
 func _on_obstacle_entered(body: Node3D) -> void:
 	if not DYING and body.is_in_group("killObj"): die()
 
 func die() -> void:
 	DYING = true
-	areaDetection.monitoring = false
+	areaDetection.set_deferred("monitoring",false)
 	FREEZE = true
+	input.DISABLED = true
 	
 	input.move = Vector2.ZERO
 	velocity = Vector3.ZERO
@@ -215,18 +215,18 @@ func die() -> void:
 		$AnimationPlayer.speed_scale = 1.2
 	await $AnimationPlayer.animation_finished
 	
-	transition.play(&"fade")
+	transition.play(&"death")
 	await transition.animation_finished
 	global_position = spawnpoint
 	state = STATE.GROUNDED
-	transition.play_backwards(&"fade")
+	transition.play_backwards(&"death")
 	restore_dash()
 	
 	DYING = false
-	areaDetection.monitoring = true
+	areaDetection.set_deferred("monitoring",true)
+	input.DISABLED = false
 	FREEZE = false
 	
-	areaDetection.set_deferred("monitoring", true)
 	$AnimationPlayer.play(&"idle")
 	
 ## MOVIMENTO DO PLAYER

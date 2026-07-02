@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0apmtf75pnsj" path="res://models/import/cat_cat_2.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dxab73phsrv06" path="res://models/import/cat_cat_3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bb3ghfbbelj5c" path="res://models/import/cat_cat.png" id="5_smehm"]
-[ext_resource type="PackedScene" uid="uid://b6j45bqx3uw6p" path="res://models/import/lamparina.glb" id="6_tuyoq"]
+[ext_resource type="PackedScene" path="res://scenes/lamparina.tscn" id="5_tuyoq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tuyoq"]
 radius = 13.955905
@@ -2720,7 +2720,7 @@ transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, 0, 0, 0)
 collision_layer = 0
 collision_mask = 24
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaLamp" unique_id=1922455260]
+[node name="LampCol" type="CollisionShape3D" parent="AreaLamp" unique_id=1922455260]
 transform = Transform3D(1.6, 0, 0, 0, 0.75, 0, 0, 0, 1.6, 0, 0, 0)
 shape = SubResource("SphereShape3D_tuyoq")
 
@@ -3081,8 +3081,11 @@ transform = Transform3D(0.9862564, 0.10829774, -0.124778844, 0.12390983, -0.9843
 bone_name = "bone.hand.L"
 bone_idx = 27
 
-[node name="lamparina" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D" unique_id=120889469 instance=ExtResource("6_tuyoq")]
-transform = Transform3D(0.06559752, 0.08561996, 0.5902253, 0.0832608, -0.5892846, 0.07622992, 0.5905628, 0.07357023, -0.07630733, -0.3040319, 3.2174647, -0.44342995)
+[node name="lamparina" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D" unique_id=494706554 instance=ExtResource("5_tuyoq")]
+transform = Transform3D(-0.5778612, 0.112756446, 0.11559597, -0.09925023, -0.58680236, 0.07623876, 0.12738068, 0.054304156, 0.5838024, -0.3040319, 3.2174647, -0.44342995)
+
+[node name="OmniLight3D" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina" index="2" unique_id=178910372 node_paths=PackedStringArray("area")]
+area = NodePath("../../../../../../AreaLamp")
 
 [node name="cat_tail" type="Node3D" parent="cat_obj" unique_id=1133340532]
 transform = Transform3D(3.85, 0, 0, 0, 3.85, 0, 0, 0, 3.85, 0, -2.280501, -0.9534335)

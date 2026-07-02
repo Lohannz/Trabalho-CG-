@@ -6,8 +6,9 @@ extends Node3D
 @onready var loading_screen := $telaLoading
 @onready var label_percent := $telaLoading/FundoPreto/LabelPorcentagem
 @onready var UI := $Camera3D/UI
-@onready var lamp := $player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina
-@onready var lampCol:= $player/AreaLamp/CollisionShape3D
+
+@onready var transition_layer = $"Camera3D/Pos-processamento/Transição/transição"
+@onready var transition = $"Camera3D/Pos-processamento/Transição/transição/AnimationPlayer"
 
 @export_file("*.tscn") var level_path: String
 var spawnpoints : Array[Vector3]
@@ -28,6 +29,8 @@ func start_loading(new_path: String) -> void:
 	
 	# Preparação da UI de carregamento.
 	player.visible = false
+	player.FREEZE = true
+	player.input.DISABLED = true
 	UI.visible = false
 	loading_screen.visible = true
 	label_percent.text = "0%"
@@ -60,28 +63,32 @@ func _process(_delta: float) -> void:
 			$Fase.add_child(current_level)
 
 			# Configurações estéticas baseadas nas fases.
+			transition_layer.set_shaders("start_level")
 			match current_level.name:
 				"FASE 1":
-					lamp.hide()
-					lampCol.disabled = true
 					MusicaGlobal.play("fase1")
 					$"Camera3D/Pos-processamento/Nevasca".show()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
-					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.1, 0.0, 0.618)
+					
+					transition_layer.color = Color(0.1, 0.0, 0.618)
 					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
 					$WorldEnvironment/DirectionalLight3D.show()
+					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
-					$player/AreaLamp/CollisionShape3D.disabled = true
+					$player/AreaLamp/LampCol.disabled = true
 					
 				"FASE 2":
 					MusicaGlobal.play("fase2")
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
-					$"Camera3D/Pos-processamento/Transição/transição".color = Color(0.129, 0.008, 0.09)
+					
+					transition_layer.color = Color(0.129, 0.008, 0.09)
+					$WorldEnvironment.environment.background_color = Color(0.482, 0.0, 0.172, 1.0)
 					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
+					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
-					$player/AreaLamp/CollisionShape3D.disabled = false
+					$player/AreaLamp/LampCol.disabled = false
 					
 				"PARTE FINAL":
 					print("TO NA PARTE DO FINAL")
@@ -98,8 +105,17 @@ func _process(_delta: float) -> void:
 			level_ready.emit()
 			
 			# Reativação do jogo.
+			player.FREEZE = false
+			
+			await $Camera3D.wait_camera_arrives()
 			loading_screen.visible = false
 			player.visible = true
+			
+			transition.play_backwards(&"start_level")
+			await transition.animation_finished
+			transition_layer.set_shaders("death")
+			
+			player.input.DISABLED = false
 			UI.visible = true
 						
 		elif status == ResourceLoader.THREAD_LOAD_FAILED:

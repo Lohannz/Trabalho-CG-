@@ -156,6 +156,6 @@ transform = Transform3D(0.19563264, 0, 0, 0, 0.1036188, 0, 0, 0, 0.18985228, -0.
 shape = SubResource("BoxShape3D_sx7nb")
 
 [node name="MiasmaFog" type="FogVolume" parent="." unique_id=2003875644]
-transform = Transform3D(4.650338, 0, 0, 0, 1.0311005, 0, 0, 0, 2.5325825, 0.019904105, 0.018975861, -0.0015805376)
+transform = Transform3D(4.650338, 0, 0, 0, 1.0311005, 0, 0, 0, 2.5325823, 0.019904103, 0.018975861, -0.0015805375)
 size = Vector3(0.92357445, 2.0224571, 1.6458855)
 material = SubResource("FogMaterial_adl4b")
