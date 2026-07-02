@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dctk4jnaxucuy" path="res://models/import/fase2glbs/FaceE2.glb" id="1_qjqdr"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_a8c4m"]
-[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_chhkd"]
+[ext_resource type="Script" uid="uid://dpujchi800spf" path="res://scripts/plataforma_movivel.gd" id="2_chhkd"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="4_n1d6s"]
 [ext_resource type="Texture2D" uid="uid://blp4plrbf8qjr" path="res://models/import/fase2glbs/FaceE2_capa_vermelha.png" id="5_bl0fg"]
 [ext_resource type="Texture2D" uid="uid://c2ults2y72r3h" path="res://models/import/fase2glbs/FaceD2_capa_preta.png" id="6_1ip5n"]
+[ext_resource type="PackedScene" uid="uid://b4ct2qc8ck2xk" path="res://scenes/ObjetosBackground/pilarLivros.glb" id="7_xgwdi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1d6s"]
 size = Vector3(500, 500, 10)
@@ -94,22 +95,22 @@ data = PackedVector3Array(0.06385404, -0.13813898, 0.19084926, 0.06385404, 0.138
 
 [node name="FaceE2" unique_id=1733593299 instance=ExtResource("1_qjqdr")]
 
-[node name="PlanoTrue_005" parent="." index="0" unique_id=1594225550]
+[node name="PlanoTrue_005" parent="." index="0" unique_id=1873446991]
 material_override = ExtResource("2_a8c4m")
 
-[node name="paredeTRUETRUE_006" parent="." index="1" unique_id=720269031]
+[node name="paredeTRUETRUE_006" parent="." index="1" unique_id=588343342]
 material_override = ExtResource("2_a8c4m")
 
-[node name="livros_078_014" parent="." index="4" unique_id=317202267]
+[node name="livros_078_014" parent="." index="4" unique_id=1793597913]
 script = ExtResource("2_chhkd")
 distancia = 80.0
 direcao = Vector3(0, 0, 1)
 velocidade = 25.0
 
-[node name="StaticBody3D" parent="livros_078_015" parent_id_path=PackedInt32Array(1615303177) index="0" unique_id=120570121]
+[node name="StaticBody3D" parent="livros_078_015" parent_id_path=PackedInt32Array(982027363) index="0" unique_id=1095223490]
 collision_layer = 4
 
-[node name="StaticBody3D" parent="livros_078_016" parent_id_path=PackedInt32Array(1771652996) index="0" unique_id=2125471224]
+[node name="StaticBody3D" parent="livros_078_016" parent_id_path=PackedInt32Array(489124566) index="0" unique_id=804167648]
 collision_layer = 4
 
 [node name="Miasma" parent="." index="20" unique_id=803802425 instance=ExtResource("4_n1d6s")]
@@ -168,6 +169,9 @@ metadata/irradiated = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="livros_078_008/StaticBody3D" index="0" unique_id=996404332]
 shape = SubResource("ConcavePolygonShape3D_sv4kn")
+
+[node name="pilarLivros" parent="." index="25" unique_id=979057021 instance=ExtResource("7_xgwdi")]
+transform = Transform3D(2.0464528, 0, 1.4359777, 0, 2.5, 0, -1.4359777, 0, 2.0464528, 0.9828491, 212.5624, -473.11948)
 
 [editable path="Miasma"]
 [editable path="Miasma2"]

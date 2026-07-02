@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://cgilh40y6kiix"]
 
 [ext_resource type="PackedScene" uid="uid://ca27xi2bm04ob" path="res://models/import/fase2glbs/FaceF2.glb" id="1_el1h1"]
-[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
+[ext_resource type="Script" uid="uid://dpujchi800spf" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
+[ext_resource type="PackedScene" uid="uid://b4ct2qc8ck2xk" path="res://scenes/ObjetosBackground/pilarLivros.glb" id="3_ytecc"]
 
 [node name="FaceF2" unique_id=72985738 instance=ExtResource("1_el1h1")]
 
-[node name="livros_078_017" parent="." index="4" unique_id=891673046]
+[node name="livros_078_017" parent="." index="4" unique_id=1534241452]
 script = ExtResource("2_yaply")
 distancia = 115.0
 direcao = Vector3(0, -1, 0)
 velocidade = 20.0
 
-[node name="livros_078_018" parent="." index="5" unique_id=558952236]
+[node name="livros_078_018" parent="." index="5" unique_id=5319440]
 script = ExtResource("2_yaply")
 distancia = 150.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 15.0
+
+[node name="pilarLivros" parent="." index="12" unique_id=979057021 instance=ExtResource("3_ytecc")]
+transform = Transform3D(0.9011723, 2.3319278, 0, -2.3319278, 0.9011723, 0, 0, 0, 2.5, -73.66641, 499.9381, -849.00854)
+
+[node name="pilarLivros2" parent="." index="13" unique_id=1012976729 instance=ExtResource("3_ytecc")]
+transform = Transform3D(1.815957, 1.7182262, 0, -1.7182262, 1.815957, 0, 0, 0, 2.5000002, -22.123718, 499.9381, -849.00854)

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cjcq7prai6eec"]
+
+[ext_resource type="PackedScene" uid="uid://b4ct2qc8ck2xk" path="res://scenes/ObjetosBackground/pilarLivros.glb" id="1_jfpcg"]
+
+[node name="pilarLivros" unique_id=979057021 instance=ExtResource("1_jfpcg")]
