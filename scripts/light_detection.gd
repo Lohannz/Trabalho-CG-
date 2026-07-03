@@ -34,9 +34,10 @@ func _physics_process(_delta: float) -> void:
 		if not is_instance_valid(ray): 
 			_restore_body(body)
 		else:
-			ray.global_position = global_position
-			ray.target_position = ray.to_local(body.global_position)
-			_handle_light(body, ray)
+			if is_instance_valid(body): 
+				ray.global_position = global_position
+				ray.target_position = ray.to_local(body.global_position)
+				_handle_light(body, ray)
 
 # Controlador da função de iluminação.
 func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:

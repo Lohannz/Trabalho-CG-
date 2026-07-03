@@ -1,15 +1,13 @@
-class_name Chave
+class_name Key
 extends Node3D
-
-static var chaves_seguindo: int = 0
-static var _fila: Array[Chave] = []
 
 @onready var mesh: MeshInstance3D = $Cubo_001
 @onready var area: Area3D = $Area3D
 @onready var collision: CollisionShape3D = $Area3D/CollisionShape3D
 @onready var camera: Camera3D = get_tree().current_scene.get_node("Camera3D")
-
 @export var delay: float = 5.0
+
+static var keys: Array[Key] = []
 
 var _player: CharacterBody3D = null
 var _following := false
@@ -28,16 +26,13 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and not body.DYING:
 		_player = body
 		_following = true
-
-		area.monitoring = false
-
-		_queue_index = _fila.size()
-		_fila.append(self)
-		chaves_seguindo += 1
+		collision.set_deferred("monitoring", false)
+		
+		_queue_index = keys.size()
+		keys.append(self)
 
 func _process(delta: float) -> void:
 	mesh.rotate_y(deg_to_rad(60) * delta)
-
 	_time_elapsed += delta
 
 	if !_following or !is_instance_valid(_player):
@@ -58,30 +53,25 @@ func _process(delta: float) -> void:
 	)
 
 	var target = _player.global_position + base_height + queue_offset + wave
-
 	global_position = global_position.lerp(target, delay * delta)
 
-static func entregar_chaves(quantidade: int) -> int:
-	var entregues := 0
+static func give_keys(amount: int) -> void:
+	var keys_to_remove: Array[Key] = []
+	
+	var limit = min(amount, keys.size())
+	for i in range(limit):
+		keys_to_remove.append(keys[i])
+		
+	for key in keys_to_remove:
+		if is_instance_valid(key):
+			key._give()
+			keys.erase(key)
+		
+	for i in range(keys.size()):
+		if is_instance_valid(keys[i]):
+			keys[i]._queue_index = i
 
-	while entregues < quantidade and !_fila.is_empty():
-		var chave = _fila.pop_front()
-
-		if is_instance_valid(chave):
-			chave._entregar()
-			entregues += 1
-
-	_reordenar_fila()
-	chaves_seguindo = max(chaves_seguindo - entregues, 0)
-
-	return entregues
-
-func _entregar() -> void:
+func _give() -> void:
 	_following = false
 	_player = null
 	queue_free()
-
-static func _reordenar_fila() -> void:
-	for i in _fila.size():
-		if is_instance_valid(_fila[i]):
-			_fila[i]._queue_index = i

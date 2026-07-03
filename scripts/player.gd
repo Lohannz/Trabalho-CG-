@@ -1,4 +1,5 @@
 extends CharacterBody3D
+
 @onready var camera = get_tree().current_scene.get_node("Camera3D")
 @onready var transition = get_tree().current_scene.get_node("Camera3D/Pos-processamento/Transição/transição/AnimationPlayer")
 @onready var areaDetection = $areaDetection

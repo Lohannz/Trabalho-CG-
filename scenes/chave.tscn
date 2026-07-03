@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cucv0jqp3vhfb" path="res://models/import/chave.glb" id="1_6s0vc"]
 [ext_resource type="Texture2D" uid="uid://cb4kg88tvn0j4" path="res://models/import/textures/soul_core.png" id="2_4lytf"]
-[ext_resource type="Script" uid="uid://djyq6x8udjk71" path="res://fases/chave.gd" id="3_spc1i"]
+[ext_resource type="Script" uid="uid://cw3o2wwymrkol" path="res://fases/key.gd" id="3_spc1i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spc1i"]
 resource_name = "nucleoTextF2"
@@ -63,13 +63,10 @@ shadow_mesh = SubResource("ArrayMesh_e2e6e")
 [sub_resource type="SphereShape3D" id="SphereShape3D_4lytf"]
 radius = 2.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_spc1i"]
-radius = 2.0
-
 [node name="chave" unique_id=918937857 instance=ExtResource("1_6s0vc")]
 script = ExtResource("3_spc1i")
 
-[node name="Cubo_001" parent="." index="0" unique_id=505445618]
+[node name="Cubo_001" parent="." index="0" unique_id=748009726]
 transform = Transform3D(-0.18533671, 0, 0, 0, -0.18533671, 0, 0, 0, -0.18533671, -1.4531966, -1.1849148, 0.062336758)
 material_override = SubResource("StandardMaterial3D_spc1i")
 mesh = SubResource("ArrayMesh_hwm0u")
@@ -79,8 +76,3 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=985488061]
 shape = SubResource("SphereShape3D_4lytf")
-
-[node name="Area3D2" type="Area3D" parent="." index="2" unique_id=1096802038]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" index="0" unique_id=1056724178]
-shape = SubResource("SphereShape3D_spc1i")

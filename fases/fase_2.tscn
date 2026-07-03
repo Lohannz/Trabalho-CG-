@@ -7,14 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="4_e2jij"]
 [ext_resource type="PackedScene" uid="uid://c8hb54lfjk3dj" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_c_2.tscn" id="6_giy1v"]
 [ext_resource type="PackedScene" uid="uid://c6vjqsya5ojr6" path="res://scenes/inimigo.tscn" id="6_yeing"]
-[ext_resource type="Script" uid="uid://dpujchi800spf" path="res://scripts/plataforma_movivel.gd" id="7_8wc58"]
+[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="7_8wc58"]
 [ext_resource type="PackedScene" uid="uid://5ajlrxhks307" path="res://scenes/soul_core.tscn" id="7_e2jij"]
 [ext_resource type="PackedScene" uid="uid://clhakl1ls67ym" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_d_2.tscn" id="8_gxdkb"]
 [ext_resource type="PackedScene" uid="uid://b4uqi38vx8iq3" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_e_2.tscn" id="9_axr8r"]
 [ext_resource type="PackedScene" uid="uid://cgilh40y6kiix" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_f_2.tscn" id="10_4dhkl"]
 [ext_resource type="PackedScene" uid="uid://x8l1jrhfoutw" path="res://scenes/porta_v_2.tscn" id="11_10bks"]
-[ext_resource type="Script" uid="uid://dpf5o3msadlto" path="res://scenes/porta_chaves.gd" id="12_qpdiq"]
+[ext_resource type="Script" uid="uid://clnco7uo3j3k2" path="res://scenes/door.gd" id="12_qpdiq"]
 [ext_resource type="PackedScene" uid="uid://qp4gdkk7ciju" path="res://scenes/chave.tscn" id="13_qpdiq"]
+[ext_resource type="Script" uid="uid://2apbh3k3k2bc" path="res://fases/next_level.gd" id="15_oddhb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axr8r"]
 render_priority = 0
@@ -630,14 +631,16 @@ transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e
 destination = NodePath("../../../../FaceC2/Portais/PortalPreto/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18")]
 
-[node name="portaV2" parent="." unique_id=2094035648 instance=ExtResource("11_10bks")]
+[node name="PortalFinal" parent="." unique_id=2094035648 instance=ExtResource("11_10bks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 219, -191)
 script = ExtResource("12_qpdiq")
 
-[node name="Area3D" type="Area3D" parent="portaV2" unique_id=412481454]
+[node name="PortalArea" type="Area3D" parent="PortalFinal" unique_id=412481454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.800003, 2.100006, 3.800003)
+script = ExtResource("15_oddhb")
+next_level_path = "uid://bwa28k51vrqxk"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="portaV2/Area3D" unique_id=135948512]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalFinal/PortalArea" unique_id=135948512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5, 0)
 shape = SubResource("BoxShape3D_qpdiq")
 

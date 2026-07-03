@@ -191,12 +191,17 @@ velocidade = 15.0
 collision_layer = 3
 
 [node name="livros_078_003" parent="." index="19" unique_id=1183210833]
+transform = Transform3D(0.13451375, 89.06118, -1.093898e-06, 24.99982, -0.47920159, 1.0997996e-06, 1.0869128e-06, -3.892987e-06, -25.16085, 190.53017, 311.8809, -138.57472)
 transparency = 1.0
 script = ExtResource("2_8155l")
+distancia = 70.0
+direcao = Vector3(0, 1, 0)
+velocidade = 10.0
 metadata/irradiated = false
 
 [node name="StaticBody3D" parent="livros_078_003" index="0" unique_id=1519730931 groups=["lightSensitive"]]
 collision_layer = 9
+metadata/irradiated = false
 
 [node name="livros_079_001" parent="." index="20" unique_id=150017044]
 transform = Transform3D(-1.092788e-06, -79.838356, 0, 25.000076, -3.4898453e-06, 0, 0, 0, 25.60367, 141.61923, 505.7779, -111.726135)
