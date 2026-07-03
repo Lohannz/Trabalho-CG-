@@ -176,9 +176,9 @@ disabled = true
 
 [node name="livros_078" parent="." index="18" unique_id=453376528]
 script = ExtResource("2_11p4c")
-distancia = 190.0
+distancia = 220.0
 direcao = Vector3(0, 0, -1)
-velocidade = 30.0
+velocidade = 40.0
 
 [node name="Miasma" parent="." index="24" unique_id=803802425 instance=ExtResource("4_8hcbl")]
 transform = Transform3D(24.594217, 0, 0, 0, 77.71314, 0, 0, 0, 64.92752, -503.97186, 263.04977, -455.81384)
