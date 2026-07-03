@@ -41,6 +41,15 @@ func start_loading(new_path: String) -> void:
 		current_level = null
 		spawnpoints.clear() # Limpa os spawns da fase anterior
 	
+	print(level_path.get_file().get_basename())
+	
+	if level_path == "uid://n1wudfyde562":
+		apply_level_visuals("FASE 1")
+	elif level_path == "uid://c35dk6ys8neb6":
+		apply_level_visuals("FASE 2")
+	elif level_path == "uid://bwa28k51vrqxk":
+		apply_level_visuals("FASE 3")
+	
 	# Carregamento em background
 	ResourceLoader.load_threaded_request(level_path)
 
@@ -63,48 +72,7 @@ func _process(_delta: float) -> void:
 			$Fase.add_child(current_level)
 
 			# Configurações estéticas baseadas nas fases.
-			transition_layer.set_shaders("start_level")
-			match current_level.name:
-				"FASE 1":
-					MusicaGlobal.play("fase1")
-					$"Camera3D/Pos-processamento/Nevasca".show()
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
-					
-					transition_layer.color = Color(0.1, 0.0, 0.618)
-					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
-					$WorldEnvironment/DirectionalLight3D.show()
-					$WorldEnvironment/DirectionalLight3D.show()
-					
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
-					$player/AreaLamp/LampCol.disabled = true
-					
-				"FASE 2":
-					MusicaGlobal.play("fase2")
-					$"Camera3D/Pos-processamento/Nevasca".hide()
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
-					
-					transition_layer.color = Color(0.129, 0.008, 0.09)
-					$WorldEnvironment.environment.background_color = Color(0.482, 0.0, 0.172, 1.0)
-					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
-					$WorldEnvironment/DirectionalLight3D.hide()
-					
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.282, 0.886, 0.537)
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
-					$player/AreaLamp/LampCol.disabled = false
-					
-				"FASE 3":
-					#MusicaGlobal.play("fase2")
-					$"Camera3D/Pos-processamento/Nevasca".hide()
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.169, 0.0, 0.631, 1.0))
-					
-					transition_layer.color = Color(0.059, 0.0, 0.294, 1.0)
-					$WorldEnvironment.environment.background_color = Color(0.396, 0.002, 0.855, 1.0)
-					$WorldEnvironment.environment.fog_light_color = Color(0.291, 0.12, 0.721, 1.0)
-					$WorldEnvironment/DirectionalLight3D.hide()
-					
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.056, 0.39, 0.688, 1.0)
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
-					$player/AreaLamp/LampCol.disabled = false
+			apply_level_visuals(current_level.name)
 					
 			spawn_setting()
 			level_ready.emit()
@@ -140,3 +108,47 @@ func spawn_setting() -> void:
 	if spawnpoints.size() > 0:
 		player.global_position = spawnpoints[0]
 		player.spawnpoint = spawnpoints[0]
+		
+func apply_level_visuals(level_name : String):
+	transition_layer.set_shaders("start_level")
+	match level_name:
+		"FASE 1":
+			MusicaGlobal.play("fase1")
+			$"Camera3D/Pos-processamento/Nevasca".show()
+			$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.0, 0.008, 0.196))
+			
+			transition_layer.color = Color(0.1, 0.0, 0.618)
+			$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
+			$WorldEnvironment/DirectionalLight3D.show()
+			$WorldEnvironment/DirectionalLight3D.show()
+			
+			$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
+			$player/AreaLamp/LampCol.disabled = true
+			
+		"FASE 2":
+			MusicaGlobal.play("fase2")
+			$"Camera3D/Pos-processamento/Nevasca".hide()
+			$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.168, 0.009, 0.048, 1.0))
+			
+			transition_layer.color = Color(0.129, 0.008, 0.09)
+			$WorldEnvironment.environment.background_color = Color(0.482, 0.0, 0.172, 1.0)
+			$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
+			$WorldEnvironment/DirectionalLight3D.hide()
+			
+			$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.282, 0.886, 0.537)
+			$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
+			$player/AreaLamp/LampCol.disabled = false
+			
+		"FASE 3":
+			#MusicaGlobal.play("fase2")
+			$"Camera3D/Pos-processamento/Nevasca".hide()
+			$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.169, 0.0, 0.631, 1.0))
+			
+			transition_layer.color = Color(0.059, 0.0, 0.294, 1.0)
+			$WorldEnvironment.environment.background_color = Color(0.396, 0.002, 0.855, 1.0)
+			$WorldEnvironment.environment.fog_light_color = Color(0.291, 0.12, 0.721, 1.0)
+			$WorldEnvironment/DirectionalLight3D.hide()
+			
+			$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.056, 0.39, 0.688, 1.0)
+			$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
+			$player/AreaLamp/LampCol.disabled = false

@@ -77,25 +77,29 @@ func _change_orientation(normal: Vector3):
 func _tween_look_at(basis: Basis) -> void:
 	global_transform.basis = basis
 
+var _free_cam_basis : Basis  
+
 func _input(event):
 	if not free_cam: return
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * mouse_sensibility
 		pitch -= event.relative.y * mouse_sensibility
 		pitch = clamp(pitch, -PI/2, PI/2)
-		global_transform.basis = Basis(Vector3.UP, yaw) * Basis(Vector3.RIGHT, pitch)
+		
+		var yaw_basis = _saved_basis.rotated(_orientation.y, yaw)
+		global_transform.basis = yaw_basis.rotated(yaw_basis.x, pitch).orthonormalized()
 		get_viewport().set_input_as_handled()
 		
 func _process(delta: float) -> void:
 	# Verifica se o player soltou a camera 'q'
 	if Input.is_action_just_pressed("free_cam") and not player.USING_PORTAL:
 		free_cam = !free_cam
-		if free_cam :
+		if free_cam:
 			_saved_position = global_position
 			_saved_basis = global_transform.basis
-			yaw = global_rotation.y
-			pitch = global_rotation.x
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
+			yaw = 0.0   # delta a partir da basis salva
+			pitch = 0.0
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			player.FREEZE = true
 			player.input.DISABLED = true
 		else:
@@ -133,7 +137,7 @@ func _process(delta: float) -> void:
 			
 	elif free_cam:
 		var dir := Vector3.ZERO
-		var basis = global_transform.basis
+		var basis = global_transform.basis  # usa a basis atual da câmera livre
 		
 		if Input.is_action_pressed("move_forward"):
 			dir -= basis.z
@@ -146,7 +150,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("action_jump"):
 			dir += basis.y
 		if Input.is_action_pressed("shift"):
-			dir -= basis.y	
+			dir -= basis.y
 		
 		if dir != Vector3.ZERO:
 			global_position += dir.normalized() * camera_speed * delta
