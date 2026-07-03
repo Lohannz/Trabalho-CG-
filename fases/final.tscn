@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://ccdwsc2fhgoy"]
 
-[ext_resource type="Shader" uid="uid://nbuhymp4ecw0" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
-[ext_resource type="Texture2D" uid="uid://d0co30fxqs605" path="res://estrelas_final.png" id="5_0led5"]
-[ext_resource type="PackedScene" uid="uid://cjero18thjkjc" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
+[ext_resource type="Shader" uid="uid://bp2170g8mfqyc" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Texture2D" uid="uid://uk8b63jv628q" path="res://estrelas_final.png" id="5_0led5"]
+[ext_resource type="PackedScene" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
 [ext_resource type="Texture2D" uid="uid://dcx0shanuaetr" path="res://models/import/cruz-parte-final_textura-cruz.png" id="6_rdm36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gx7d"]
