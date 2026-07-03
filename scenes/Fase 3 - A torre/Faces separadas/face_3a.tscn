@@ -324,6 +324,11 @@ transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783
 transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
 shape = SubResource("BoxShape3D_hojym")
 
+[node name="Aura2" type="MeshInstance3D" parent="." index="14" unique_id=2044560377]
+transform = Transform3D(4.7767134e-13, 1.0927847e-05, 250, 250, -1.0927847e-05, 0, 1.0927847e-05, 250, -1.0927847e-05, -20.515121, 233.86041, 109.369026)
+material_override = ExtResource("12_wwvwm")
+mesh = SubResource("PlaneMesh_hojym")
+
 [connection signal="body_entered" from="Cubo_005/Area3D" to="Cubo_005/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Cubo_005/Area3D" to="Cubo_005/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="Cubo_002/Area3D2" to="Cubo_002/Area3D2" method="_on_body_entered"]

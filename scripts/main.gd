@@ -90,7 +90,7 @@ func _process(_delta: float) -> void:
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
 					$player/AreaLamp/LampCol.disabled = false
 					
-				"FASE 3A":
+				"FASE 3":
 					#MusicaGlobal.play("fase2")
 					$"Camera3D/Pos-processamento/Nevasca".hide()
 					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.169, 0.0, 0.631, 1.0))
@@ -102,7 +102,6 @@ func _process(_delta: float) -> void:
 					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
 					$player/AreaLamp/LampCol.disabled = true
-
 					
 			spawn_setting()
 			level_ready.emit()
