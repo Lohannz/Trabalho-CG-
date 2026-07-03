@@ -143,7 +143,7 @@ clearcoat = 0.25
 clearcoat_roughness = 0.7
 ao_light_affect = 0.15
 backlight_enabled = true
-backlight = Color(0.09411765, 0.20392157, 0.94509804, 1)
+backlight = Color(0.19402963, 9.818673e-06, 0.90632063, 1)
 refraction_enabled = true
 refraction_scale = 0.2
 uv1_scale = Vector3(-0.28, -0.28, -0.28)
@@ -273,7 +273,7 @@ material_override = ExtResource("12_wwvwm")
 mesh = SubResource("PlaneMesh_hojym")
 
 [node name="espinhos_004" type="MeshInstance3D" parent="." index="10" unique_id=1643828355]
-transform = Transform3D(6.05, 0, 0, 0, 8.83, 0, 0, 0, 5, 39.36724, 100.33269, 50.647423)
+transform = Transform3D(6.175, 0, 0, 0, 8.83, 0, 0, 0, 5, 39.36724, 100.33269, 50.647423)
 material_override = SubResource("StandardMaterial3D_0at10")
 mesh = SubResource("ArrayMesh_0lqjy")
 skeleton = NodePath("")
@@ -286,7 +286,7 @@ transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274
 shape = SubResource("BoxShape3D_hojym")
 
 [node name="espinhos_005" type="MeshInstance3D" parent="." index="11" unique_id=1506119355]
-transform = Transform3D(6.05, 0, 0, 0, 8.83, 0, 0, 0, 5, -91.22993, 100.33269, 50.647423)
+transform = Transform3D(6.175, 0, 0, 0, 8.83, 0, 0, 0, 5, -91.22993, 100.33269, 50.647423)
 material_override = SubResource("StandardMaterial3D_0at10")
 mesh = SubResource("ArrayMesh_0lqjy")
 skeleton = NodePath("")
@@ -295,6 +295,32 @@ skeleton = NodePath("")
 transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783, 0, 3.2092384e-17, -7.275958e-12, 0.1369472, -1.7854538, -0.1158371, 1.7722912)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos_005/StaticBody3D" index="0" unique_id=1428346988]
+transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
+shape = SubResource("BoxShape3D_hojym")
+
+[node name="espinhos_006" type="MeshInstance3D" parent="." index="12" unique_id=607827230]
+transform = Transform3D(-1.984497e-07, -8.83, 0, 4.54, -3.8597156e-07, 0, 0, 0, 5, 101.48946, 215.7474, 50.647423)
+material_override = SubResource("StandardMaterial3D_0at10")
+mesh = SubResource("ArrayMesh_0lqjy")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos_006" index="0" unique_id=1094707764 groups=["killObj"]]
+transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783, 0, 3.2092384e-17, -7.275958e-12, 0.1369472, -1.7854538, -0.1158371, 1.7722912)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos_006/StaticBody3D" index="0" unique_id=1332157552]
+transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
+shape = SubResource("BoxShape3D_hojym")
+
+[node name="espinhos_007" type="MeshInstance3D" parent="." index="13" unique_id=1712186159]
+transform = Transform3D(-1.984497e-07, -8.83, 0, 4.54, -3.8597156e-07, 0, 0, 0, 5, 101.48946, 311.07883, 50.647423)
+material_override = SubResource("StandardMaterial3D_0at10")
+mesh = SubResource("ArrayMesh_0lqjy")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos_007" index="0" unique_id=83681761 groups=["killObj"]]
+transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783, 0, 3.2092384e-17, -7.275958e-12, 0.1369472, -1.7854538, -0.1158371, 1.7722912)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos_007/StaticBody3D" index="0" unique_id=223008656]
 transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
 shape = SubResource("BoxShape3D_hojym")
 

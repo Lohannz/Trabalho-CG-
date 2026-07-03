@@ -170,16 +170,16 @@ material = SubResource("StandardMaterial3D_6gx7d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -628.3045, 321.79605, 220.85062)
 
 [node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=682604159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.09805, 143.83664, 83.66739)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.09805, 146.66348, 83.66739)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=608122803]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.34998, 262.666, 17.426971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.34998, 265.49283, 17.426971)
 
 [node name="Spawn2" type="Marker3D" parent="Spawnpoints" unique_id=1948560002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.699066, 654.92126, -43.03241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.53857, 156.94263, -376.43845)
 
 [node name="face3A" parent="." unique_id=1344471885 instance=ExtResource("1_t43xb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -246.30452, 321.79605, 220.85062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -246.30452, 324.6229, 220.85062)
 
 [node name="Portais" type="Node3D" parent="face3A" unique_id=420219229]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.199966, 243.99997, 42.69998)
@@ -223,7 +223,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.399994, 138.69998, 111.571
 shape = SubResource("BoxShape3D_xf60p")
 
 [node name="face3B" parent="." unique_id=235013170 instance=ExtResource("2_6r540")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.07384, 318.72055, 219.26419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -531.3115, -179.25806, -114.141846)
 
 [node name="Portais" type="Node3D" parent="face3B" unique_id=519393604]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -190.60005, 786, -252.30002)
@@ -272,17 +272,11 @@ WIND_POWER = 700.0
 [node name="dash_crystal3" parent="face3B/Cristais de dash" unique_id=1371341528 instance=ExtResource("8_nfqym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.8665, 684.5, -119.06415)
 
-[node name="CollisionShape3D" parent="face3B/Cristais de dash/dash_crystal3" index="0" unique_id=2054807693]
-disabled = true
-
 [node name="MeshInstance3D" parent="face3B/Cristais de dash/dash_crystal3" index="2" unique_id=1908420144]
 mesh = SubResource("ArrayMesh_1jccp")
 
 [node name="dash_crystal2" parent="face3B/Cristais de dash" unique_id=921231140 instance=ExtResource("8_nfqym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.8665, 684.5, -164.06415)
-
-[node name="CollisionShape3D" parent="face3B/Cristais de dash/dash_crystal2" index="0" unique_id=2054807693]
-disabled = true
 
 [node name="MeshInstance3D" parent="face3B/Cristais de dash/dash_crystal2" index="2" unique_id=1908420144]
 mesh = SubResource("ArrayMesh_cfx37")
@@ -290,17 +284,11 @@ mesh = SubResource("ArrayMesh_cfx37")
 [node name="dash_crystal" parent="face3B/Cristais de dash" unique_id=2047179822 instance=ExtResource("8_nfqym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.8665, 805.5, -204.06415)
 
-[node name="CollisionShape3D" parent="face3B/Cristais de dash/dash_crystal" index="0" unique_id=2054807693]
-disabled = true
-
 [node name="MeshInstance3D" parent="face3B/Cristais de dash/dash_crystal" index="2" unique_id=1908420144]
 mesh = SubResource("ArrayMesh_owpc1")
 
 [node name="dash_crystal4" parent="face3B/Cristais de dash" unique_id=1295749668 instance=ExtResource("8_nfqym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.8665, 819.5, -84.06415)
-
-[node name="CollisionShape3D" parent="face3B/Cristais de dash/dash_crystal4" index="0" unique_id=2054807693]
-disabled = true
 
 [node name="MeshInstance3D" parent="face3B/Cristais de dash/dash_crystal4" index="2" unique_id=1908420144]
 mesh = SubResource("ArrayMesh_km4e7")
@@ -323,7 +311,7 @@ material_override = ExtResource("14_u1jrx")
 mesh = SubResource("PlaneMesh_g74r3")
 
 [node name="PARTE FINAL" parent="." unique_id=816573252 instance=ExtResource("9_dqy20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.70802, 2477.3179, 7.8004932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.70802, 1896.895, 1582.5946)
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=22083255]
 transform = Transform3D(5000, 0, 0, 0, 200, 0, 0, 0, 5000, 0, 317.75043, 0)
@@ -346,6 +334,7 @@ transform = Transform3D(-0.40285423, 0, -0.32320467, 0, 0.99999976, 0, 0.2542409
 [editable path="face3A/Portais/PortalVerde"]
 [editable path="face3B/Portais/PortalFinal"]
 [editable path="face3B/Portais/PortalVerde"]
+[editable path="face3B/Ventos/wind 2"]
 [editable path="face3B/Cristais de dash/dash_crystal3"]
 [editable path="face3B/Cristais de dash/dash_crystal2"]
 [editable path="face3B/Cristais de dash/dash_crystal"]
