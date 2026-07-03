@@ -93,11 +93,11 @@ func _process(_delta: float) -> void:
 				"FASE 3A":
 					#MusicaGlobal.play("fase2")
 					$"Camera3D/Pos-processamento/Nevasca".hide()
-					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.591, 0.439, 0.064, 1.0))
+					$Camera3D/Outline.material_override.set_shader_parameter("outline_color", Color(0.169, 0.0, 0.631, 1.0))
 					
-					transition_layer.color = Color(0.0, 0.704, 0.937, 1.0)
-					$WorldEnvironment.environment.background_color = Color(0.158, 0.571, 0.978, 1.0)
-					$WorldEnvironment.environment.fog_light_color = Color(0.336, 0.76, 0.965, 1.0)
+					transition_layer.color = Color(0.059, 0.0, 0.294, 1.0)
+					$WorldEnvironment.environment.background_color = Color(0.396, 0.002, 0.855, 1.0)
+					$WorldEnvironment.environment.fog_light_color = Color(0.291, 0.12, 0.721, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
 					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()

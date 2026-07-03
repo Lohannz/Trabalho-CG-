@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back;
+render_mode blend_mix, depth_draw_always, cull_back;
 
 uniform vec4 albedo : source_color = vec4(0.0, 0.2, 0.4, 1.0); // Cor mais profunda da água
 uniform vec4 shallow_color : source_color = vec4(0.1, 0.7, 0.8, 1.0); // Cor rasa/crista

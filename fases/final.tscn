@@ -1,45 +1,15 @@
 [gd_scene format=4 uid="uid://ccdwsc2fhgoy"]
 
-[ext_resource type="PackedScene" path="res://scenes/pedras_final.tscn" id="1_7e2tp"]
-[ext_resource type="Shader" uid="uid://cyqdbrqn4hpgg" path="res://shaders/lago.gdshader" id="2_0led5"]
-[ext_resource type="Texture2D" uid="uid://kfr1xfif21ln" path="res://models/import/pedras-parte-final_textura_pedras.png" id="3_8b31y"]
-[ext_resource type="Shader" uid="uid://bp2170g8mfqyc" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
+[ext_resource type="Shader" uid="uid://nbuhymp4ecw0" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
 [ext_resource type="Texture2D" uid="uid://d0co30fxqs605" path="res://estrelas_final.png" id="5_0led5"]
-[ext_resource type="PackedScene" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
+[ext_resource type="PackedScene" uid="uid://cjero18thjkjc" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
 [ext_resource type="Texture2D" uid="uid://dcx0shanuaetr" path="res://models/import/cruz-parte-final_textura-cruz.png" id="6_rdm36"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_edh6e"]
-size = Vector3(17.508835, 1, 12.318596)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhfh8"]
-render_priority = 0
-shader = ExtResource("2_0led5")
-shader_parameter/speed = 0.05
-shader_parameter/wave = 0.012
-shader_parameter/shallow_color = Color(0.42, 0.73, 0.95, 1)
-shader_parameter/deep_color = Color(0.18, 0.42, 0.8, 1)
-shader_parameter/highlight_color = Color(0.75, 0.9, 1, 1)
-shader_parameter/alpha = 0.45
-
-[sub_resource type="BoxMesh" id="BoxMesh_tvybu"]
-material = SubResource("ShaderMaterial_bhfh8")
-
-[sub_resource type="BoxMesh" id="BoxMesh_6gx7d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gx7d"]
-albedo_texture = ExtResource("3_8b31y")
-
-[sub_resource type="BoxMesh" id="BoxMesh_bhfh8"]
-material = SubResource("StandardMaterial3D_6gx7d")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fp1em"]
-size = Vector3(0.044677734, 0.585083, 1.5688477)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gx7d"]
 shader = ExtResource("4_gsuxp")
 shader_parameter/top_color = Color(0.009688579, 0.01687227, 0.17078832, 1)
-shader_parameter/horizon_color = Color(0.058572613, 6.4615533e-06, 0.29450572, 1)
-shader_parameter/cloud_color1 = Color(1, 0.72, 0.84, 1)
+shader_parameter/horizon_color = Color(0.05882353, 0, 0.29411766, 1)
+shader_parameter/cloud_color1 = Color(1, 0.72156864, 0.8392157, 1)
 shader_parameter/cloud_color2 = Color(0.95, 0.86, 1, 1)
 shader_parameter/cloud_scale1 = 1.335
 shader_parameter/cloud_scale2 = 0.6
@@ -132,49 +102,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.70802, -40.612778, 7.8004
 
 [node name="meshes" type="Node3D" parent="." unique_id=1961123092]
 transform = Transform3D(5.371, 0, 0, 0, 10.167, 0, 0, 0, 6.697, -4.217102, 0, 4.202136)
-
-[node name="pedras_final" parent="meshes" unique_id=1307349631 instance=ExtResource("1_7e2tp")]
-transform = Transform3D(0.99236643, 0, 0, 0, 0.5242451, 0, 0, 0, 0.79587865, 3.5235753, 0.2534287, 0.5390096)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="meshes" unique_id=1159103146]
-transform = Transform3D(0.050000004, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.89400005, 0, 1.23165)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="meshes/StaticBody3D" unique_id=2073118967]
-transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 233.2847, 0, -31.30474)
-shape = SubResource("BoxShape3D_edh6e")
-
-[node name="agua-chao" type="MeshInstance3D" parent="meshes" unique_id=459875503]
-transform = Transform3D(36.994762, 0, 0.11465881, 0, 5.8672166, 0, -0.19370589, 0, 21.898022, 9.408, -2.7982342, 0)
-mesh = SubResource("BoxMesh_tvybu")
-skeleton = NodePath("")
-
-[node name="agua-chao-preencher" type="MeshInstance3D" parent="meshes/agua-chao" unique_id=1449874559]
-transform = Transform3D(0.9884107, 0, -0.0031642779, 0, 4.540766, 0, 0.0087433, 0, 1.0209569, 0.0009979606, -1.8178048, -0.014476791)
-mesh = SubResource("BoxMesh_6gx7d")
-skeleton = NodePath("")
-
-[node name="paredao" type="StaticBody3D" parent="meshes" unique_id=671417330]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, -9.346457, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="meshes/paredao" unique_id=1685030374]
-transform = Transform3D(30, 0, 0, 0, 40, 0, 0, 0, 22.25, -14.66, 0, 0)
-mesh = SubResource("BoxMesh_bhfh8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="meshes/paredao" unique_id=2127612215]
-transform = Transform3D(30, 0, 0, 0, 40.000004, 0, 0, 0, 22.000004, -1.2917156, 0, 0)
-shape = SubResource("BoxShape3D_fp1em")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="meshes/paredao" unique_id=1049339572]
-transform = Transform3D(30, 0, 0, 0, 40.000004, 0, 0, 0, 22.000004, 39.291054, 0, 0)
-shape = SubResource("BoxShape3D_fp1em")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="meshes/paredao" unique_id=2040578454]
-transform = Transform3D(-1.3113416e-06, 0, 22.000004, 0, 40.000004, 0, -30.000006, 0, -9.616507e-07, 19.359943, 10.040025, 11.620008)
-shape = SubResource("BoxShape3D_fp1em")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="meshes/paredao" unique_id=512332710]
-transform = Transform3D(-1.3113416e-06, 0, 22.000004, 0, 40.000004, 0, -30.000006, 0, -9.616507e-07, 19.359943, 10.040025, -11.863549)
-shape = SubResource("BoxShape3D_fp1em")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581259585]
 environment = SubResource("Environment_fp1em")

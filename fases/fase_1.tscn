@@ -795,6 +795,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.03434, 69.65265, 25.134659
 [connection signal="body_entered" from="FaceA/Luz/Area3D" to="FaceA/Luz/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="FaceA/Luz/Area3D" to="FaceA/Luz/Area3D" method="_on_body_exited"]
 
+[editable path="FaceA"]
 [editable path="FaceA/Portais/PortalVerde"]
 [editable path="FaceA/Portais/PortalRosa"]
 [editable path="FaceA/Portais/PortalFinal"]

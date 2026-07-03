@@ -256,7 +256,7 @@ func _apply_external_forces(vel : PackedVector3Array, delta : float):
 	if Globals.EFFECTS.ICE in ext_effects:
 		var ice_factor = pow(ICE_INERTIA, delta)
 		vel[0] = vel[0] * ice_factor
-		vel[0] = vel[0].limit_length(TERMINAL_SPEED + 100.0)
+		vel[0] = vel[0].limit_length(TERMINAL_SPEED + 20.0)
 
 
 # Lógica da Física: GROUNDED

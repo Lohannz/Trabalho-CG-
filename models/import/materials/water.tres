@@ -6,13 +6,13 @@
 [resource]
 render_priority = -16
 shader = ExtResource("1_p0goa")
-shader_parameter/albedo = Color(0.15248573, 0.65786546, 0.9651839, 1)
-shader_parameter/shallow_color = Color(0, 0.80634964, 0.89671373, 1)
-shader_parameter/caustic_color = Color(0.9, 0.95, 1, 1)
+shader_parameter/albedo = Color(0.48905724, 0.5037725, 1, 1)
+shader_parameter/shallow_color = Color(0.50117356, 0.0033264125, 0.9494991, 1)
+shader_parameter/caustic_color = Color(1.6119307e-05, 1.0306165, 1.4310048, 1)
 shader_parameter/texture_caustics = ExtResource("2_h4r3r")
-shader_parameter/wave_height = 0.2790000132525
-shader_parameter/wave_frequency = 0.75000003236512
-shader_parameter/wave_speed = 1.7500000798651199
-shader_parameter/caustics_scale = Vector2(0.93, 1.305)
-shader_parameter/caustics_speed = 1.55900007079262
-shader_parameter/caustics_cutoff = 0.40800001938
+shader_parameter/wave_height = 0.02000000095
+shader_parameter/wave_frequency = 0.40800001612012
+shader_parameter/wave_speed = 1.00000004424012
+shader_parameter/caustics_scale = Vector2(0.08, 0.12)
+shader_parameter/caustics_speed = 2.78200012888512
+shader_parameter/caustics_cutoff = 0.3250000154375
