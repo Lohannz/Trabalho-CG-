@@ -18,8 +18,8 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="16_km4e7"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="16_owpc1"]
 [ext_resource type="PackedScene" uid="uid://b5svmwa8xdkxh" path="res://scenes/inimigo.tscn" id="16_sag00"]
-[ext_resource type="Script" uid="uid://bkechgqt1nq2f" path="res://scripts/plataforma_movivel.gd" id="17_lop8w"]
-[ext_resource type="Script" uid="uid://103kwdcttqn7" path="res://scripts/endportals.gd" id="17_sag00"]
+[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="17_lop8w"]
+[ext_resource type="Script" uid="uid://wo04qujk3acq" path="res://scripts/endportals.gd" id="17_sag00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvswn"]
 transparency = 1
@@ -698,11 +698,6 @@ transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-0
 
 [node name="Ventos" type="Node3D" parent="face3B" unique_id=898957312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -268.59998, 671.5, 52.700073)
-
-[node name="wind 1" parent="face3B/Ventos" unique_id=315812280 instance=ExtResource("6_h53eu")]
-transform = Transform3D(2, 0, 0, 0, -6.556708e-08, -2, 0, 1.5, -8.742278e-08, 74.076965, 153.80139, -139.02559)
-visible = false
-WIND_POWER = 500.0
 
 [node name="wind 2" parent="face3B/Ventos" unique_id=669921436 instance=ExtResource("6_h53eu")]
 transform = Transform3D(2, -2.2480124e-08, 0, 1.2488958e-08, 3.6, 0, 0, 0, 2, 72.66272, 43.352905, -322.24466)

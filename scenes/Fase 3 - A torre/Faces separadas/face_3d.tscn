@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dono5t2cnnw5n"]
 
 [ext_resource type="PackedScene" uid="uid://c11kvdfhqqnun" path="res://models/import/fase3glbs/face3D.glb" id="1_div2v"]
-[ext_resource type="Script" uid="uid://bkechgqt1nq2f" path="res://scripts/plataforma_movivel.gd" id="2_oqpbm"]
+[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_oqpbm"]
 [ext_resource type="Material" uid="uid://bneaoeee71ur1" path="res://models/import/materials/nightfall.tres" id="2_tkltl"]
 [ext_resource type="Texture2D" uid="uid://c03bqdq47sj0r" path="res://models/import/fase3glbs/face3D_capa_vermelha.png" id="4_u43fg"]
 [ext_resource type="Texture2D" uid="uid://d1nh8gks36mv" path="res://models/import/fase3glbs/face3D_livropng.png" id="5_36324"]
@@ -106,38 +106,38 @@ data = PackedVector3Array(0.06461414, -0.1382719, 0.60147774, 0.06461414, 0.1380
 
 [node name="face3D" unique_id=1681553239 instance=ExtResource("1_div2v")]
 
-[node name="PlanoTrue_005" parent="." index="0" unique_id=1658084526]
+[node name="PlanoTrue_005" parent="." index="0" unique_id=108322054]
 material_override = ExtResource("2_tkltl")
 
-[node name="paredeTRUETRUE_005" parent="." index="1" unique_id=1300371144]
+[node name="paredeTRUETRUE_005" parent="." index="1" unique_id=1125764315]
 material_override = ExtResource("2_tkltl")
 
-[node name="livros_079_003" parent="." index="3" unique_id=1513362807]
+[node name="livros_079_003" parent="." index="3" unique_id=2034574586]
 transform = Transform3D(4.470407e-06, -6.2320287e-06, -33.530693, 24.999966, -0.5625652, 6.0064217e-06, -0.13451454, -104.55458, 1.966296e-06, 210.76724, 639.94257, 625.2019)
 script = ExtResource("2_oqpbm")
 distancia = 70.0
 direcao = Vector3(0, 1, 0)
 velocidade = 20.0
 
-[node name="livros_079_007" parent="." index="4" unique_id=1915236653]
+[node name="livros_079_007" parent="." index="4" unique_id=975078616]
 transparency = 1.0
 script = ExtResource("2_oqpbm")
 distancia = 70.0
 direcao = Vector3(0, -1, 0)
 velocidade = 20.0
 
-[node name="StaticBody3D" parent="livros_079_007" index="0" unique_id=1924414037 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="livros_079_007" index="0" unique_id=1125349169 groups=["lightSensitive"]]
 collision_layer = 9
 metadata/irradiated = false
 
-[node name="livros_079_008" parent="." index="5" unique_id=1042146683]
+[node name="livros_079_008" parent="." index="5" unique_id=273655891]
 transform = Transform3D(4.470407e-06, -6.2320287e-06, -33.530693, 24.999966, -0.5625652, 6.0064217e-06, -0.13451454, -104.55458, 1.966296e-06, 210.76724, 692.5297, 502.20178)
 script = ExtResource("2_oqpbm")
 distancia = 120.0
 direcao = Vector3(0, 1, 0)
 velocidade = 20.0
 
-[node name="livros_079_009" parent="." index="6" unique_id=454142285]
+[node name="livros_079_009" parent="." index="6" unique_id=659143786]
 transform = Transform3D(4.470407e-06, -6.2320287e-06, -33.530693, 24.999966, -0.5625652, 6.0064217e-06, -0.13451454, -104.55458, 1.966296e-06, 144.02878, 796.72906, 487.4771)
 transparency = 1.0
 script = ExtResource("2_oqpbm")
@@ -145,11 +145,11 @@ distancia = 165.0
 direcao = Vector3(0, 0, 1)
 velocidade = 22.0
 
-[node name="StaticBody3D" parent="livros_079_009" index="0" unique_id=640054831 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="livros_079_009" index="0" unique_id=2033043084 groups=["lightSensitive"]]
 collision_layer = 9
 metadata/irradiated = false
 
-[node name="livrosSTACK_010" parent="." index="8" unique_id=162831653]
+[node name="livrosSTACK_010" parent="." index="8" unique_id=947799991]
 transform = Transform3D(2.970109e-06, -1.6750406e-05, -36.971, 25.000637, -1.1837164, 4.4072226e-06, -0.13451861, -219.99681, 2.7912329e-06, 187.47878, 783.2551, 599.5106)
 
 [node name="livrosSTACK_011" type="MeshInstance3D" parent="." index="9" unique_id=1285345107]
