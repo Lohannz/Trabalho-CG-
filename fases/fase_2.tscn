@@ -285,7 +285,7 @@ transform = Transform3D(60, -3.420148e-13, 2.2737368e-13, -3.4201477e-13, 59.999
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
 [node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.74426, 133.74593, -122.472916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 367.74426, 138.74591, -133.4729)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=2142052467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.46399, 188.88054, -390.45886)
@@ -306,7 +306,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -108
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 568.70703, 135.32318, -116.46293)
 
 [node name="Spawn7" type="Marker3D" parent="Spawnpoints" unique_id=962063037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1086.1099, 102.73032, -358.0155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1019.10986, 102.73032, -358.0155)
 
 [node name="Spawn8" type="Marker3D" parent="Spawnpoints" unique_id=1849555738]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -172.7345, 340.78778, -390.986)
@@ -464,14 +464,14 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn5")]
 [node name="PortalCol" parent="FaceB2/Portais/PortalAmarelo/PortalArea" index="0" unique_id=1665133991]
 transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-08, 1, -1.2361966e-08, 0.27407193, 3.546314e-07, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
-[node name="FaceC2" parent="." unique_id=84594639 instance=ExtResource("6_giy1v")]
+[node name="FaceC2" parent="." unique_id=811780446 instance=ExtResource("6_giy1v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.89987, -209.50958, -52.152603)
 
 [node name="Portais" type="Node3D" parent="FaceC2" unique_id=1365760967]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 545.80774, 313.88333, -297.76172)
 
 [node name="PortalVermelho" parent="FaceC2/Portais" unique_id=230044994 instance=ExtResource("2_ls452")]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -0.290802, -1.1993256, 76.777405)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -0.290802, -1.1993256, 13.87738)
 material_override = SubResource("ShaderMaterial_4dhkl")
 mesh = SubResource("ArrayMesh_giy1v")
 

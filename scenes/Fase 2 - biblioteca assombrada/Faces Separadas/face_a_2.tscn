@@ -158,51 +158,45 @@ data = PackedVector3Array(0.06385404, -0.13813898, 0.19084929, 0.06385404, 0.138
 
 [node name="FaceA2" unique_id=1842848484 instance=ExtResource("1_283rp")]
 
-[node name="plataformadvdd" parent="." index="10" unique_id=1180915327]
+[node name="plataformadvdd" parent="." index="10" unique_id=1215717283]
 material_override = SubResource("StandardMaterial3D_b7pyv")
 
-[node name="plataformadvdd_001" parent="." index="11" unique_id=1860165891]
+[node name="plataformadvdd_001" parent="." index="11" unique_id=1758067235]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataformadvdd_002" parent="." index="12" unique_id=379652041]
+[node name="plataformadvdd_002" parent="." index="12" unique_id=1490378296]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataformadvdd_003" parent="." index="13" unique_id=256419019]
+[node name="plataformadvdd_003" parent="." index="13" unique_id=1284074724]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataforma" parent="." index="14" unique_id=1892236244]
+[node name="plataforma" parent="." index="14" unique_id=1100390648]
 material_override = ExtResource("2_iqh20")
 
-[node name="plataforma_001" parent="." index="15" unique_id=1317130995]
+[node name="plataforma_001" parent="." index="15" unique_id=179239036]
 material_override = ExtResource("2_iqh20")
 
-[node name="PlanoTrue_001" parent="." index="16" unique_id=1851872325]
+[node name="PlanoTrue_001" parent="." index="16" unique_id=300036569]
 material_override = ExtResource("2_713sx")
 
-[node name="paredeTRUETRUE_001" parent="." index="17" unique_id=1099360511]
+[node name="paredeTRUETRUE_001" parent="." index="17" unique_id=1153868133]
 material_override = ExtResource("2_713sx")
 
-[node name="livros_025_001" parent="." index="18" unique_id=1322915094]
+[node name="livros_025_001" parent="." index="18" unique_id=2072228737]
 script = ExtResource("2_8155l")
 distancia = 45.0
 velocidade = 15.0
 
-[node name="StaticBody3D" parent="livros_025_001" index="0" unique_id=1330770907]
+[node name="StaticBody3D" parent="livros_025_001" index="0" unique_id=855328550]
 collision_layer = 3
 
-[node name="livros_078_001" parent="." index="19" unique_id=1321893451]
-transform = Transform3D(1.0927927e-06, 89.06247, 2.1996314e-06, 25.000181, -3.8930443e-06, 0, 9.553496e-14, 7.786089e-06, -25.16085, 190.53017, 301.9926, -138.57472)
-transparency = 1.0
+[node name="livros_078" parent="." index="19" unique_id=1255712301]
 script = ExtResource("2_8155l")
-distancia = 85.0
+distancia = 90.0
 direcao = Vector3(0, 1, 0)
-velocidade = 16.0
+velocidade = 25.0
 
-[node name="StaticBody3D" parent="livros_078_001" index="0" unique_id=1865853619 groups=["lightSensitive"]]
-collision_layer = 11
-metadata/irradiated = false
-
-[node name="livros_079_001" parent="." index="20" unique_id=1220061124]
+[node name="livros_079_001" parent="." index="20" unique_id=414556311]
 transform = Transform3D(-1.092788e-06, -79.838356, 0, 25.000076, -3.4898453e-06, 0, 0, 0, 25.60367, 141.61923, 505.7779, -111.726135)
 transparency = 1.0
 script = ExtResource("2_8155l")
@@ -210,11 +204,11 @@ distancia = 45.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 15.0
 
-[node name="StaticBody3D" parent="livros_079_001" index="0" unique_id=1712229557 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="livros_079_001" index="0" unique_id=621533748 groups=["lightSensitive"]]
 collision_layer = 11
 metadata/irradiated = false
 
-[node name="estante_006" parent="." index="24" unique_id=1771220210]
+[node name="estante_006" parent="." index="24" unique_id=1186120918]
 transform = Transform3D(2.5353525e-06, 0, -9.569922, 0, 20.664812, 0, 7.089359, 0, 3.4224713e-06, 191.76901, 427.23767, -174.39108)
 
 [node name="InvWall" type="StaticBody3D" parent="." index="25" unique_id=1607314316 groups=["invWall"]]
@@ -241,16 +235,6 @@ collision_base_size = 1.0
 visibility_aabb = AABB(-103.94, -80, 0, 400, 400, 200)
 process_material = SubResource("ParticleProcessMaterial_04kg0")
 draw_pass_1 = SubResource("RibbonTrailMesh_pqs7e")
-
-[node name="livros_025_003" parent="." index="28" unique_id=188769421]
-transparency = 1.0
-script = ExtResource("2_8155l")
-distancia = 115.0
-direcao = Vector3(0, -1, 0)
-velocidade = 20.0
-
-[node name="StaticBody3D" parent="livros_025_003" index="0" unique_id=342954331 groups=["lightSensitive"]]
-collision_layer = 9
 
 [node name="livros_079_002" type="MeshInstance3D" parent="." index="29" unique_id=53476146]
 transform = Transform3D(-1.092788e-06, -79.838356, 0, 25.000076, -3.4898453e-06, 0, 0, 0, 25.60367, 141.24696, 505.7779, -111.726135)
@@ -283,3 +267,9 @@ transform = Transform3D(-0.018877607, 2.999693, -0.04214243, -6.998296, -0.00901
 
 [node name="pilarLivros3" parent="." index="34" unique_id=1736265155 instance=ExtResource("12_srpy1")]
 transform = Transform3D(-0.8569371, 2.8744001, -0.058984756, -2.8742537, -0.8579396, -0.05096232, -0.06569661, 0.041955307, 2.9989862, -58.817215, 509.1775, -252.0647)
+
+[node name="livros_079_007" parent="." index="35" unique_id=758268680]
+script = ExtResource("2_8155l")
+distancia = 210.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 40.0
