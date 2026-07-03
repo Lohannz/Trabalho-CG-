@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://dpqx8i1i1yoth"]
 
 [ext_resource type="PackedScene" uid="uid://cl5op35uh7nnc" path="res://models/import/fase3glbs/face3B.glb" id="1_33xfs"]
-[ext_resource type="Material" uid="uid://bneaoeee71ur1" path="res://models/import/materials/nightfall.tres" id="2_qbi4g"]
+[ext_resource type="Material" path="res://models/import/materials/nightfall.tres" id="2_qbi4g"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="3_ebcwv"]
 [ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="4_w43y8"]
-[ext_resource type="Script" uid="uid://3m4q865s7ist" path="res://scripts/ice.gd" id="5_ebcwv"]
+[ext_resource type="Script" uid="uid://dwbrn4ybdrckk" path="res://scripts/ice.gd" id="5_ebcwv"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ebcwv"]
 data = PackedVector3Array(-1.5330036, -0.7798349, 1, -1.5330036, -0.14648758, -1, -1.5330036, -0.14648758, 1, -1.5330036, -0.7798349, 1, -1.5330036, -0.7798349, -1, -1.5330036, -0.14648758, -1, 0.43800104, -0.7798349, -1, 2.4090054, -0.14648758, -1, 0.43800104, -0.14648758, -1, 0.43800104, -0.7798349, -1, 2.4090054, -0.7798349, -1, 2.4090054, -0.14648758, -1, 2.4090054, -0.7798349, -1, 2.4090054, -0.14648758, 1, 2.4090054, -0.14648758, -1, 2.4090054, -0.7798349, -1, 2.4090054, -0.7798349, 1, 2.4090054, -0.14648758, 1, 0.43800104, -0.7798349, 1, -1.5330036, -0.14648758, 1, 0.43800104, -0.14648758, 1, 0.43800104, -0.7798349, 1, -1.5330036, -0.7798349, 1, -1.5330036, -0.14648758, 1, 0.43800104, -0.7798349, -1, 2.4090054, -0.7798349, 1, 2.4090054, -0.7798349, -1, 0.43800104, -0.7798349, -1, 0.43800104, -0.7798349, 1, 2.4090054, -0.7798349, 1, 0.43800104, -0.14648758, 1, 0.43800104, 0.30765584, -1, 0.43800104, 0.30765584, 1, 0.43800104, -0.14648758, 1, 0.43800104, -0.14648758, -1, 0.43800104, 0.30765584, -1, 2.4090054, -0.14648758, -1, 0.43800104, -0.14648758, 1, 2.4090054, -0.14648758, 1, 2.4090054, -0.14648758, -1, 0.43800104, -0.14648758, -1, 0.43800104, -0.14648758, 1, -1.5330036, -0.7798349, -1, 0.43800104, -0.7798349, 1, 0.43800104, -0.7798349, -1, -1.5330036, -0.7798349, -1, -1.5330036, -0.7798349, 1, 0.43800104, -0.7798349, 1, 2.4090054, -0.7798349, 1, 0.43800104, -0.14648758, 1, 2.4090054, -0.14648758, 1, 2.4090054, -0.7798349, 1, 0.43800104, -0.7798349, 1, 0.43800104, -0.14648758, 1, -1.5330036, -0.7798349, -1, 0.43800104, -0.14648758, -1, -1.5330036, -0.14648758, -1, -1.5330036, -0.7798349, -1, 0.43800104, -0.7798349, -1, 0.43800104, -0.14648758, -1, 0.43800104, 0.30765584, -1, -1.5330036, 0.30765584, 1, 0.43800104, 0.30765584, 1, 0.43800104, 0.30765584, -1, -1.5330036, 0.30765584, -1, -1.5330036, 0.30765584, 1, -1.5330036, -0.14648758, -1, -1.5330036, 0.30765584, 1, -1.5330036, -0.14648758, 1, -1.5330036, -0.14648758, -1, -1.5330036, 0.30765584, -1, -1.5330036, 0.30765584, 1, 0.43800104, -0.14648758, -1, -1.5330036, 0.30765584, -1, -1.5330036, -0.14648758, -1, 0.43800104, -0.14648758, -1, 0.43800104, 0.30765584, -1, -1.5330036, 0.30765584, -1, -1.5330036, -0.14648758, 1, 0.43800104, 0.30765584, 1, 0.43800104, -0.14648758, 1, -1.5330036, -0.14648758, 1, -1.5330036, 0.30765584, 1, 0.43800104, 0.30765584, 1, 0.43800104, 0.30765584, -1, -1.5330036, 2.163656, 0.99999994, -1.5330036, 2.163656, -1, 0.43800104, 0.30765584, -1, 0.43800104, 0.30765584, 1, -1.5330036, 2.163656, 0.99999994, -1.5330036, 2.163656, -1, -1.5330036, 0.30765584, 1, -1.5330036, 2.163656, 0.99999994, -1.5330036, 2.163656, -1, -1.5330036, 0.30765584, -1, -1.5330036, 0.30765584, 1, -1.5330036, 2.163656, -1, -1.5330036, 0.30765584, -1, 0.43800104, 0.30765584, -1, -1.5330036, 2.163656, 0.99999994, 0.43800104, 0.30765584, 1, -1.5330036, 0.30765584, 1, 2.4090054, -0.14648758, -1, 0.43800104, 0.30765584, 1, 0.43800104, 0.30765584, -1, 2.4090054, -0.14648758, -1, 2.4090054, -0.14648758, 1, 0.43800104, 0.30765584, 1, 0.43800104, 0.30765584, -1, 0.43800104, -0.14648758, -1, 2.4090054, -0.14648758, -1, 2.4090054, -0.14648758, 1, 0.43800104, -0.14648758, 1, 0.43800104, 0.30765584, 1)
@@ -419,22 +419,22 @@ shadow_mesh = SubResource("ArrayMesh_n0d30")
 
 [node name="face3B" unique_id=1902755267 instance=ExtResource("1_33xfs")]
 
-[node name="PlanoTrue_003" parent="." index="0" unique_id=2076879898]
+[node name="PlanoTrue_003" parent="." index="0" unique_id=2041552638]
 material_override = ExtResource("2_qbi4g")
 
-[node name="paredeTRUETRUE_002" parent="." index="1" unique_id=1882039004]
+[node name="paredeTRUETRUE_002" parent="." index="1" unique_id=11985791]
 material_override = ExtResource("2_qbi4g")
 
-[node name="Cubo_007" parent="." index="2" unique_id=1511678085]
+[node name="Cubo_007" parent="." index="2" unique_id=257922502]
 material_override = ExtResource("2_qbi4g")
 
-[node name="CollisionShape3D" parent="Cubo_007/StaticBody3D" parent_id_path=PackedInt32Array(260614957) index="0" unique_id=584708801]
+[node name="CollisionShape3D" parent="Cubo_007/StaticBody3D" parent_id_path=PackedInt32Array(552417751) index="0" unique_id=1913570432]
 shape = SubResource("ConcavePolygonShape3D_ebcwv")
 
-[node name="Cubo_008" parent="." index="3" unique_id=116443313]
+[node name="Cubo_008" parent="." index="3" unique_id=1528093225]
 material_override = SubResource("ShaderMaterial_isnlf")
 
-[node name="CollisionShape3D" parent="Cubo_008/StaticBody3D" parent_id_path=PackedInt32Array(1094695825) index="0" unique_id=1784610784]
+[node name="CollisionShape3D" parent="Cubo_008/StaticBody3D" parent_id_path=PackedInt32Array(156380109) index="0" unique_id=1726854685]
 shape = SubResource("ConcavePolygonShape3D_isnlf")
 
 [node name="Area3D2" type="Area3D" parent="Cubo_008" index="1" unique_id=2074244348]
@@ -445,28 +445,28 @@ script = ExtResource("5_ebcwv")
 transform = Transform3D(0.33962956, 0, 0, 0, -9.454185, 0, 0, 0, 0.23652624, -0.0015119016, -45.72307, 0.0007006526)
 shape = SubResource("BoxShape3D_w43y8")
 
-[node name="Cubo_011" parent="." index="4" unique_id=1494889034]
+[node name="Cubo_011" parent="." index="4" unique_id=935842194]
 visible = false
 material_override = ExtResource("2_qbi4g")
 
-[node name="StaticBody3D" parent="Cubo_011" index="0" unique_id=448532306]
+[node name="StaticBody3D" parent="Cubo_011" index="0" unique_id=1028513406]
 visible = false
 
-[node name="CollisionShape3D" parent="Cubo_011/StaticBody3D" index="0" unique_id=1126729993]
+[node name="CollisionShape3D" parent="Cubo_011/StaticBody3D" index="0" unique_id=1894409207]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_7p4ah")
 disabled = true
 
-[node name="Cubo_009" parent="." index="5" unique_id=1634192296]
+[node name="Cubo_009" parent="." index="5" unique_id=1970284121]
 material_override = ExtResource("2_qbi4g")
 
-[node name="CollisionShape3D" parent="Cubo_009/StaticBody3D" parent_id_path=PackedInt32Array(122340915) index="0" unique_id=1055121723]
+[node name="CollisionShape3D" parent="Cubo_009/StaticBody3D" parent_id_path=PackedInt32Array(494682761) index="0" unique_id=1988121119]
 shape = SubResource("ConcavePolygonShape3D_w43y8")
 
-[node name="Cubo_014" parent="." index="6" unique_id=1635688047]
+[node name="Cubo_014" parent="." index="6" unique_id=689529881]
 material_override = SubResource("ShaderMaterial_ebcwv")
 
-[node name="CollisionShape3D" parent="Cubo_014/StaticBody3D" parent_id_path=PackedInt32Array(1596153584) index="0" unique_id=1486609564]
+[node name="CollisionShape3D" parent="Cubo_014/StaticBody3D" parent_id_path=PackedInt32Array(111544903) index="0" unique_id=926325878]
 shape = SubResource("ConcavePolygonShape3D_fqtyh")
 
 [node name="Area3D3" type="Area3D" parent="Cubo_014" index="1" unique_id=305191620]
@@ -477,46 +477,46 @@ script = ExtResource("5_ebcwv")
 transform = Transform3D(0.33962953, 0, 0, 0, -9.454184, 0, 0, 0, 0.23652624, -0.0015119314, -3.590454, 0.000700593)
 shape = SubResource("BoxShape3D_w43y8")
 
-[node name="Cubo_015" parent="." index="7" unique_id=317605077]
+[node name="Cubo_015" parent="." index="7" unique_id=542105518]
 material_override = ExtResource("2_qbi4g")
 
-[node name="CollisionShape3D" parent="Cubo_015/StaticBody3D" parent_id_path=PackedInt32Array(1465665608) index="0" unique_id=773742127]
+[node name="CollisionShape3D" parent="Cubo_015/StaticBody3D" parent_id_path=PackedInt32Array(1690164310) index="0" unique_id=248847624]
 shape = SubResource("ConcavePolygonShape3D_btbi7")
 disabled = true
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cubo_015/StaticBody3D" parent_id_path=PackedInt32Array(1465665608) index="1" unique_id=1422772926]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cubo_015/StaticBody3D" parent_id_path=PackedInt32Array(1690164310) index="1" unique_id=1422772926]
 transform = Transform3D(1.0000226, 0, 0, 0, 1.0000226, 0, 0, 0, 1.0000226, 0.019495726, -0.005241394, 0.069581985)
 shape = SubResource("BoxShape3D_ebcwv")
 
-[node name="Cubo_016" parent="." index="8" unique_id=618116910]
+[node name="Cubo_016" parent="." index="8" unique_id=947088346]
 layers = 4
 material_override = SubResource("StandardMaterial3D_ebcwv")
 
-[node name="StaticBody3D" parent="Cubo_016" index="0" unique_id=253655263]
+[node name="StaticBody3D" parent="Cubo_016" index="0" unique_id=910593743]
 collision_layer = 4
 
-[node name="CollisionShape3D" parent="Cubo_016/StaticBody3D" index="0" unique_id=11753002]
+[node name="CollisionShape3D" parent="Cubo_016/StaticBody3D" index="0" unique_id=212405986]
 shape = SubResource("ConcavePolygonShape3D_m7ppr")
 
-[node name="Cubo_017" parent="." index="9" unique_id=1872694949]
+[node name="Cubo_017" parent="." index="9" unique_id=2086311548]
 material_override = SubResource("StandardMaterial3D_ebcwv")
 
-[node name="StaticBody3D" parent="Cubo_017" index="0" unique_id=261026665]
+[node name="StaticBody3D" parent="Cubo_017" index="0" unique_id=507391235]
 collision_layer = 4
 
-[node name="CollisionShape3D" parent="Cubo_017/StaticBody3D" index="0" unique_id=1868765004]
+[node name="CollisionShape3D" parent="Cubo_017/StaticBody3D" index="0" unique_id=687824978]
 shape = SubResource("ConcavePolygonShape3D_6lecw")
 
-[node name="Cubo_018" parent="." index="10" unique_id=212016997]
+[node name="Cubo_018" parent="." index="10" unique_id=584848535]
 transform = Transform3D(5.254983e-07, 0, 15.002, 0, -15.002, 0, -12.022, 0, 6.5575824e-07, -196.16785, 785.05664, -245.89565)
 material_override = ExtResource("2_qbi4g")
 transparency = 1.0
 
-[node name="StaticBody3D" parent="Cubo_018" index="0" unique_id=993456580 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="Cubo_018" index="0" unique_id=1031020509 groups=["lightSensitive"]]
 collision_layer = 9
 metadata/irradiated = false
 
-[node name="CollisionShape3D" parent="Cubo_018/StaticBody3D" index="0" unique_id=404361572]
+[node name="CollisionShape3D" parent="Cubo_018/StaticBody3D" index="0" unique_id=13001748]
 shape = SubResource("ConcavePolygonShape3D_sc8ba")
 
 [node name="espinhos_006" type="MeshInstance3D" parent="." index="11" unique_id=1283063032]
@@ -745,6 +745,13 @@ transform = Transform3D(-2.6445392e-07, 0, 5, 0, 8.83, 0, -6.05, 0, -2.1855695e-
 material_override = SubResource("StandardMaterial3D_w43y8")
 mesh = SubResource("ArrayMesh_isnlf")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="espinhos_023" index="0" unique_id=2029884437 groups=["killObj"]]
+transform = Transform3D(0.2352307, 0, -3.4317167e-15, -1.3322676e-15, 0.17969783, 0, 3.2092384e-17, -7.275958e-12, 0.1369472, -1.7854538, -0.1158371, 1.7722912)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="espinhos_023/StaticBody3D" index="0" unique_id=1554077438]
+transform = Transform3D(1, 5.820766e-11, -3.4642428e-15, 0, 0.9999999, 7.1054274e-15, 4.322931e-15, -3.6903657e-08, 0.9999998, 7.322357, 1.312458, -12.247513)
+shape = SubResource("BoxShape3D_7p4ah")
 
 [node name="espinhos5" type="MeshInstance3D" parent="." index="29" unique_id=984330380]
 transform = Transform3D(4.25, -4.8549433e-22, 2.0681323e-29, 0, -2.5409432e-07, -5.665, 3.5495454e-22, 5.813, -2.4762502e-07, -260.18622, 681.5757, -286.6465)

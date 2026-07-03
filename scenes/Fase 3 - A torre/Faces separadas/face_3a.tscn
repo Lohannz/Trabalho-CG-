@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://c5v0tejmv0y83"]
 
 [ext_resource type="PackedScene" uid="uid://b7534ke08spb8" path="res://models/import/fase3glbs/face3A.glb" id="1_cvoeq"]
-[ext_resource type="Material" uid="uid://bneaoeee71ur1" path="res://models/import/materials/nightfall.tres" id="2_hfqbn"]
-[ext_resource type="Script" uid="uid://3m4q865s7ist" path="res://scripts/ice.gd" id="8_6ayi6"]
+[ext_resource type="Material" path="res://models/import/materials/nightfall.tres" id="2_hfqbn"]
+[ext_resource type="Script" uid="uid://dwbrn4ybdrckk" path="res://scripts/ice.gd" id="8_6ayi6"]
 [ext_resource type="Texture2D" uid="uid://bchamfcae2nbn" path="res://models/import/textures/snow_noise.png" id="9_0lqjy"]
 [ext_resource type="Texture2D" uid="uid://ctgnb7mdplrkg" path="res://models/import/textures/icy_normal.png" id="10_hojym"]
 [ext_resource type="Material" uid="uid://reknoeag3rtb" path="res://models/import/materials/endportal.tres" id="12_wwvwm"]
@@ -200,31 +200,31 @@ size = Vector3(93.62793, 4.82312, 135.92053)
 
 [node name="face3A" unique_id=77333912 instance=ExtResource("1_cvoeq")]
 
-[node name="paredeTRUETRUE_001" parent="." index="0" unique_id=274136148]
+[node name="paredeTRUETRUE_001" parent="." index="0" unique_id=478711023]
 material_override = ExtResource("2_hfqbn")
 
-[node name="PlanoTrue_001" parent="." index="1" unique_id=54527011]
+[node name="PlanoTrue_001" parent="." index="1" unique_id=378079818]
 material_override = ExtResource("2_hfqbn")
 
-[node name="Cubo" parent="." index="2" unique_id=465689033]
+[node name="Cubo" parent="." index="2" unique_id=188027769]
 material_override = ExtResource("2_hfqbn")
 
-[node name="CollisionShape3D" parent="Cubo/StaticBody3D" parent_id_path=PackedInt32Array(1736956322) index="0" unique_id=1749903842]
+[node name="CollisionShape3D" parent="Cubo/StaticBody3D" parent_id_path=PackedInt32Array(196754772) index="0" unique_id=230899597]
 shape = SubResource("ConcavePolygonShape3D_2ckue")
 
-[node name="Cubo_004" parent="." index="3" unique_id=778040568]
+[node name="Cubo_004" parent="." index="3" unique_id=1835195529]
 material_override = ExtResource("2_hfqbn")
 
-[node name="CollisionShape3D" parent="Cubo_004/StaticBody3D" parent_id_path=PackedInt32Array(2099658640) index="0" unique_id=2144556758]
+[node name="CollisionShape3D" parent="Cubo_004/StaticBody3D" parent_id_path=PackedInt32Array(334806617) index="0" unique_id=1846107912]
 shape = SubResource("ConcavePolygonShape3D_6ayi6")
 
-[node name="Cubo_005" parent="." index="4" unique_id=1693108196]
+[node name="Cubo_005" parent="." index="4" unique_id=842092183]
 material_override = SubResource("ShaderMaterial_0at10")
 
-[node name="StaticBody3D" parent="Cubo_005" index="0" unique_id=607880908]
+[node name="StaticBody3D" parent="Cubo_005" index="0" unique_id=1575765008]
 collision_layer = 3
 
-[node name="CollisionShape3D" parent="Cubo_005/StaticBody3D" index="0" unique_id=1785602799]
+[node name="CollisionShape3D" parent="Cubo_005/StaticBody3D" index="0" unique_id=743090037]
 shape = SubResource("ConcavePolygonShape3D_0lqjy")
 
 [node name="Area3D" type="Area3D" parent="Cubo_005" index="1" unique_id=182409283]
@@ -235,27 +235,27 @@ script = ExtResource("8_6ayi6")
 transform = Transform3D(0.313477, 0, 0, 0, -6.7337947, 0, 0, 0, 0.20600268, -0.0015119165, -3.3131104, 0.0007006824)
 shape = SubResource("BoxShape3D_0lqjy")
 
-[node name="Cubo_006" parent="." index="5" unique_id=275885626]
+[node name="Cubo_006" parent="." index="5" unique_id=2115203135]
 material_override = ExtResource("2_hfqbn")
 
-[node name="CollisionShape3D" parent="Cubo_006/StaticBody3D" parent_id_path=PackedInt32Array(318275514) index="0" unique_id=1249196134]
+[node name="CollisionShape3D" parent="Cubo_006/StaticBody3D" parent_id_path=PackedInt32Array(197090694) index="0" unique_id=655924757]
 shape = SubResource("ConcavePolygonShape3D_hojym")
 
-[node name="Cubo_001" parent="." index="6" unique_id=686503397]
+[node name="Cubo_001" parent="." index="6" unique_id=1276064186]
 material_override = ExtResource("2_hfqbn")
 transparency = 1.0
 
-[node name="StaticBody3D" parent="Cubo_001" index="0" unique_id=1644581129 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="Cubo_001" index="0" unique_id=1985004335 groups=["lightSensitive"]]
 collision_layer = 9
 metadata/irradiated = false
 
-[node name="CollisionShape3D" parent="Cubo_001/StaticBody3D" index="0" unique_id=627863228]
+[node name="CollisionShape3D" parent="Cubo_001/StaticBody3D" index="0" unique_id=1893934808]
 shape = SubResource("ConcavePolygonShape3D_e2nh4")
 
-[node name="Cubo_002" parent="." index="7" unique_id=662298381]
+[node name="Cubo_002" parent="." index="7" unique_id=201857122]
 material_override = SubResource("ShaderMaterial_0at10")
 
-[node name="CollisionShape3D" parent="Cubo_002/StaticBody3D" parent_id_path=PackedInt32Array(1823602008) index="0" unique_id=1548022852]
+[node name="CollisionShape3D" parent="Cubo_002/StaticBody3D" parent_id_path=PackedInt32Array(552688174) index="0" unique_id=684493914]
 shape = SubResource("ConcavePolygonShape3D_wwvwm")
 
 [node name="Area3D2" type="Area3D" parent="Cubo_002" index="1" unique_id=1692024473]
@@ -266,15 +266,15 @@ script = ExtResource("8_6ayi6")
 transform = Transform3D(0.33962956, 0, 0, 0, -9.454185, 0, 0, 0, 0.23652624, -0.0015119016, -45.72307, 0.0007006526)
 shape = SubResource("BoxShape3D_0lqjy")
 
-[node name="Cubo_003" parent="." index="8" unique_id=653216964]
+[node name="Cubo_003" parent="." index="8" unique_id=1346970574]
 material_override = ExtResource("2_hfqbn")
 transparency = 1.0
 
-[node name="StaticBody3D" parent="Cubo_003" index="0" unique_id=2057980410 groups=["lightSensitive"]]
+[node name="StaticBody3D" parent="Cubo_003" index="0" unique_id=361804084 groups=["lightSensitive"]]
 collision_layer = 9
 metadata/irradiated = false
 
-[node name="CollisionShape3D" parent="Cubo_003/StaticBody3D" index="0" unique_id=201973116]
+[node name="CollisionShape3D" parent="Cubo_003/StaticBody3D" index="0" unique_id=1410759061]
 shape = SubResource("ConcavePolygonShape3D_u3v1k")
 
 [node name="Aura" type="MeshInstance3D" parent="." index="9" unique_id=552996319]
