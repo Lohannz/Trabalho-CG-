@@ -125,6 +125,7 @@ background_mode = 1
 background_color = Color(0.022383085, 0.2094464, 0.4780128, 1)
 background_energy_multiplier = 0.34
 ambient_light_color = Color(0.014191599, 0.10441295, 0.16672188, 1)
+glow_enabled = true
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.264, 0.356, 1.007, 1)

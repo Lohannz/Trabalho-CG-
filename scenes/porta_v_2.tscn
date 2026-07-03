@@ -2,4 +2,55 @@
 
 [ext_resource type="PackedScene" uid="uid://tyunbhwbi23k" path="res://models/import/portaV2.glb" id="1_80a6c"]
 
-[node name="portaV2" unique_id=2094035648 instance=ExtResource("1_80a6c")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oq4y8"]
+emission_enabled = true
+emission = Color(0.9615182, 5.0537287e-06, 1.732707e-06, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_oq4y8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80a6c"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_a7koj"]
+material = SubResource("StandardMaterial3D_80a6c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rgoy"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ej2gp"]
+material = SubResource("StandardMaterial3D_3rgoy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4irws"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_et3w5"]
+material = SubResource("StandardMaterial3D_4irws")
+
+[node name="portaV2" unique_id=2036124722 instance=ExtResource("1_80a6c")]
+
+[node name="Luzes" type="Node3D" parent="." index="6" unique_id=1968593406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.140354, 16)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Luzes" index="0" unique_id=1995974372]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21, 20, -11)
+material_override = SubResource("StandardMaterial3D_oq4y8")
+mesh = SubResource("SphereMesh_oq4y8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Luzes" index="1" unique_id=146523839]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 20, -11)
+mesh = SubResource("SphereMesh_a7koj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Luzes" index="2" unique_id=1701249573]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20, 12, -11)
+mesh = SubResource("SphereMesh_ej2gp")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Luzes" index="3" unique_id=239117031]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21, 12, -11)
+mesh = SubResource("SphereMesh_et3w5")

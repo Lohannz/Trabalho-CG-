@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b4uqi38vx8iq3" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_e_2.tscn" id="9_axr8r"]
 [ext_resource type="PackedScene" uid="uid://cgilh40y6kiix" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_f_2.tscn" id="10_4dhkl"]
 [ext_resource type="PackedScene" uid="uid://x8l1jrhfoutw" path="res://scenes/porta_v_2.tscn" id="11_10bks"]
+[ext_resource type="Script" uid="uid://djyq6x8udjk71" path="res://fases/chave.gd" id="12_ir33x"]
+[ext_resource type="Script" uid="uid://dpf5o3msadlto" path="res://scenes/porta_chaves.gd" id="12_qpdiq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axr8r"]
 render_priority = 0
@@ -277,6 +279,21 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qpdiq"]
+size = Vector3(60, 67, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir33x"]
+emission_enabled = true
+emission = Color(4.353347, 4.017975, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qpdiq"]
+material = SubResource("StandardMaterial3D_ir33x")
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ir33x"]
+radius = 8.0
+
 [node name="FASE 2" type="Node3D" unique_id=1906521657]
 
 [node name="Nucleo_de_Almas" parent="." unique_id=300099459 instance=ExtResource("7_e2jij")]
@@ -286,7 +303,7 @@ transform = Transform3D(60, -3.420148e-13, 2.2737368e-13, -3.4201477e-13, 59.999
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382, 0, 0)
 
 [node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=1318732961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 367.74426, 138.74591, -133.4729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423.74426, 229.74591, -133.4729)
 
 [node name="Spawn1" type="Marker3D" parent="Spawnpoints" unique_id=2142052467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.46399, 188.88054, -390.45886)
@@ -601,6 +618,29 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18")]
 
 [node name="portaV2" parent="." unique_id=2094035648 instance=ExtResource("11_10bks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 219, -191)
+script = ExtResource("12_qpdiq")
+
+[node name="Area3D" type="Area3D" parent="portaV2" unique_id=412481454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.800003, 2.100006, 3.800003)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portaV2/Area3D" unique_id=135948512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5, 0)
+shape = SubResource("BoxShape3D_qpdiq")
+
+[node name="Chaves" type="Node3D" parent="." unique_id=1233780932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 206, -201)
+
+[node name="Area3D" type="Area3D" parent="Chaves" unique_id=1776494919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.017395, 23.539764, 76.83334)
+script = ExtResource("12_ir33x")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chaves/Area3D" unique_id=869876997]
+mesh = SubResource("SphereMesh_qpdiq")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chaves/Area3D" unique_id=1133531603]
+shape = SubResource("SphereShape3D_ir33x")
 
 [editable path="Nucleo_de_Almas"]
 [editable path="FaceA2/Portais/PortalRosa"]
