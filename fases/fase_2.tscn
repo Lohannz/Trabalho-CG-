@@ -342,19 +342,16 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 368.
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 335.00717, -147.4908, -437.1395)
 
 [node name="Spawn15" type="Marker3D" parent="Spawnpoints" unique_id=1644876026]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 459.73947, 674.45996, -423.47205)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 459.6429, 676.0127, -423.47205)
 
 [node name="Spawn16" type="Marker3D" parent="Spawnpoints" unique_id=1990730040]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 362.52493, 377.53156, -182.3649)
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 362.52493, 377.53156, -177.74655)
 
 [node name="Spawn17" type="Marker3D" parent="Spawnpoints" unique_id=1705092416]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1024.6235, 327.35052, -601.3294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1026.1829, 333.41965, -597.5924)
 
 [node name="Spawn18" type="Marker3D" parent="Spawnpoints" unique_id=928094659]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 572.27844, 304.92334, -1195.5905)
-
-[node name="Spawn19" type="Marker3D" parent="Spawnpoints" unique_id=1220865615]
-transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 1026.1709, 334.29407, -600.98944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 572.27844, 305.44556, -1196.1941)
 
 [node name="FaceA2" parent="." unique_id=1842848484 instance=ExtResource("1_v2l8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1548157, -168.8869, -2.4967055)
@@ -639,7 +636,7 @@ material_override = SubResource("StandardMaterial3D_gxdkb")
 [node name="PortalArea" parent="FaceF2/Portais/PortalPreto" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 destination = NodePath("../../../../FaceC2/Portais/PortalPreto/PortalArea")
-spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18"), NodePath("../../../../Spawnpoints/Spawn19")]
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18")]
 
 [node name="PortalFinal" parent="." unique_id=2094035648 instance=ExtResource("11_10bks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 219, -191)

@@ -218,8 +218,10 @@ func die() -> void:
 	
 	transition.play(&"death")
 	await transition.animation_finished
+	_update_orientation()
 	global_position = spawnpoint
 	state = STATE.GROUNDED
+	
 	transition.play_backwards(&"death")
 	restore_dash()
 	

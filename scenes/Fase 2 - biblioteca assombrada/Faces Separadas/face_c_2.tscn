@@ -519,6 +519,7 @@ velocidade = 40.0
 
 [node name="StaticBody3D" parent="livros_078_006" index="0" unique_id=147953678 groups=["lightSensitive"]]
 collision_layer = 11
+metadata/irradiated = false
 
 [node name="Miasma7" parent="livros_078_006" index="1" unique_id=1342798698 instance=ExtResource("4_brcho")]
 transform = Transform3D(1.607902e-08, -2.6655036e-08, -0.07675762, 0.06964579, 1.0093441e-08, 6.352519e-10, 2.218786e-08, -0.4207369, 2.3149516e-09, -0.19867039, -0.0022177696, -0.19182873)
