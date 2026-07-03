@@ -103,6 +103,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	if not is_instance_valid(main.current_level): return	
 	if "FASE 2" == main.current_level.name\
 	 or "FASE 3" == main.current_level.name: _irradiate_body(body, false)
+	elif "FASE 1" == main.current_level.name: _restore_body(body)
 	if body in active_rays: _remove_ray(body)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

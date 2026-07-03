@@ -286,12 +286,7 @@ transform = Transform3D(-0.018877607, 2.999693, -0.04214243, -6.998296, -0.00901
 transform = Transform3D(-0.8569371, 2.8744001, -0.058984756, -2.8742537, -0.8579396, -0.05096232, -0.06569661, 0.041955307, 2.9989862, -58.817215, 509.1775, -252.0647)
 
 [node name="livros_079_007" parent="." index="35" unique_id=1474368704]
-transparency = 1.0
 script = ExtResource("2_8155l")
 distancia = 210.0
 direcao = Vector3(-1, 0, 0)
-velocidade = 40.0
-
-[node name="StaticBody3D" parent="livros_079_007" index="0" unique_id=498435082 groups=["lightSensitive"]]
-collision_layer = 9
-metadata/irradiated = false
+velocidade = 25.0

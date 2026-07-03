@@ -339,6 +339,7 @@ velocidade = 18.0
 
 [node name="livrosSTACK_004" parent="." index="29" unique_id=345562137]
 transform = Transform3D(-0.13451338, -80.16583, 0, 24.99975, -0.4313394, 0, 0, 0, 25.642693, -9.897701, 180.98671, 681.52075)
+transparency = 1.0
 
 [node name="StaticBody3D" parent="livrosSTACK_004" index="0" unique_id=320710694 groups=["lightSensitive"]]
 collision_layer = 9
@@ -346,6 +347,7 @@ metadata/irradiated = false
 
 [node name="livrosSTACK_007" parent="." index="30" unique_id=905089823]
 transform = Transform3D(0.13451338, 80.16583, -1.1148471e-06, 24.99975, -0.4313394, 1.1208616e-06, 1.0869098e-06, -3.5041603e-06, -25.642696, -9.8978, 180.98671, 604.00024)
+transparency = 1.0
 
 [node name="StaticBody3D" parent="livrosSTACK_007" index="0" unique_id=775327155 groups=["illusion", "lightSensitive"]]
 collision_layer = 16

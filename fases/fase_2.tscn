@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="3_giy1v"]
 [ext_resource type="Texture2D" uid="uid://bbkbeiaxkgpd5" path="res://models/import/textures/wind_noise.png" id="4_e2jij"]
 [ext_resource type="PackedScene" uid="uid://c8hb54lfjk3dj" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_c_2.tscn" id="6_giy1v"]
-[ext_resource type="PackedScene" uid="uid://c6vjqsya5ojr6" path="res://scenes/inimigo.tscn" id="6_yeing"]
+[ext_resource type="PackedScene" uid="uid://b5svmwa8xdkxh" path="res://scenes/inimigo.tscn" id="6_yeing"]
 [ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="7_8wc58"]
 [ext_resource type="PackedScene" uid="uid://5ajlrxhks307" path="res://scenes/soul_core.tscn" id="7_e2jij"]
 [ext_resource type="PackedScene" uid="uid://clhakl1ls67ym" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_d_2.tscn" id="8_gxdkb"]

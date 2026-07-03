@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ca27xi2bm04ob" path="res://models/import/fase2glbs/FaceF2.glb" id="1_el1h1"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_aj5cl"]
-[ext_resource type="Script" uid="uid://bkechgqt1nq2f" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
+[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
 [ext_resource type="Material" uid="uid://im0asndm7qki" path="res://models/import/materials/wrecked.tres" id="3_srgur"]
 [ext_resource type="PackedScene" uid="uid://b4ct2qc8ck2xk" path="res://scenes/ObjetosBackground/pilarLivros.glb" id="3_ytecc"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="6_3n4y8"]
@@ -89,50 +89,50 @@ data = PackedVector3Array(0.06385404, -0.13813898, 0.19084932, 0.06385404, 0.138
 
 [node name="FaceF2" unique_id=1685587015 instance=ExtResource("1_el1h1")]
 
-[node name="PlanoTrue_006" parent="." index="0" unique_id=815926520]
+[node name="PlanoTrue_006" parent="." index="0" unique_id=999298665]
 material_override = ExtResource("2_aj5cl")
 
-[node name="CollisionShape3D" parent="PlanoTrue_006/StaticBody3D" parent_id_path=PackedInt32Array(1745290531) index="0" unique_id=1709211629]
+[node name="CollisionShape3D" parent="PlanoTrue_006/StaticBody3D" parent_id_path=PackedInt32Array(1363528840) index="0" unique_id=7574614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506106, 0.010148525, -0.0019035339)
 
-[node name="paredeTRUETRUE_007" parent="." index="1" unique_id=1956013347]
+[node name="paredeTRUETRUE_007" parent="." index="1" unique_id=1024589236]
 transform = Transform3D(86.88144, 0, 0, 0, 0, 86.88144, 0, -86.88144, 0, 77.64399, 446.37836, -967.75616)
 material_override = ExtResource("2_aj5cl")
 
-[node name="Cubo_011" parent="." index="2" unique_id=68463979]
+[node name="Cubo_011" parent="." index="2" unique_id=1590088206]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_001" parent="." index="3" unique_id=1499595707]
+[node name="Cubo_001" parent="." index="3" unique_id=119547401]
 mesh = SubResource("ArrayMesh_a5cgn")
 
-[node name="livros_078_017" parent="." index="4" unique_id=706070934]
+[node name="livros_078_017" parent="." index="4" unique_id=889743461]
 script = ExtResource("2_yaply")
 distancia = 83.0
 direcao = Vector3(0, -1, 0)
 velocidade = 20.0
 
-[node name="livros_078_018" parent="." index="5" unique_id=646962785]
+[node name="livros_078_018" parent="." index="5" unique_id=1601300994]
 script = ExtResource("2_yaply")
 distancia = 150.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 20.0
 
-[node name="Cubo_012" parent="." index="6" unique_id=764585161]
+[node name="Cubo_012" parent="." index="6" unique_id=1521054561]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_013" parent="." index="7" unique_id=199342910]
+[node name="Cubo_013" parent="." index="7" unique_id=407426185]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_014" parent="." index="8" unique_id=1263051618]
+[node name="Cubo_014" parent="." index="8" unique_id=596815874]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_015" parent="." index="9" unique_id=1676984298]
+[node name="Cubo_015" parent="." index="9" unique_id=739318222]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_016" parent="." index="10" unique_id=690403710]
+[node name="Cubo_016" parent="." index="10" unique_id=67324283]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_017" parent="." index="11" unique_id=1568360121]
+[node name="Cubo_017" parent="." index="11" unique_id=1354852123]
 material_override = ExtResource("3_srgur")
 
 [node name="pilarLivros" parent="." index="12" unique_id=979057021 instance=ExtResource("3_ytecc")]
@@ -194,17 +194,7 @@ shape = SubResource("BoxShape3D_aj5cl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 107.855)
 shape = SubResource("BoxShape3D_aj5cl")
 
-[node name="Miasma4" parent="." index="22" unique_id=2135532357 instance=ExtResource("6_3n4y8")]
-transform = Transform3D(-4.0520458e-08, -79.39177, 0, 0.927, -3.4703244e-06, 0, 0, 0, 17.011, 126.432, 548.973, -980.88)
-
-[node name="CollisionShape3D" parent="Miasma4/StaticBody3D" parent_id_path=PackedInt32Array(2135532357, 1103796622) index="0" unique_id=1087465202]
-transform = Transform3D(0.19563264, -1.7053026e-13, 0, -6.217249e-15, 0.10361866, 0, 0, 0, 0.1898518, -0.0016021729, -0.0027418137, 0.008594513)
-
-[node name="MiasmaFog" parent="Miasma4" index="1" unique_id=2003875644]
-transform = Transform3D(9.000081, 3.8369308e-13, 0, 4.973799e-14, 1.4209836, 0, 0, 0, 2.476031, 0.019901276, 0.014713049, -0.0015830994)
-size = Vector3(0.41235352, 1.4455566, 1.6458855)
-
-[node name="Miasma5" parent="." index="23" unique_id=1088116364 instance=ExtResource("6_3n4y8")]
+[node name="Miasma5" parent="." index="22" unique_id=1088116364 instance=ExtResource("6_3n4y8")]
 transform = Transform3D(-9.126938e-08, -105.993, 0, 2.088, -4.633101e-06, 0, 0, 0, 17.011, 74.647, 436.54453, -980.509)
 
 [node name="CollisionShape3D" parent="Miasma5/StaticBody3D" parent_id_path=PackedInt32Array(1088116364, 1103796622) index="0" unique_id=1087465202]
@@ -215,7 +205,7 @@ shape = SubResource("BoxShape3D_srgur")
 transform = Transform3D(9.000081, 3.8369308e-13, 0, 4.973799e-14, 1.4209836, 0, 0, 0, 2.476031, 0.019901276, 0.014713049, -0.0015830994)
 size = Vector3(0.41235352, 1.4455566, 1.6458855)
 
-[node name="livros_078_021" type="MeshInstance3D" parent="." index="24" unique_id=778467218]
+[node name="livros_078_021" type="MeshInstance3D" parent="." index="23" unique_id=778467218]
 transform = Transform3D(24.999834, -0.46633157, 1.0998154e-06, 1.0927774e-06, -2.038383e-08, -25.160845, 0.13090107, 89.06124, 4.807446e-14, 48.3639, 558.8472, -991.91626)
 mesh = SubResource("ArrayMesh_vbk2i")
 skeleton = NodePath("")
@@ -231,5 +221,4 @@ shape = SubResource("ConcavePolygonShape3D_klst3")
 [editable path="Miasma"]
 [editable path="Miasma2"]
 [editable path="Miasma3"]
-[editable path="Miasma4"]
 [editable path="Miasma5"]

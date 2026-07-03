@@ -538,6 +538,7 @@ transparency = 1.0
 
 [node name="StaticBody3D" parent="livrosSTACK_002" index="0" unique_id=1731739383 groups=["lightSensitive"]]
 collision_layer = 9
+metadata/irradiated = false
 
 [node name="CollisionShape3D" parent="livrosSTACK_002/StaticBody3D" index="0" unique_id=1512583545]
 transform = Transform3D(0.9985784, -3.7252903e-09, 0, 0, 0.6862772, 0, 0, 0, 0.9999999, 0.0044555664, 0.07830143, -0.21264648)
