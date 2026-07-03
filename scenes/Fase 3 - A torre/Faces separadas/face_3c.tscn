@@ -1,28 +1,32 @@
 [gd_scene format=3 uid="uid://bpwqpv0oc5wg3"]
 
 [ext_resource type="PackedScene" uid="uid://cta46ekxer02y" path="res://models/import/fase3glbs/face3C.glb" id="1_415qy"]
-[ext_resource type="Script" uid="uid://dpujchi800spf" path="res://scripts/plataforma_movivel.gd" id="2_bybex"]
+[ext_resource type="Material" uid="uid://bneaoeee71ur1" path="res://models/import/materials/nightfall.tres" id="2_2jc2w"]
+[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_bybex"]
 
-[node name="face3C" unique_id=1082126022 instance=ExtResource("1_415qy")]
+[node name="face3C" unique_id=250802349 instance=ExtResource("1_415qy")]
 
-[node name="livros_079_002" parent="." index="14" unique_id=991865082]
+[node name="paredeTRUETRUE_004" parent="." index="0" unique_id=2046989631]
+material_override = ExtResource("2_2jc2w")
+
+[node name="livros_079_002" parent="." index="12" unique_id=1911064546]
 script = ExtResource("2_bybex")
 distancia = 90.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 30.0
 
-[node name="livros_079_004" parent="." index="15" unique_id=1417350858]
+[node name="livros_079_004" parent="." index="13" unique_id=773828426]
 script = ExtResource("2_bybex")
 distancia = 115.0
 direcao = Vector3(0, 1, 0)
 velocidade = 30.0
 
-[node name="livros_079_005" parent="." index="19" unique_id=961777993]
+[node name="livros_079_005" parent="." index="17" unique_id=1993410464]
 script = ExtResource("2_bybex")
 distancia = 55.0
 velocidade = 18.0
 
-[node name="livros_079_006" parent="." index="20" unique_id=1062305612]
+[node name="livros_079_006" parent="." index="18" unique_id=1526219595]
 script = ExtResource("2_bybex")
 distancia = 55.0
 direcao = Vector3(-1, 0, 0)

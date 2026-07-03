@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dj8350iuv1xgm"]
+[gd_scene format=3 uid="uid://cqjtfc6n66e71"]
 
 [ext_resource type="PackedScene" uid="uid://bpwqpv0oc5wg3" path="res://scenes/Fase 3 - A torre/Faces separadas/face_3c.tscn" id="1_6u6we"]
 [ext_resource type="PackedScene" uid="uid://dono5t2cnnw5n" path="res://scenes/Fase 3 - A torre/Faces separadas/face_3d.tscn" id="2_grkpr"]
@@ -15,7 +15,7 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Fase3B" type="Node3D" unique_id=302210854]
+[node name="FASE 3B" type="Node3D" unique_id=302210854]
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=1878143069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -628.3045, 321.79605, -302.14938)
@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 695.49805, -124.16336, 574.26
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 720.44995, -9.734039, 119.12697)
 
 [node name="Spawn2" type="Marker3D" parent="Spawnpoints" unique_id=627051904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 842.6991, 333.89853, 464.9676)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1279.0419, -179.2214, 1188.749)
 
 [node name="face3C" parent="." unique_id=1082126022 instance=ExtResource("1_6u6we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -523)
@@ -51,7 +51,7 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn1")]
 transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-08, 1, -1.2361966e-08, 0.27407193, 3.546314e-07, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
 [node name="face3D" parent="." unique_id=1681553239 instance=ExtResource("2_grkpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 436.34277, -513.11993, 200.7815)
 
 [node name="Portais" type="Node3D" parent="face3D" unique_id=1318038835]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 209.19995, 627, 420.69995)
