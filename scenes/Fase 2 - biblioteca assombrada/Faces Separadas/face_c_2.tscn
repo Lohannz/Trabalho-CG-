@@ -483,7 +483,7 @@ material_override = SubResource("StandardMaterial3D_2oixp")
 mesh = SubResource("ArrayMesh_mndj4")
 
 [node name="livros_078_005" parent="." index="27" unique_id=1028997738]
-transform = Transform3D(1.0928117e-06, 132.04465, 3.1677394e-06, 25.000616, -5.771855e-06, 0, 9.553663e-14, 1.154371e-05, -36.234715, 613.82007, 308.54535, -412.51328)
+transform = Transform3D(1.0928117e-06, 150, 7.851781e-06, 25.000616, -6.5567083e-06, 0, 1.6500997e-13, 2.264937e-05, -52, 613.82007, 308.54535, -419.51328)
 transparency = 1.0
 script = ExtResource("2_yclsm")
 distancia = 220.0
@@ -502,7 +502,7 @@ transform = Transform3D(4.3350563, 0, 0, 0, 1.4209893, 0, 0, 0, 2.476045, 0.0199
 size = Vector3(0.92357445, 1.4455566, 1.6458855)
 
 [node name="livros_078_006" parent="." index="28" unique_id=1394047695]
-transform = Transform3D(1.0928117e-06, 132.04465, 3.1677394e-06, 25.000616, -5.771855e-06, 0, 9.553663e-14, 1.154371e-05, -36.234715, 567.57794, 308.54535, -412.51328)
+transform = Transform3D(1.0928117e-06, 150, 7.851781e-06, 25.000616, -6.5567083e-06, 0, 1.6500997e-13, 2.264937e-05, -52, 567.57794, 308.54535, -419.51328)
 transparency = 1.0
 script = ExtResource("2_yclsm")
 distancia = 220.0

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c6vjqsya5ojr6"]
+
+[ext_resource type="Material" uid="uid://dur6mi5fu8v50" path="res://models/import/materials/miasma.tres" id="1_pt50e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_61lki"]
+material = ExtResource("1_pt50e")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21tsg"]
+size = Vector3(20.535583, 19.419678, 21.033447)
+
+[sub_resource type="Gradient" id="Gradient_4er16"]
+offsets = PackedFloat32Array(0, 0.23163842, 0.33898306, 0.5423729, 0.78531075, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.09642184, 0.09642184, 0.09642184, 1, 0.18079096, 0.18079096, 0.18079096, 1, 0.70796615, 0.7079667, 0.7079662, 1, 0.14044705, 0.14044768, 0.14044714, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ui621"]
+noise_type = 4
+seed = 2
+frequency = 0.1632
+offset = Vector3(0, 0, 65.57)
+fractal_lacunarity = 1.755
+fractal_gain = 0.195
+fractal_weighted_strength = 0.12
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 30.11
+domain_warp_frequency = 0.035
+domain_warp_fractal_lacunarity = 6.23
+domain_warp_fractal_gain = 0.245
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_adsyq"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_ui621")
+color_ramp = SubResource("Gradient_4er16")
+seamless = true
+
+[sub_resource type="FogMaterial" id="FogMaterial_jc2kt"]
+density = 1.5
+albedo = Color(0.006155878, 0.039048906, 0.07490405, 1)
+emission = Color(0.06636064, 0.011238028, 4.512258e-09, 1)
+height_falloff = 0.05
+density_texture = SubResource("NoiseTexture3D_adsyq")
+
+[node name="inimigo" type="MeshInstance3D" unique_id=2080259868]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("SphereMesh_61lki")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1100302522 groups=["killObj"]]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1700060832]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.001594052, -0.0027417901, 0.008598037)
+shape = SubResource("BoxShape3D_21tsg")
+
+[node name="MiasmaFog" type="FogVolume" parent="." unique_id=1892429447]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.019904103, 0.018975861, -0.0015805375)
+size = Vector3(0.92357445, 2.0224571, 1.6458855)
+material = SubResource("FogMaterial_jc2kt")
