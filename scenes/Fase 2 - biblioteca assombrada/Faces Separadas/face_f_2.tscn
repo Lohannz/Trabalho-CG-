@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ca27xi2bm04ob" path="res://models/import/fase2glbs/FaceF2.glb" id="1_el1h1"]
 [ext_resource type="Material" uid="uid://dggg5n8j4v1x2" path="res://models/import/materials/woodmap.tres" id="2_aj5cl"]
-[ext_resource type="Script" uid="uid://cdjqmdodr4g5g" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
+[ext_resource type="Script" uid="uid://bkechgqt1nq2f" path="res://scripts/plataforma_movivel.gd" id="2_yaply"]
 [ext_resource type="Material" uid="uid://im0asndm7qki" path="res://models/import/materials/wrecked.tres" id="3_srgur"]
 [ext_resource type="PackedScene" uid="uid://b4ct2qc8ck2xk" path="res://scenes/ObjetosBackground/pilarLivros.glb" id="3_ytecc"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="6_3n4y8"]
@@ -44,50 +44,50 @@ size = Vector3(500, 500, 10)
 
 [node name="FaceF2" unique_id=1685587015 instance=ExtResource("1_el1h1")]
 
-[node name="PlanoTrue_006" parent="." index="0" unique_id=999298665]
+[node name="PlanoTrue_006" parent="." index="0" unique_id=815926520]
 material_override = ExtResource("2_aj5cl")
 
-[node name="CollisionShape3D" parent="PlanoTrue_006/StaticBody3D" parent_id_path=PackedInt32Array(1363528840) index="0" unique_id=7574614]
+[node name="CollisionShape3D" parent="PlanoTrue_006/StaticBody3D" parent_id_path=PackedInt32Array(1745290531) index="0" unique_id=1709211629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506106, 0.010148525, -0.0019035339)
 
-[node name="paredeTRUETRUE_007" parent="." index="1" unique_id=1024589236]
+[node name="paredeTRUETRUE_007" parent="." index="1" unique_id=1956013347]
 transform = Transform3D(86.88144, 0, 0, 0, 0, 86.88144, 0, -86.88144, 0, 77.64399, 446.37836, -967.75616)
 material_override = ExtResource("2_aj5cl")
 
-[node name="Cubo_011" parent="." index="2" unique_id=1590088206]
+[node name="Cubo_011" parent="." index="2" unique_id=68463979]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_001" parent="." index="3" unique_id=119547401]
+[node name="Cubo_001" parent="." index="3" unique_id=1499595707]
 mesh = SubResource("ArrayMesh_a5cgn")
 
-[node name="livros_078_017" parent="." index="4" unique_id=889743461]
+[node name="livros_078_017" parent="." index="4" unique_id=706070934]
 script = ExtResource("2_yaply")
 distancia = 83.0
 direcao = Vector3(0, -1, 0)
 velocidade = 20.0
 
-[node name="livros_078_018" parent="." index="5" unique_id=1601300994]
+[node name="livros_078_018" parent="." index="5" unique_id=646962785]
 script = ExtResource("2_yaply")
 distancia = 150.0
 direcao = Vector3(-1, 0, 0)
 velocidade = 20.0
 
-[node name="Cubo_012" parent="." index="6" unique_id=1521054561]
+[node name="Cubo_012" parent="." index="6" unique_id=764585161]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_013" parent="." index="7" unique_id=407426185]
+[node name="Cubo_013" parent="." index="7" unique_id=199342910]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_014" parent="." index="8" unique_id=596815874]
+[node name="Cubo_014" parent="." index="8" unique_id=1263051618]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_015" parent="." index="9" unique_id=739318222]
+[node name="Cubo_015" parent="." index="9" unique_id=1676984298]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_016" parent="." index="10" unique_id=67324283]
+[node name="Cubo_016" parent="." index="10" unique_id=690403710]
 material_override = ExtResource("3_srgur")
 
-[node name="Cubo_017" parent="." index="11" unique_id=1354852123]
+[node name="Cubo_017" parent="." index="11" unique_id=1568360121]
 material_override = ExtResource("3_srgur")
 
 [node name="pilarLivros" parent="." index="12" unique_id=979057021 instance=ExtResource("3_ytecc")]
@@ -96,7 +96,7 @@ transform = Transform3D(0.9011723, 2.3319278, 0, -2.3319278, 0.9011723, 0, 0, 0,
 [node name="pilarLivros2" parent="." index="13" unique_id=1012976729 instance=ExtResource("3_ytecc")]
 transform = Transform3D(1.815957, 1.7182262, 0, -1.7182262, 1.815957, 0, 0, 0, 2.5000002, -22.123718, 499.9381, -849.00854)
 
-[node name="livros_078_020" parent="." index="17" unique_id=1085357691]
+[node name="livros_078_020" parent="." index="17" unique_id=1259666695]
 script = ExtResource("2_yaply")
 distancia = 75.0
 direcao = Vector3(0, -1, 0)

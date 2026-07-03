@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://dono5t2cnnw5n" path="res://scenes/Fase 3 - A torre/Faces separadas/face_3d.tscn" id="16_cfx37"]
 [ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="16_km4e7"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="16_owpc1"]
-[ext_resource type="Script" uid="uid://wo04qujk3acq" path="res://scripts/endportals.gd" id="17_sag00"]
+[ext_resource type="PackedScene" uid="uid://b5svmwa8xdkxh" path="res://scenes/inimigo.tscn" id="16_sag00"]
+[ext_resource type="Script" uid="uid://bkechgqt1nq2f" path="res://scripts/plataforma_movivel.gd" id="17_lop8w"]
+[ext_resource type="Script" uid="uid://103kwdcttqn7" path="res://scripts/endportals.gd" id="17_sag00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvswn"]
 transparency = 1
@@ -845,6 +847,61 @@ transform = Transform3D(4.776711e-13, 1.0927842e-05, 249.99992, 250, -1.0927847e
 material_override = ExtResource("14_u1jrx")
 mesh = SubResource("PlaneMesh_g74r3")
 skeleton = NodePath("../../face3D")
+
+[node name="Inimigos" type="Node3D" parent="face3C" unique_id=1121368503]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 205.2417, 649.4355)
+
+[node name="inimigo" parent="face3C/Inimigos" unique_id=2080259868 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999983, 0, 0, 0, 3, 0, 0, 0, 2.9999983, -110.743546, 0, 63.65576)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+velocidade = 100.0
+
+[node name="inimigo2" parent="face3C/Inimigos" unique_id=441903216 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999983, 0, 0, 0, 3, 0, 0, 0, 2.9999983, -110.743546, 0, 52.40674)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+velocidade = 100.0
+
+[node name="inimigo3" parent="face3C/Inimigos" unique_id=747528328 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.999998, 0, 0, 0, 3, 0, 0, 0, 2.999998, -110.743546, -13.840881, 64.1676)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+velocidade = 100.0
+
+[node name="inimigo4" parent="face3C/Inimigos" unique_id=33801113 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.999998, 0, 0, 0, 3, 0, 0, 0, 2.999998, -110.743546, -12.792175, 52.883728)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+velocidade = 100.0
+
+[node name="inimigo5" parent="face3C/Inimigos" unique_id=2006833188 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999964, 0, 0, 0, 3, 0, 0, 0, 2.9999964, 90.71594, 0, -62.441406)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 100.0
+
+[node name="inimigo6" parent="face3C/Inimigos" unique_id=488047459 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999964, 0, 0, 0, 3, 0, 0, 0, 2.9999964, 90.71594, 0, -73.69043)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 100.0
+
+[node name="inimigo7" parent="face3C/Inimigos" unique_id=619089009 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999962, 0, 0, 0, 3, 0, 0, 0, 2.9999962, 90.71594, -13.840881, -61.929565)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 100.0
+
+[node name="inimigo8" parent="face3C/Inimigos" unique_id=1902405868 instance=ExtResource("16_sag00")]
+transform = Transform3D(2.9999962, 0, 0, 0, 3, 0, 0, 0, 2.9999962, 90.71594, -12.792175, -73.21344)
+script = ExtResource("17_lop8w")
+distancia = 200.0
+direcao = Vector3(-1, 0, 0)
+velocidade = 100.0
 
 [node name="face3D" parent="." unique_id=1681553239 instance=ExtResource("16_cfx37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.26599, -179.66162, -830.7478)
