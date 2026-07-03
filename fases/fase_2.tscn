@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b4uqi38vx8iq3" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_e_2.tscn" id="9_axr8r"]
 [ext_resource type="PackedScene" uid="uid://cgilh40y6kiix" path="res://scenes/Fase 2 - biblioteca assombrada/Faces Separadas/face_f_2.tscn" id="10_4dhkl"]
 [ext_resource type="PackedScene" uid="uid://x8l1jrhfoutw" path="res://scenes/porta_v_2.tscn" id="11_10bks"]
-[ext_resource type="Script" uid="uid://djyq6x8udjk71" path="res://fases/chave.gd" id="12_ir33x"]
 [ext_resource type="Script" uid="uid://dpf5o3msadlto" path="res://scenes/porta_chaves.gd" id="12_qpdiq"]
+[ext_resource type="PackedScene" uid="uid://qp4gdkk7ciju" path="res://scenes/chave.tscn" id="13_qpdiq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axr8r"]
 render_priority = 0
@@ -281,18 +281,6 @@ particles_anim_loop = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpdiq"]
 size = Vector3(60, 67, 40)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir33x"]
-emission_enabled = true
-emission = Color(4.353347, 4.017975, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_qpdiq"]
-material = SubResource("StandardMaterial3D_ir33x")
-radius = 2.0
-height = 4.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ir33x"]
-radius = 8.0
 
 [node name="FASE 2" type="Node3D" unique_id=1906521657]
 
@@ -627,20 +615,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.800003, 2.100006, 3.800003)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5, 0)
 shape = SubResource("BoxShape3D_qpdiq")
 
-[node name="Chaves" type="Node3D" parent="." unique_id=1233780932]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 206, -201)
+[node name="chave" parent="." unique_id=918937857 instance=ExtResource("13_qpdiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 226, -132)
 
-[node name="Area3D" type="Area3D" parent="Chaves" unique_id=1776494919]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.017395, 23.539764, 76.83334)
-script = ExtResource("12_ir33x")
-metadata/_edit_group_ = true
+[node name="chave2" parent="." unique_id=1851229039 instance=ExtResource("13_qpdiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, 226, -112)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Chaves/Area3D" unique_id=869876997]
-mesh = SubResource("SphereMesh_qpdiq")
-skeleton = NodePath("../CollisionShape3D")
+[node name="chave3" parent="." unique_id=1864487987 instance=ExtResource("13_qpdiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131, 227, -125)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chaves/Area3D" unique_id=1133531603]
-shape = SubResource("SphereShape3D_ir33x")
+[node name="chave4" parent="." unique_id=2048135759 instance=ExtResource("13_qpdiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 224, -133)
 
 [editable path="Nucleo_de_Almas"]
 [editable path="FaceA2/Portais/PortalRosa"]

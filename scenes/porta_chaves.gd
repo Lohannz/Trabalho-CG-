@@ -24,16 +24,18 @@ func _ready() -> void:
 
 func _on_area_interacao_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
+		body.PORTAL_UI.visible = true
 		_jogador_por_perto = body
 
 func _on_area_interacao_body_exited(body: Node3D) -> void:
 	if body == _jogador_por_perto:
+		body.PORTAL_UI.visible = false
 		_jogador_por_perto = null
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _jogador_por_perto == null:
 		return
-		
+	
 	if event.is_action_pressed("ui_F"):
 		colocar_chaves()
 
@@ -56,12 +58,20 @@ func colocar_chaves() -> void:
 		_abrir_porta()
 
 func _atualizar_luzes() -> void:
+	var todas_colocadas := chaves_colocadas >= total_chaves
+
 	for i in luzes.size():
 		var material := luzes[i].get_active_material(0) as StandardMaterial3D
 		if material == null:
 			continue
+
+		material.emission_enabled = i < chaves_colocadas
 		material.emission_energy_multiplier = 16.0 if i < chaves_colocadas else 0.0
-		print("entrou")
+
+		if todas_colocadas:
+			material.emission = Color.YELLOW
+		else:
+			material.emission = Color.RED
 
 func _abrir_porta() -> void:
 	print("Porta destrancada! Todas as chaves foram colocadas.")
