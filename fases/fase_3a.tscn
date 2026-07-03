@@ -7,14 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://dhca3kmwy0uhs" path="res://scenes/wind.tscn" id="6_h53eu"]
 [ext_resource type="PackedScene" uid="uid://durxqdqtosm88" path="res://scenes/objetos/cristal_de_dash.tscn" id="8_nfqym"]
 [ext_resource type="PackedScene" uid="uid://ccdwsc2fhgoy" path="res://fases/final.tscn" id="9_dqy20"]
-[ext_resource type="Material" uid="uid://cii74bnn0uvi7" path="res://models/import/materials/water.tres" id="10_0ml7f"]
+[ext_resource type="Material" path="res://models/import/materials/water.tres" id="10_0ml7f"]
 [ext_resource type="Texture2D" uid="uid://kfr1xfif21ln" path="res://models/import/pedras-parte-final_textura_pedras.png" id="10_xfm3j"]
-[ext_resource type="PackedScene" uid="uid://ctjhfe7pgn7ix" path="res://scenes/pedras_final.tscn" id="12_xf60p"]
+[ext_resource type="PackedScene" path="res://scenes/pedras_final.tscn" id="12_xf60p"]
 [ext_resource type="PackedScene" uid="uid://3ndnyh4p0vuy" path="res://models/import/pedras-parte-final.glb" id="13_u1jrx"]
 [ext_resource type="Material" uid="uid://reknoeag3rtb" path="res://models/import/materials/endportal.tres" id="14_u1jrx"]
 [ext_resource type="PackedScene" uid="uid://bpwqpv0oc5wg3" path="res://scenes/Fase 3 - A torre/Faces separadas/face_3c.tscn" id="15_1jccp"]
 [ext_resource type="PackedScene" uid="uid://dono5t2cnnw5n" path="res://scenes/Fase 3 - A torre/Faces separadas/face_3d.tscn" id="16_cfx37"]
+[ext_resource type="Shader" uid="uid://lmg7xrp8rfl4" path="res://shaders/portal.tres" id="16_km4e7"]
 [ext_resource type="PackedScene" uid="uid://rfoxxk1repa8" path="res://scenes/miasma.tscn" id="16_owpc1"]
+[ext_resource type="Script" uid="uid://103kwdcttqn7" path="res://scripts/endportals.gd" id="17_sag00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvswn"]
 transparency = 1
@@ -456,6 +458,26 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lop8w"]
+render_priority = 0
+shader = ExtResource("16_km4e7")
+shader_parameter/alpha_spread = 0.550000026125
+shader_parameter/vortex_distortion = 6.5
+shader_parameter/spiral_rotation = 0.75
+shader_parameter/spiral_texture = ExtResource("4_h53eu")
+shader_parameter/portal_base = Color(2.2561388, 1.1566873, 0.03870454, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3h38t"]
+transparency = 1
+albedo_color = Color(1.1809056, 0.5520851, 0, 1)
+emission_enabled = true
+emission = Color(0.9828769, 0.4866194, 0, 1)
+emission_energy_multiplier = 0.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="FASE 3" type="Node3D" unique_id=2078916413]
 
 [node name="Spawnpoints" type="Node3D" parent="." unique_id=511385999]
@@ -526,8 +548,8 @@ shape = SubResource("BoxShape3D_xf60p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.399994, 138.69998, 111.57147)
 shape = SubResource("BoxShape3D_xf60p")
 
-[node name="face3B" parent="." unique_id=235013170 instance=ExtResource("2_6r540")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -531.3115, -179.25806, -114.141846)
+[node name="face3B" parent="." unique_id=149767084 instance=ExtResource("2_6r540")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -531.3115, -177.25806, -114.141846)
 
 [node name="Portais" type="Node3D" parent="face3B" unique_id=519393604]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -190.60005, 786, -252.30002)
@@ -568,7 +590,7 @@ visible = false
 WIND_POWER = 500.0
 
 [node name="wind 2" parent="face3B/Ventos" unique_id=669921436 instance=ExtResource("6_h53eu")]
-transform = Transform3D(2, -1.4362302e-08, 0, 1.2488958e-08, 2.3, 0, 0, 0, 2, 72.66269, 56.352905, -322.24466)
+transform = Transform3D(2, -2.2480124e-08, 0, 1.2488958e-08, 3.6, 0, 0, 0, 2, 72.66272, 43.352905, -322.24466)
 WIND_POWER = 700.0
 
 [node name="Cristais de dash" type="Node3D" parent="face3B" unique_id=1753500542]
@@ -673,7 +695,7 @@ material_override = SubResource("StandardMaterial3D_xfm3j")
 [node name="PortalArea" parent="face3C/Portais/PortalAmarelo" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371138e-08, -7.1054274e-15, 3.3675685, 0, 1, 2.842171e-14, -1, 4.2351647e-22, -1.4720109e-07, 2.6245117, -0.17572021, 1.375824)
 destination = NodePath("../../../../face3B/Portais/PortalAmarelo/PortalArea")
-spawnpoints = [NodePath("../../../../Spawnpoints/Spawn3")]
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn4")]
 
 [node name="PortalCol" parent="face3C/Portais/PortalAmarelo/PortalArea" index="0" unique_id=1665133991]
 transform = Transform3D(-1.071021e-08, -1.1641532e-09, -10.618902, -9.7199994e-08, 1.0000459, 2.421507e-08, 0.27407193, 1.5297329e-07, -2.3563166e-07, -0.313797, 0.42242432, -1.2615204)
@@ -744,6 +766,18 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn6")]
 [node name="PortalCol" parent="face3D/Portais/PortalAzul/PortalArea" index="0" unique_id=1665133991]
 transform = Transform3D(-1.1980065e-08, -1.1641628e-09, -10.618902, -9.719451e-08, 1, -1.2361966e-08, 0.27407193, 3.546314e-07, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
+[node name="PortalFinal" parent="face3D/Portais" unique_id=822531629 instance=ExtResource("2_b20e3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.9999999, 0, 8.742278e-08, 0, -1, 275.58813, 185.16711, -8.6397705)
+material_override = SubResource("ShaderMaterial_lop8w")
+
+[node name="GPUParticles3D" parent="face3D/Portais/PortalFinal" index="0" unique_id=2074984000]
+material_override = SubResource("StandardMaterial3D_3h38t")
+
+[node name="PortalArea" parent="face3D/Portais/PortalFinal" index="1" unique_id=1967604049]
+transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
+script = ExtResource("17_sag00")
+next_level_path = "uid://ccdwsc2fhgoy"
+
 [node name="Aura2" type="MeshInstance3D" parent="face3D" unique_id=1063554402]
 transform = Transform3D(-1.0927847e-05, -250, 0, 250, -1.0927847e-05, 0, 0, 0, 250, 130.03326, 748.7117, 561.7931)
 material_override = ExtResource("14_u1jrx")
@@ -781,5 +815,6 @@ mesh = SubResource("PlaneMesh_g74r3")
 [editable path="face3C/Portais/PortalAmarelo"]
 [editable path="face3C/Miasma"]
 [editable path="face3D/Portais/PortalAzul"]
+[editable path="face3D/Portais/PortalFinal"]
 [editable path="face3D/Miasma"]
 [editable path="face3D/Miasma2"]

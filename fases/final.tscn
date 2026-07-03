@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://bp2170g8mfqyc" path="res://shaders/ceu_final.gdshader" id="4_gsuxp"]
 [ext_resource type="Texture2D" uid="uid://uk8b63jv628q" path="res://estrelas_final.png" id="5_0led5"]
 [ext_resource type="PackedScene" path="res://scenes/cruz_parte_final.tscn" id="5_k4tuy"]
+[ext_resource type="Material" uid="uid://reknoeag3rtb" path="res://models/import/materials/endportal.tres" id="5_ld0ig"]
 [ext_resource type="Texture2D" uid="uid://dcx0shanuaetr" path="res://models/import/cruz-parte-final_textura-cruz.png" id="6_rdm36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gx7d"]
@@ -97,11 +98,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_si7gv")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdwe6"]
+size = Vector3(1000, 10, 1000)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7e2tp"]
+material = ExtResource("5_ld0ig")
+
 [node name="PARTE FINAL" type="Node3D" unique_id=816573252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.70802, -40.612778, 7.8004932)
 
 [node name="meshes" type="Node3D" parent="." unique_id=1961123092]
-transform = Transform3D(5.371, 0, 0, 0, 10.167, 0, 0, 0, 6.697, -4.217102, 0, 4.202136)
+transform = Transform3D(5.371, 0, 0, 0, 10.167, 0, 0, 0, 6.697, -4.217102, 41, 4.202136)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581259585]
 environment = SubResource("Environment_fp1em")
@@ -299,3 +306,19 @@ skeleton = NodePath("")
 transform = Transform3D(0.4901168, 0, -0.3529894, 0, 0.604, 0, 0.3529894, 0, 0.4901168, 135.52061, 18.716614, -88.92645)
 mesh = SubResource("ArrayMesh_bhfh8")
 skeleton = NodePath("")
+
+[node name="Spawnpoints" type="Node3D" parent="." unique_id=1461342702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -628.3045, 321.79605, 220.85062)
+
+[node name="Mainspawn" type="Marker3D" parent="Spawnpoints" unique_id=876336089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.098, -279.33652, -1142.5973)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=539587130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -66, -944.99994)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1904533056]
+shape = SubResource("BoxShape3D_qdwe6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=785397706]
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0)
+mesh = SubResource("PlaneMesh_7e2tp")
