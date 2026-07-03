@@ -50,12 +50,14 @@ func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
 			match main.current_level.name:
 				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
 				"FASE 2": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
+				"FASE 3": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
 			match main.current_level.name:
 				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
 				"FASE 2": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
-
+				"FASE 3": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
+				
 # Registro de raios-objetos.
 func _register_body(body: Node3D) -> void:
 	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
@@ -95,7 +97,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if not is_instance_valid(main.current_level): return
-	if "FASE 2" == main.current_level.name:
+	if "FASE 2" == main.current_level.name\
+	or "FASE 3" == main.current_level.name:
 		_irradiate_body(body, false)
 	_remove_ray(body)
 
@@ -114,6 +117,7 @@ func _restore_body(body: Node3D) -> void:
 		match main.current_level.name:
 			"FASE 1": _freeze_body(body)
 			"FASE 2": _irradiate_body(body, false)
+			"FASE 3": _irradiate_body(body, false)
 	
 	active_rays.erase(body)
 	

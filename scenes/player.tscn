@@ -3085,6 +3085,7 @@ bone_idx = 27
 transform = Transform3D(-0.5778612, 0.112756446, 0.11559597, -0.09925023, -0.58680236, 0.07623876, 0.12738068, 0.054304156, 0.5838024, -0.3040319, 3.2174647, -0.44342995)
 
 [node name="OmniLight3D" parent="cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina" index="2" unique_id=178910372 node_paths=PackedStringArray("area")]
+light_color = Color(0.28235295, 0.8862745, 0.5372549, 1)
 area = NodePath("../../../../../../AreaLamp")
 
 [node name="cat_tail" type="Node3D" parent="cat_obj" unique_id=1133340532]

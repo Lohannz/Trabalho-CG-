@@ -87,6 +87,7 @@ func _process(_delta: float) -> void:
 					$WorldEnvironment.environment.fog_light_color = Color(0.482, 0.0, 0.172, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
 					
+					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.282, 0.886, 0.537)
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
 					$player/AreaLamp/LampCol.disabled = false
 					
@@ -100,8 +101,9 @@ func _process(_delta: float) -> void:
 					$WorldEnvironment.environment.fog_light_color = Color(0.291, 0.12, 0.721, 1.0)
 					$WorldEnvironment/DirectionalLight3D.hide()
 					
-					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
-					$player/AreaLamp/LampCol.disabled = true
+					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina/OmniLight3D".light_color = Color(0.056, 0.39, 0.688, 1.0)
+					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".show()
+					$player/AreaLamp/LampCol.disabled = false
 					
 			spawn_setting()
 			level_ready.emit()

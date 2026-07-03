@@ -243,8 +243,13 @@ shape = SubResource("ConcavePolygonShape3D_hojym")
 
 [node name="Cubo_001" parent="." index="6" unique_id=686503397]
 material_override = ExtResource("2_hfqbn")
+transparency = 1.0
 
-[node name="CollisionShape3D" parent="Cubo_001/StaticBody3D" parent_id_path=PackedInt32Array(1644581129) index="0" unique_id=627863228]
+[node name="StaticBody3D" parent="Cubo_001" index="0" unique_id=1644581129 groups=["lightSensitive"]]
+collision_layer = 9
+metadata/irradiated = false
+
+[node name="CollisionShape3D" parent="Cubo_001/StaticBody3D" index="0" unique_id=627863228]
 shape = SubResource("ConcavePolygonShape3D_e2nh4")
 
 [node name="Cubo_002" parent="." index="7" unique_id=662298381]
@@ -263,8 +268,13 @@ shape = SubResource("BoxShape3D_0lqjy")
 
 [node name="Cubo_003" parent="." index="8" unique_id=653216964]
 material_override = ExtResource("2_hfqbn")
+transparency = 1.0
 
-[node name="CollisionShape3D" parent="Cubo_003/StaticBody3D" parent_id_path=PackedInt32Array(2057980410) index="0" unique_id=201973116]
+[node name="StaticBody3D" parent="Cubo_003" index="0" unique_id=2057980410 groups=["lightSensitive"]]
+collision_layer = 9
+metadata/irradiated = false
+
+[node name="CollisionShape3D" parent="Cubo_003/StaticBody3D" index="0" unique_id=201973116]
 shape = SubResource("ConcavePolygonShape3D_u3v1k")
 
 [node name="Aura" type="MeshInstance3D" parent="." index="9" unique_id=552996319]
