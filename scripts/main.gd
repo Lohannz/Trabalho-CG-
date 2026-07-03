@@ -73,6 +73,7 @@ func _process(_delta: float) -> void:
 					transition_layer.color = Color(0.1, 0.0, 0.618)
 					$WorldEnvironment.environment.fog_light_color = Color(0.264, 0.356, 1.007)
 					$WorldEnvironment/DirectionalLight3D.show()
+					$WorldEnvironment/DirectionalLight3D.show()
 					
 					$"player/cat_obj/armature_cat/Skeleton3D/BoneAttachment3D/lamparina".hide()
 					$player/AreaLamp/LampCol.disabled = true

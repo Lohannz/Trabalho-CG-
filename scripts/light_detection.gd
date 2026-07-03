@@ -18,50 +18,57 @@ func _ready() -> void:
 	exceptions = get_tree().get_nodes_in_group("invWall")
 	exceptions.append(get_tree().current_scene.get_node("player"))
 	
+	if is_instance_valid(area):
+		area.body_entered.connect(_on_area_3d_body_entered)
+		area.body_exited.connect(_on_area_3d_body_exited)
+	
 	await get_tree().physics_frame
+	_refresh_overlapping_bodies()
+
+func _refresh_overlapping_bodies() -> void:
 	for body in area.get_overlapping_bodies():
 		_register_body(body)
-
+	
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(main)\
-	 or not is_instance_valid(main.current_level): return
+	or not is_instance_valid(main.current_level): return
 	
-	for body in area.get_overlapping_bodies():
-		_register_body(body)
-
+	#_refresh_overlapping_bodies()
 	for body in active_rays.keys():
 		var ray = active_rays.get(body)
 		if not is_instance_valid(ray): 
 			_restore_body(body)
-		else:
-			if is_instance_valid(body): 
-				ray.global_position = global_position
-				ray.target_position = ray.to_local(body.global_position)
-				_handle_light(body, ray)
+		elif is_instance_valid(body): 
+			ray.global_position = global_position
+			ray.target_position = ray.to_local(body.global_position)
+			_handle_light(body, ray)
 
 # Controlador da função de iluminação.
 func _handle_light(body: StaticBody3D, ray: RayCast3D) -> void:
-	if not is_instance_valid(main.current_level): return
 	if body.get_collision_layer_value(4) or body.get_collision_layer_value(5):
 		ray.force_raycast_update()
 		var collider = ray.get_collider()
 
 		if collider == body:
 			ray.debug_shape_custom_color = Color(0.095, 1.054, 0.0, 1.0)
-			match main.current_level.name:
-				"FASE 1": if body.get_collision_layer_value(1): _melt_body(body)
-				"FASE 2": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
-				"FASE 3": if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
+			if main.current_level.name == "FASE 1":
+				if body.get_collision_layer_value(1): _melt_body(body)
+			elif "FASE 2" == main.current_level.name\
+			or "FASE 3" == main.current_level.name:
+				if body.has_meta("irradiated") and not body.get_meta("irradiated"): _irradiate_body(body, true)
 		else:
 			ray.debug_shape_custom_color = Color(0.904, 0.071, 0.0, 1.0)
-			match main.current_level.name:
-				"FASE 1": if not body.get_collision_layer_value(1): _freeze_body(body)
-				"FASE 2": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
-				"FASE 3": if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
+			if main.current_level.name == "FASE 1":
+				if not body.get_collision_layer_value(1): _freeze_body(body)
+			elif "FASE 2" == main.current_level.name\
+				or "FASE 3" == main.current_level.name:
+				if body.has_meta("irradiated") and body.get_meta("irradiated"): _irradiate_body(body, false)
+				
 				
 # Registro de raios-objetos.
 func _register_body(body: Node3D) -> void:
-	if body is StaticBody3D and body.is_in_group("lightSensitive") and not active_rays.has(body):
+	if body is StaticBody3D and body.is_in_group("lightSensitive")\
+	 and not active_rays.has(body) and is_instance_valid(body):
 		
 		if body.get_collision_layer_value(4):
 			var mesh = body.get_parent() as MeshInstance3D
@@ -92,16 +99,14 @@ func _register_body(body: Node3D) -> void:
 
 		active_rays[body] = ray
 		
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if not is_instance_valid(main.current_level): return
-	_register_body(body)
-
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if not is_instance_valid(main.current_level): return
+	if not is_instance_valid(main.current_level): return	
 	if "FASE 2" == main.current_level.name\
-	or "FASE 3" == main.current_level.name:
-		_irradiate_body(body, false)
-	_remove_ray(body)
+	 or "FASE 3" == main.current_level.name: _irradiate_body(body, false)
+	if body in active_rays: _remove_ray(body)
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	_register_body(body)
 
 # Remoção de raios inutilizados.
 func _remove_ray(body: Node3D) -> void:
@@ -115,14 +120,13 @@ func _remove_ray(body: Node3D) -> void:
 # Restauração das configurações padrões do objeto.
 func _restore_body(body: Node3D) -> void:
 	if body.get_collision_layer_value(4) or body.get_collision_layer_value(5):	
-		match main.current_level.name:
-			"FASE 1": _freeze_body(body)
-			"FASE 2": _irradiate_body(body, false)
-			"FASE 3": _irradiate_body(body, false)
+		if main.current_level.name == "FASE 1": _freeze_body(body)
+		elif "FASE 2" == main.current_level.name\
+		or "FASE 3" == main.current_level.name: _irradiate_body(body, false)
 	
 	active_rays.erase(body)
 	
-# Congelamento de objetos de gelo.
+# Congelamento de objetos de gelo.s
 func _freeze_body(body: Node3D) -> void:
 	var material : ShaderMaterial = _get_shader_material(body)
 	if material:
@@ -140,7 +144,6 @@ func _melt_body(body: Node3D) -> void:
 
 # LUZ: COMPORTAMENTO DO OBJETO ILUMINADO
 func _irradiate_body(body: Node3D, has_light: bool) -> void:
-	
 	body.set_meta("irradiated", has_light)
 	
 	var mesh = body.get_parent() as MeshInstance3D
@@ -150,7 +153,7 @@ func _irradiate_body(body: Node3D, has_light: bool) -> void:
 		var old_tween = body.get_meta("transparency_tween")
 		if is_instance_valid(old_tween):
 			old_tween.kill()
-	# TAVA FUNCIONANDO
+
 	# Configuração do comportamento:
 	var target_transparency : float
 	var target_time : float

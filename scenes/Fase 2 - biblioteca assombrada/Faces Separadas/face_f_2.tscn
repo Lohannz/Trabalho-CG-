@@ -144,6 +144,17 @@ shape = SubResource("BoxShape3D_aj5cl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 72.9, 107.855)
 shape = SubResource("BoxShape3D_aj5cl")
 
+[node name="Miasma4" parent="." index="22" unique_id=2135532357 instance=ExtResource("6_3n4y8")]
+transform = Transform3D(-4.0520458e-08, -79.39177, 0, 0.927, -3.4703244e-06, 0, 0, 0, 17.011, 126.432, 548.973, -980.88)
+
+[node name="CollisionShape3D" parent="Miasma4/StaticBody3D" parent_id_path=PackedInt32Array(2135532357, 1103796622) index="0" unique_id=1087465202]
+transform = Transform3D(0.19563264, -1.7053026e-13, 0, -6.217249e-15, 0.10361866, 0, 0, 0, 0.1898518, -0.0016021729, -0.0027418137, 0.008594513)
+
+[node name="MiasmaFog" parent="Miasma4" index="1" unique_id=2003875644]
+transform = Transform3D(9.000081, 3.8369308e-13, 0, 4.973799e-14, 1.4209836, 0, 0, 0, 2.476031, 0.019901276, 0.014713049, -0.0015830994)
+size = Vector3(0.41235352, 1.4455566, 1.6458855)
+
 [editable path="Miasma"]
 [editable path="Miasma2"]
 [editable path="Miasma3"]
+[editable path="Miasma4"]

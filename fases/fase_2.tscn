@@ -216,6 +216,9 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oddhb"]
+size = Vector3(1.8905334, 14.25885, 1)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gxdkb"]
 load_path = "res://.godot/imported/wind_noise.png-0cbf09b6bc4169b3c8fe8530f6f8054f.s3tc.ctex"
 
@@ -282,8 +285,8 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qpdiq"]
-size = Vector3(60, 67, 40)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp5vu"]
+size = Vector3(60, 63.30713, 34.52881)
 
 [node name="FASE 2" type="Node3D" unique_id=1906521657]
 
@@ -350,6 +353,9 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1024
 [node name="Spawn18" type="Marker3D" parent="Spawnpoints" unique_id=928094659]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 572.27844, 304.92334, -1195.5905)
 
+[node name="Spawn19" type="Marker3D" parent="Spawnpoints" unique_id=1220865615]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 1026.1709, 334.29407, -600.98944)
+
 [node name="FaceA2" parent="." unique_id=1842848484 instance=ExtResource("1_v2l8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1548157, -168.8869, -2.4967055)
 
@@ -371,7 +377,7 @@ spawnpoints = [NodePath("../../../../Spawnpoints/Spawn16")]
 transform = Transform3D(-1.1980065e-08, -1.1641472e-09, -10.618902, 0, 1, -1.2361966e-08, 0.27407193, -5.088649e-17, -4.6416696e-07, -0.481018, 0.4224097, -0.7340855)
 
 [node name="PortalVerde" parent="FaceA2/Portais" unique_id=411210296 instance=ExtResource("2_ls452")]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 202.15015, 180.97147, 114.476746)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 202.69713, 178.31949, 103.939285)
 material_override = SubResource("ShaderMaterial_giy1v")
 mesh = SubResource("ArrayMesh_e2jij")
 
@@ -379,9 +385,13 @@ mesh = SubResource("ArrayMesh_e2jij")
 material_override = SubResource("StandardMaterial3D_gxdkb")
 
 [node name="PortalArea" parent="FaceA2/Portais/PortalVerde" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
-transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
+transform = Transform3D(-4.3711385e-08, 0, 11.743942, 0, 1, 0, -0.99999994, 0, -5.13344e-07, 11.059742, -0.17573547, -0.48101807)
 destination = NodePath("../../../../FaceB2/Portais/PortalVerde/PortalArea")
 spawnpoints = [NodePath("../../../../Spawnpoints/Spawn2")]
+
+[node name="PortalCol" parent="FaceA2/Portais/PortalVerde/PortalArea" index="0" unique_id=1665133991]
+transform = Transform3D(-1.0710439e-08, -1.1641389e-09, -10.618779, -9.7194516e-08, 1, 2.4214387e-08, 0.27407193, 1.5297223e-07, -2.356247e-07, -0.48101807, 0.42240906, -0.7340851)
+shape = SubResource("BoxShape3D_oddhb")
 
 [node name="PortalRoxo" parent="FaceA2/Portais" unique_id=1389215298 instance=ExtResource("2_ls452")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.0623, 298.12732, 165.9896)
@@ -629,7 +639,7 @@ material_override = SubResource("StandardMaterial3D_gxdkb")
 [node name="PortalArea" parent="FaceF2/Portais/PortalPreto" index="1" unique_id=1967604049 node_paths=PackedStringArray("destination", "spawnpoints")]
 transform = Transform3D(-4.371139e-08, 0, 3.3675685, 0, 1, 0, -1, 0, -1.4720109e-07, 2.6245313, -0.17573562, -0.48101807)
 destination = NodePath("../../../../FaceC2/Portais/PortalPreto/PortalArea")
-spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18")]
+spawnpoints = [NodePath("../../../../Spawnpoints/Spawn18"), NodePath("../../../../Spawnpoints/Spawn19")]
 
 [node name="PortalFinal" parent="." unique_id=2094035648 instance=ExtResource("11_10bks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 219, -191)
@@ -641,8 +651,8 @@ script = ExtResource("15_oddhb")
 next_level_path = "uid://bwa28k51vrqxk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PortalFinal/PortalArea" unique_id=135948512]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5, 0)
-shape = SubResource("BoxShape3D_qpdiq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.346436, 2.7355957)
+shape = SubResource("BoxShape3D_qp5vu")
 
 [node name="chave" parent="." unique_id=918937857 instance=ExtResource("13_qpdiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189, 343, -119)
